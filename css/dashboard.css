@@ -1,0 +1,27 @@
+
+/****************************Dashboard content***************************************/
+
+.d-icon{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.dashboardIcon{
+    max-width: 80%;
+    width:auto;
+    height:auto;
+    border-radius: 50%;
+    padding:10%;
+    cursor: pointer;
+}
+
+/****************************Dashboard content for smaller screen***************************************/
+
+@media (max-width: 800px) {
+
+    .d-icon{
+        width:50%; /*for dashboard main icons*/
+    }
+  
+}

@@ -1,0 +1,266 @@
+* {
+    margin:0;
+    padding:0;
+    font-family: Tahoma;
+    font-weight:bold;
+    box-sizing:border-box;
+}
+
+/*css grid*/
+
+/* All these columns should be floating to the left, and have a padding of 15px:*/
+[class*="col-"] {   
+    float: left;
+    padding: 15px;
+    border: 0px solid red;
+  }
+
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+/* For desktop: */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+.col-13 {width: 7%;}
+.col-14 {width: 68%;}
+.col-15 {width: 20%;}
+.col-16 {width: 80%;}
+.col-nav {width: 25%;}
+
+
+/*****Specifications for resolutions less than 800px****/
+@media (max-width: 800px) {
+  /* For mobile/tablet view: */
+  [class*="col-"] {
+   /* display:flex;*/
+    width: 100%;
+  }
+
+  h1, h2, h3 {
+    font-size: 3vw; /* to dynamically change the font size - according to the size of the screen.*/
+}
+
+
+  div, label, p, th, td, span{
+    font-size: 2.15vw; /* to dynamically change the font size - according to the size of the screen.*/
+}
+
+
+.col-13 , .sideNav-dropdown {
+    width:16%;
+  }
+
+.col-nav {
+      display: none; /*Hiding the dp slogan from smaller screens*/
+  }
+
+.navbar{
+    width:84%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+.smallWel {
+    width:84%;  
+  }
+
+.sideNav{
+   display:none; /*Hiding the big side navigation from smaller screens*/
+  }
+
+}/*css media tag for max-width:800px ends here*/
+
+
+
+/********************Header - leftside | logo & slogan********************/
+
+.navLogo{
+	/*for the dp motors logo in the header, here the image is dynamically resized according to the grid size*/
+    height: auto;
+    width: 65px;
+    z-index: -1; /*stack order - essentially sends the image backwards*/
+}
+
+.col-nav{
+    background-color: #FBFBFD;
+}
+
+.navSlogan{
+	/*Dealers in all kinds of motor vehicle spare parts & accessories*/
+	padding-top: 10px;
+    padding-left: 5px;
+	color:#ED1F28;
+	font-size: 12px;
+}
+
+/***********************Header - rightside | navbar **********************/
+
+.navbar{
+    text-align: center;
+    display: flex;
+	justify-content: end; /*This will move the content to the right of the page, and for this to work in css grids, we need flex*/
+    background-color: #FBFBFD;
+}
+
+.navbar a{
+    overflow: hidden; /*This will make sure that the header navbar will stay put and not over flow*/
+	color: #111B47; 
+	padding: 10px 10px; /*Here, the first px value is for the padding from top margin,
+	second is for padding between the words*/
+	text-decoration: none; /*by making this nonw, the underline goes away*/
+	font-size: 13px;
+}
+
+.navbar a:hover {
+	/*CSS for when you are hovering over the anchor tags*/
+	background-color: #021257;
+	color: #F2F2F2;
+}
+
+/*used to indicate which page is currently being used. for this, the anchor tag 
+of the active page must have a class="active" eg:  <a href="#" class="active">Home</a> */
+.navbar a.active{
+	color: red;
+}
+
+button{
+    border-radius:25px;
+}
+
+.navButton{
+	/*for the logout, signup & contact us buttons*/
+	border: none;
+    background-color:#021257;
+	width: 100px;
+	padding: 10px 10px; /*basically the size of the button*/
+    transition-duration:0.4s; 
+    cursor: pointer; 
+    margin: 1px 5px;
+    text-align: center;
+	text-decoration: none;
+	color:#F2F2F2;
+	font-size: 13px;
+	font-weight: bold;
+} 
+
+.contact{
+	/*changing the properties of just the contact us button*/
+	background-color: #D72731; 
+}
+
+.navButton:hover {
+	background-color:#344CB4;
+}
+
+/*******************************side nav************************************/
+
+.sideNav{
+	border-radius: 0px 0px 30px 30px;
+	background-color: #021257;
+	transition: 0.5s;
+    overflow: hidden;    
+}
+
+.sideNav ul{
+    list-style-type: none;
+}
+
+.sideNav a, .sideNav p{
+	padding: 20px;
+	text-decoration: none;
+	font-size:13px;
+	color: #F2F2F2;
+	display: block;
+}
+
+.sideNav p{
+    text-align: center;
+}
+
+.sideNav a.active{
+	background-color:#344CB4;
+}
+
+.sideNav hr{
+	border: 0.4px solid #343a58;
+}
+
+.sideNav a:hover{
+    background-color: #EE1E2B;
+}
+
+/*******************************side nav as dropdown for smaller screens************************************/
+
+.dropButton{
+    width: 20px;
+    height: auto;
+    cursor: pointer;
+  } /*setting the properties of the svg icon*/
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #021257;
+    padding:10px;
+    font-size:12px;
+    min-width: 40%;
+    border-radius:0px 30px 30px 30px;
+} /*css for the content inside the dropdown*/
+  
+.dropdown-content a {
+    color:#F2F2F2;
+    padding: 12px 16px;
+    text-decoration: none;
+    padding:15px;
+    display: block;
+}/*css for the anchor tags of the content inside the dropdown*/
+
+.dropdown-content a:hover {
+    background-color: #EE1E2B
+}
+
+.sideNav-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a.active{
+	background-color:#344CB4;
+}
+
+.smallWel{
+    font-size:12px; 
+    color:#f0f1f5;
+}
+
+.r2{
+    background-color:grey;
+}
+
+@media (min-width: 800px){ /*Hiding the dropdown navigation & welcome from larger screens*/
+    .r2{
+        display:none;
+    }
+
+}
+
+
+/*footer {
+    background-color: #021257;
+    color: #F2F2F2;
+    font-size:11px;
+    font-style:initial;
+    text-align:center;
+}*/
