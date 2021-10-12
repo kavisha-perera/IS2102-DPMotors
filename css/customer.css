@@ -31,7 +31,7 @@ select option{
     font-size: 11px;
 }
 
-.payButton{
+.payButton, .calltoCancel{
     background-color: #EE1E2B;
     width: fit-content;
 }
