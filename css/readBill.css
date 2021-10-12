@@ -1,0 +1,137 @@
+/******************************CSS FOR READ BILL************************************/
+
+@media (max-width:800px){
+    .billHeaderCol1{
+        width: 20%;
+    }
+    .billHeaderCol2{
+        width: 80%;
+    }
+    .billHeaderCol3{
+        width: 100%;
+        display: flex;
+    }
+    .BillNull{
+        display: none;
+    }
+    .billGeneral{
+        width:50%;
+    }
+    .BillTotal{
+        display: flex;
+        justify-content: end;
+    }
+}
+
+.Bill{
+    width:100%;
+    background-color:#FFFAFA;
+    border: 2px solid #000;
+    margin-top: 15px;
+    padding:10px;
+}
+
+.BillLogo{
+    height: auto;
+    width: 50px;
+    z-index: -1; /*stack order - essentially sends the image backwards*/
+}
+
+.BillHeaderText{
+    padding-top: 10px;
+    padding-left: 5px;
+	color: #000;
+	font-size: 11.5px;
+}
+
+.billHeaderAlign{
+    display: flex;
+    justify-content: end;
+    padding-top: 5px;
+}
+
+.BillNo{
+    text-align: center;
+    margin-top: 5px;
+}
+
+.billGeneralDetails{
+    display: flex;
+}
+
+.billGeneralForm{
+    margin-left: 5px;
+    margin-bottom: 1.5px;
+    width:40%;
+    background-color:#FFFAFA;
+    border: 0px solid #C4C4C4;
+}
+
+.BillInfoContainer{
+    align-content: center;
+    margin-top: 15.5px;
+    overflow-x: auto;
+}
+
+.BillInfoTable1 , .BillInfoTable2 {
+    width:100%;
+    font-size: 14px;
+    border: 0px solid #000;
+    padding:2px;
+    
+}
+
+.BillInfoTable2{
+    margin-top: 25px;
+
+}
+
+.BillInfoTable1 th, .BillInfoTable1 td{
+    width: 20%;
+    height:45px;
+    border: 1px solid #000;
+}
+
+.BillInfoTable1 td{
+    margin-top: 50px;
+    height: 40px; /*make this fit content once php is added*/
+    border: 0.5px solid #C4C4C4;
+}
+
+.BillInfoTable2 th, .BillInfoTable2 td{
+    width:20%;
+    height:60px;
+    border: 1px solid #000;
+}
+
+.BillInfoTable2 td{
+    width:80%;
+}
+
+.BillTotal{
+    display: flex;
+}
+
+.billTotalForm{
+    width: 150px;
+    height: 30px;
+    margin-left: 10px;
+    border:  1px solid #000;
+}
+
+.billTotalLabel{
+    width:70px;
+    padding:5px;
+    text-align: center;
+    border:  1px solid #000;
+}
+
+.BILLbutton{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.saveBill{
+    display: flex;
+    justify-content: end;
+}
