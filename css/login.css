@@ -1,0 +1,56 @@
+body {
+background: #021257;}
+
+form {border: 3px solid #f1f1f1;}
+
+input[type=text], input[type=password] {
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+box-sizing: border-box;
+}
+
+.container {
+padding: 16px;
+background-color: #f1f1f1;
+justify-content:center;
+position: absolute;
+left: 25%;
+right: 50%;
+top: 25%;
+bottom: 50%;
+background: #C4C4C4;
+border-radius: 90px 0px;
+}
+
+.loginButton {
+background-color: #D72731;
+border: none;
+color: white;
+padding: 20px 20px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+cursor: pointer;
+width: 90%;
+margin:5%;
+} 
+ 
+#rcorners {
+border-radius: 15px 50px;
+background: #f1f1f1 ;
+padding: 20px; 
+width: 100%;
+height: 100%;
+margin-top: 30%;
+} 
+
+ 
+#rcorners input {
+border:solid;
+border-radius:10px;
+border-color:#021257;
+} 
