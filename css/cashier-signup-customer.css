@@ -36,7 +36,7 @@
   }
   
 #lnameth{
-      text-align: left;
+      text-align: right;
       font-family: sans-serif;
       font-style: normal;
       font-weight: bold;
@@ -47,11 +47,12 @@
 
 /*css code of form input boxes*/    
 .th-cus-form-input{
-      width: 80%;
-      padding:10px;
+      width: 100%;
+      padding:12px 20px;
       display: inline-block;
-      border: none;
+      border: 1px solid #cccccc;
       background: #ffffff;
+      box-sizing: border-box;
   }
 
 /*styling span class for required "*" symbol with CSS*/
