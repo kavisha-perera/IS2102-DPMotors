@@ -46,7 +46,7 @@
       }
 
 /*css code of form input boxes*/    
-input[type=text], input[type=tel],input[type=password]{
+.th-cus-form-input{
       width: 80%;
       padding:10px;
       display: inline-block;
