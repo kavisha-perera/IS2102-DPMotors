@@ -85,17 +85,13 @@
 
 
 
-/********************Header - leftside | logo & slogan********************/
+/********************Header - entire top nav bar********************/
 
 .navLogo{
 	/*for the dp motors logo in the header, here the image is dynamically resized according to the grid size*/
     height: auto;
     width: 65px;
     z-index: -1; /*stack order - essentially sends the image backwards*/
-}
-
-.col-nav{
-    background-color: #FBFBFD;
 }
 
 .navSlogan{
@@ -106,13 +102,16 @@
 	font-size: 12px;
 }
 
-/***********************Header - rightside | navbar **********************/
+
+.r1{
+    background-color: #FBFBFD;
+}
 
 .navbar{
     text-align: center;
     display: flex;
 	justify-content: end; /*This will move the content to the right of the page, and for this to work in css grids, we need flex*/
-    background-color: #FBFBFD;
+    
 }
 
 .navbar a{
