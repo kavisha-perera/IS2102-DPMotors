@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
-    <link rel="stylesheet" href="../../css/main.css">
-	<title>customer delete service record</title>
+    <link rel="stylesheet" href="../css/main.css">
+	<title>customer profile page</title>
 </head>
 <body>
 
     <div class="row r1">
         <div class="col-13">
-            <img src="../../images/logo.png" class="navLogo">
+            <img src="../images/logo.png" class="navLogo">
         </div>
         <div class="col-nav">
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
@@ -24,19 +24,28 @@
             <button class="navButton contact"> Contact Us </button>
         </div>
     </div>
-
-    <div class="row deleteWarning"> <!--do not use r2 cus it has been used for something else-->
-        <div class="col-12">
-            <h2>DELETE SERVICE RECORD</h2>
+   
+    <div class="row openingSection">
+        <div class="col-7 openingVideo">
+            <!-- The video -->
+            <video autoplay muted loop id="myVideo">
+                <source src="../video/opening.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="col-5 AboutUs">
+            <h1> ABOUT US</h1> 
             <br>
-            <p>This action will remove all details of this record from the system database and therefore will not be able to be retrieved again. .</p>
-            <br>
-            <p>Are you sure you want to <span style="color: #D72731">delete this vehicle service record?</span></p>
-            <br>
-            <button class="navButton"> NO </button>
-            <button class="navButton delete"> YES </button>
+            <p  style="text-align: left;">DP Motors is a business operating in the automotive aftermarket industry. 
+                We focus on the provision of vehicle services, sale of spare parts and vehicle repairs. 
+                We aim to become a remarkable, leading company in the aftermarket industry by providing quality service & great customer value. </p>       
+            <form action="https://google.com">
+                <input type="button" value="Book Appointment Now" class="LandingAppButton"/>
+            </form>
+           
         </div>
     </div>
+
+
 
 
 
