@@ -1,7 +1,7 @@
 * {
     margin:0;
     padding:0;
-    font-family: Tahoma;
+    font-family: 'Tahoma';
     font-weight:bold;
     box-sizing:border-box;
 }
@@ -86,6 +86,7 @@
 
 
 /********************Header - entire top nav bar********************/
+
 
 .navLogo{
 	/*for the dp motors logo in the header, here the image is dynamically resized according to the grid size*/
