@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css">
     <script src="../../javascript/empsup_pop-up.js"></script>
-	<title>Inventory Records</title>
+	<title>Promotions</title>
 </head>
 <body>
 
@@ -28,7 +28,7 @@
     <div class="row r3">
         <div class="col-15 ">
             <p> Welcome @email address</p><br><br><br>
-            <img src="../../images/admin/inventory.png" style="width: 250px;" alt=""><br><br><br><br><br>
+            <img src="../../images/admin/promo.png" style="width: 250px;" alt=""><br><br><br><br><br>
             <button class="adminbutton1" onclick="OnClickOpenAddEmloyee()" >+ Add New</button>
             <br><br><br><br><br>
             <p style="text-align: center;"> <a href="../dashboards/adminDash.html" class="backbutton"><button class="navButton">Back </button></a></p>
@@ -42,15 +42,14 @@
                 <div class="th-table-container1">
                     
                     
-                    <h2 class="th-th2">Inventory Records<h2><!--table name-->
+                    <h2 class="th-th2">Promotions<h2><!--table name-->
                 <table class="th-user-table">
                     <thead>
                     <tr>
                       <th>Code</th> <!--table properties-->
-                      <th>Size</th>
-                      <th>Name</th> 
-                      <th>Brand</th>
-                      <th>Supplier</th>
+                      <th>Name</th>
+                      <th>Description</th> 
+                      <th>State</th>
                       <th colspan="2" style="text-align: center;">Controls</th>
                     </tr>
                     </thead>
@@ -60,14 +59,12 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
                             <td><button class="th-button-icon" onclick="OnClickOpenUpdateEmployee()"><img src="../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
                             <td><button class="th-button-icon" onclick="OnClickOpenDeleteEmployee()"><img src="../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
                         </tr>
 
                         <tr>
                             <td></td> <!--table values-->
-                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -85,7 +82,7 @@
                 <form action="#" method="post">
                     <div class="th-emp-row">
                         <div class="th-employee-form-title">
-                            <h2 style="margin-bottom:20px;">New Inventory</h2>
+                            <h2 style="margin-bottom:20px;">New Promotion</h2>
                         </div>
                         <div class="th-emp-close" onclick="OnClickCloseAddEmployee()">
                              <span class="th-emp-close-button">X</span>
@@ -103,16 +100,7 @@
             
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="size" class="th-user-label">Size</label>
-                        </div>
-                        <div class="th-emp-form-input">
-                            <input type="text" name="size" class="th-emsu-input">
-                        </div>
-                    </div>
-            
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="name" class="th-user-label">Name</label class="th-emsu-input">
+                            <label for="name" class="th-user-label">Name</label>
                         </div>
                         <div class="th-emp-form-input">
                             <input type="text" name="name" class="th-emsu-input">
@@ -121,22 +109,25 @@
             
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="brand" class="th-user-label">Brand</label class="th-emsu-input">
+                            <label for="description" class="th-user-label">Description</label class="th-emsu-input">
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="text" name="brand" class="th-emsu-input">
+                            <input type="text" name="description" class="th-emsu-input">
                         </div>
                     </div>
             
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="supplier" class="th-user-label">Supplier</label class="th-emsu-input">
+                            <label for="state" class="th-user-label">State</label class="th-emsu-input">
                         </div>
-                        <div class="th-emp-form-input">
-                            <input type="text" name="supplier" class="th-emsu-input">
+                        <br>
+                        <div>
+                            <label for="active">Active</label>
+                            <input type="radio" name="state" id="active" value="1">
+                            <label for="inactive">Inactive</label>
+                            <input type="radio" name="state" id="inactive" value="0">
                         </div>
-                    </div>
-            
+                    </div>      
                     
             
                     <div class="th-emp-addb">
@@ -154,7 +145,7 @@
                 <form action="#" method="post">
                     <div class="th-emp-row">
                         <div class="th-employee-form-title">
-                            <h2 style="margin-bottom:20px;">Inventory</h2>
+                            <h2 style="margin-bottom:20px;">Promotions</h2>
                         </div>
                         <div class="th-emp-close" onclick="OnClickCloseUpdateEmployee()">
                              <span class="th-emp-close-button">X</span>
@@ -172,16 +163,7 @@
             
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="size" class="th-user-label">Size</label>
-                        </div>
-                        <div class="th-emp-form-input">
-                            <input type="text" name="size" class="th-emsu-input">
-                        </div>
-                    </div>
-            
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="name" class="th-user-label">Name</label class="th-emsu-input">
+                            <label for="name" class="th-user-label">Name</label>
                         </div>
                         <div class="th-emp-form-input">
                             <input type="text" name="name" class="th-emsu-input">
@@ -190,28 +172,29 @@
             
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="brand" class="th-user-label">Brand</label class="th-emsu-input">
+                            <label for="description" class="th-user-label">Description</label class="th-emsu-input">
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="text" name="brand" class="th-emsu-input">
+                            <input type="text" name="description" class="th-emsu-input">
                         </div>
                     </div>
             
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="supplier" class="th-user-label">Supplier</label class="th-emsu-input">
+                            <label for="state" class="th-user-label">State</label class="th-emsu-input">
                         </div>
-                        <div class="th-emp-form-input">
-                            <input type="text" name="supplier" class="th-emsu-input">
+                        <br>
+                        <div>
+                            <label for="active">Active</label>
+                            <input type="radio" name="state" id="active" value="1">
+                            <label for="inactive">Inactive</label>
+                            <input type="radio" name="state" id="inactive" value="0">
                         </div>
                     </div>
-            
-                    
             
                     <div class="th-emp-addb">
                         <button class="navButton" name="submit" style="background-color: #2fd138; color:#000000">UPDATE</button>
                     </div>
-            
                 </form>
             </div>
    
