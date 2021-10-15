@@ -1,0 +1,54 @@
+
+#myVideo{
+    width: 100%;
+}
+
+.section1{
+    background-color:#021257;
+    color: cornsilk;
+}
+
+.AboutUs{
+    padding-top:3vw;
+    text-align: left;
+    line-height: 3vw;
+    text-align: center;
+}
+
+.Container-LandingButton{
+    padding-top: 50px;
+}
+
+/*.LandingAppButton{
+    padding: 2vw;
+    border-radius: 30px;
+    cursor: pointer;
+    background-color: #B51111;
+    color: cornsilk;
+}
+ */
+
+ .LandingAppButton{
+    text-align: center;
+ }
+
+.bookButton{
+    max-width:70%;
+    width:auto;
+    height:auto;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+@media (max-width: 800px) {
+    /* For mobile/tablet view: */
+
+   .AboutUs{
+            width:70%;
+            line-height: 4vw;
+        }
+    .LandingAppButton{
+            width:30%;
+        }
+
+}
