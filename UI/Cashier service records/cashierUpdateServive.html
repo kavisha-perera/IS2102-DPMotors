@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css">
     <script src="../../javascript/empsup_pop-up.js"></script>
+    <script src="../../javascript/preserve.js"></script>
 	<title>Service Records</title>
 </head>
 <body>
@@ -141,16 +142,16 @@
                         </select>
                   </div>
       
-                  <div class="pr-form-add" style="margin-top: 10px">
-                    <button class="pr-form-add-button" name="submit">UPDATE</button>
+                  <div class="pr-form-add" style="margin-top: 10px" >
+                    <button class="pr-form-add-button" type="button" name="submit" onclick="OnClickOpenUpdateService()">UPDATE</button>
                   </div>
                 </form>
               </div>
 
 <!-----------------------------------------------------Update service message as a Pop-Up----------------------------------------------------->
-        <div class="th-delete-record-container">
+        <div class="th-delete-record-container" id="th-update-service">
             <div class="th-emp-close">
-                <span class="th-emp-close-button">X</span>
+                <span class="th-emp-close-button" onclick="OnClickCloseUpdateService()">X</span>
            </div>
 
             <h2 class="th-delete-message" Style="text-align: center;">SERVICE RECORD UPDATED SUCCESSFULLY!</h2>
