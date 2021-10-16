@@ -1,0 +1,10 @@
+.th-other-buttons{
+    float: left;
+    padding: 15px;
+    border: 0px solid;
+    margin-bottom: 5px;
+    text-align: center;
+    display: flex;
+	justify-content: start; 
+    background-color: #ffffff;
+}
