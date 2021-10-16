@@ -8,3 +8,10 @@
 	justify-content: start; 
     background-color: #ffffff;
 }
+
+#th-update-service {
+
+        display: none;
+        position: absolute;
+        top: 10%;
+}
