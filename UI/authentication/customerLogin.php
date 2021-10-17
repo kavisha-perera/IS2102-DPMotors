@@ -1,3 +1,13 @@
+<?php
+//start session
+session_start();
+
+//redirect if logged in
+if(isset($_SESSION['user'])){
+    header('location:customerDash.php');
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,11 +57,11 @@
             <form action="login.php" method="POST">
         
                 <h2 align ="center">LOGIN</h2>
-                <input type="text" placeholder="Employee Number" name="username" required>
+                <input type="text" placeholder="Email Adress" name="email" required>
                 <input type="password" placeholder="Password" name="password" required>  
 
                 <div class="raw">
-                <button type="submit" name="login" class="loginButton" >Login</button>
+                <button type="submit" name="submit" class="loginButton" >Login</button>
                 
                 <h6 style="margin-left: 35%;"><a href="" >Forgot your password</a></h6>
                 </div>     
@@ -63,5 +73,16 @@
         <div class="col-4" ></div>
 
     </div>   
+    <?php
+		    	if(isset($_SESSION['message'])){
+		    		?>
+		    			<div class="alert alert-info text-center">
+					        <?php echo $_SESSION['message']; ?>
+					    </div>
+		    		<?php
+
+		    		unset($_SESSION['message']);
+		    	}
+		    ?>
 </body>
 </html>
