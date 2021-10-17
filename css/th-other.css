@@ -9,7 +9,7 @@
     background-color: #ffffff;
 }
 
-#th-update-pr,#th-update-service,#th-register-custom {
+#th-update-pr,#th-update-service,#th-register-custom,#th-cancel-bill {
 
         display: none;
         position: absolute;
