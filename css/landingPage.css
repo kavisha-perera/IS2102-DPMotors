@@ -35,7 +35,7 @@
 }
 
 .section2{
-    border-radius: 0px 0px 140px 0px ;
+     border-radius: 0px 0px 140px 0px ;
 }
 
 .AboutUs{
@@ -169,4 +169,8 @@ background-color: #717171;
     color: cornsilk;
     font-size: 12.5px;
     
+}
+
+.followFB , .contact-deets{
+    display: flex;
 }
