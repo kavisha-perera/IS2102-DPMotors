@@ -6,7 +6,7 @@
     <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css" />
     <script src="../../javascript/preserve.js"></script>
-    <title>Add new product Reservation</title>
+    <title>Delete Service Record</title>
   </head>
   <body>
     <div class="row r1">
@@ -64,18 +64,19 @@
       <div class="col-16 content">
         <!--main content here-->
         <div class="th-prdelete-container" style="margin:auto; text-align: center;width:900px">
-            <h2>Delete Product Reservation</h2>
-            <p style="margin-top: 70px;">Are you sure you want to delete this service product? Deleting this will cause all the details related to this to be permenantly deleted.</p>
+            <h2>Delete Service Record</h2>
+            <p style="margin-top: 70px;">Deleting a service record is permanent and will remove all vehicle and service related details from service records database entirely.<br>
+            Confirm Deletion of service record?</p>
             <div class="th-delete-prbtn" style="margin-top: 40px;">
-                <button class="navButton"><b>Yes</b></button>
-                <button class="navButton" style="background-color: red;"><b> No</b></button>  
+                <button class="navButton" type="button" onclick="OnclickOpenDeleteService()"><b>Yes</b></button>
+                <button class="navButton" style="background-color: red;"onclick="document.location='cashierViewService.html'"><b> No</b></button>  
             </div>
         </div>
           
 <!-----------------------------------------------------Delete service message as a Pop-Up----------------------------------------------------->
-        <div class="th-delete-record-container">
+        <div class="th-delete-record-container" id="th-pr-delete">
             <div class="th-emp-close">
-                <span class="th-emp-close-button">X</span>
+                <span class="th-emp-close-button" onclick="OnclickCloseDeleteService()">X</span>
            </div>
 
             <h2 class="th-delete-message" Style="text-align: center;">SERVICE RECORD DELETED SUCCESSFULLY!</h2>

@@ -6,7 +6,7 @@
     <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css" />
     <script src="../../javascript/preserve.js"></script>
-    <title>Add new product Reservation</title>
+    <title>Update Product Reservation</title>
   </head>
   <body>
     <div class="row r1">
@@ -162,15 +162,15 @@
             </div>
 
             <div class="pr-form-add" style="margin-top: 10px">
-              <button class="pr-form-add-button" name="submit" >UPDATE</button>
+              <button class="pr-form-add-button" name="submit" type="button" onclick="OnClickOpenUpdatePR()" >UPDATE</button>
             </div>
           </form>
         </div>
           
-<!-----------------------------------------------------Update Employee message as a Pop-Up----------------------------------------------------->
-        <div class="th-delete-record-container">
+<!-----------------------------------------------------Update Product reservation message as a Pop-Up----------------------------------------------------->
+        <div class="th-delete-record-container" id="th-update-pr">
             <div class="th-emp-close">
-                <span class="th-emp-close-button">X</span>
+                <span class="th-emp-close-button" onclick="OnclickCloseDeleteUpdatePR()">X</span>
            </div>
 
             <h2 class="th-delete-message" Style="text-align: center;">PRODUCT RESERVATION UPDATED SUCCESSFULLY!</h2>

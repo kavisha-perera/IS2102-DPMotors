@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css">
-	<title>Bill History</title>
+    <script src="../../javascript/preserve.js"></script>
+	<title>Product Bills</title>
 </head>
 <body>
 
@@ -25,17 +26,16 @@
                         <div class="col-2 sideNav-dropdown" >
                                 <img src="../../images/dropdown.svg" class="dropButton">
                                 <div class="dropdown-content">
-                                    <div class="dropdown-content">
-                                        <a href="../dashboards/cashierDash.html"> Dashboard </a><hr> 
-                                        <a href="../profiles/cashierViewProfile.html"> Profile </a><hr>
-                                        <a href="#"> Create Bill </a><hr>
-                                        <a href="../promotion/readPromotion.html"> Promotions </a><hr>
-                                        <a href="../Cashier View Bill History/CashierViewAllBills.html"> Bill History </a><hr>  
-                                        <a href="../Cashier service records/cashierViewService.html"> Vehicle Service Records </a><hr> 
-                                        <a href="../Cashier product reservation/ViewProductResrvation.html"> Product Reservations </a><hr> 
-                                        <a href="../appointments/readAppointments.html"> Appointments </a><hr>
-                                        <a href="../Cashier Customer register/cashier register customer.html"> Customer </a><hr>
-                                    </div>
+                                    <a href="../dashboards/cashierDash.html"> Dashboard </a><hr> 
+            <a href="../profiles/cashierViewProfile.html"> Profile </a><hr>
+            <a href="#"> Create Bill </a><hr>
+            <a href="../promotion/readPromotion.html"> Promotions </a><hr>
+            <a href="../Cashier View Bill History/CashierViewAllBills.html"> Bill History </a><hr>  
+            <a href="../Cashier service records/cashierViewService.html"> Vehicle Service Records </a><hr> 
+            <a href="../Cashier product reservation/ViewProductResrvation.html"> Product Reservations </a><hr> 
+            <a href="../appointments/readAppointments.html"> Appointments </a><hr>
+            <a href="../Cashier Customer register/cashier register customer.html"> Customer </a><hr>
+                                  </div>
                         </div>
                         <div class="col-10 smallWel">
                             <p> Welcome @email address</p>
@@ -63,19 +63,20 @@
                 <div class="th-table-container1">
                     <h2 class="th-th2">PRODUCT BILLS</h2><!--table name-->
                     <div class="th-other-buttons">
-                        <button class="navButton" ><b>All bills</b></button>
-                        <button class="navButton" ><b> Product bills</b></button>
-                        <button class="navButton" ><b>Service bills</b></button>    
+                        <button class="navButton" onclick="document.location='CashierViewAllBills.html'"><b>All bills</b></button>
+                        <button class="navButton" onclick="document.location='CashierViewProductBills.html'"><b> Product bills</b></button>
+                        <button class="navButton" onclick="document.location='CashierViewServiceBills.html'"><b>Service bills</b></button>       
                     </div>
                 <table class="th-user-table">
                     <thead>
                     <tr>
                       <th>BILL NO</th> <!--table properties-->
                       <th>FIRST NAME</th>
-                      <th>PRODUCT</th> 
+                      <th>PID</th> 
+                      <th>PR.NAME</th>
                       <th>PRICE</th>
                       <th>DATE TIME</th>
-                      <th colspan="4" style="text-align: center;">CONTROLS</th>
+                      <th colspan="3" style="text-align: center;">CONTROLS</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -84,29 +85,36 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td><button class="th-button-icon" ><img src="../../images/billhistory/cancel.png" class="th-svg-icons"></button></td>
-                            <td><button class="th-button-icon" ><img src="../../images/billhistory/refund.png" class="th-svg-icons"></button></td>
-                            <td><button class="th-button-icon" ><img src="../../images/billhistory/exchange.png" class="th-svg-icons"></button></td>
+                            <td></td>
+                            <td></td>
+                            <td><button class="th-button-icon" onclick="OnClickOpenCancelMessage()"><img src="../../images/billhistory/cancel.png" class="th-svg-icons"></button></td>
+                            <td><button class="th-button-icon"> <a href="../CashierProductExchange/CashierProductRefund.html"><img src="../../images/billhistory/refund.png" class="th-svg-icons"></a></button></td>
+                            <td><button class="th-button-icon"><a href="../CashierProductExchange/CashierProductExchange.html"><img src="../../images/billhistory/exchange.png" class="th-svg-icons"></a></button></td>
                         </tr>
                         <tr>
                             <td></td> <!--table values-->
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td><button class="th-button-icon" ><img src="../../images/billhistory/cancel.png" class="th-svg-icons"></button></td>
-                            <td><button class="th-button-icon" ><img src="../../images/billhistory/refund.png" class="th-svg-icons"></button></td>
-                            <td><button class="th-button-icon" ><img src="../../images/billhistory/exchange.png" class="th-svg-icons"></button></td>
+                            <td></td>
+                            <td></td>
+                            <td><button class="th-button-icon" onclick="OnClickOpenCancelMessage()"><img src="../../images/billhistory/cancel.png" class="th-svg-icons"></button></td>
+                            <td><button class="th-button-icon"> <a href="../CashierProductExchange/CashierProductRefund.html"><img src="../../images/billhistory/refund.png" class="th-svg-icons"></a></button></td>
+                            <td><button class="th-button-icon"><a href="../CashierProductExchange/CashierProductExchange.html"><img src="../../images/billhistory/exchange.png" class="th-svg-icons"></a></button></td>
                         </tr>
-
                       </tbody>
                   </table>
-            </div>
-
-        
-
-                     
-        
-   
+                </div>
+                </div>
+                <div class="th-delete-record-container" id="th-cancel-bill">
+                    <div class="th-emp-close" onclick="OnClickCloseCancelMessage()">
+                        <span class="th-emp-close-button">X</span>
+                   </div>
+    
+                    <h2 class="th-delete-message">BILL SUCCESSFULLY CANCELLED!</h2>
+                
+                </div>
+            
         </div>
     </div>
 
