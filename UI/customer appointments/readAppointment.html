@@ -16,12 +16,16 @@
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
         </div>
         <div class="col-14 navbar">
-            <a href="#">Home</a> 
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Products</a> 
-            <button class="navButton"> Log Out </button> 
-            <button class="navButton contact"> Contact Us </button>
+            <a href="../landing page/index.html#home">Home</a> 
+            <a href="../landing page/index.html#about">About</a>
+            <a href="../landing page/index.html#services">Services</a>
+            <a href="#">Products</a>
+            <form action="#">
+                <button class="navButton"> Log Out </button>
+            </form>
+            <form action="../landing page/index.html#contact">
+                <button class="navButton contact"> Contact Us </button>
+            </form>
         </div>
     </div>
 
@@ -30,13 +34,13 @@
                         <div class="col-2 sideNav-dropdown" >
                                 <img src="../../images/dropdown.svg" class="dropButton">
                                 <div class="dropdown-content">
-                                    <a href="#"> Dashboard </a>  
-                                    <a href="#"> Profile </a>
+                                    <a href="../dashboards/customerDash.html"> Dashboard </a>  
+                                    <a href="../profiles/customerViewProfile.html"> Profile </a>
                                     <a href="#" class="active"> Appointments </a> 
-                                    <a href="#"> Vehicle Service Records </a>
-                                    <a href="#"> Product Reservations </a>  
-                                    <a href="#"> Payment History </a> 
-                                    <a href="#"> Promotions </a> 
+                                    <a href="../customer service records/viewServices.html"> Vehicle Service Records </a>
+                                    <a href="../customer product reservations/viewPReservationList.html"> Product Reservations </a>  
+                                    <a href="../customer payment history/viewBillList.html"> Payment History </a> 
+                                    <a href="../customer gerneral/customer read promotions.html"> Promotions </a>  
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
@@ -48,13 +52,13 @@
     <div class="row r3">
         <div class="col-15 sideNav">
             <p> Welcome @email address</p> <hr>
-                <a href="#"> Dashboard </a> <hr> 
-                <a href="#"> Profile </a> <hr> 
-                <a href="#" class="active"> Appointments </a> <hr> 
-                <a href="#"> Vehicle Service Records </a> <hr> 
-                <a href="#"> Product Reservations </a> <hr> 
-                <a href="#"> Payment History </a> <hr> 
-                <a href="#"> Promotions </a> <hr> 
+            <a href="../dashboards/customerDash.html"> Dashboard </a> <hr> 
+            <a href="../profiles/customerViewProfile.html"> Profile </a><hr> 
+            <a href="#" class="active"> Appointments </a> <hr> 
+            <a href="../customer service records/viewServices.html"> Vehicle Service Records </a><hr> 
+            <a href="../customer product reservations/viewPReservationList.html"> Product Reservations </a>  <hr> 
+            <a href="../customer payment history/viewBillList.html"> Payment History </a> <hr> 
+            <a href="../customer gerneral/customer read promotions.html"> Promotions </a><hr> 
         </div>
 
         <div class="col-16 content">
@@ -152,15 +156,23 @@
                         <input type="text" class="serviceApp" name="AppService" disabled>
                     </div>
                 </div>
+
+            </form><!--have closed the form before the button. look into this and fix when putting php-->
+
                 <div class="row formspacing">
-                    <div class="col-12">
-                        <button class="navButton"> GO BACK </button>
-                        <button  class="navButton" style="width:fit-content;"> RESCHEDULE </button>
-                        <button  class="navButton" style="background-color: #EE1E2B;"> CANCEL </button>
+                    <div class="col-12 buttons-inline">  
+                        <form action="./viewAppointments.html">
+                            <button class="navButton"> GO BACK </button>
+                        </form>
+                        <form action="./rescheduleAppointment.html">
+                            <button  class="navButton" style="width:fit-content;"> RESCHEDULE </button>
+                        </form>  
+                        <form action="./cancelAppointment.html">
+                            <button  class="navButton" style="background-color: #EE1E2B;"> CANCEL </button>
+                        </form>
                     </div>
                 </div>            
 
-                </form>
 
 
         </div>
