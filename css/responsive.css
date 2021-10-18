@@ -12,7 +12,7 @@
 [class*="col-"] {   
     float: left;
     padding: 15px;
-    border: 0px solid red;
+    border: 1px solid red;
   }
 
   .row::after {
