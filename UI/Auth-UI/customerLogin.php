@@ -5,12 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp     position: relative;
   bottom: 30px;-->
   <link rel="stylesheet" href="../../css/main.css">
-	<title>Log in Page</title>
+	<title>Customer Log in </title>
     <style>
         body {
         background: #021257;}
-
-        form {border: 3px solid #f1f1f1;}
 
         input[type=text], input[type=password] {
         width: 100%;
@@ -32,12 +30,16 @@
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
         </div>
         <div class="col-14 navbar"> 
-            <a href="#">Home</a> 
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Products</a>
-            <button class="navButton"> Sign Up </button> 
-            <button class="navButton contact"> Contact Us </button>
+        <a href="../Auth-UI/index.php#home">Home</a> 
+            <a href="../Auth-UI/index.php#about">About</a>
+            <a href="../Auth-UI/index.php#services">Services</a>
+            <a href="../customer gerneral/productsCatalogue.html">Products</a>
+            <form action="../Auth-UI/signUp.php">
+                <button class="navButton"> Sign Up</button>
+            </form>
+            <form action="../landing page/index.html#contact">
+                <button class="navButton contact"> Contact Us </button>
+            </form>
         </div>
     </div>
 
@@ -46,14 +48,14 @@
         <div class="col-4" >
 
           <div id="rcorners">
-            <form action="login.php" method="POST">
+            <form action="../../includes/login-inc.php" method="post">
         
                 <h2 align ="center">LOGIN</h2>
-                <input type="text" placeholder="Employee Number" name="username" required>
+                <input type="text" placeholder="Email Adress" name="email" required>
                 <input type="password" placeholder="Password" name="password" required>  
 
                 <div class="raw">
-                <button type="submit" name="login" class="loginButton" >Login</button>
+                <button type="submit" name="submit" class="loginButton" >Login</button>
                 
                 <h6 style="margin-left: 35%;"><a href="" >Forgot your password</a></h6>
                 </div>     

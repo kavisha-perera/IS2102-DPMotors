@@ -16,12 +16,16 @@
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
         </div>
         <div class="col-14 navbar"> 
-            <a href="#">Home</a> 
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Products</a>
-            <button class="navButton"> Log Out </button> 
-            <button class="navButton contact"> Contact Us </button>
+            <a href="../Auth-UI/index.php#home">Home</a> 
+            <a href="../Auth-UI/index.php#about">About</a>
+            <a href="../Auth-UI/index.php#services">Services</a>
+            <a href="../customer gerneral/productsCatalogue.html">Products</a>
+            <form action="../../includes/logout-inc.php">
+                <button class="navButton"> Log Out </button>
+            </form>
+            <form action="../Auth-UI/index.php#contact">
+                <button class="navButton contact"> Contact Us </button>
+            </form>
         </div>
     </div>
 
@@ -32,9 +36,14 @@
             <p>Reminder: all cancellations should be made 24hrs prior to the appointment time, and the reservation fee of any cancellations after this deadline will not be refunded. For more details, please refer our terms & conditions.</p>
             <br>
             <p>Are you sure you want to <span style="color: #D72731">cancel this appointment?</span></p>
-            <br>
-            <button class="navButton"> NO </button>
-            <button class="navButton delete"> YES </button>
+        </div>
+        <div class="col-12 buttons-inline">  
+            <form action="./readAppointment.html">
+                <button class="navButton"> NO </button>
+            </form>
+            <form action="./viewAppointments.html">
+                <button class="navButton delete"> YES </button>
+            </form>    
         </div>
         <div class="col-12">
             <a href="#" class="termsConditions"><p>terms & conditions</p></a>

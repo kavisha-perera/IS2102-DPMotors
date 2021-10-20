@@ -15,7 +15,6 @@
 
     .sec5-text, .sec5-text a{
         font-size: 5px;
-        
     }
 
 }
@@ -35,7 +34,7 @@
 }
 
 .section2{
-    border-radius: 0px 0px 140px 0px ;
+     border-radius: 0px 0px 140px 0px ;
 }
 
 .AboutUs{
@@ -77,7 +76,6 @@
 
 /* Slideshow container */
 .servicesSlideshow-container {
-    text-align: center;
     position: relative;
     margin: auto;
     min-height: 60px;
@@ -153,6 +151,16 @@ background-color: #717171;
     to {opacity: 1}
   }
   
+.servicesImages{
+    max-width:70%;
+    width: auto;
+    height: auto;
+}
+
+.servicesDescription h2{
+    color: #021257;
+}
+
 /*************our services - slideshow end***************/
 
 .section4{
@@ -169,4 +177,8 @@ background-color: #717171;
     color: cornsilk;
     font-size: 12.5px;
     
+}
+
+.followFB , .contact-deets{
+    display: flex;
 }
