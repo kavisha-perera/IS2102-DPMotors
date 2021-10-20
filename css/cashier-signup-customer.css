@@ -62,3 +62,22 @@
 }
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------*/
+.roundbox{
+  border-radius: 15px 50px;
+  background: grey;
+  padding: 20px; 
+  margin: 10%;
+}
+.paddress{
+  text-align: left;
+  font-style: italic;
+  color: white;
+  font-size: small;
+}
+
+.searchbar{
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 5px 10px;
+}
