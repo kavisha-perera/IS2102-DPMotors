@@ -76,6 +76,15 @@ if(isset($_SESSION['id']))
 
             <!--div container for customer to hold customer profile details form-->
             <div class="col-12 ProfileContainer">
+            
+            <div class="row">
+                    <div class="col-9 promotionsNull"></div>
+                    <div class="col-3 promoAlign">
+                    <form action="../customer appointments/bookAppointment.php">
+                            <button type="submit" class="navButton" style="width: fit-content;background-color: #EE1E2B;"> BOOK APPOINTMENT</button>
+                        </form>     
+                    </div>
+                </div>
 
                 <div class="row r3-1">
                     <div class="col-12">

@@ -76,7 +76,9 @@ if(isset($_SESSION['id']))
                 <div class="row">
                     <div class="col-9 promotionsNull"></div>
                     <div class="col-3 promoAlign">
-                        <a href="../customer appointments/bookAppointment.php"><img src="../../images/customer/book.png" class="bookAppInPromo"></a>
+                    <form action="../customer appointments/bookAppointment.php">
+                            <button type="submit" class="navButton" style="width: fit-content;background-color: #EE1E2B;"> BOOK APPOINTMENT</button>
+                        </form> 
                     </div>
                 </div>
                 <div class="row">
