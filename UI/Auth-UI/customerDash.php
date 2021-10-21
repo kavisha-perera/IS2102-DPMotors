@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+if(isset($_SESSION['id']))
+{
+    $customerEmail =  $_SESSION['email'];
+}
+
+?>
+
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -44,14 +55,14 @@
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
-                            <p> Welcome @email address</p>
+                            <p> Welcome <?php echo $customerEmail;?> </p>
                         </div>
                     </div>
     <!--End of Dropdown for screens with width less than 800px-->
 
     <div class="row r3">
         <div class="col-15 sideNav">
-            <p> Welcome @email address</p> <hr>
+            <p> Welcome <?php echo $customerEmail;?> </p> <hr>
             <a href="../Auth-UI/customerDash.html" class="active"> Dashboard </a> <hr>  
             <a href="../profiles/customerViewProfile.html"> Profile </a><hr> 
             <a href="../customer appointments/viewAppointments.html"> Appointments </a> <hr> 

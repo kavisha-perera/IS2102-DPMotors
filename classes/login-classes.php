@@ -32,9 +32,9 @@ class Login extends Dbh {
             exit();
         }
         elseif ($checkPwd == true) {
-            $stmt = $this->connect()->prepare('SELECT password FROM customer WHERE email = ? OR nic= ?;');
+            $stmt = $this->connect()->prepare('SELECT * FROM customer WHERE email = ? OR nic= ? AND password = ?;');
 
-            if (!$stmt->execute(array($email, $password))){
+            if (!$stmt->execute(array($email, $email, $password))){
                 $stmt = null;
                 header("location: ../UI/Auth-UI/customerLogin.php?error=yyystmtfailed");
                 exit();
@@ -50,8 +50,8 @@ class Login extends Dbh {
             $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             session_start();
-            $_SESSION["userid"] = $user[0]["id"];
-            $_SESSION["useremail"] = $user[0]["email"];
+            $_SESSION['id'] = $user[0]['id'];
+            $_SESSION['email'] = $user[0]['email'];
 
             $stmt = null;
 
