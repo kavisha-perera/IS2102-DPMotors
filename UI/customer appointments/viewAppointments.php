@@ -15,7 +15,7 @@ if(isset($_SESSION['id']))
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css">
-	<title>customer dashboard</title>
+	<title>customer view appointments</title>
 </head>
 <body>
 
@@ -45,9 +45,9 @@ if(isset($_SESSION['id']))
                         <div class="col-2 sideNav-dropdown" >
                                 <img src="../../images/dropdown.svg" class="dropButton">
                                 <div class="dropdown-content">
-                                    <a href="../Auth-UI/customerDash.php" class="active"> Dashboard </a>  
+                                    <a href="../Auth-UI/customerDash.php"> Dashboard </a>  
                                     <a href="../profiles/customerViewProfile.php"> Profile </a>
-                                    <a href="../customer appointments/viewAppointments.php"> Appointments </a> 
+                                    <a href="../customer appointments/viewAppointments.php"  class="active"> Appointments </a> 
                                     <a href="../customer service records/viewServices.php"> Vehicle Service Records </a>
                                     <a href="../customer product reservations/viewPReservationList.php"> Product Reservations </a>  
                                     <a href="../customer payment history/viewBillList.php"> Payment History </a> 
@@ -62,51 +62,56 @@ if(isset($_SESSION['id']))
 
     <div class="row r3">
         <div class="col-15 sideNav">
-            <p> Welcome <?php echo $customerEmail;?> </p> <hr>
-            <a href="../Auth-UI/customerDash.php" class="active"> Dashboard </a> <hr>  
+        <p> Welcome <?php echo $customerEmail;?> </p> <hr>
+            <a href="../Auth-UI/customerDash.php"> Dashboard </a> <hr> 
             <a href="../profiles/customerViewProfile.php"> Profile </a><hr> 
-            <a href="../customer appointments/viewAppointments.php"> Appointments </a> <hr> 
+            <a href="../customer appointments/viewAppointments.php"  class="active"> Appointments </a> <hr> 
             <a href="../customer service records/viewServices.php"> Vehicle Service Records </a><hr> 
             <a href="../customer product reservations/viewPReservationList.php"> Product Reservations </a>  <hr> 
             <a href="../customer payment history/viewBillList.php"> Payment History </a> <hr> 
             <a href="../customer gerneral/customer read promotions.php"> Promotions </a><hr> 
         </div>
-
-
-          <div class="col-16 content">
+        <div class="col-16 content">
             <!--main content here-->
+
+            <!--div container for customer to hold customer profile details form-->
+            <div class="col-12 ProfileContainer">
+
                 <div class="row r3-1">
-                    <div class="col-4 d-icon">
-                        <a href="../customer appointments/viewAppointments.php">
-                            <img src="../../images/customer/appointment.png" class="dashboardIcon">
-                        </a>
-                    </div>
-                    <div class="col-4 d-icon">
-                        <a href="../customer service records/viewServices.php">
-                            <img src="../../images/customer/record.png" class="dashboardIcon">
-                        </a>
-                    </div>
-                    <div class="col-4 d-icon">
-                        <a href="../customer product reservations/viewPReservationList.php">
-                            <img src="../../images/customer/product.png" class="dashboardIcon">
-                        </a>
-                    </div>
-                    <div class="col-4 d-icon">
-                        <a href="../customer payment history/viewBillList.php">
-                            <img src="../../images/customer/payhis.png" class="dashboardIcon">
-                        </a>
-                    </div>
-                    <div class="col-4 d-icon">
-                        <a href="../customer gerneral/customer read promotions.php">
-                            <img src="../../images/customer/promo.png" class="dashboardIcon">
-                        </a>
-                    </div>
-                    <div class="col-4 d-icon">
-                        <a href="../customer appointments/bookAppointment.php">
-                            <img src="../../images/customer/book.png" class="dashboardIcon">
-                        </a>
+                    <div class="col-12">
+                        <h2 class="title"><b>VIEW PENDING APPOINTMENTS</b><h2></h2>
                     </div>
                 </div>
+                <div class="row r3-1">
+                    <div class="col-12" style="overflow-x: auto;">
+                        <table class="appList"> <!--add php later. basic html structure has been made-->
+                        <thead>
+                            <tr>
+                                <th>RESERVATION NO</th>
+                                <th>VEHICLE NO</th>
+                                <th>SERVICE TYPE</th>
+                                <th>DATE & TIME</th>
+                                <th colspan="3" style="text-align: center;">MAKE CHANGES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="appListItems">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><a href="./readAppointment.php"><img src="../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
+                                <td><a href="./rescheduleAppointment.php"><img src="../../images/tableIcons/reschedule.png" class="tableIcon"></a></td>
+                                <td><a href="./cancelAppointment.html"><img src="../../images/tableIcons/delete.png" class="tableIcon"></a></td>
+                            </tr>
+
+                        </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
         </div>
     </div>
 
