@@ -77,8 +77,11 @@ session_start();
                 </div>
                 
                 <div class="raw">
-
-              <!--  <h5><input type="checkbox" name="agree" > I agree to the terms and conditions.</h5> -->
+                <br/>
+                <h5><input type="checkbox" name="agree" required> I agree to the 
+                <a href="./terms.html" target="_blank"> 
+                terms and conditions</a>.
+                </h5>
 
                 <button type="submit" name="submit" class="loginButton" >Sign Up</button>
                 

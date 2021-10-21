@@ -134,7 +134,7 @@ if(isset($_SESSION['id']))
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <a href="#" class="termsConditions"><p>terms & conditions</p></a>
+                        <a href="../Auth-UI/terms.html" class="termsConditions" target="_blank"><p>terms & conditions</p></a>
                     </div>
                 </div>
                 <div class="row">
