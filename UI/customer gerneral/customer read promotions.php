@@ -76,7 +76,7 @@ if(isset($_SESSION['id']))
                 <div class="row">
                     <div class="col-9 promotionsNull"></div>
                     <div class="col-3 promoAlign">
-                        <a href="../customer appointments/bookAppointment.html"><img src="../../images/customer/book.png" class="bookAppInPromo"></a>
+                        <a href="../customer appointments/bookAppointment.php"><img src="../../images/customer/book.png" class="bookAppInPromo"></a>
                     </div>
                 </div>
                 <div class="row">

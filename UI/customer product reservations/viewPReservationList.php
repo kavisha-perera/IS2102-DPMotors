@@ -1,10 +1,20 @@
+<?php
+session_start();
+
+if(isset($_SESSION['id']))
+{
+    $customerEmail =  $_SESSION['email'];
+}
+
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css">
-	<title>customer view bill history list</title>
+	<title>customer view service records</title>
 </head>
 <body>
 
@@ -35,32 +45,31 @@
                                 <img src="../../images/dropdown.svg" class="dropButton">
                                 <div class="dropdown-content">
                                     <a href="../Auth-UI/customerDash.php"> Dashboard </a>  
-                                    <a href="../profiles/customerViewProfile.html"> Profile </a>
-                                    <a href="../customer appointments/viewAppointments.html"> Appointments </a> 
-                                    <a href="../customer service records/viewServices.html"> Vehicle Service Records </a>
-                                    <a href="../customer product reservations/viewPReservationList.html"> Product Reservations </a>  
-                                    <a href="#"  class="active"> Payment History </a> 
-                                    <a href="../customer gerneral/customer read promotions.html"> Promotions </a>
+                                    <a href="../profiles/customerViewProfile.php"> Profile </a>
+                                    <a href="../customer appointments/viewAppointments.php"> Appointments </a> 
+                                    <a href="../customer service records/viewServices.php"> Vehicle Service Records </a>
+                                    <a href="#" class="active"> Product Reservations </a>  
+                                    <a href="../customer payment history/viewBillList.php"> Payment History </a> 
+                                    <a href="../customer gerneral/customer read promotions.php"> Promotions </a> 
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
-                            <p> Welcome @email address</p>
+                            <p> Welcome <?php echo $customerEmail;?></p>
                         </div>
                     </div>
     <!--End of Dropdown for screens with width less than 800px-->
 
     <div class="row r3">
         <div class="col-15 sideNav">
-            <p> Welcome @email address</p> <hr>
+        <p> Welcome <?php echo $customerEmail;?></p> <hr>
             <a href="../Auth-UI/customerDash.php"> Dashboard </a> <hr>  
-            <a href="../profiles/customerViewProfile.html"> Profile </a><hr> 
-            <a href="../customer appointments/viewAppointments.html"> Appointments </a> <hr> 
-            <a href="../customer service records/viewServices.html"> Vehicle Service Records </a><hr> 
-            <a href="../customer product reservations/viewPReservationList.html"> Product Reservations </a>  <hr> 
-            <a href="#" class="active"> Payment History </a> <hr> 
-            <a href="../customer gerneral/customer read promotions.html"> Promotions </a><hr> 
+            <a href="../profiles/customerViewProfile.php"> Profile </a><hr> 
+            <a href="../customer appointments/viewAppointments.php"> Appointments </a> <hr> 
+            <a href="../customer service records/viewServices.php"> Vehicle Service Records </a><hr> 
+            <a href="#" class="active"> Product Reservations </a>  <hr> 
+            <a href="../customer payment history/viewBillList.php"> Payment History </a> <hr> 
+            <a href="../customer gerneral/customer read promotions.php"> Promotions </a><hr> 
         </div>
-
         <div class="col-16 content">
             <!--main content here-->
 
@@ -69,7 +78,7 @@
                
                 <div class="row r3-1">
                     <div class="col-12">
-                        <h2 class="title"><b>PAYMENT HISTORY</b></h2>
+                        <h2 class="title"><b>PRODUCT RESERVATIONS</b></h2>
                         <br>
                     </div>
                 </div>
@@ -78,10 +87,10 @@
                         <table class="appList"> <!--add php later. basic html structure has been made-->
                         <thead>
                             <tr>
-                                <th>BILL NO</th>
-                                <th>BILL TYPE</th>
-                                <th>DATE</th>
+                                <th>P.RERVATION NO</th>
                                 <th>DESCRIPTION</th>
+                                <th>DELIVERY METHOD</th>
+                                <th>DATE</th>
                                 <th>BILL AMOUNT</th>
                                 <th>VIEW</th>
                             </tr>
@@ -93,7 +102,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td><a href="./readBill.html"><img src="../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
+                                <td><a href="./readPReservation.php"><img src="../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
                             </tr>
 
                         </tbody>
