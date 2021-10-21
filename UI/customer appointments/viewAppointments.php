@@ -78,9 +78,9 @@ if(isset($_SESSION['id']))
             <div class="col-12 ProfileContainer">
             
             <div class="row">
-                    <div class="col-9 promotionsNull"></div>
+                <div class="col-9 promotionsNull"></div>
                     <div class="col-3 promoAlign">
-                    <form action="../customer appointments/bookAppointment.php">
+                        <form action="../customer appointments/bookAppointment.php">
                             <button type="submit" class="navButton" style="width: fit-content;background-color: #EE1E2B;"> BOOK APPOINTMENT</button>
                         </form>     
                     </div>
