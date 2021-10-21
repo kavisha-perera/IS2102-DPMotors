@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css">
-	<title>Create Bill</title>
+	<title>Product Bill</title>
 </head>
 <body>
 
@@ -60,12 +60,49 @@
         <div class="col-16 content">
             <!--main content here-->
                 <div class="row r3-1 roundbox">
-                    <div class="col-6 d-icon">
-                        <a href="./createservicebill.html"><img src="../../images/cashier/servicebill.png" class="dashboardIcon"></a>
-                    </div>
-                    <div class="col-6 d-icon">
-                        <a href="./createproductbill.html"><img src="../../images/cashier/productbill.png" class="dashboardIcon"></a>
-                    </div>
+                    <h2 style="text-align: center; color: #021257;">Product Invoice</h2>
+                    <p class="paddress">DP Motors</p>
+                    <p class="paddress">1088/1</p>
+                    <p class="paddress">Pannipitiya road</p>
+                    <p class="paddress">Battaramulla, Sri Lanka.</p><br>
+                    <form action="#">
+                        <label for="customer" class="th-user-label" >Customer</label>
+                        <input type="text" placeholder="Search..." name="search" class="searchbar"><br><br>
+                        <label for="product" class="th-user-label" >Product</label>
+                        <input type="text" placeholder="Search..." name="search" class="searchbar"><br><br>
+                        
+                        
+                        <table class="th-user-table">
+                            <thead>
+                            <tr>
+                              <th>Product ID</th> <!--table properties-->
+                              <th>Product Name</th>
+                              <th>Quantity</th> 
+                              <th>Unit Price</th>
+                              <th>Amount</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td> <!--table values-->
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td> <!--table values-->
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                              </tbody>
+                          </table><br><br>
+                          <label for="total" class="navButton" style="vertical-align: bottom;">Total</label>
+                          <input type="number" class="th-user-label">
+                    </form><br>
+                    
                 </div>
         </div>
     </div>
