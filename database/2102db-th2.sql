@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2021 at 05:52 AM
+-- Generation Time: Oct 23, 2021 at 09:39 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -70,23 +70,11 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`empno`, `nic`, `designation`, `address`, `contact`, `fname`, `lname`) VALUES
-(1, '9678905647', 'Supervisor', '164/1,Algama,Pothuhera', 717456789, 'Janath', 'Walpola'),
+(1, '988523456V', 'Supervisor', '16,Masachusette', 786543491, 'Jane', 'Doe'),
 (2, '9785643562', 'Mechanic', '16,Colombo 07', 713456789, 'Malinda', 'Wijesinghe'),
-(3, '1234467', 'gtrhh', 'gthyth', 123455, 'dfgrtyhrth', 'htrhythyt'),
-(8, '9765789063', 'Mechanic', 'Rambukana', 765789054, 'Yasath', 'Weerasena');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `promotion`
---
-
-CREATE TABLE `promotion` (
-  `code` int(10) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `state` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(3, '923456789V', 'Mechanic', '165,Wellawa', 2147483647, 'John', 'Doe'),
+(8, '9765789063', 'Mechanic', 'Rambukana', 765789054, 'Yasath', 'Weerasena'),
+(9, '988521152V', 'Manager', '12,Polwatta', 78569856, 'Jagath', 'Weerasena');
 
 -- --------------------------------------------------------
 
@@ -113,7 +101,8 @@ CREATE TABLE `prreservationsale` (
 
 INSERT INTO `prreservationsale` (`prno`, `fname`, `lname`, `contact`, `address`, `pid`, `prname`, `quantity`, `deliverydatetime`, `deliverymethod`) VALUES
 (1, 'Lalitha', 'Mendis', '0765647890', '56,Kiribathgoda', 1, 'Oil', 2, '2021-10-12', 'Courier'),
-(2, 'Jayantha', 'Almeda', '0785678901', '20/5,Colombo 02.', 2, 'Car Tires', 2, '2021-10-15', 'By visiting store');
+(2, 'Jayantha', 'Almeda', '0785678901', '20/5,Colombo 02.', 2, 'Car Tires', 2, '2021-10-15', 'By visiting store'),
+(3, 'Jhon', 'Sparrow', '0712345678', '16/5,George Street,London', 3, 'Engine Spare parts', 2, '2021-10-14', 'Visited the store');
 
 -- --------------------------------------------------------
 
@@ -134,11 +123,12 @@ CREATE TABLE `supplier` (
 --
 
 INSERT INTO `supplier` (`supplierno`, `saddress`, `contact`, `salespersonname`, `suppliercompany`) VALUES
-(1, '12,Kottawa,Colombo', 76567897, 'Alwis Perera', 'Sun (Pvt) Ltd.'),
+(1, '16/5,Alkaduwa,Raagama', 761234456, 'Jayasena', 'Jayasena Motors'),
 (2, 'Warakapola', 375689067, 'Jayasena ', 'Moon Company'),
 (3, '16,Wattala', 765768789, 'Yasath', 'Yasath Motors'),
 (4, 'Bandarawela', 1234567890, 'Nalaka', 'Motor Garage'),
-(6, '221B,Baker Street', 126545612, 'Sherlock Holmes', 'Watson Company');
+(6, '221B,Baker Street', 126545612, 'Sherlock Holmes', 'Watson Company'),
+(7, 'New Hampshire, London', 67543245, 'Tracy', 'Tracy Company');
 
 --
 -- Indexes for dumped tables
@@ -155,12 +145,6 @@ ALTER TABLE `customer`
 --
 ALTER TABLE `employee`
   ADD PRIMARY KEY (`empno`);
-
---
--- Indexes for table `promotion`
---
-ALTER TABLE `promotion`
-  ADD PRIMARY KEY (`code`);
 
 --
 -- Indexes for table `prreservationsale`
@@ -188,25 +172,19 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `empno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `promotion`
---
-ALTER TABLE `promotion`
-  MODIFY `code` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `empno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `prreservationsale`
 --
 ALTER TABLE `prreservationsale`
-  MODIFY `prno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `prno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `supplierno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `supplierno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
