@@ -43,8 +43,8 @@ $employee_list = $_employee->getEmployees();
                                     <a href="../profiles/adminViewProfile.html"> Profile </a>
                                     <a href="../manage accounts/manage.html"> Accounts </a>
                                     <a href="../manage inventory/manageinventory.html"> Inventory </a>  
-                                    <a href="../managepromotions/managepromotions.html"> Promotions </a> 
-                                    <a href="../Admin-Employee & Supplier records/ViewSupplier.html"> Supplier </a> 
+                                    <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a>
+                                    <a href="../Admin-Employee & Supplier records/ViewEmployee.php" class="active"> Employee </a>
                                     <a href="#"> Employee </a> 
                                 </div>
                         </div>

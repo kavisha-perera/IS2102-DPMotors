@@ -44,8 +44,8 @@ $supplier_list = $_supplier->getSuppliers();
                                     <a href="../manage accounts/manage.html"> Accounts </a>
                                     <a href="../manage inventory/manageinventory.html"> Inventory </a>  
                                     <a href="../managepromotions/managepromotions.html"> Promotions </a> 
-                                    <a href="#"> Supplier </a> 
-                                    <a href="../Admin-Employee & Supplier records/ViewEmployee.html"> Employee </a> 
+                                    <a href="../Admin-Employee & Supplier records/ViewSupplier.php" class="active"> Supplier </a>
+                                    <a href="../Admin-Employee & Supplier records/ViewEmployee.php" > Employee </a> 
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
