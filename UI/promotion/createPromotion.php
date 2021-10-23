@@ -86,7 +86,7 @@
             <div class="col-4" >
     
               <div id="rcorners">
-                <form action="../../includes/addpromotions-inc.php" method="post">
+                <form action="../../includes/manager-addpromotions-inc.php" method="post">
             
                     <h2 style="color:#021257;" align="center">CREATE PROMOTION</h2>
                     <input type="text" placeholder="Description" name="descrip" required>
