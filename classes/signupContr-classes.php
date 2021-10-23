@@ -26,19 +26,19 @@ class SignupContr extends Signup{
 
         if($this->invalidEmail()== false){
             //echo "Invalid Email!";
-            header ("location: ../UI/Auth-UI/signUp.php?error=invalid-email");
+            header ("location: ../UI/Auth-UI/signUp.php?error=invalidEmail");
             exit();
         }
 
         if($this->pwdMatch()== false){
             //echo "passwords don't match!";
-            header ("location: ../UI/Auth-UI/signUp.php?error=passwords-don't-match");
+            header ("location: ../UI/Auth-UI/signUp.php?error=passwordsDontMmatch");
             exit();
         }
 
         if($this->emailTakenCheck()== false){
             //echo "email or nic already taken";
-            header ("location: ../UI/Auth-UI/signUp.php?error=email-or-nic-taken");
+            header ("location: ../UI/Auth-UI/signUp.php?error=EmailTaken");
             exit();
         }
 
