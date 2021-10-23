@@ -28,6 +28,12 @@ session_start();
         border: 1px solid #ccc;
         box-sizing: border-box;
         }
+
+        .error{
+        text-align:center;
+        line-height:2;
+        }
+
     </style>
 
 </head>
@@ -59,6 +65,66 @@ session_start();
         <div class="col-4" >
 
           <div id="rcorners">
+
+
+          <!--displaying errors & success-->
+
+        <?php
+            $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+            if (strpos ($fullUrl, "error=stmtfailed") == true) {
+                echo "<p class='error'> Something went wrong! <br/></p>
+                <br/>
+                <br/>
+                <form action='../Auth-UI/signUp.php' class='error'>
+                <button class='navButton' style='background-color:#8d161c;'> Try Again</button>
+                </form> ";
+
+                exit();
+            }
+            elseif (strpos ($fullUrl, "error=emptyinput") == true) {
+                echo "<p class='error'>You left out a field!</p>
+                <br/>
+                <br/>
+                <form action='../Auth-UI/signUp.php' class='error'>
+                <button class='navButton' style='background-color:#8d161c;'> Try Again</button>
+                </form> ";
+                
+                exit();
+            }
+            elseif (strpos ($fullUrl, "error=invalidEmail") == true) {
+                echo "<p class='error'>You seem to have entered an invaild email<br/></p>
+                <br/>
+                <br/>
+                <form action='../Auth-UI/signUp.php' class='error'>
+                <button class='navButton' style='background-color:#8d161c;'> Try Again</button>
+                </form> ";
+                exit();
+            }
+            elseif (strpos ($fullUrl, "error=passwordsDontMmatch") == true) {
+                echo "<p class='error'>Your Passwords Don't Match. <br/></p>
+                <br/>
+                <br/>
+                <form action='../Auth-UI/signUp.php' class='error'>
+                <button class='navButton' style='background-color:#8d161c;'> Try Again</button>
+                </form> ";
+                exit();
+            }
+            elseif (strpos ($fullUrl, "error=EmailTaken") == true) {
+                echo "<p class='error'>Your Email or NIC is already registered with us <br/></p>
+                <br/>
+                <br/>
+                <form action='../Auth-UI/signUp.php' class='error'>
+                <button class='navButton' style='background-color:#8d161c;'> Try Again</button>
+                </form> ";
+                exit();
+            }
+        
+        ?>
+
+        <!------------------>
+
+
             <form action="../../includes/signup-inc.php" method="post">
         
                 <h2 align ="center">SIGN UP</h2>
@@ -88,7 +154,8 @@ session_start();
                 </div>     
   
             </form>
-            
+
+          
           </div>  
 
         </div>

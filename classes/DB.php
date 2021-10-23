@@ -3,7 +3,7 @@
 class DB
 {
   private static $_server = "localhost";
-  private static $_dbname = "dpmotors";
+  private static $_dbname = "2102db";
   private static $_username = "root";
   private static $_password = "";
 

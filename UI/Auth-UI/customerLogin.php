@@ -22,6 +22,12 @@ session_start();
         border: 1px solid #ccc;
         box-sizing: border-box;
         }
+
+        .error{
+        text-align:center;
+        line-height:2;
+        }
+
     </style>
 </head>
 
@@ -52,6 +58,55 @@ session_start();
         <div class="col-4" >
 
           <div id="rcorners">
+
+          <!--displaying errors & success-->
+
+          <?php
+            $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+            if (strpos ($fullUrl, "error=stmtfailed") == true) {
+                echo "<p class='error'> Something went wrong! <br/></p>
+                <br/>
+                <br/>
+                <form action='../Auth-UI/CustomerLogin.php' class='error'>
+                <button class='navButton' style='background-color:#8d161c;'> Try Again</button>
+                </form> ";
+
+                exit();
+            }
+            elseif (strpos ($fullUrl, "error=emptyinput") == true) {
+                echo "<p class='error'>You left out a field!</p>
+                <br/>
+                <br/>
+                <form action='../Auth-UI/CustomerLogin.php' class='error'>
+                <button class='navButton' style='background-color:#8d161c;'> Try Again</button>
+                </form> ";
+                
+                exit();
+            }
+            elseif (strpos ($fullUrl, "error=usernotfound") == true) {
+                echo "<p class='error'>User Not Found!<br/></p>
+                <br/>
+                <br/>
+                <form action='../Auth-UI/CustomerLogin.php' class='error'>
+                <button class='navButton' style='background-color:#8d161c;'> Try Again</button>
+                </form> ";
+                exit();
+            }
+            elseif (strpos ($fullUrl, "error=passwordincorrect") == true) {
+                echo "<p class='error'>You have entered an incorrect password<br/></p>
+                <br/>
+                <br/>
+                <form action='../Auth-UI/CustomerLogin.php' class='error'>
+                <button class='navButton' style='background-color:#8d161c;'> Try Again</button>
+                </form> ";
+                exit();
+            }
+       
+        ?>
+
+        <!------------------>
+
             <form action="../../includes/login-inc.php" method="post">
         
                 <h2 align ="center">LOGIN</h2>

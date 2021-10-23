@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css" />
-    <script src="../../javascript/preserve.js"></script>
-    <title>Update Product Reservation</title>
+    <title>Add new product Reservation</title>
   </head>
   <body>
     <div class="row r1">
@@ -28,15 +28,15 @@
       <div class="col-2 sideNav-dropdown">
         <img src="../../images/dropdown.svg" class="dropButton" />
         <div class="dropdown-content">
-        <a href="../dashboards/cashierDash.html"> Dashboard </a><hr> 
-        <a href="../profiles/cashierViewProfile.html"> Profile </a>
-                                    <a href="../cashierbills/createbill.html"> Create Bill </a>
-                                    <a href="../promotion/cashierReadPromotion.html"> Promotions </a>
-                                    <a href="../Cashier View Bill History/CashierViewAllBills.html"> Bill History </a> 
-                                    <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a> 
-                                    <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>
-                                    <a href="../appointments/cashierReadsAppointments.html"> Appointments </a>
-                                    <a href="../Cashier Customer register/cashier register customer.html"> Customer </a>
+          <a href="../dashboards/cashierDash.html"> Dashboard </a>
+          <a href="../profiles/cashierViewProfile.html"> Profile </a>
+          <a href="../cashierbills/createbill.html"> Create Bill </a>
+          <a href="../promotion/cashierReadPromotion.html"> Promotions </a>
+          <a href="../Cashier View Bill History/CashierViewAllBills.html"> Bill History </a> 
+          <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a> 
+          <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>
+          <a href="../appointments/cashierReadsAppointments.html"> Appointments </a>
+          <a href="../Cashier Customer register/cashier register customer.html"> Customer </a>
         </div>
       </div>
       <div class="col-10 smallWel">
@@ -47,7 +47,7 @@
 
     <div class="row r3">
       <div class="col-15 sideNav">
-        <p>Welcome @Cashier_01</p>
+        <p>Welcome @Cashier_01</p><hr> 
             <a href="../dashboards/cashierDash.html"> Dashboard </a><hr> 
             <a href="../profiles/cashierViewProfile.html"> Profile </a><hr>
             <a href="../cashierbills/createbill.html"> Create Bill </a><hr>
@@ -62,21 +62,12 @@
       <div class="col-16 content">
         <!--main content here-->
         <div class="pr-form-container">
-          <form action="#" method="post">
+          <form action="AddProductReserve-inc.php" method="post">
             <div class="row1">
               <div class="pr-form-title">
-                <h2>PRODUCT RESERVATION</h2>
+                <h2>ADD NEW PRODUCT RESERVATION</h2>
               </div>
             </div>
-
-            <div class="row1">
-                <div class="pr-form-label">
-                  <label for="cusno">CUS NO</label>
-                </div>
-                <div class="pr-form-input">
-                  <input type="text" name="cusno" class="pr-input-box" />
-                </div>
-              </div>
 
             <div class="row1">
               <div class="pr-form-label">
@@ -98,7 +89,7 @@
 
             <div class="row1">
               <div class="pr-form-label">
-                <label for="contact">CONTACT NUMBER</label>
+                <label for="">CONTACT NUMBER</label>
               </div>
               <div class="pr-form-input">
                 <input type="tel" name="contact" class="pr-input-box" />
@@ -116,7 +107,7 @@
 
             <div class="row1">
               <div class="pr-form-label">
-                <label for="pid">PID</label>
+                <label for="">PID</label>
               </div>
               <div class="pr-form-input">
                 <input type="text" name="pid" class="pr-input-box" />
@@ -137,7 +128,7 @@
                 <label for="">QUANTITY</label>
               </div>
               <div class="pr-form-input">
-                <input type="number" name="quantity" min="0" max="100" step="1" value="1"class="pr-input-box" />
+                <input type="text" name="quantity" class="pr-input-box" />
               </div>
             </div>
 
@@ -146,7 +137,10 @@
                 <label for="">DELIVERY DATETIME</label>
               </div>
               <div class="pr-form-input">
-                <input type="date" name="deliverydatetime" class="pr-input-box"
+                <input
+                  type="date"
+                  name="deliverydatetime"
+                  class="pr-input-box"
                 />
               </div>
             </div>
@@ -161,28 +155,10 @@
             </div>
 
             <div class="pr-form-add" style="margin-top: 10px">
-              <button class="pr-form-add-button" name="submit" type="button" onclick="OnClickOpenUpdatePR()" >UPDATE</button>
+              <button class="pr-form-add-button" name="submit">ADD</button>
             </div>
           </form>
         </div>
-          
-<!-----------------------------------------------------Update Product reservation message as a Pop-Up----------------------------------------------------->
-        <div class="th-delete-record-container" id="th-update-pr">
-            <div class="th-emp-close">
-                <span class="th-emp-close-button" onclick="OnclickCloseDeleteUpdatePR()">X</span>
-           </div>
-
-            <h2 class="th-delete-message" Style="text-align: center;">PRODUCT RESERVATION UPDATED SUCCESSFULLY!</h2>
-        
-        </div>
-
-       
-    </div>
-</div>
-
-<!--------------------------------------------------------------------------------------------------------------------------------------------->
-
-
       </div>
     </div>
 

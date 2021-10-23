@@ -2,12 +2,14 @@
 
 include "../../classes/DB.php";
 include "../../classes/Supplier.php";
+
 $_supplier = new Supplier(DB::connection());
+
 $supplier_list = $_supplier->getSuppliers();
 
+
+
 ?>
-
-
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -15,6 +17,7 @@ $supplier_list = $_supplier->getSuppliers();
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css">
     <script src="../../javascript/empsup_pop-up.js"></script>
+    <script src="../../javascript/emp.js"></script>
 	<title>View Supplier</title>
 </head>
 <body>
@@ -41,8 +44,8 @@ $supplier_list = $_supplier->getSuppliers();
                                     <a href="../manage accounts/manage.html"> Accounts </a>
                                     <a href="../manage inventory/manageinventory.html"> Inventory </a>  
                                     <a href="../managepromotions/managepromotions.html"> Promotions </a> 
-                                    <a href="#"> Supplier </a> 
-                                    <a href="../Admin-Employee & Supplier records/ViewEmployee.html"> Employee </a> 
+                                    <a href="../Admin-Employee & Supplier records/ViewSupplier.php" class="active"> Supplier </a>
+                                    <a href="../Admin-Employee & Supplier records/ViewEmployee.php" > Employee </a> 
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
@@ -59,8 +62,8 @@ $supplier_list = $_supplier->getSuppliers();
             <a href="../manage accounts/adminaccounts.html"> Accounts </a> <hr> 
             <a href="../manage inventory/manageinventory.html"> Inventory </a> <hr> 
             <a href="../managepromotions/managepromotions.html"> Promotions </a> <hr> 
-            <a href="#"class="active"> Supplier </a> <hr> 
-            <a href="../Admin-Employee & Supplier records/ViewEmployee.html"> Employee </a> <hr>
+            <a href="../Admin-Employee & Supplier records/ViewSupplier.php"class="active"> Supplier </a> <hr> 
+            <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a> <hr>
         </div>
 
         <div class="col-16 content">
@@ -85,9 +88,11 @@ $supplier_list = $_supplier->getSuppliers();
                     </tr>
                     </thead>
                     <tbody>
+
                     <?php
                     
                     foreach ($supplier_list as $key => $value) {
+                        $supplierno =  trim($value['supplierno']);
 
                         echo "<tr>
                         <td>{$value['supplierno']}</td>
@@ -95,15 +100,31 @@ $supplier_list = $_supplier->getSuppliers();
                         <td>{$value['contact']}</td> 
                         <td>{$value['saddress']}</td>                  
                         <td>{$value['suppliercompany']}</td>
-                        <td><button class='th-button-icon' onclick='OnClickOpenUpdateSupplier()' ><img src='../../images/Employee & Supplier/edit.svg' class='th-svg-icons'></button></td>
-                        <td><button class='th-button-icon' onclick='OnClickOpenDeleteSupplier()'><img src='../../images/Employee & Supplier/delete.svg' class='th-svg-icons'></button></td>
+                        <td>
+                        <button 
+                            class='th-button-icon' " .
+
+                            'onclick="openUpdateDialog(\'' . $supplierno .'\')" '
+                            . 
+                            
+                            "
+                        >
+                        <img src='../../images/Employee & Supplier/edit.svg' class='th-svg-icons'>
+                        </button>
+                    </td>
+                    <td>
+                        <button class='th-button-icon'" .  
+                        
+                        'onclick="openDeleteDialog(\'' . $supplierno .'\')" ' .
+                        
+                        "><img src='../../images/Employee & Supplier/delete.svg' class='th-svg-icons'>
+                        </button>
+                    </td>
                         </tr>";
                         
                     }
+                        
                     ?>
-
-
-    
 
                       </tbody>
                   </table>
@@ -111,7 +132,7 @@ $supplier_list = $_supplier->getSuppliers();
 <!-------------------------ADD,UPDATE and DELETE related Supplier HTML are in the View Employee page becuz they all are pop-ups------------------------>
 <!---------------------------------------------------------Add new supplier form as a pop up-------------------------------------------------->
             <div class="th-addemployee-conatiner" id="th-add-new-supplier">
-                <form action="addSupplier.php" method="post">
+                <form action="addsupplier-inc.php" method="post">
                     <div class="th-emp-row">
                         <div class="th-employee-form-title">
                             <h2 style="margin-bottom:20px;">New Supplier</h2>
@@ -167,7 +188,7 @@ $supplier_list = $_supplier->getSuppliers();
 <!---------------------------------------------------------Update supplier form as a pop up-------------------------------------------------->        
              
 <div class="th-addemployee-conatiner" id="th-update-supplier">
-    <form action="#" method="post">
+    <form action="updateSupplier-inc.php" method="post">
         <div class="th-emp-row">
             <div class="th-employee-form-title">
                 <h2 style="margin-bottom:20px;">Supplier</h2>
@@ -177,6 +198,15 @@ $supplier_list = $_supplier->getSuppliers();
             </div>
         </div>
         <!---start of update supplier form-->
+        <div class="th-emp-row">
+            <div class="th-emp-form-label">
+                <label for="firstname">Supplier No</label>
+            </div>
+            <div class="th-emp-form-input">
+                <input type="text" name="supplierno" class="th-emsu-input">
+            </div>
+        </div>
+
         <div class="th-emp-row">
             <div class="th-emp-form-label">
                 <label for="firstname">Sales Person Name</label>
@@ -213,6 +243,7 @@ $supplier_list = $_supplier->getSuppliers();
             </div>
         </div>
 
+        <input type="hidden" name="empno" value="" id="update-form-supplierno">
     
         <div class="th-emp-addb">
             <button class="navButton" name="submit" style="background-color: #2fd138; color:#000000">UPDATE</button>

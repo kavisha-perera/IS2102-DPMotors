@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -85,20 +86,21 @@
             <div class="col-4" >
     
               <div id="rcorners">
-                <form action="login.php" method="POST">
+                <form action="../../includes/manager-addpromotions-inc.php" method="post">
             
                     <h2 style="color:#021257;" align="center">CREATE PROMOTION</h2>
-                    <input type="text" placeholder="Description" name="des" required>
+                    <input type="text" placeholder="Description" name="descrip" required>
                     <input type="text" placeholder="Code" name="code" required>
-                    <input type="text" placeholder="Valid Till" name="code" onfocus="(this.type='date')" id="date" required>
-                    <input type="text" placeholder="State" name="states" list="state" required>
-                    <datalist id="state">
+                    <input type="text" placeholder="Valid Till" name="validtill" id="date" required>
+                    <input type="text" placeholder="State" name="promoState" required>
+                    
+                   <!-- <datalist id="state">
                         <option value="Active">
-                        <option value="Inactive">
-                    </datalist>
+                        <option value="Inactive"    list="state" >
+                    </datalist>-->
     
                     <div class="raw">
-                    <button type="submit" name="login" class="loginButton" onclick="document.location='readPromotion.html'" >CREATE PROMOTION</button>
+                    <button type="submit" name="login" class="loginButton" >CREATE PROMOTION</button>
                     </div>     
       
                 </form>

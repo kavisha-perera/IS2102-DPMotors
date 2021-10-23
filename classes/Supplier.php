@@ -1,13 +1,11 @@
 <?php
 class Supplier
 {
-  protected $_empno; // using protected so they can be accessed
-  protected $_fname; // and overidden if necessary
-  protected $_lname;
-  protected $_nic;
-  protected $_address;
-  protected $_designation;
-  protected $_contactno;
+  protected $_supplierno; // using protected so they can be accessed
+  protected $_sadaddress; // and overidden if necessary
+  protected $_contact;
+  protected $_salespersonname;
+  protected $_suppliercompany;
 
   protected $_db; // stores the database handler
 
@@ -16,10 +14,9 @@ class Supplier
     $this->_db = $db;
   }
 
-  public function create($salespersonname, $saddress,
-  $contact, $suppliercompany)  {
+  public function create($salespersonname, $saddress,$contact, $suppliercompany)  {
 
-    $sql =  "INSERT INTO supplier (supplierno, saddress, contact, salespersonname, suppliercompany) VALUES ('104', '{$saddress}', '{$contact}', '{$salespersonname}', '{$suppliercompany}')";
+    $sql =  "INSERT INTO supplier ( saddress, contact, salespersonname, suppliercompany) VALUES ('{$saddress}', '{$contact}', '{$salespersonname}', '{$suppliercompany}')";
 
     $stmt = $this->_db->prepare($sql);
     
@@ -41,13 +38,17 @@ class Supplier
     return $employees;
   }
 
-  public function update($supplier_data)
-  {
-  }
+  public function update($supplier_no, $salespersonname, $contact, $suppliercompany,$saddress,)  {
 
-  public function delete($_supno)
-  {
-  }
+    $sql =  "UPDATE supplier SET  salespersonname= '{$salespersonname}' , contact = '{$contact}' ,suppliercompany = '{$suppliercompany}',saddress = '{$saddress}' WHERE supplierno = '{$supplier_no}' ";
+    $stmt = $this->_db->prepare($sql);
+    
+    if($stmt->execute()){
+        return true;
+    }else {
+        return false;
+    }
 
+  }
 
 }
