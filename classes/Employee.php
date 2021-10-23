@@ -30,10 +30,9 @@ class Employee
   }
 
 
-  public function update($emp_no, $nic, $designation, $address,
-  $fname, $lname)  {
+  public function update($emp_no, $nic, $designation, $address,$contact,$fname, $lname)  {
 
-    $sql =  "UPDATE employee SET nic = '{$nic}' , designation = '{$designation}' , address = '{$address}', fname = '{$fname}', lname = '{$lname}' WHERE empno = '{$emp_no}' ";
+    $sql =  "UPDATE employee SET nic = '{$nic}' , designation = '{$designation}' , address = '{$address}',contact = '{$contact}', fname = '{$fname}', lname = '{$lname}' WHERE empno = '{$emp_no}' ";
     $stmt = $this->_db->prepare($sql);
     
     if($stmt->execute()){
@@ -41,7 +40,6 @@ class Employee
     }else {
         return false;
     }
-
 
   }
 
