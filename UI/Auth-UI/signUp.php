@@ -73,7 +73,7 @@ session_start();
             $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
             if (strpos ($fullUrl, "error=stmtfailed") == true) {
-                echo "<p class='error'> Oh Oh, something went wrong! <br/></p>
+                echo "<p class='error'> Something went wrong! <br/></p>
                 <br/>
                 <br/>
                 <form action='../Auth-UI/signUp.php' class='error'>
@@ -102,7 +102,7 @@ session_start();
                 exit();
             }
             elseif (strpos ($fullUrl, "error=passwordsDontMmatch") == true) {
-                echo "<p class='error'>Your Passwords Don't Match. Try Again<br/></p>
+                echo "<p class='error'>Your Passwords Don't Match. <br/></p>
                 <br/>
                 <br/>
                 <form action='../Auth-UI/signUp.php' class='error'>
@@ -117,16 +117,6 @@ session_start();
                 <form action='../Auth-UI/signUp.php' class='error'>
                 <button class='navButton' style='background-color:#8d161c;'> Try Again</button>
                 </form> ";
-                exit();
-            }
-            elseif (strpos ($fullUrl, "error=none") == true) {
-                echo " <p class='error'>Thank You for Registering with us!! <br/> <br/> You can now Log In</p>
-                <br/>
-                <br/>
-                <form action='../Auth-UI/customerLogin.php' class='error'>
-                <button class='navButton' style='background-color:#8d161c;'> Log In </button>
-                </form> ";
-
                 exit();
             }
         
