@@ -98,10 +98,10 @@ $promo_list = $_promo->getPromotions();
                         ?>
                         <tr>
                             <td> <?php echo $value['promoNo'] ?> </td> <!--table values-->
-                            <td><?php echo $value['description'] ?> </td>
+                            <td><?php echo $value['descrip'] ?> </td>
                             <td><?php echo $value['code'] ?> </td>
                             <td><?php echo $value['validtill'] ?> </td>
-                            <td><?php echo $value['state'] ?> </td>
+                            <td><?php echo $value['promoState'] ?> </td>
                             <td><button class="navButton" style=" background-color: #6EE327;" onclick="document.location='updatePromotion.html'">UPDATE</button></td>
                             <td><button class="navButton" style=" background-color: #EE1E2B;" onclick="document.location='deletePromotion.html'"></a>DELETE</button></td>
 
