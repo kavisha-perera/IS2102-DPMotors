@@ -23,7 +23,8 @@ class Promotions
     
     if($stmt->execute()){
         return true;
-    }else {
+    }
+    else {
         return false;
     }
   }
