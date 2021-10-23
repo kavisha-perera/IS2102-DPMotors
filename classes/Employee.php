@@ -5,9 +5,9 @@ class Employee
   protected $_fname; // and overidden if necessary
   protected $_lname;
   protected $_nic;
+  protected $_contact;
   protected $_address;
   protected $_designation;
-  protected $_contactno;
 
   protected $_db; // stores the database handler
 
@@ -16,10 +16,10 @@ class Employee
     $this->_db = $db;
   }
 
-  public function create($emp_no, $nic, $designation, $address,
-  $fname, $lname)  {
+  //create function
+  public function create($nic, $designation, $address,$contact,$fname, $lname)  {
 
-    $sql =  "INSERT INTO employee (empno, nic, designation, address, fname, lname) VALUES ('{$emp_no}', '{$nic}', '{$designation}', '{$address}', '{$fname}' , '{$lname}')";
+    $sql =  "INSERT INTO employee (nic, designation, address, contact, fname, lname) VALUES ('{$nic}', '{$designation}', '{$address}','{$contact}', '{$fname}' , '{$lname}')";
     $stmt = $this->_db->prepare($sql);
     
     if($stmt->execute()){
@@ -29,7 +29,7 @@ class Employee
     }
   }
 
-
+//update function
   public function update($emp_no, $nic, $designation, $address,$contact,$fname, $lname)  {
 
     $sql =  "UPDATE employee SET nic = '{$nic}' , designation = '{$designation}' , address = '{$address}',contact = '{$contact}', fname = '{$fname}', lname = '{$lname}' WHERE empno = '{$emp_no}' ";
@@ -40,6 +40,7 @@ class Employee
     }else {
         return false;
     }
+
 
   }
 

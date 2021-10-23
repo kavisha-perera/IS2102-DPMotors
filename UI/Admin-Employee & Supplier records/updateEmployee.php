@@ -26,12 +26,15 @@ if (
    
     $_employee = new Employee(DB::connection());
 
-    $employee_result = $_employee->update($empno,$nic, $designation, $address, $fname, $lname);
+    $employee_result = $_employee->update($empno,$nic, $designation, $address,$contact, $fname, $lname);
 
     if($employee_result){
-        echo "Employee Updated!";
+        header("location:ViewEmployee.php?error=Employee Updated!");
+        //echo "Employee Updated!";
     }else {
-        echo "Employee No Updated!";
+        header("location:ViewEmployee.php?error=Employee not updated!");
+        exit();
+        //echo "Employee No Updated!";
     }
 
 
@@ -40,5 +43,7 @@ if (
 
 
 } else {
-    echo "Something is missing";
+    header("location:ViewEmployee.php?error=Something is missing!");
+    exit();
+    //echo "Something is missing";
 }

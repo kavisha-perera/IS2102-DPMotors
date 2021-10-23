@@ -10,8 +10,6 @@ $employee_list = $_employee->getEmployees();
 
 
 ?>
-
-
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -64,8 +62,8 @@ $employee_list = $_employee->getEmployees();
             <a href="../manage accounts/adminaccounts.html"> Accounts </a> <hr> 
             <a href="../manage inventory/manageinventory.html"> Inventory </a> <hr> 
             <a href="../managepromotions/managepromotions.html"> Promotions </a> <hr> 
-            <a href="../Admin-Employee & Supplier records/ViewSupplier.html"> Supplier </a> <hr> 
-            <a href="#" class="active"> Employee </a> <hr>
+            <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> <hr> 
+            <a href="../Admin-Employee & Supplier records/ViewEmployee.php" class="active"> Employee </a> <hr>
         </div>
 
         <div class="col-16 content">
@@ -92,8 +90,8 @@ $employee_list = $_employee->getEmployees();
                     </tr>
                     </thead>
                     <tbody>
-                   
-                   <?php
+
+                    <?php
                     foreach ($employee_list as $key => $value) {
                         $empno =  trim($value['empno']);
 
@@ -102,34 +100,33 @@ $employee_list = $_employee->getEmployees();
                         <td> {$value['fname']} </td>
                         <td> {$value['lname']} </td>
                         <td> {$value['nic']} </td>
-                        <td> xxxxx </td>
+                        <td> {$value['contact']} </td>
                         <td> {$value['address']} </td>
                         <td> {$value['designation']} </td>
                         <td>
-                            <button 
-                                class='th-button-icon' " .
+                        <button 
+                            class='th-button-icon' " .
 
-                                'onclick="openUpdateDialog(\'' . $empno .'\')" '
-                                . 
-                                
-                                "
-                            >
-                            <img src='../../images/Employee & Supplier/edit.svg' class='th-svg-icons'>
-                            </button>
-                        </td>
-                        <td>
-                            <button class='th-button-icon'" .  
+                            'onclick="openUpdateDialog(\'' . $empno .'\')" '
+                            . 
                             
-                            'onclick="openDeleteDialog(\'' . $empno .'\')" ' .
-                            
-                            "><img src='../../images/Employee & Supplier/delete.svg' class='th-svg-icons'>
-                            </button>
-                        </td>
+                            "
+                        >
+                        <img src='../../images/Employee & Supplier/edit.svg' class='th-svg-icons'>
+                        </button>
+                    </td>
+                    <td>
+                        <button class='th-button-icon'" .  
+                        
+                        'onclick="openDeleteDialog(\'' . $empno .'\')" ' .
+                        
+                        "><img src='../../images/Employee & Supplier/delete.svg' class='th-svg-icons'>
+                        </button>
+                    </td>
+                   
                     </tr>";
                     }
                     ?>
-
-                       
 
                       </tbody>
                   </table>
@@ -138,7 +135,7 @@ $employee_list = $_employee->getEmployees();
 <!-----------------------------------------------------New Employee form as a Pop-Up---------------------------------------------------------->
 
             <div class="th-addemployee-conatiner" id="th-add-employee">
-                <form action="addemployee.php" method="post">
+                <form action="addemployee-inc.php" method="post">
                     <div class="th-emp-row">
                         <div class="th-employee-form-title">
                             <h2 style="margin-bottom:20px;">New Employee</h2>
@@ -224,6 +221,15 @@ $employee_list = $_employee->getEmployees();
                         </div>
                     </div>
                     <!---start of update supplier form-->
+                    <div class="th-emp-row">
+                        <div class="th-emp-form-label">
+                            <label for="firstname" class="th-user-label">Emp No</label>
+                        </div>
+                        <div class="th-emp-form-input">
+                            <input type="text" name="empno" class="th-emsu-input">
+                        </div>
+                    </div>
+
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
                             <label for="firstname" class="th-user-label">First Name</label>
