@@ -1,3 +1,17 @@
+<?php
+
+include "../../classes/DB.php";
+include "../../classes/promotions.php";
+
+$_promo = new Promotions(DB::connection());
+
+$promo_list = $_promo->getPromotions();
+
+
+
+?>
+
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -76,29 +90,28 @@
                     </tr>
                     </thead>
                     <tbody>
+
+                    <?php
+                    
+                    foreach ($promo_list as $key => $value) {
+                        $promoNo =  trim($value['promoNo']);                    
+                        ?>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td> <?php echo $value['promoNo'] ?> </td> <!--table values-->
+                            <td><?php echo $value['description'] ?> </td>
+                            <td><?php echo $value['code'] ?> </td>
+                            <td><?php echo $value['validtill'] ?> </td>
+                            <td><?php echo $value['state'] ?> </td>
                             <td><button class="navButton" style=" background-color: #6EE327;" onclick="document.location='updatePromotion.html'">UPDATE</button></td>
                             <td><button class="navButton" style=" background-color: #EE1E2B;" onclick="document.location='deletePromotion.html'"></a>DELETE</button></td>
 
                         </tr>
-                        <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><button class="navButton" style=" background-color: #6EE327;" onclick="document.location='updatePromotion.html'" >UPDATE</button></td>
-                            <td><button class="navButton" style=" background-color: #EE1E2B;" onclick="document.location='deletePromotion.html'">DELETE</button></td>
-                        </tr>
                         
+                    <?php } ?>
+
 
                         <div class="th-add-new-button">
-                            <button class="navButton" onclick="document.location='createPromotion.html'" ><b> + Add</b></a></button>
+                            <button class="navButton" onclick="document.location='createPromotion.php'" ><b> + Add</b></a></button>
                         </div> 
 
                       </tbody>
