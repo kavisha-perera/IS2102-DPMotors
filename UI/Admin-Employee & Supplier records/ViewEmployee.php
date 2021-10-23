@@ -211,7 +211,7 @@ $employee_list = $_employee->getEmployees();
 
 <!-----------------------------------------------------Employee Update form as a Pop-Up-------------------------------------------------------->
             <div class="th-addemployee-conatiner" id="th-update-employee">
-                <form action="updateEmployee.php" method="post">
+                <form action="updateemployee-inc.php" method="post">
                     <div class="th-emp-row">
                         <div class="th-employee-form-title">
                             <h2 style="margin-bottom:20px;">Employee</h2>

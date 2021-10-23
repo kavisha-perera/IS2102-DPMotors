@@ -123,6 +123,7 @@ $supplier_list = $_supplier->getSuppliers();
                         </tr>";
                         
                     }
+                        
                     ?>
 
                       </tbody>
