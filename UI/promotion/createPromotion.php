@@ -89,7 +89,7 @@
                 <form action="../../includes/addpromotions-inc.php" method="post">
             
                     <h2 style="color:#021257;" align="center">CREATE PROMOTION</h2>
-                    <input type="text" placeholder="Description" name="description" required>
+                    <input type="text" placeholder="Description" name="descrip" required>
                     <input type="text" placeholder="Code" name="code" required>
                     <input type="text" placeholder="Valid Till" name="validtill" id="date" required>
                     <input type="text" placeholder="State" name="promoState" required>
@@ -100,7 +100,7 @@
                     </datalist>-->
     
                     <div class="raw">
-                    <button type="submit" name="login" class="loginButton" onclick="document.location='readPromotion.html'" >CREATE PROMOTION</button>
+                    <button type="submit" name="login" class="loginButton" >CREATE PROMOTION</button>
                     </div>     
       
                 </form>

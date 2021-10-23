@@ -3,7 +3,7 @@
 class Promotions
 {
   protected $_promoNo; 
-  protected $_description; // using protected so they can be accessed
+  protected $_descrip; // using protected so they can be accessed
   protected $_code; // and overidden if necessary
   protected $_validtill;
   protected $_promoState;
@@ -16,9 +16,10 @@ class Promotions
   }
 
   //create function
-  public function create($description, $code, $validtill, $promoState)  {
+  public function create($descrip, $code, $validtill, $promoState)  {
 
-    $sql =  "INSERT INTO promotions (description, code, validtill, promoState) VALUES ('{$description}', '{$code}','{$validtill}','{$promoState}'";
+    $sql =  "INSERT INTO promotions (descrip, code, validtill, promoState) VALUES ('{$descrip}', '{$code}','{$validtill}','{$promoState}')";
+    
     $stmt = $this->_db->prepare($sql);
     
     if($stmt->execute()){
@@ -30,9 +31,9 @@ class Promotions
   }
 
 //update function
-  public function update($description, $code, $validtill, $promoState)  {
+  public function update($descrip, $code, $validtill, $promoState)  {
 
-    $sql =  "UPDATE promotions SET promoNo = '{$promoNo}' , description = '{$description}' , code = '{$code}',validtill = '{$validtill}', state = '{$promoState}' WHERE promoNo = '{$promoNo}' ";
+    $sql =  "UPDATE promotions SET promoNo = '{$promoNo}' , descrip = '{$descrip}' , code = '{$code}',validtill = '{$validtill}', state = '{$promoState}' WHERE promoNo = '{$promoNo}' ";
     $stmt = $this->_db->prepare($sql);
     
     if($stmt->execute()){
