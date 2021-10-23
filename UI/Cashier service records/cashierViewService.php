@@ -76,7 +76,7 @@ $service_list = $_service->getService();
                 <div class="th-table-container1">
                     <h2 class="th-th2">SERVICE RECORDS</h2><!--table name-->
                     <div class="th-add-new-button">
-                        <button class="navButton" onclick="document.location='cashierAddService.html'" ><b> ADD NEW</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
+                        <button class="navButton" onclick="document.location='cashierAddService.php'" ><b> ADD NEW</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
                     </div>
                 <table class="th-user-table">
                     <thead>
