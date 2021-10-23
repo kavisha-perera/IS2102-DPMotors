@@ -47,7 +47,7 @@ class Promotions
 
   public function getPromotions()
   {
-    $promotions;
+    $promotions = [];
 
     $stmt = $this->_db->prepare('SELECT * FROM promotions');
     $stmt->execute();
