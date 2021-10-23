@@ -1,3 +1,15 @@
+<?php
+
+include "../../classes/DB.php";
+include "../../classes/promotions.php";
+
+$_promo = new Promotions(DB::connection());
+
+$promo_list = $_promo->getPromotions();
+
+?>
+
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -43,43 +55,46 @@
                     
                     
                     <h2 class="th-th2">Promotions<h2><!--table name-->
+                    <br/>
                 <table class="th-user-table">
                     <thead>
                     <tr>
+                      <th>Index</th>
                       <th>Code</th> <!--table properties-->
-                      <th>Name</th>
                       <th>Description</th> 
+                      <th>Valid Till</th>
                       <th>State</th>
                       <th colspan="2" style="text-align: center;">Controls</th>
                     </tr>
                     </thead>
                     <tbody>
+                    <?php
+                    
+                    foreach ($promo_list as $key => $value) {
+                        $promoNo =  trim($value['promoNo']);                    
+                        ?>
+
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><?php echo $value['promoNo'] ?> </td> <!--table values-->
+                            <td><?php echo $value['descrip'] ?></td>
+                            <td><?php echo $value['code'] ?> </td>
+                            <td><?php echo $value['validtill'] ?></td>
+                            <td><?php echo $value['promoState'] ?></td>
                             <td><button class="th-button-icon" onclick="OnClickOpenUpdateEmployee()"><img src="../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
                             <td><button class="th-button-icon" onclick="OnClickOpenDeleteEmployee()"><img src="../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
                         </tr>
 
-                        <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><button class="th-button-icon" onclick="OnClickOpenUpdateEmployee()"><img src="../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
-                            <td><button class="th-button-icon" onclick="OnClickOpenDeleteEmployee()"><img src="../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
-                        </tr>
+                        <?php } ?>
 
                       </tbody>
                   </table>
             </div>
-<!-------------------------ADD,UPDATE and DELETE related HTML are in the View Employee page becuz they all are pop-ups------------------------>
-<!-----------------------------------------------------New Employee form as a Pop-Up---------------------------------------------------------->
+<!-------------------------ADD,UPDATE and DELETE related HTML are in the View Promotions page becuz they all are pop-ups------------------------>
+
+<!-----------------------------------------------------New Promotion form as a Pop-Up---------------------------------------------------------->
 
             <div class="th-addemployee-conatiner" id="th-add-employee">
-                <form action="#" method="post">
+                <form action="./admin-addpromotions-inc.php" method="post">
                     <div class="th-emp-row">
                         <div class="th-employee-form-title">
                             <h2 style="margin-bottom:20px;">New Promotion</h2>
@@ -88,7 +103,15 @@
                              <span class="th-emp-close-button">X</span>
                         </div>
                     </div>
-                    <!---start of new employee form-->
+                    <!---start of new promotion form-->
+                    <div class="th-emp-row">
+                        <div class="th-emp-form-label">
+                            <label for="description" class="th-user-label">Description</label class="th-emsu-input">
+                        </div>
+                        <div class="th-emp-form-input">
+                            <input type="text" name="descrip" class="th-emsu-input">
+                        </div>
+                    </div>
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
                             <label for="code" class="th-user-label">Code</label>
@@ -97,22 +120,12 @@
                             <input type="text" name="code" class="th-emsu-input">
                         </div>
                     </div>
-            
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="name" class="th-user-label">Name</label>
+                            <label for="Valid Till" class="th-user-label">Valid Till</label class="th-emsu-input">
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="text" name="name" class="th-emsu-input">
-                        </div>
-                    </div>
-            
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="description" class="th-user-label">Description</label class="th-emsu-input">
-                        </div>
-                        <div class="th-emp-form-input">
-                            <input type="text" name="description" class="th-emsu-input">
+                            <input type="text" name="validtill" class="th-emsu-input">
                         </div>
                     </div>
             
@@ -120,16 +133,11 @@
                         <div class="th-emp-form-label">
                             <label for="state" class="th-user-label">State</label class="th-emsu-input">
                         </div>
-                        <br>
-                        <div>
-                            <label for="active">Active</label>
-                            <input type="radio" name="state" id="active" value="1">
-                            <label for="inactive">Inactive</label>
-                            <input type="radio" name="state" id="inactive" value="0">
+                        <div class="th-emp-form-input">
+                            <input type="text" name="promoState" class="th-emsu-input" required>
                         </div>
                     </div>      
                     
-            
                     <div class="th-emp-addb">
                         <button class="navButton" name="submit">ADD</button>
                     </div>
@@ -158,15 +166,6 @@
                         </div>
                         <div class="th-emp-form-input">
                             <input type="text" name="code" class="th-emsu-input">
-                        </div>
-                    </div>
-            
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="name" class="th-user-label">Name</label>
-                        </div>
-                        <div class="th-emp-form-input">
-                            <input type="text" name="name" class="th-emsu-input">
                         </div>
                     </div>
             

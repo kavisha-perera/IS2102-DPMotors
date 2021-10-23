@@ -1,8 +1,8 @@
 <!--When add btn is clicked in add form inserted data 'submit' action is handled through this page-->
 <?php
 
-include "../classes/DB.php"; //passing DB connection
-include "../classes/promotions.php"; // creating promotions_list
+include "../../classes/DB.php"; //passing DB connection
+include "../../classes/promotions.php"; // creating promotions_list
 
 
 //checking if user submit data correctly or show null
@@ -28,18 +28,18 @@ if (
     $_promo_result =$_promo->create($descrip, $code, $validtill, $promoState);
 
     if($_promo_result){
-        header("location:../UI/promotion/readPromotion.php?error=New Employee Added!");
-        //echo "Employee Added!"; this is a alert.
+        header("location: ./managepromotions.php?error=New Promotion Added!");
+        //echo "Promotion Added!"; this is a alert.
     }else {
-        header("location:../UI/promotion/createPromotion.php?error=New Employee Not Added!");
+        header("location: ./managepromotions.php?error=New Promotion Not Added!");
         exit();
-        //echo "Employee Not Added!";
+        //echo "Promotion Not Added!";
     }
 
 //if atleast one value is not there,when user submit form show below error.
 
 } else {
-    header("location:../UI/promotion/createPromotion.php?error=Something is missing!");
+    header("location: ./managepromotions.php?error=Something is missing!");
     exit();
     //echo "Something is missing";
 }
