@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css">
     <script src="../../javascript/empsup_pop-up.js"></script>
-	<title>Manager Accounts</title>
+	<title>Cashier Accounts</title>
 </head>
 <body>
 
@@ -29,7 +29,7 @@
     <div class="row r3">
         <div class="col-15 ">
             <p> Welcome @email address</p><br><br><br>
-            <img src="../../images/admin/manager.png" style="width: 250px;" alt=""><br><br><br><br><br>
+            <img src="../../images/admin/cashier.png" style="width: 250px;" alt=""><br><br><br><br><br>
             <button class="adminbutton1" onclick="OnClickOpenAddEmloyee()" >+ Add New</button>
             <br><br><br><br><br>
             <p style="text-align: center;"> <a href="manage.html" class="backbutton"><button class="navButton">Back </button></a></p>
@@ -43,7 +43,7 @@
                 <div class="th-table-container1">
                     
                     
-                    <h2 class="th-th2">Manager Accounts<h2><!--table name-->
+                    <h2 class="th-th2">Cashier Accounts<h2><!--table name-->
                 <table class="th-user-table">
                     <thead>
                     <tr>
@@ -86,10 +86,10 @@
 <!-----------------------------------------------------New Employee form as a Pop-Up---------------------------------------------------------->
 
             <div class="th-addemployee-conatiner" id="th-add-employee">
-                <form action="#" method="post">
+                <form action="../../includes/signup-inc.php" method="post">
                     <div class="th-emp-row">
                         <div class="th-employee-form-title">
-                            <h2 style="margin-bottom:20px;">New Manager</h2>
+                            <h2 style="margin-bottom:20px;">New Cashier</h2>
                         </div>
                         <div class="th-emp-close" onclick="OnClickCloseAddEmployee()">
                              <span class="th-emp-close-button">X</span>
@@ -123,24 +123,45 @@
                         </div>
                     </div>
             
+                   
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="contact" class="th-user-label">Contact Number</label class="th-emsu-input">
-                        </div>
-                        <div class="th-emp-form-input">
-                            <input type="text" name="contact" class="th-emsu-input">
-                        </div>
-                    </div>
-            
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="address" class="th-user-label">Address</label class="th-emsu-input">
+                            <label for="address" class="th-user-label">Email Address</label class="th-emsu-input">
                         </div>
                         <div class="th-emp-form-input">
                             <input type="text" name="email" class="th-emsu-input">
                         </div>
                     </div>
-            
+
+                    <div class="th-emp-row">
+                        <div class="th-emp-form-label">
+                            <label for="Employee ID" class="th-user-label">Employee ID</label class="th-emsu-input">
+                        </div>
+                        <div class="th-emp-form-input">
+                            <input type="text" name="employeeid" class="th-emsu-input">
+                        </div>
+                    </div>
+
+                    <div class="th-emp-row">
+                        <div class="th-emp-form-label">
+                            <label for="address" class="th-user-label">Password</label class="th-emsu-input">
+                        </div>
+                        <div class="th-emp-form-input">
+                            <input type="text" name="password" class="th-emsu-input">
+                        </div>
+                    </div>
+
+                    <div class="th-emp-row">
+                        <div class="th-emp-form-label">
+                            <label for="Employee ID" class="th-user-label">Confirm Password</label class="th-emsu-input">
+                        </div>
+                        <div class="th-emp-form-input">
+                            <input type="text" name="confirmpw" class="th-emsu-input">
+                        </div>
+                    </div>
+
+
+                    <input type="hidden" name="type" class="th-emsu-input" value="cashier">
                     
             
                     <div class="th-emp-addb">
@@ -158,7 +179,7 @@
                 <form action="#" method="post">
                     <div class="th-emp-row">
                         <div class="th-employee-form-title">
-                            <h2 style="margin-bottom:20px;">Manager</h2>
+                            <h2 style="margin-bottom:20px;">Cashier</h2>
                         </div>
                         <div class="th-emp-close" onclick="OnClickCloseUpdateEmployee()">
                              <span class="th-emp-close-button">X</span>
@@ -203,10 +224,19 @@
             
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="address"class="th-user-label">Address</label class="th-emsu-input">
+                            <label for="address"class="th-user-label"> Email Address</label class="th-emsu-input">
                         </div>
                         <div class="th-emp-form-input">
                             <input type="text" name="email" class="th-emsu-input">
+                        </div>
+                    </div>
+
+                    <div class="th-emp-row">
+                        <div class="th-emp-form-label">
+                            <label for="Employee ID" class="th-user-label">Employee ID</label class="th-emsu-input">
+                        </div>
+                        <div class="th-emp-form-input">
+                            <input type="text" name="employeeid" class="th-emsu-input">
                         </div>
                     </div>
             

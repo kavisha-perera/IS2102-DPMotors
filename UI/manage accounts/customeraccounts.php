@@ -86,7 +86,7 @@
 <!-----------------------------------------------------New Employee form as a Pop-Up---------------------------------------------------------->
 
             <div class="th-addemployee-conatiner" id="th-add-employee">
-                <form action="#" method="post">
+                <form action="../../includes/signup-inc.php" method="post">
                     <div class="th-emp-row">
                         <div class="th-employee-form-title">
                             <h2 style="margin-bottom:20px;">New Customer</h2>
@@ -123,23 +123,47 @@
                         </div>
                     </div>
             
+                   
+                   
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="contact" class="th-user-label">Contact Number</label class="th-emsu-input">
-                        </div>
-                        <div class="th-emp-form-input">
-                            <input type="text" name="contact" class="th-emsu-input">
-                        </div>
-                    </div>
-            
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="address" class="th-user-label">Address</label class="th-emsu-input">
+                            <label for="address" class="th-user-label">Email Address</label class="th-emsu-input">
                         </div>
                         <div class="th-emp-form-input">
                             <input type="text" name="email" class="th-emsu-input">
                         </div>
                     </div>
+
+                    <div class="th-emp-row">
+                        <div class="th-emp-form-label">
+                            <label for="Employee ID" class="th-user-label">Employee ID</label class="th-emsu-input">
+                        </div>
+                        <div class="th-emp-form-input">
+                            <input type="text" name="employeeid" class="th-emsu-input">
+                        </div>
+                    </div>
+
+                    <div class="th-emp-row">
+                        <div class="th-emp-form-label">
+                            <label for="address" class="th-user-label">Password</label class="th-emsu-input">
+                        </div>
+                        <div class="th-emp-form-input">
+                            <input type="text" name="password" class="th-emsu-input">
+                        </div>
+                    </div>
+
+                    <div class="th-emp-row">
+                        <div class="th-emp-form-label">
+                            <label for="Employee ID" class="th-user-label">Confirm Password</label class="th-emsu-input">
+                        </div>
+                        <div class="th-emp-form-input">
+                            <input type="text" name="confirmpw" class="th-emsu-input">
+                        </div>
+                    </div>
+
+
+                    <input type="hidden" name="type" class="th-emsu-input" value="customer">
+                    
             
                     
             

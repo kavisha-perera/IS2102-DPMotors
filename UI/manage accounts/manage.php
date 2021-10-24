@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+if(isset($_SESSION['employeeid']))
+{
+    $employeeid =  $_SESSION['employeeid'];
+}else{
+
+    header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-adminDashboard");
+}
+
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -40,14 +53,14 @@
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
-                            <p> Welcome @email address</p>
+                            <p>Welcome @ <?php echo  $employeeid ?></p>
                         </div>
                     </div>
     <!--End of Dropdown for screens with width less than 800px-->
 
     <div class="row r3">
         <div class="col-15 sideNav">
-            <p> Welcome @email address</p> <hr>
+            <p>Welcome @ <?php echo  $employeeid ?></p> <hr>
             <a href="../dashboards/adminDash.html"> Dashboard </a>  <hr>
             <a href="../profiles/adminViewProfile.html"> Profile </a><hr>
             <a href="#" class="active"> Accounts </a> <hr>
@@ -61,16 +74,16 @@
             <!--main content here-->
             <div class="row r3-1" >
                 <div class="col-3 d-icon">
-                    <a href="adminaccounts.html"><img src="../../images/admin/admin.png" class="dashboardIcon"></a>
+                    <a href="adminaccounts.php"><img src="../../images/admin/admin.png" class="dashboardIcon"></a>
                 </div>
                 <div class="col-3 d-icon">
-                    <a href="manageraccounts.html"><img src="../../images/admin/manager.png" class="dashboardIcon"></a>
+                    <a href="manageraccounts.php"><img src="../../images/admin/manager.png" class="dashboardIcon"></a>
                 </div>
                 <div class="col-3 d-icon">
-                    <a href="cashieraccounts.html"><img src="../../images/admin/cashier.png" class="dashboardIcon"></a>
+                    <a href="cashieraccounts.php"><img src="../../images/admin/cashier.png" class="dashboardIcon"></a>
                 </div>
                 <div class="col-3 d-icon">
-                    <a href="customeraccounts.html"><img src="../../images/admin/customer.png" class="dashboardIcon"></a>
+                    <a href="customeraccounts.php"><img src="../../images/admin/customer.png" class="dashboardIcon"></a>
                 </div>
             
             </div>
