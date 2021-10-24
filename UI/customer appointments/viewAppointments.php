@@ -105,14 +105,24 @@ if(isset($_SESSION['id']))
                         </thead>
                         <tbody>
                             <tr class="appListItems">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>RA-9082</td>
+                                <td>CAK-3390</td>
+                                <td>Interior Detailing</td>
+                                <td>27-10-2021</td>
                                 <td><a href="./readAppointment.php"><img src="../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
                                 <td><a href="./rescheduleAppointment.php"><img src="../../images/tableIcons/reschedule.png" class="tableIcon"></a></td>
                                 <td><a href="./cancelAppointment.html"><img src="../../images/tableIcons/delete.png" class="tableIcon"></a></td>
                             </tr>
+                            <tr class="appListItems">
+                                <td>RA-12094</td>
+                                <td>KH-2314</td>
+                                <td>Full Service</td>
+                                <td>03-11-2021</td>
+                                <td><a href="./readAppointment.php"><img src="../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
+                                <td><a href="./rescheduleAppointment.php"><img src="../../images/tableIcons/reschedule.png" class="tableIcon"></a></td>
+                                <td><a href="./cancelAppointment.html"><img src="../../images/tableIcons/delete.png" class="tableIcon"></a></td>
+                            </tr>
+
 
                         </tbody>
                         </table>
