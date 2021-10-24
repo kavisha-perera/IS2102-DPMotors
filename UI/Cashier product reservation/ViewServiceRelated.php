@@ -8,7 +8,6 @@ if(isset($_SESSION['employeeid']))
 
     header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-cashierDashboard");
 }
-
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -17,7 +16,7 @@ if(isset($_SESSION['employeeid']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css">
     <script src="../../javascript/empsup_pop-up.js"></script>
-	<title>Vehicle Service Records</title>
+	<title>View Product Reservation-Service</title>
 </head>
 <body>
 
@@ -59,7 +58,7 @@ if(isset($_SESSION['employeeid']))
 
     <div class="row r3">
         <div class="col-15 sideNav">
-        <p> Welcome @ <?php echo  $employeeid ?></p>
+            <p> Welcome @ <?php echo  $employeeid ?></p> <hr>
             <a href="../dashboards/cashierDash.php"> Dashboard </a><hr> 
             <a href="../profiles/cashierViewProfile.php"> Profile </a><hr>
             <a href="../cashierbills/createbill.php"> Create Bill </a><hr>
@@ -73,97 +72,74 @@ if(isset($_SESSION['employeeid']))
 
         <div class="col-16 content">
             <!--main content here-->
-            <div class="pr-form-container">
-                <form action="../../includes/cashier-services-inc.php" method="post">
-                  <div class="row1">
-                    <div class="pr-form-title">
-                      <h2>ADD NEW SERVICE RECORDS</h2>
+
+            <div style="overflow-x:auto;">
+                <div class="th-table-container1">
+                    <h2 class="th-th2">PRODUCT RESERVATIONS-SERVICE</h2><!--table name-->
+                    <div class="th-add-new-button">
+                        <button class="navButton" onclick="document.location='AddProductReser.php'"><b> ADD NEW</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
                     </div>
-                  </div>
+                    <div class="th-other-buttons">
+                        <button class="navButton" onclick="document.location='ViewProductResrvation.php'"><b> Products related</b></button>
+                        <button class="navButton" onclick="document.location='ViewServiceRelated.php'"><b> Service related</b></button>   
+                    </div>
+                <table class="th-user-table">
+                    <thead>
+                    <tr>
+                      <th>PR NO</th> <!--table properties-->
+                      <th>FIRST NAME</th>
+                      <th>LAST NAME</th> 
+                      <th>CONTACT NUMBER</th>
+                      <th>DELIVERY ADDRESS</th>
+                      <th>PID</th>
+                      <th>PNAME</th>
+                      <th>QUANTITY</th>
+                      <th>DELIVERY DATETIME</th>
+                      <th>DELIVERY METHOD</th>
+                      <th colspan="2" style="text-align: center;">CONTROLS</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td> <!--table values-->
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><button class="th-button-icon" onclick="document.location='UpdateProductReserv.php'"><img src="../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
+                            <td><button class="th-button-icon"  onclick="document.location='DeleteProductReserve.php'" ><img src="../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
+                        </tr>
+                        <tr>
+                            <td></td> <!--table values-->
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><button class="th-button-icon" onclick="document.location='UpdateProductReserv.php'"><img src="../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
+                            <td><button class="th-button-icon" onclick="document.location='DeleteProductReserve.php'"><img src="../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
+                        </tr>
+
+                      </tbody>
+                  </table>
+            </div>
+<!-------------------------ADD,UPDATE and DELETE related HTML are in the View Employee page becuz they all are pop-ups------------------------>
     
-                  <br/><br/><br/>
-
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="firstname">SERVICE DATETIME</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="date" name="serviceDate" class="pr-input-box" />
-                    </div>
-                  </div>
-      
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="lastname">SERVICE TYPE</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="text" name="serviceType" class="pr-input-box" />
-                    </div>
-                  </div>
-
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="">CUSTOMER NIC</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="text" name="cusNIC" class="pr-input-box" />
-                    </div>
-                  </div>
-
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="">CUSTOMER EMAIL</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="text" name="cusEmail" class="pr-input-box" />
-                    </div>
-                  </div>
-      
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="">VEHICLE NUMBER</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="text" name="vehicleNo" class="pr-input-box" />
-                    </div>
-                  </div>
-      
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="">VEHICLE MODEL</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="text" name="vehicleModel" class="pr-input-box" />
-                    </div>
-                  </div>
-      
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="">MECHANIC NAME</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="text" name="mechanicName" class="pr-input-box" />
-                    </div>
-                  </div>
-      
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="">DESCRIPTION</label>
-                    </div>
-                    <div class="pr-form-label">
-                      <textarea name="description" class="pr-input-box" style="height:100px;"> </textarea>
-                    </div>
-                  </div>
-         
-                  <div class="pr-form-add" style="margin-top: 10px">
-                    <button class="pr-form-add-button" name="submit">ADD</button>
-                  </div>
-                </form>
-              </div>
-
            
         </div>
     </div>
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
+    
 
 
 

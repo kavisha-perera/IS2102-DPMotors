@@ -8,7 +8,6 @@ if(isset($_SESSION['employeeid']))
 
     header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-cashierDashboard");
 }
-
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -16,8 +15,8 @@ if(isset($_SESSION['employeeid']))
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css">
-    <script src="../../javascript/empsup_pop-up.js"></script>
-	<title>Vehicle Service Records</title>
+    <script src="../../javascript/preserve.js"></script>
+	<title>All Bills</title>
 </head>
 <body>
 
@@ -31,7 +30,7 @@ if(isset($_SESSION['employeeid']))
         <div class="col-14 navbar"> 
         <form action="../../includes/logout-inc.php">
                 <button class="navButton"> Log Out </button>
-            </form>
+            </form> 
         </div>
     </div>
 
@@ -40,7 +39,7 @@ if(isset($_SESSION['employeeid']))
                         <div class="col-2 sideNav-dropdown" >
                                 <img src="../../images/dropdown.svg" class="dropButton">
                                 <div class="dropdown-content">
-                                    <a href="../dashboards/cashierDash.php"> Dashboard </a> 
+                                <a href="../dashboards/cashierDash.php"> Dashboard </a> 
                                     <a href="../profiles/cashierViewProfile.php"> Profile </a>
                                     <a href="../cashierbills/createbill.php"> Create Bill </a>
                                     <a href="../promotion/cashierReadPromotion.php"> Promotions </a>
@@ -59,7 +58,7 @@ if(isset($_SESSION['employeeid']))
 
     <div class="row r3">
         <div class="col-15 sideNav">
-        <p> Welcome @ <?php echo  $employeeid ?></p>
+            <p> Welcome @ <?php echo  $employeeid ?></p> <hr>
             <a href="../dashboards/cashierDash.php"> Dashboard </a><hr> 
             <a href="../profiles/cashierViewProfile.php"> Profile </a><hr>
             <a href="../cashierbills/createbill.php"> Create Bill </a><hr>
@@ -73,97 +72,65 @@ if(isset($_SESSION['employeeid']))
 
         <div class="col-16 content">
             <!--main content here-->
-            <div class="pr-form-container">
-                <form action="../../includes/cashier-services-inc.php" method="post">
-                  <div class="row1">
-                    <div class="pr-form-title">
-                      <h2>ADD NEW SERVICE RECORDS</h2>
-                    </div>
-                  </div>
-    
-                  <br/><br/><br/>
 
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="firstname">SERVICE DATETIME</label>
+            <div style="overflow-x:auto;">
+                <div class="th-table-container1">
+                    <h2 class="th-th2">ALL BILLS</h2><!--table name-->
+                    <div class="th-other-buttons">
+                        <button class="navButton" onclick="document.location='CashierViewAllBills.php'"><b>All bills</b></button>
+                        <button class="navButton" onclick="document.location='CashierViewProductBills.php'"><b> Product bills</b></button>
+                        <button class="navButton" onclick="document.location='CashierViewServiceBills.php'"><b>Service bills</b></button>    
                     </div>
-                    <div class="pr-form-input">
-                      <input type="date" name="serviceDate" class="pr-input-box" />
-                    </div>
-                  </div>
-      
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="lastname">SERVICE TYPE</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="text" name="serviceType" class="pr-input-box" />
-                    </div>
-                  </div>
+                <table class="th-user-table">
+                    <thead>
+                    <tr>
+                      <th>BILL NO</th> <!--table properties-->
+                      <th>BILL TYPE</th>
+                      <th>FIRST NAME</th> 
+                      <th>DATE TIME</th>
+                      <th>DELIVERY ADDRESS</th>
+                      <th colspan="3" style="text-align: center;">CONTROLS</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td> <!--table values-->
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><button class="th-button-icon" onclick="OnClickOpenCancelMessage()"><img src="../../images/billhistory/cancel.png" class="th-svg-icons"></button></td>
+                            <td><button class="th-button-icon"> <a href="../CashierProductExchange/CashierProductRefund.html"><img src="../../images/billhistory/refund.png" class="th-svg-icons"></a></button></td>
+                            <td><button class="th-button-icon"><a href="../CashierProductExchange/CashierProductExchange.html"><img src="../../images/billhistory/exchange.png" class="th-svg-icons"></a></button></td>
+                        </tr>
+                        <tr>
+                            <td></td> <!--table values-->
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><button class="th-button-icon" onclick="OnClickOpenCancelMessage()"><img src="../../images/billhistory/cancel.png" class="th-svg-icons"></button></td>
+                            <td><button class="th-button-icon"> <a href="../CashierProductExchange/CashierProductRefund.html"><img src="../../images/billhistory/refund.png" class="th-svg-icons"></a></button></td>
+                            <td><button class="th-button-icon"><a href="../CashierProductExchange/CashierProductExchange.html"><img src="../../images/billhistory/exchange.png" class="th-svg-icons"></a></button></td>
+                        </tr>
 
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="">CUSTOMER NIC</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="text" name="cusNIC" class="pr-input-box" />
-                    </div>
-                  </div>
+                      </tbody>
+                  </table>
+            </div>
+        </div>
+            <div class="th-delete-record-container" id="th-cancel-bill">
+                <div class="th-emp-close" onclick="OnClickCloseCancelMessage()">
+                    <span class="th-emp-close-button">X</span>
+               </div>
 
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="">CUSTOMER EMAIL</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="text" name="cusEmail" class="pr-input-box" />
-                    </div>
-                  </div>
-      
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="">VEHICLE NUMBER</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="text" name="vehicleNo" class="pr-input-box" />
-                    </div>
-                  </div>
-      
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="">VEHICLE MODEL</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="text" name="vehicleModel" class="pr-input-box" />
-                    </div>
-                  </div>
-      
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="">MECHANIC NAME</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="text" name="mechanicName" class="pr-input-box" />
-                    </div>
-                  </div>
-      
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="">DESCRIPTION</label>
-                    </div>
-                    <div class="pr-form-label">
-                      <textarea name="description" class="pr-input-box" style="height:100px;"> </textarea>
-                    </div>
-                  </div>
-         
-                  <div class="pr-form-add" style="margin-top: 10px">
-                    <button class="pr-form-add-button" name="submit">ADD</button>
-                  </div>
-                </form>
-              </div>
-
-           
+                <h2 class="th-delete-message">BILL SUCCESSFULLY CANCELLED!</h2>
+            
+            </div>
+   
         </div>
     </div>
+
+    
 
 
 

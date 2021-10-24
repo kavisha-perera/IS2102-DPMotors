@@ -1,12 +1,24 @@
+<?php
+session_start();
+
+if(isset($_SESSION['employeeid']))
+{
+    $employeeid =  $_SESSION['employeeid'];
+}else{
+
+    header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-cashierDashboard");
+}
+
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css">
-	<title>Read Promotions</title>
+	<title>View Customers</title>
 </head>
- 
 <body>
 
     <div class="row r1">
@@ -17,8 +29,9 @@
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
         </div>
         <div class="col-14 navbar"> 
-            <button class="navButton"> Log Out </button> 
-            <button class="navButton contact"> Contact Us </button>
+        <form action="../../includes/logout-inc.php">
+                <button class="navButton"> Log Out </button>
+            </form>
         </div>
     </div>
 
@@ -27,54 +40,57 @@
                         <div class="col-2 sideNav-dropdown" >
                                 <img src="../../images/dropdown.svg" class="dropButton">
                                 <div class="dropdown-content">
-                                    <a href="../dashboards/cashierDash.html"> Dashboard </a> 
-                                    <a href="../profiles/cashierViewProfile.html"> Profile </a>
-                                    <a href="../cashierbills/createbill.html"> Create Bill </a>
-                                    <a href="../promotion/cashierReadPromotion.html"> Promotions </a>
-                                    <a href="../Cashier View Bill History/CashierViewAllBills.html"> Bill History </a> 
+                                    <a href="../dashboards/cashierDash.php"> Dashboard </a> 
+                                    <a href="../profiles/cashierViewProfile.php"> Profile </a>
+                                    <a href="../cashierbills/createbill.php"> Create Bill </a>
+                                    <a href="../promotion/cashierReadPromotion.php"> Promotions </a>
+                                    <a href="../Cashier View Bill History/CashierViewAllBills.php"> Bill History </a> 
                                     <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a> 
                                     <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>
-                                    <a href="../appointments/cashierReadsAppointments.html"> Appointments </a>
-                                    <a href="../Cashier Customer register/cashier register customer.html"> Customer </a> 
+                                    <a href="../appointments/cashierReadsAppointments.php"> Appointments </a>
+                                    <a href="../Cashier Customer register/cashier register customer.php"> Customer </a>
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
-                            <p> Welcome @Cashier_01</p>
+                        <p> Welcome @ <?php echo  $employeeid ?></p>
                         </div>
                     </div>
     <!--End of Dropdown for screens with width less than 800px-->
 
     <div class="row r3">
         <div class="col-15 sideNav">
-            <p> Welcome @Cashier_01</p> <hr>
-            <a href="../dashboards/cashierDash.html"> Dashboard </a><hr> 
-            <a href="../profiles/cashierViewProfile.html"> Profile </a><hr>
-            <a href="../cashierbills/createbill.html"> Create Bill </a><hr>
-            <a href="../promotion/cashierReadPromotion.html"> Promotions </a><hr>
-            <a href="../Cashier View Bill History/CashierViewAllBills.html"> Bill History </a><hr>  
+            <p> Welcome @ <?php echo  $employeeid ?></p> <hr>
+            <a href="../dashboards/cashierDash.php"> Dashboard </a><hr> 
+            <a href="../profiles/cashierViewProfile.php"> Profile </a><hr>
+            <a href="../cashierbills/createbill.php"> Create Bill </a><hr>
+            <a href="../promotion/cashierReadPromotion.php"> Promotions </a><hr>
+            <a href="../Cashier View Bill History/CashierViewAllBills.php"> Bill History </a><hr>  
             <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a><hr> 
             <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a><hr> 
-            <a href="../appointments/cashierReadsAppointments.html"> Appointments </a><hr>
-            <a href="../Cashier Customer register/cashier register customer.html"> Customer </a><hr> 
+            <a href="../appointments/cashierReadsAppointments.php"> Appointments </a><hr>
+            <a href="../Cashier Customer register/cashier register customer.php"> Customer </a><hr>
         </div>
-
 
         <div class="col-16 content">
             <!--main content here-->
-
+            
             <div style="overflow-x:auto;">
                 <div class="th-table-container1">
-                    
-
-                    <h3><U>PROMOTION RECORDS</U></h3><!--table name-->
+                    <div class="th-add-new-button">
+                        <button class="navButton" onclick="document.location='cashier register customer.php'"><b> ADD NEW</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
+                    </div>
+                    <!--Customer details table-->
+                    <h2 class="th-th2" style="margin-bottom:25px;">CUSTOMERS</h2><!--table name-->
                 <table class="th-user-table">
                     <thead>
                     <tr>
-                      <th>No</th> <!--table properties-->
-                      <th>Description</th>
-                      <th>Code</th> 
-                      <th>Valid Till</th>
-                      <th>State</th>
+                      <th>CUS NO.</th> <!--table properties-->
+                      <th>FIRSTNAME</th>
+                      <th>LAST NAME</th> 
+                      <th>NIC</th>
+                      <th>CONTACT</th>
+                      <th>EMAIL</th>
+                      <th>ADDRESS</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -84,11 +100,6 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                        </tr>
-                        <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -98,18 +109,18 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                        </tr>
-                        <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
                             <td></td>
                             <td></td>
                         </tr>
-                        
+
                       </tbody>
                   </table>
             </div>
+   
+            
+        </div>
+    </div>
+
     
 
 

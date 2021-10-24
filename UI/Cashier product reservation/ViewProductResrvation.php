@@ -1,4 +1,17 @@
 <?php
+session_start();
+
+if(isset($_SESSION['employeeid']))
+{
+    $employeeid =  $_SESSION['employeeid'];
+}else{
+
+    header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-cashierDashboard");
+}
+
+?>
+
+<?php
 
 include "../../classes/DB.php";
 include "../../classes/ProductReservation.php";
@@ -30,7 +43,9 @@ $PReservation_list = $_PReservation->getPReservation();
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
         </div>
         <div class="col-14 navbar"> 
-            <button class="navButton"> Log Out </button> 
+        <form action="../../includes/logout-inc.php">
+                <button class="navButton"> Log Out </button>
+            </form>
         </div>
     </div>
 
@@ -39,35 +54,35 @@ $PReservation_list = $_PReservation->getPReservation();
                         <div class="col-2 sideNav-dropdown" >
                                 <img src="../../images/dropdown.svg" class="dropButton">
                                 <div class="dropdown-content">
-                                <a href="../dashboards/cashierDash.html"> Dashboard </a> 
-          <a href="../profiles/cashierViewProfile.html"> Profile </a>
-          <a href="../cashierbills/createbill.html"> Create Bill </a>
-          <a href="../promotion/cashierReadPromotion.html"> Promotions </a>
-          <a href="../Cashier View Bill History/CashierViewAllBills.html"> Bill History </a> 
-          <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a> 
-          <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>
-          <a href="../appointments/cashierReadsAppointments.html"> Appointments </a>
-          <a href="../Cashier Customer register/cashier register customer.html"> Customer </a>
+                                    <a href="../dashboards/cashierDash.php"> Dashboard </a> 
+                                    <a href="../profiles/cashierViewProfile.php"> Profile </a>
+                                    <a href="../cashierbills/createbill.php"> Create Bill </a>
+                                    <a href="../promotion/cashierReadPromotion.php"> Promotions </a>
+                                    <a href="../Cashier View Bill History/CashierViewAllBills.php"> Bill History </a> 
+                                    <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a> 
+                                    <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>
+                                    <a href="../appointments/cashierReadsAppointments.php"> Appointments </a>
+                                    <a href="../Cashier Customer register/cashier register customer.php"> Customer </a>
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
-                            <p> Welcome @Cashier_01</p>
+                        <p> Welcome @ <?php echo  $employeeid ?></p>
                         </div>
                     </div>
     <!--End of Dropdown for screens with width less than 800px-->
 
     <div class="row r3">
         <div class="col-15 sideNav">
-            <p> Welcome @Cashier_01</p> <hr>
-            <a href="../dashboards/cashierDash.html"> Dashboard </a><hr> 
-            <a href="../profiles/cashierViewProfile.html"> Profile </a><hr>
-            <a href="../cashierbills/createbill.html"> Create Bill </a><hr>
-            <a href="../promotion/cashierReadPromotion.html"> Promotions </a><hr>
-            <a href="../Cashier View Bill History/CashierViewAllBills.html"> Bill History </a><hr>  
+            <p> Welcome @ <?php echo  $employeeid ?></p> <hr>
+            <a href="../dashboards/cashierDash.php"> Dashboard </a><hr> 
+            <a href="../profiles/cashierViewProfile.php"> Profile </a><hr>
+            <a href="../cashierbills/createbill.php"> Create Bill </a><hr>
+            <a href="../promotion/cashierReadPromotion.php"> Promotions </a><hr>
+            <a href="../Cashier View Bill History/CashierViewAllBills.php"> Bill History </a><hr>  
             <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a><hr> 
             <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a><hr> 
-            <a href="../appointments/cashierReadsAppointments.html"> Appointments </a><hr>
-            <a href="../Cashier Customer register/cashier register customer.html"> Customer </a><hr>
+            <a href="../appointments/cashierReadsAppointments.php"> Appointments </a><hr>
+            <a href="../Cashier Customer register/cashier register customer.php"> Customer </a><hr>
         </div>
 
         <div class="col-16 content">
@@ -81,7 +96,7 @@ $PReservation_list = $_PReservation->getPReservation();
                     </div>
                     <div class="th-other-buttons">
                         <button class="navButton" onclick="document.location='ViewProductResrvation.php'"><b> Products related</b></button>
-                        <button class="navButton" onclick="document.location='ViewServiceRelated.html'"><b> Service related</b></button> 
+                        <button class="navButton" onclick="document.location='ViewServiceRelated.php'"><b> Service related</b></button> 
                     </div>
                 <table class="th-user-table">
                     <thead>
@@ -118,8 +133,8 @@ $PReservation_list = $_PReservation->getPReservation();
                         <td><?php echo $value['quantity']?></td> 
                         <td><?php echo $value ['deliverydatetime']?></td>                  
                         <td><?php echo $value ['deliverymethod']?></td>
-                        <td><button class='th-button-icon' onclick = "document.location='UpdateProductReserv.html'" ><img src='../../images/Employee & Supplier/edit.svg' class='th-svg-icons'></button></td>  
-                        <td><button class='th-button-icon' onclick = "document.location= 'DeleteProductReserve.html'"><img src='../../images/Employee & Supplier/delete.svg' class='th-svg-icons'></button></td>
+                        <td><button class='th-button-icon' onclick = "document.location='UpdateProductReserv.php'" ><img src='../../images/Employee & Supplier/edit.svg' class='th-svg-icons'></button></td>  
+                        <td><button class='th-button-icon' onclick = "document.location= 'DeleteProductReserve.php'"><img src='../../images/Employee & Supplier/delete.svg' class='th-svg-icons'></button></td>
                     </tr>
                         
                     <?php } ?>
