@@ -104,24 +104,25 @@ $PReservation_list = $_PReservation->getPReservation();
                     
                     foreach ($PReservation_list as $key => $value) {
 
-                        echo "<tr>
-                        <td>{$value['prno']}</td>
-                        <td>{$value['fname']}</td>
-                        <td>{$value['lname']}</td> 
-                        <td>{$value['contact']}</td>                  
-                        <td>{$value['address']}</td>
-                        <td>{$value['pid']}</td>
-                        <td>{$value['prname']}</td>
-                        <td>{$value['quantity']}</td> 
-                        <td>{$value['deliverydatetime']}</td>                  
-                        <td>{$value['deliverymethod']}</td>
-                        <td><button class='th-button-icon' onclick='document.location=['UpdateProductReserv.php']' ><img src='../../images/Employee & Supplier/edit.svg' class='th-svg-icons'></button></td>  
-                        <td><button class='th-button-icon' onclick='document.location=['DeleteProductReserve.html']'><img src='../../images/Employee & Supplier/delete.svg' class='th-svg-icons'></button></td>
-                        </tr>";
-                        //edit and delete is not working
-                        
-                    }
+                        $prno =  trim($value['prno']); 
                     ?>
+
+                    <tr>
+                        <td><?php echo $value['prno'] ?> </td>
+                        <td><?php echo $value['fname']?></td>
+                        <td><?php echo $value['lname']?></td> 
+                        <td><?php echo $value['contact']?></td>                  
+                        <td><?php echo $value['address']?></td>
+                        <td><?php echo $value['pid']?></td>
+                        <td><?php echo $value['prname']?></td>
+                        <td><?php echo $value['quantity']?></td> 
+                        <td><?php echo $value ['deliverydatetime']?></td>                  
+                        <td><?php echo $value ['deliverymethod']?></td>
+                        <td><button class='th-button-icon' onclick = "document.location='UpdateProductReserv.html'" ><img src='../../images/Employee & Supplier/edit.svg' class='th-svg-icons'></button></td>  
+                        <td><button class='th-button-icon' onclick = "document.location= 'DeleteProductReserve.html'"><img src='../../images/Employee & Supplier/delete.svg' class='th-svg-icons'></button></td>
+                    </tr>
+                        
+                    <?php } ?>
 
                       </tbody>
                   </table>

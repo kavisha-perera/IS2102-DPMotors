@@ -20,9 +20,9 @@ class PReservation
     $this->_db = $db;
   }
 
-  public function create($fname,$lname, $contact,$address,$pid,$prname,$quantity,$deliverydatetime,$deliverymethod)  {
+  public function create($fname,$lname, $contact, $address, $pid,$prname, $quantity, $deliverydatetime, $deliverymethod)  {
 
-    $sql =  "INSERT INTO prreservationsale ( fname, lname, contact, address,pid,prname,quantity,deliverydatetime,deliverymethod) VALUES ('{$fname}', '{$lname}', '{$contact}', '{$address}','{$pid}', '{$prname}', '{$quantity}', '{$deliverydatetime}', '{$deliverymethod}')";
+    $sql =  "INSERT INTO prreservationsale ( fname, lname, contact, address, pid, prname, quantity, deliverydatetime, deliverymethod) VALUES ('{$fname}', '{$lname}', '{$contact}', '{$address}','{$pid}', '{$prname}', '{$quantity}', '{$deliverydatetime}','{$deliverymethod}')";
 
     $stmt = $this->_db->prepare($sql);
     
@@ -44,19 +44,12 @@ class PReservation
     return $PReservation ;
   }
 
-  public function update($prno, $fname,$lname, $contact,$address,$pid,$prname,$quantity,$deliverydatetime,$deliverymethod)
+  public function update($_PResrvationData)
   {
-    $sql =  "UPDATE prreservationsale SET fname = '{$fname}' , lname = '{$lname}' , contact = '{$contact}', address = '{$address}',pid = '{$pid}' , prname = '{$prname}' , quantity = '{$quantity}', deliverydatetime = '{$deliverydatetime}', deliverymethod= '{$deliverymethod}'  WHERE prno = '{$pr_no}' ";
-    $stmt = $this->_db->prepare($sql);
-    
-    if($stmt->execute()){
-        return true;
-    }else {
-        return false;
-    }
+
   }
 
-  public function delete($_supno)
+  public function delete($_PResrvationData)
   {
   }
 

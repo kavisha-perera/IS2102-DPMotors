@@ -62,7 +62,7 @@
       <div class="col-16 content">
         <!--main content here-->
         <div class="pr-form-container">
-          <form action="addProductReserve-inc.php" method="post">
+          <form action="AddProductReserve-inc.php" method="post">
             <div class="row1">
               <div class="pr-form-title">
                 <h2>ADD NEW PRODUCT RESERVATION</h2>
