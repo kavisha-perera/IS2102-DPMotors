@@ -33,7 +33,7 @@
                                     <a href="../cashierbills/createbill.html"> Create Bill </a>
                                     <a href="../promotion/cashierReadPromotion.html"> Promotions </a>
                                     <a href="../Cashier View Bill History/CashierViewAllBills.html"> Bill History </a> 
-                                    <a href="../Cashier service records/cashierViewService.html"> Vehicle Service Records </a> 
+                                    <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a> 
                                     <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>
                                     <a href="../appointments/cashierReadsAppointments.html"> Appointments </a>
                                     <a href="../Cashier Customer register/cashier register customer.html"> Customer </a>
@@ -53,7 +53,7 @@
             <a href="../cashierbills/createbill.html"> Create Bill </a><hr>
             <a href="../promotion/cashierReadPromotion.html"> Promotions </a><hr>
             <a href="../Cashier View Bill History/CashierViewAllBills.html"> Bill History </a><hr>  
-            <a href="../Cashier service records/cashierViewService.html"> Vehicle Service Records </a><hr> 
+            <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a><hr> 
             <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a><hr> 
             <a href="../appointments/cashierReadsAppointments.html"> Appointments </a><hr>
             <a href="../Cashier Customer register/cashier register customer.html"> Customer </a><hr>
