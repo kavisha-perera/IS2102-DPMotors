@@ -7,6 +7,15 @@ $_supplier = new Supplier(DB::connection());
 
 $supplier_list = $_supplier->getSuppliers();
 
+session_start();
+
+if(isset($_SESSION['employeeid']))
+{
+    $employeeid =  $_SESSION['employeeid'];
+}else{
+
+    header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-adminDashboard");
+}
 
 
 ?>
@@ -53,14 +62,14 @@ $supplier_list = $_supplier->getSuppliers();
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
-                            <p> Welcome @email address</p>
+                            <p> Welcome @<?php echo  $employeeid ?></p>
                         </div>
                     </div>
     <!--End of Dropdown for screens with width less than 800px-->
 
     <div class="row r3">
         <div class="col-15 sideNav">
-            <p> Welcome @email address</p> <hr>
+            <p> Welcome @<?php echo  $employeeid ?></p> <hr>
             <a href="../dashboards/adminDash.php" > Dashboard </a> <hr> 
             <a href="../profiles/adminViewProfile.html"> Profile </a> <hr> 
             <a href="../manage accounts/manage.php"> Accounts </a> <hr> 

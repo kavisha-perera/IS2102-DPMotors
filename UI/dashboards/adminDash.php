@@ -53,7 +53,7 @@ if(isset($_SESSION['employeeid']))
                                     <a href="../profiles/adminViewProfile.html"> Profile </a>
                                     <a href="../manage accounts/manage.php"> Accounts </a> 
                                     <a href="../manage inventory/manageinventory.html"> Inventory </a>
-                                    <a href="../manage promotions/managepromotions.php"> Promotions </a>  
+                                    <a href="../managepromotions/managepromotions.php"> Promotions </a>  
                                     <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> 
                                     <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a> 
                                 </div>
@@ -71,7 +71,7 @@ if(isset($_SESSION['employeeid']))
                 <a href="../profiles/adminViewProfile.html"> Profile </a> <hr> 
                 <a href="../manage accounts/manage.php"> Accounts </a> <hr> 
                 <a href="../manage inventory/manageinventory.html"> Inventory</a> <hr> 
-                <a href="../manage promotions/managepromotions.php"> Promotions </a> <hr> 
+                <a href="../managepromotions/managepromotions.php"> Promotions </a> <hr> 
                 <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> <hr> 
                 <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a> <hr> 
         </div>

@@ -7,6 +7,16 @@ $_promo = new Promotions(DB::connection());
 
 $promo_list = $_promo->getPromotions();
 
+session_start();
+
+if(isset($_SESSION['employeeid']))
+{
+    $employeeid =  $_SESSION['employeeid'];
+}else{
+
+    header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-adminDashboard");
+}
+
 ?>
 
 
@@ -41,7 +51,7 @@ $promo_list = $_promo->getPromotions();
 
     <div class="row r3">
         <div class="col-15 ">
-            <p> Welcome @email address</p><br><br><br>
+            <p align="center"> Welcome @<?php echo  $employeeid ?></p><br><br><br>
             <img src="../../images/admin/promo.png" style="width: 250px;" alt=""><br><br><br><br><br>
             <button class="adminbutton1" onclick="OnClickOpenAddEmloyee()" >+ Add New</button>
             <br><br><br><br><br>

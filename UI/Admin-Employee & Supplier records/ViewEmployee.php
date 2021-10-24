@@ -7,6 +7,15 @@ $_employee = new Employee(DB::connection());
 
 $employee_list = $_employee->getEmployees();
 
+session_start();
+
+if(isset($_SESSION['employeeid']))
+{
+    $employeeid =  $_SESSION['employeeid'];
+}else{
+
+    header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-adminDashboard");
+}
 
 
 ?>
@@ -37,35 +46,35 @@ $employee_list = $_employee->getEmployees();
     </div>
 
     <!-- Start of Dropdown for screens with width less than 800px-->
-                    <div class="row r2">
+    <div class="row r2">
                         <div class="col-2 sideNav-dropdown" >
                                 <img src="../../images/dropdown.svg" class="dropButton">
                                 <div class="dropdown-content">
-                                    <a href="../dashboards/adminDash.html"> Dashboard </a>  
+                                    <a href="../dashboards/adminDash.php" > Dashboard </a>  
                                     <a href="../profiles/adminViewProfile.html"> Profile </a>
-                                    <a href="../manage accounts/manage.html"> Accounts </a>
-                                    <a href="../manage inventory/manageinventory.html"> Inventory </a>  
-                                    <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a>
-                                    <a href="../Admin-Employee & Supplier records/ViewEmployee.php" class="active"> Employee </a>
-                                    
+                                    <a href="../manage accounts/manage.php"> Accounts </a> 
+                                    <a href="../manage inventory/manageinventory.html"> Inventory </a>
+                                    <a href="../managepromotions/managepromotions.php"> Promotions </a>  
+                                    <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> 
+                                    <a href="../Admin-Employee & Supplier records/ViewEmployee.php"  class="active"> Employee </a> 
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
-                            <p> Welcome @email address</p>
+                            <p> Welcome @ <?php echo  $employeeid ?></p>
                         </div>
                     </div>
     <!--End of Dropdown for screens with width less than 800px-->
 
     <div class="row r3">
         <div class="col-15 sideNav">
-            <p> Welcome @email address</p> <hr>
-            <a href="../dashboards/adminDash.html" > Dashboard </a> <hr> 
-            <a href="../profiles/adminViewProfile.html"> Profile </a> <hr> 
-            <a href="../manage accounts/adminaccounts.html"> Accounts </a> <hr> 
-            <a href="../manage inventory/manageinventory.html"> Inventory </a> <hr> 
-            <a href="../managepromotions/managepromotions.html"> Promotions </a> <hr> 
-            <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> <hr> 
-            <a href="../Admin-Employee & Supplier records/ViewEmployee.php" class="active"> Employee </a> <hr>
+            <p> Welcome @ <?php echo  $employeeid ?></p> <hr>
+                <a href="../dashboards/adminDash.php"> Dashboard </a> <hr> 
+                <a href="../profiles/adminViewProfile.html"> Profile </a> <hr> 
+                <a href="../manage accounts/manage.php"> Accounts </a> <hr> 
+                <a href="../manage inventory/manageinventory.html"> Inventory</a> <hr> 
+                <a href="../managepromotions/managepromotions.php"> Promotions </a> <hr> 
+                <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> <hr> 
+                <a href="../Admin-Employee & Supplier records/ViewEmployee.php"  class="active"> Employee </a> <hr> 
         </div>
 
         <div class="col-16 content">
