@@ -25,7 +25,7 @@ if (isset($_POST["submit"]))
     $signup->signupUser();
 
     // going back to the front page
-    header("location: ../UI/Auth-UI/customerLogin.php?error=none");
+    header("location: ../UI/Auth-UI/customerLogin.php?error=signup-successful");
 
 }
 

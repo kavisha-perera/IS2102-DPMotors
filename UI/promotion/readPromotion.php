@@ -7,8 +7,6 @@ $_promo = new Promotions(DB::connection());
 
 $promo_list = $_promo->getPromotions();
 
-
-
 ?>
 
 

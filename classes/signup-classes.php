@@ -45,11 +45,11 @@ class Signup extends Dbh {
         */
 
     protected function checkUser($email, $nic){
-        $stmt = $this->connect()->prepare('SELECT nic FROM customer WHERE nic = ? OR email = ?;');
+        $stmt = $this->connect()->prepare('SELECT nic FROM customer WHERE email = ? OR nic = ?;');
 
         if (!$stmt->execute(array($email, $nic))){
             $stmt = null;
-            header("location: ../UI/Auth-UI/signUp.php?error=statementfailed");
+            header("location: ../UI/Auth-UI/signUp.php?error=stmtfailed");
             exit();
         }
 

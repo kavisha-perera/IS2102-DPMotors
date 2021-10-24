@@ -92,7 +92,7 @@ session_start();
                 
                 exit();
             }
-            elseif (strpos ($fullUrl, "error=invalidEmail") == true) {
+            elseif (strpos ($fullUrl, "error=invalid-email") == true) {
                 echo "<p class='error'>You seem to have entered an invaild email<br/></p>
                 <br/>
                 <br/>
