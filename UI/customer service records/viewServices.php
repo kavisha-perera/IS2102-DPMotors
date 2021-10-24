@@ -97,10 +97,26 @@ if(isset($_SESSION['id']))
                         </thead>
                         <tbody>
                             <tr class="appListItems">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>SRec-1923</td>
+                                <td>CAK-3990</td>
+                                <td>11-09-2021</td>
+                                <td>Engine Check</td>
+                                <td style="text-align: right;"><a href="./readService.php"><img src="../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
+                                <td><a href="./deleteServiceRecord.html"><img src="../../images/tableIcons/delete.png" class="tableIcon"></a></td>
+                            </tr>
+                            <tr class="appListItems">
+                                <td>SRec-1621</td>
+                                <td>KO-4456</td>
+                                <td>02-07-2021</td>
+                                <td>Full Service</td>
+                                <td style="text-align: right;"><a href="./readService.php"><img src="../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
+                                <td><a href="./deleteServiceRecord.html"><img src="../../images/tableIcons/delete.png" class="tableIcon"></a></td>
+                            </tr>
+                            <tr class="appListItems">
+                                <td>SRec-1608</td>
+                                <td>KO-4456</td>
+                                <td>27-06-2021</td>
+                                <td>Air Filter Change</td>
                                 <td style="text-align: right;"><a href="./readService.php"><img src="../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
                                 <td><a href="./deleteServiceRecord.html"><img src="../../images/tableIcons/delete.png" class="tableIcon"></a></td>
                             </tr>
