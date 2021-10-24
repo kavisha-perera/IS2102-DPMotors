@@ -97,11 +97,19 @@ if(isset($_SESSION['id']))
                         </thead>
                         <tbody>
                             <tr class="appListItems">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>RP-3498</td>
+                                <td>Liqui Moly - </td>
+                                <td>Delivery</td>
+                                <td>26-10-2021</td>
+                                <td>LKR 2450.00</td>
+                                <td><a href="./readPReservation.php"><img src="../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
+                            </tr>
+                            <tr class="appListItems">
+                                <td>RP-5837</td>
+                                <td>Toyota Side Mirror - </td>
+                                <td>Pick Up</td>
+                                <td>03-11-2021</td>
+                                <td>LKR 1,390.00</td>
                                 <td><a href="./readPReservation.php"><img src="../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
                             </tr>
 
