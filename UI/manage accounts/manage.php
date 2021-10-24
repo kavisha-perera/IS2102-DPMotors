@@ -29,12 +29,16 @@ if(isset($_SESSION['employeeid']))
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
         </div>
         <div class="col-14 navbar"> 
-            <a href="#">Home</a> 
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Products</a>
-            <button class="navButton"> Log Out </button> 
-            <button class="navButton contact"> Contact Us </button>
+        <a href="../landing page/index.php#home">Home</a> 
+            <a href="../landing page/index.php#about">About</a>
+            <a href="../landing page/index.php#services">Services</a>
+            <a href="../customer gerneral/productsCatalogue.html">Products</a>
+            <form action="../../includes/logout-inc.php">
+                <button class="navButton"> Log Out </button>
+            </form> 
+            <form action="../landing page/index.html#contact">
+                <button class="navButton contact"> Contact Us </button>
+            </form>
         </div>
     </div>
 
@@ -43,13 +47,13 @@ if(isset($_SESSION['employeeid']))
                         <div class="col-2 sideNav-dropdown" >
                                 <img src="../../images/dropdown.svg" class="dropButton">
                                 <div class="dropdown-content">
-                                    <a href="../dashboards/adminDash.html" class="active"> Dashboard </a>  
+                                    <a href="../dashboards/adminDash.php"> Dashboard </a>  
                                     <a href="../profiles/adminViewProfile.html"> Profile </a>
                                     <a href="#"> Accounts </a> 
                                     <a href="../manage inventory/manageinventory.html"> Inventory </a>
-                                    <a href="../manage promotions/managepromotions.html"> Promotions </a>  
-                                    <a href="../Admin-Employee & Supplier records/ViewSupplier.html"> Supplier </a> 
-                                    <a href="../Admin-Employee & Supplier records/ViewEmployee.html"> Employee </a> 
+                                    <a href="../manage promotions/managepromotions.php"> Promotions </a>  
+                                    <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> 
+                                    <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a> 
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
@@ -61,13 +65,13 @@ if(isset($_SESSION['employeeid']))
     <div class="row r3">
         <div class="col-15 sideNav">
             <p>Welcome @ <?php echo  $employeeid ?></p> <hr>
-            <a href="../dashboards/adminDash.html"> Dashboard </a>  <hr>
+            <a href="../dashboards/adminDash.php"> Dashboard </a>  <hr>
             <a href="../profiles/adminViewProfile.html"> Profile </a><hr>
             <a href="#" class="active"> Accounts </a> <hr>
             <a href="../manage inventory/manageinventory.html"> Inventory </a><hr>
-            <a href="../manage promotions/managepromotions.html"> Promotions </a>  <hr>
-            <a href="../Admin-Employee & Supplier records/ViewSupplier.html"> Supplier </a> <hr>
-            <a href="../Admin-Employee & Supplier records/ViewEmployee.html"> Employee </a> <hr> 
+            <a href="../manage promotions/managepromotions.php"> Promotions </a>  <hr>
+            <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> <hr>
+            <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a> <hr> 
         </div>
 
         <div class="col-16 content">

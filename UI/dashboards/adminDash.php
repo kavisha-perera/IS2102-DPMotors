@@ -35,9 +35,9 @@ if(isset($_SESSION['employeeid']))
             <a href="../landing page/index.html#about">About</a>
             <a href="../landing page/index.html#services">Services</a>
             <a href="../customer gerneral/productsCatalogue.html">Products</a>
-            <form action="#">
+            <form action="../../includes/logout-inc.php">
                 <button class="navButton"> Log Out </button>
-            </form>
+            </form> 
             <form action="../landing page/index.html#contact">
                 <button class="navButton contact"> Contact Us </button>
             </form>
@@ -49,13 +49,13 @@ if(isset($_SESSION['employeeid']))
                         <div class="col-2 sideNav-dropdown" >
                                 <img src="../../images/dropdown.svg" class="dropButton">
                                 <div class="dropdown-content">
-                                    <a href="#" class="active"> Dashboard </a>  
+                                    <a href="#" > Dashboard </a>  
                                     <a href="../profiles/adminViewProfile.html"> Profile </a>
-                                    <a href="../manage accounts/manage.html"> Accounts </a> 
+                                    <a href="../manage accounts/manage.php"> Accounts </a> 
                                     <a href="../manage inventory/manageinventory.html"> Inventory </a>
-                                    <a href="../manage promotions/managepromotions.html"> Promotions </a>  
-                                    <a href="../Admin-Employee & Supplier records/ViewSupplier.html"> Supplier </a> 
-                                    <a href="../Admin-Employee & Supplier records/ViewEmployee.html"> Employee </a> 
+                                    <a href="../manage promotions/managepromotions.php"> Promotions </a>  
+                                    <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> 
+                                    <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a> 
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
@@ -71,9 +71,9 @@ if(isset($_SESSION['employeeid']))
                 <a href="../profiles/adminViewProfile.html"> Profile </a> <hr> 
                 <a href="../manage accounts/manage.php"> Accounts </a> <hr> 
                 <a href="../manage inventory/manageinventory.html"> Inventory</a> <hr> 
-                <a href="../manage promotions/managepromotions.html"> Promotions </a> <hr> 
-                <a href="../Admin-Employee & Supplier records/ViewSupplier.html"> Supplier </a> <hr> 
-                <a href="../Admin-Employee & Supplier records/ViewEmployee.html"> Employee </a> <hr> 
+                <a href="../manage promotions/managepromotions.php"> Promotions </a> <hr> 
+                <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> <hr> 
+                <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a> <hr> 
         </div>
 
         <div class="col-16 content">
@@ -86,10 +86,10 @@ if(isset($_SESSION['employeeid']))
                         <a href="../manage inventory/manageinventory.html"><img src="../../images/admin/inventory.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../managepromotions/managepromotions.html"><img src="../../images/admin/promo.png" class="dashboardIcon"></a>
+                        <a href="../managepromotions/managepromotions.php"><img src="../../images/admin/promo.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../Admin-Employee & Supplier records/ViewSupplier.html"><img src="../../images/admin/supplier.png" class="dashboardIcon"></a>
+                        <a href="../Admin-Employee & Supplier records/ViewSupplier.php"><img src="../../images/admin/supplier.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
                         <a href="#"><img src="../../images/admin/backup.png" class="dashboardIcon"></a>
