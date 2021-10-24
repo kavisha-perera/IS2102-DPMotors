@@ -7,14 +7,18 @@ class SignupContr extends Signup{
     private $nic;
     private $password;
     private $confirmpw;
+    private $employeeid;
+    private $type;
 
-    public function __construct($fname, $lname, $email, $nic, $password, $confirmpw){
+    public function __construct($fname, $lname, $email, $nic, $password, $confirmpw , $employeeid , $type){
         $this->fname = $fname;
         $this->lname = $lname;
         $this->email = $email;
         $this->nic = $nic;
         $this->password = $password;
         $this->confirmpw = $confirmpw;
+        $this->employeeid = $employeeid;
+        $this->type = $type;
     }
 
     public function signupUser(){
@@ -26,7 +30,7 @@ class SignupContr extends Signup{
 
         if($this->invalidEmail()== false){
             //echo "Invalid Email!";
-            header ("location: ../UI/Auth-UI/signUp.php?error=invalidEmail");
+            header ("location: ../UI/Auth-UI/signUp.php?error=invalid-email");
             exit();
         }
 
@@ -42,7 +46,7 @@ class SignupContr extends Signup{
             exit();
         }
 
-        $this->setUser($this->fname, $this->lname, $this->email, $this->nic, $this->password);
+        $this->setUser($this->fname, $this->lname, $this->email, $this->nic, $this->password , $this->employeeid , $this->type);
         
   
     }

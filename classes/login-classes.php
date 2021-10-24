@@ -6,9 +6,9 @@ class Login extends Dbh {
 
 
     protected function getUser($email, $password){
-        $stmt = $this->connect()->prepare('SELECT password FROM customer WHERE email = ? OR nic = ?;');
+        $stmt = $this->connect()->prepare('SELECT password FROM customer WHERE email = ? OR nic = ? OR employeeid= ?;');
 
-        if (!$stmt->execute(array($email , $password))){
+        if (!$stmt->execute(array($email , $email , $email))){
             $stmt = null;
             header("location: ../UI/Auth-UI/customerLogin?error=stmtfailed");
             exit();
@@ -32,9 +32,9 @@ class Login extends Dbh {
             exit();
         }
         elseif ($checkPwd == true) {
-            $stmt = $this->connect()->prepare('SELECT * FROM customer WHERE email = ? OR nic= ? AND password = ?;');
+            $stmt = $this->connect()->prepare('SELECT * FROM customer WHERE email = ? OR nic= ? OR employeeid= ?  AND password = ?;');
 
-            if (!$stmt->execute(array($email, $email, $password))){
+            if (!$stmt->execute(array($email, $email, $email, $password))){
                 $stmt = null;
                 header("location: ../UI/Auth-UI/customerLogin.php?error=stmtfailed");
                 exit();
@@ -52,6 +52,8 @@ class Login extends Dbh {
             session_start();
             $_SESSION['id'] = $user[0]['id'];
             $_SESSION['email'] = $user[0]['email'];
+            $_SESSION['employeeid'] = $user[0]['employeeid'];
+            $_SESSION['type'] = $user[0]['type'];
 
             $stmt = null;
 

@@ -5,14 +5,29 @@
 class Signup extends Dbh {
 
 
-    protected function setUser($fname, $lname, $email, $nic, $password){
-        $stmt = $this->connect()->prepare('INSERT INTO customer (fname, lname, email, nic, password) VALUES (?, ?, ?, ?, ?);');
+    protected function setUser($fname, $lname, $email, $nic, $password , $employeeid , $type){
 
+
+
+
+        // if the request contains the empid its treated as internal employee, else its treated as customer and type is assigned to customer / $employeeid set to null
+        
+        if (!empty($employeeid)) {
+            $stmt = $this->connect()->prepare('INSERT INTO customer (fname, lname, email, nic, password ,employeeid, type) VALUES (?, ?, ?, ?, ? , ?,?);');
+          }else{
+            $employeeid = null;
+            $type = 'customer';
+            $stmt = $this->connect()->prepare('INSERT INTO customer (fname, lname, email, nic, password ,employeeid, type) VALUES (?, ?, ?, ?, ? , ?,?);');
+          }
+
+       
+
+        
         //this is sending a hashed password into the database for security purposes.
   
         $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
-        if (!$stmt->execute(array($fname, $lname, $email, $nic, $hashedPwd))){
+        if (!$stmt->execute(array($fname, $lname, $email, $nic, $hashedPwd, $employeeid, $type))){
             $stmt = null;
             header("location: ../UI/Auth-UI/signUp.php?error=stmtfailed");
             exit();
@@ -30,7 +45,7 @@ class Signup extends Dbh {
         */
 
     protected function checkUser($email, $nic){
-        $stmt = $this->connect()->prepare('SELECT email FROM customer WHERE email = ? OR nic = ?;');
+        $stmt = $this->connect()->prepare('SELECT nic FROM customer WHERE email = ? OR nic = ?;');
 
         if (!$stmt->execute(array($email, $nic))){
             $stmt = null;

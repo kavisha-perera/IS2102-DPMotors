@@ -63,6 +63,7 @@ session_start();
 
           <?php
             $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            
 
             if (strpos ($fullUrl, "error=stmtfailed") == true) {
                 echo "<p class='error'> Something went wrong! <br/></p>
@@ -107,8 +108,7 @@ session_start();
 
         <!------------------>
 
-            <form action="../../includes/login-inc.php" method="post">
-        
+            <form action="../../includes/login-inc.php" method="post">      
                 <h2 align ="center">LOGIN</h2>
                 <input type="text" placeholder="Email Adress" name="email" required>
                 <input type="password" placeholder="Password" name="password" required>  
@@ -118,7 +118,21 @@ session_start();
                 
                 <h6 style="margin-left: 35%;"><a href="" >Forgot your password</a></h6>
                 </div>     
-  
+                <?php 
+            
+            if (strpos ($fullUrl, "error=signup-successful") == true) {
+                echo "
+                <br/>
+                <br/>
+                <p class='error'> Thank you for registering with us! <br/></p>
+                <br/>
+                <br/>";
+                exit();
+            }
+            
+            ?>
+
+
             </form>
           </div>  
 

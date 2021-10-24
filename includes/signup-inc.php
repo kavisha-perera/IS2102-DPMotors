@@ -10,18 +10,22 @@ if (isset($_POST["submit"]))
     $nic = $_POST["nic"];
     $password = $_POST["password"];
     $confirmpw = $_POST["confirmpw"];
+    $employeeid = $_POST["employeeid"];
+    $type = $_POST["type"];
+    
   
     // instantiate SignupContr class
     // the order of including these class files matter!
     include "../classes/dbh-classes.php";
     include "../classes/signup-classes.php";
     include "../classes/signupContr-classes.php";
-    $signup = new SignupContr($fname, $lname, $email, $nic, $password, $confirmpw);
+    $signup = new SignupContr($fname, $lname, $email, $nic, $password, $confirmpw , $employeeid , $type);
 
     //running error handlers and user signup
     $signup->signupUser();
 
     // going back to the front page
-     header("location: ../UI/Auth-UI/customerLogin.php?error=none");
+    header("location: ../UI/Auth-UI/customerLogin.php?error=signup-successful");
 
 }
+
