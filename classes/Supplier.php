@@ -38,7 +38,7 @@ class Supplier
     return $employees;
   }
 
-  public function update($supplier_no, $salespersonname, $contact, $suppliercompany,$saddress,)  {
+  public function update($supplier_no, $salespersonname, $contact, $suppliercompany,$saddress)  {
 
     $sql =  "UPDATE supplier SET  salespersonname= '{$salespersonname}' , contact = '{$contact}' ,suppliercompany = '{$suppliercompany}',saddress = '{$saddress}' WHERE supplierno = '{$supplier_no}' ";
     $stmt = $this->_db->prepare($sql);
