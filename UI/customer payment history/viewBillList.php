@@ -98,13 +98,38 @@ if(isset($_SESSION['id']))
                         </thead>
                         <tbody>
                             <tr class="appListItems">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>BS-8893</td>
+                                <td>Service</td>
+                                <td>11-09-2021</td>
+                                <td>Full Service </td>
+                                <td>LKR 15750.00</td>
                                 <td><a href="./readBill.php"><img src="../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
                             </tr>
+                            <tr class="appListItems">
+                                <td>BP-6778</td>
+                                <td>Product</td>
+                                <td>09-08-2021</td>
+                                <td>Liqui Moly Products - </td>
+                                <td>LKR 2450.00</td>
+                                <td><a href="./readBill.php"><img src="../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
+                            </tr>
+                            <tr class="appListItems">
+                                <td>BS-7098</td>
+                                <td>Service</td>
+                                <td>27-07-2021</td>
+                                <td>Car Wash</td>
+                                <td>LKR 450.00</td>
+                                <td><a href="./readBill.php"><img src="../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
+                            </tr>
+                            <tr class="appListItems">
+                                <td>BP-5589</td>
+                                <td>Product</td>
+                                <td>12-08-2021</td>
+                                <td>Viper Blades</td>
+                                <td>LKR 1240.00</td>
+                                <td><a href="./readBill.php"><img src="../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
+                            </tr>
+
 
                         </tbody>
                         </table>
