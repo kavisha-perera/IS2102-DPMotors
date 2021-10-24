@@ -10,16 +10,13 @@ if(isset($_SESSION['employeeid']))
 }
 
 ?>
-
-
-
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css">
-	<title>manager dashboard</title>
+	<title>manager profile details</title>
 </head>
 <body>
 
@@ -45,12 +42,12 @@ if(isset($_SESSION['employeeid']))
     </div>
 
     <!-- Start of Dropdown for screens with width less than 800px-->
-                    <div class="row r2">
+    <div class="row r2">
                         <div class="col-2 sideNav-dropdown" >
                                 <img src="../../images/dropdown.svg" class="dropButton">
                                 <div class="dropdown-content">
-                                    <a href="../dashboards/managerDash.php" class="active"> Dashboard </a>  
-                                    <a href="../profiles/managerViewProfile.php"> Profile </a>
+                                    <a href="../dashboards/managerDash.php" > Dashboard </a>  
+                                    <a href="../profiles/managerViewProfile.php" class="active"> Profile </a>
                                     <a href="../appointments/readAppointments.php"> Appointments </a> 
                                     <a href="../Cashier service records/cashierAddService.php"> Vehicle Service Records </a>
                                     <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>  
@@ -67,8 +64,8 @@ if(isset($_SESSION['employeeid']))
     <div class="row r3">
         <div class="col-15 sideNav">
             <p> Welcome @ <?php echo  $employeeid ?></p> <hr>
-            <a href="../dashboards/managerDash.php" class="active"> Dashboard </a>  
-                                    <a href="../profiles/managerViewProfile.php"> Profile </a>
+            <a href="../dashboards/managerDash.php" > Dashboard </a>  
+                                    <a href="../profiles/managerViewProfile.php"class="active"> Profile </a>
                                     <a href="../appointments/readAppointments.php"> Appointments </a> 
                                     <a href="../Cashier service records/cashierAddService.php"> Vehicle Service Records </a>
                                     <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>  
@@ -78,34 +75,94 @@ if(isset($_SESSION['employeeid']))
 
         <div class="col-16 content">
             <!--main content here-->
-                <div class="row r3-1">
-                    <div class="col-4 d-icon">
-                        <a href="../dashboards/managerDash.php"><img src="../../images/manager/reports.png" class="dashboardIcon"></a>
-                    </div>
-                    <div class="col-4 d-icon">
-                        <a href="../manage inventory/manageinventory.html"><img src="../../images/manager/inventory.png" class="dashboardIcon"></a>
-                    </div>
-                    <div class="col-4 d-icon">
-                        <a href="../Admin-Employee & Supplier records/ViewSupplier.php"><img src="../../images/manager/supplier.png" class="dashboardIcon"></a>
-                    </div>
-                    <div class="col-4 d-icon">
-                        <a href="../Cashier product reservation/ViewProductResrvation.php"><img src="../../images/manager/product.png" class="dashboardIcon"></a>
-                    </div>
-                    <div class="col-4 d-icon">
-                        <a href="../dashboards/managerDash.php"><img src="../../images/manager/salesreports.png" class="dashboardIcon"></a>
-                    </div>
-                    <div class="col-4 d-icon">
-                        <a href="../promotion/readPromotion.php"><img src="../../images/manager/promo.png" class="dashboardIcon"></a>
-                    </div>
-                    <div class="col-4 d-icon">
-                        <a href="../appointments/readAppointments.php"><img src="../../images/manager/appointment.png" class="dashboardIcon"></a>
-                    </div>
-                    <div class="col-4 d-icon">
-                        <a href="../Cashier service records/cashierAddService.php"><img src="../../images/manager/servicerecord.png" class="dashboardIcon"></a>
-                    </div>
-                    <div class="col-4 d-icon">
-                        <a href="../dashboards/managerDash.php"><img src="../../images/manager/other.png" class="dashboardIcon"></a>
-                    </div>
+
+                       <!--div container for customer to hold customer profile details form-->
+           <div class="col-12 ProfileContainer">
+
+            <div class="row r3-1">
+                <div class="col-12">
+                    <h2 class="title"><b>PROFILE DETAILS</b></h2>
+                </div>
+            </div>
+
+            <!--start of form to get details-->
+            <form action="cusform.php" method="GET">
+        
+            <div class="row r3-2">
+                <div class="col-4 profileLabel">
+                    <label>ACCOUNT NO </label>
+                </div>
+                <div class="col-8 profileform">
+                    <input type="text"  class="profileV" name="cusAccountNo">
+                </div>
+            </div>
+            <div class="row r3-3">
+                <div class="col-4 profileLabel">
+                    <label>FIRST NAME </label>
+                </div>
+                <div class="col-8 profileform">
+                    <input type="text" class="profileV" name="fname">
+                </div>
+            </div> 
+            <div class="row r3-4">
+                <div class="col-4 profileLabel">
+                    <label>LAST NAME </label>
+                </div>
+                <div class="col-8 profileform">
+                    <input type="text" class="profileV" name="lname">
+                </div>
+            </div> 
+            <div class="row r3-5">
+                <div class="col-4 profileLabel">
+                    <label>NIC </label>
+                </div>
+                <div class="col-8 profileform">
+                    <input type="text" class="profileV" name="nic">
+                </div>
+            </div> 
+            <div class="row r3-6">
+                <div class="col-4 profileLabel">
+                    <label>EMAIL ADDRESS </label>
+                </div>
+                <div class="col-8 profileform">
+                    <input type="text" class="profileV" name="email">
+                </div>
+            </div>
+            <div class="row r3-7">
+                <div class="col-4 profileLabel">
+                    <label>CONTACT </label>
+                </div>
+                <div class="col-8 profileform">
+                    <input type="text" class="profileV" name="contact">
+                </div>
+            </div>
+            <div class="row r3-8">
+                <div class="col-4 profileLabel">
+                    <label>ADDRESS </label>
+                </div>
+                <div class="col-8 profileform">
+                    <input type="text" class="profileV" name="address">
+                </div>
+            </div>
+            <div class="row r3-9">
+                <div class="col-4 profileLabel">
+                    <label>PASSWORD</label>
+                </div>
+                <div class="col-8 profileform">
+                    <input type="text" class="profileV" name="password">
+                </div>
+            </div>
+            <div class="row r3-10">
+                <div class="col-12">
+                    <button class="navButton"> Edit Profile </button>
+                </div>
+            </div>            
+
+            </form>
+
+
+            </div>
+  
                 </div>
         </div>
     </div>
