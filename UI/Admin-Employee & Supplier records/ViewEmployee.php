@@ -30,7 +30,9 @@ $employee_list = $_employee->getEmployees();
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
         </div>
         <div class="col-14 navbar"> 
-            <button class="navButton"> Log Out </button> 
+        <form action="../../includes/logout-inc.php">
+                <button class="navButton"> Log Out </button>
+            </form> 
         </div>
     </div>
 
@@ -45,7 +47,7 @@ $employee_list = $_employee->getEmployees();
                                     <a href="../manage inventory/manageinventory.html"> Inventory </a>  
                                     <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a>
                                     <a href="../Admin-Employee & Supplier records/ViewEmployee.php" class="active"> Employee </a>
-                                    <a href="#"> Employee </a> 
+                                    
                                 </div>
                         </div>
                         <div class="col-10 smallWel">

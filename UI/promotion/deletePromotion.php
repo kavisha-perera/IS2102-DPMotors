@@ -11,17 +11,6 @@ if(isset($_SESSION['employeeid']))
 
 ?>
 
-<?php
-
-include "../../classes/DB.php";
-include "../../classes/promotions.php";
-
-$_promo = new Promotions(DB::connection());
-
-$promo_list = $_promo->getPromotions();
-
-?>
-
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -29,9 +18,9 @@ $promo_list = $_promo->getPromotions();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css">
-	<title>Read Promotions</title>
+    <script src="../../javascript/promotionPopup.js"></script>
+	<title>Delete Promotion</title>
 </head>
- 
 <body>
 
 <div class="row r1">
@@ -42,15 +31,8 @@ $promo_list = $_promo->getPromotions();
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
         </div>
         <div class="col-14 navbar"> 
-            <a href="../Auth-UI/index.php#home">Home</a> 
-            <a href="../Auth-UI/index.php#about">About</a>
-            <a href="../Auth-UI/index.php#services">Services</a>
-            <a href="../customer gerneral/productsCatalogue.html">Products</a>
             <form action="../../includes/logout-inc.php">
                 <button class="navButton"> Log Out </button>
-            </form>
-            <form action="../Auth-UI/index.php#contact">
-                <button class="navButton contact"> Contact Us </button>
             </form>
         </div>
     </div>
@@ -87,68 +69,30 @@ $promo_list = $_promo->getPromotions();
                                     <a href="../promotion/readPromotion.php" class="active"> Promotions </a> 
         </div>
 
-        <div class="col-16 content">
-            <!--main content here-->
 
-            <div style="overflow-x:auto;">
-                <div class="th-table-container1">
-                    
-
-                    <h3><U>PROMOTION RECORDS</U></h3><!--table name-->
-                <table class="th-user-table">
-                    <thead>
-                    <tr>
-                      <th>No</th> <!--table properties-->
-                      <th>Description</th>
-                      <th>Code</th> 
-                      <th>Valid Till</th>
-                      <th>State</th>
-                      <th>Update</th>
-                      <th>Delete</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    <?php
-                    
-                    foreach ($promo_list as $key => $value) {
-                        $promoNo =  trim($value['promoNo']);                    
-                        ?>
-                        <tr>
-                            <td> <?php echo $value['promoNo'] ?> </td> <!--table values-->
-                            <td><?php echo $value['descrip'] ?> </td>
-                            <td><?php echo $value['code'] ?> </td>
-                            <td><?php echo $value['validtill'] ?> </td>
-                            <td><?php echo $value['promoState'] ?> </td>
-                            <td><button class="navButton" style=" background-color: #6EE327;" onclick="document.location='updatePromotion.php'">UPDATE</button></td>
-                            <td><button class="navButton" style=" background-color: #EE1E2B;" onclick="document.location='deletePromotion.php'"></a>DELETE</button></td>
-
-                        </tr>
-                        
-                    <?php } ?>
-
-
-                        <div class="th-add-new-button">
-                            <button class="navButton" onclick="document.location='createPromotion.php'" ><b> + Add</b></a></button>
-                        </div> 
-
-                      </tbody>
-                  </table>
-            </div>
-    
-
-
-
- <!--   <footer>
-        <div class="row">
-            <div class="col-12">
-                <h4>CONTACT</h4><br>
-                <p>1088, 1 Battaramulla, Pannipitiya Rd, Battaramulla 10120 </p>
-                011 2XXXXXX | 07X XXXXXXX </p>
-                dpmotors@gmail.com</p>
-            </div>
+    <div class="row deleteWarning"> <!--do not use r2 cus it has been used for something else-->
+        <div class="col-8">
+            <h2>DELETE RECORD</h2>
+            <br>
+            <p>This action will remove all details of this record from the system database and therefore will not be able to be retrieved again.</p>
+            <br>
+            <p>Are you sure you want to <span style="color: #D72731">delete this promotion?</span></p>
+            <br>
+            <button class="navButton" onclick="document.location='readPromotion.html'"> NO </button>
+            <button class="navButton delete" onclick="OnClickOpenDeletePromotion()"> YES </button>
         </div>
-    </footer> -->
+    </div>
+
+<!-----------------------------------------------------Deleted  message as a Pop-Up----------------------------------------------------->
+<div class="th-delete-record-container" id="th-delete-promotion">
+    <div class="th-emp-close">
+        <span class="th-emp-close-button" onclick="OnClickCloseDeletePromotion()">X</span>
+   </div>
+
+    <h2 class="th-delete-message"> <p>Promotion No: X</br>Code: 123</br> Deleted Sucessfully!</p></h2>
+
+</div>
 
 </body>
 </html>
+<!--------------------------------------------------------------------------------------------------------------------------------------------->

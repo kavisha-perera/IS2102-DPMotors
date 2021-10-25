@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+if(isset($_SESSION['employeeid']))
+{
+    $employeeid =  $_SESSION['employeeid'];
+}else{
+
+    header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-adminDashboard");
+}
+
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -17,7 +30,9 @@
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
         </div>
         <div class="col-14 navbar"> 
-            <button class="navButton"> Log Out </button> 
+        <form action="../../includes/logout-inc.php">
+                <button class="navButton"> Log Out </button>
+            </form> 
         </div>
     </div>
 
@@ -27,11 +42,11 @@
 
     <div class="row r3">
         <div class="col-15 ">
-            <p> Welcome @email address</p><br><br><br>
+            <p> Welcome @<?php echo  $employeeid ?></p><br><br><br>
             <img src="../../images/admin/admin.png" style="width: 250px;" alt=""><br><br><br><br><br>
             <button class="adminbutton1" onclick="OnClickOpenAddEmloyee()" >+ Add New</button>
             <br><br><br><br><br>
-            <p style="text-align: center;"> <a href="manage.html" class="backbutton"><button class="navButton">Back </button></a></p>
+            <p style="text-align: center;"> <a href="manage.php" class="backbutton"><button class="navButton">Back </button></a></p>
             <br><br><br>
         </div>
 

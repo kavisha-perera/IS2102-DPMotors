@@ -29,7 +29,9 @@ $promo_list = $_promo->getPromotions();
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
         </div>
         <div class="col-14 navbar"> 
-            <button class="navButton"> Log Out </button> 
+        <form action="../../includes/logout-inc.php">
+                <button class="navButton"> Log Out </button>
+            </form>  
         </div>
     </div>
 
@@ -43,7 +45,7 @@ $promo_list = $_promo->getPromotions();
             <img src="../../images/admin/promo.png" style="width: 250px;" alt=""><br><br><br><br><br>
             <button class="adminbutton1" onclick="OnClickOpenAddEmloyee()" >+ Add New</button>
             <br><br><br><br><br>
-            <p style="text-align: center;"> <a href="../dashboards/adminDash.html" class="backbutton"><button class="navButton">Back </button></a></p>
+            <p style="text-align: center;"> <a href="../dashboards/adminDash.php" class="backbutton"><button class="navButton">Back </button></a></p>
             <br><br><br>
         </div>
 

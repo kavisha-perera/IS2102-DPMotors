@@ -30,7 +30,11 @@ $supplier_list = $_supplier->getSuppliers();
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
         </div>
         <div class="col-14 navbar"> 
-            <button class="navButton"> Log Out </button> 
+        
+        <form action="../../includes/logout-inc.php">
+                <button class="navButton"> Log Out </button>
+            </form> 
+          
         </div>
     </div>
 
@@ -39,11 +43,11 @@ $supplier_list = $_supplier->getSuppliers();
                         <div class="col-2 sideNav-dropdown" >
                                 <img src="../../images/dropdown.svg" class="dropButton">
                                 <div class="dropdown-content">
-                                    <a href="../dashboards/adminDash.html"> Dashboard </a>  
+                                    <a href="../dashboards/adminDash.php"> Dashboard </a>  
                                     <a href="../profiles/adminViewProfile.html"> Profile </a>
-                                    <a href="../manage accounts/manage.html"> Accounts </a>
+                                    <a href="../manage accounts/manage.php"> Accounts </a>
                                     <a href="../manage inventory/manageinventory.html"> Inventory </a>  
-                                    <a href="../managepromotions/managepromotions.html"> Promotions </a> 
+                                    <a href="../managepromotions/managepromotions.php"> Promotions </a> 
                                     <a href="../Admin-Employee & Supplier records/ViewSupplier.php" class="active"> Supplier </a>
                                     <a href="../Admin-Employee & Supplier records/ViewEmployee.php" > Employee </a> 
                                 </div>
@@ -57,11 +61,11 @@ $supplier_list = $_supplier->getSuppliers();
     <div class="row r3">
         <div class="col-15 sideNav">
             <p> Welcome @email address</p> <hr>
-            <a href="../dashboards/adminDash.html" > Dashboard </a> <hr> 
+            <a href="../dashboards/adminDash.php" > Dashboard </a> <hr> 
             <a href="../profiles/adminViewProfile.html"> Profile </a> <hr> 
-            <a href="../manage accounts/adminaccounts.html"> Accounts </a> <hr> 
+            <a href="../manage accounts/manage.php"> Accounts </a> <hr> 
             <a href="../manage inventory/manageinventory.html"> Inventory </a> <hr> 
-            <a href="../managepromotions/managepromotions.html"> Promotions </a> <hr> 
+            <a href="../managepromotions/managepromotions.php"> Promotions </a> <hr> 
             <a href="../Admin-Employee & Supplier records/ViewSupplier.php"class="active"> Supplier </a> <hr> 
             <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a> <hr>
         </div>
