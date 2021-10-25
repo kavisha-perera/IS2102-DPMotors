@@ -10,14 +10,14 @@ class Login extends Dbh {
 
         if (!$stmt->execute(array($email , $email , $email))){
             $stmt = null;
-            header("location: ../UI/Auth-UI/customerLogin?error=stmtfailed");
+            header("location: ../UI/Auth-UI/customerLogin.php?error=stmtfailed");
             exit();
         }
         
         if($stmt->rowCount() == 0)
         {
             $stmt = null;
-            header("location: ../UI/Auth-UI/customerLogin?error=usernotfound");
+            header("location: ../UI/Auth-UI/customerLogin.php?error=usernotfound");
             exit();
         }
 
@@ -28,7 +28,7 @@ class Login extends Dbh {
         if($checkPwd == false)
         {
             $stmt = null;
-            header("location: ../UI/Auth-UI/customerLogin?error=passwordincorrect");
+            header("location: ../UI/Auth-UI/customerLogin.php?error=passwordincorrect");
             exit();
         }
         elseif ($checkPwd == true) {

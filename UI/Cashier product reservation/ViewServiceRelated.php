@@ -86,13 +86,13 @@ if(isset($_SESSION['employeeid']))
                 <table class="th-user-table">
                     <thead>
                     <tr>
-                      <th>PR NO</th> <!--table properties-->
+                      <th>PRODUCT RSERVATION NO</th> <!--table properties-->
                       <th>FIRST NAME</th>
                       <th>LAST NAME</th> 
                       <th>CONTACT NUMBER</th>
                       <th>DELIVERY ADDRESS</th>
-                      <th>PID</th>
-                      <th>PNAME</th>
+                      <th>PRODUCT ID</th>
+                      <th>PRODUCT NAME</th>
                       <th>QUANTITY</th>
                       <th>DELIVERY DATETIME</th>
                       <th>DELIVERY METHOD</th>

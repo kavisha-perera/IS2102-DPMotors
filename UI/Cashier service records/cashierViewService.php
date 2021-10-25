@@ -53,15 +53,15 @@ $service_list = $_service->getService();
                         <div class="col-2 sideNav-dropdown" >
                                 <img src="../../images/dropdown.svg" class="dropButton">
                                 <div class="dropdown-content">
-                                <a href="../dashboards/cashierDash.php"> Dashboard </a><hr> 
-            <a href="../profiles/cashierViewProfile.php"> Profile </a><hr>
-            <a href="../cashierbills/createbill.php"> Create Bill </a><hr>
-            <a href="../promotion/cashierReadPromotion.php"> Promotions </a><hr>
-            <a href="../Cashier View Bill History/CashierViewAllBills.php"> Bill History </a><hr>  
-            <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a><hr> 
-            <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a><hr> 
-            <a href="../appointments/cashierReadsAppointments.php"> Appointments </a><hr>
-            <a href="../Cashier Customer register/cashier register customer.php"> Customer </a><hr>
+                                <a href="../dashboards/cashierDash.php"> Dashboard </a>
+            <a href="../profiles/cashierViewProfile.php"> Profile </a>
+            <a href="../cashierbills/createbill.php"> Create Bill </a>
+            <a href="../promotion/cashierReadPromotion.php"> Promotions </a>
+            <a href="../Cashier View Bill History/CashierViewAllBills.php"> Bill History </a>
+            <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a> 
+            <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>
+            <a href="../appointments/cashierReadsAppointments.php"> Appointments </a>
+            <a href="../Cashier Customer register/cashier register customer.php"> Customer </a>
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
@@ -73,15 +73,15 @@ $service_list = $_service->getService();
     <div class="row r3">
         <div class="col-15 sideNav">
           <p> Welcome @ <?php echo  $employeeid ?></p><hr>
-          <a href="../dashboards/cashierDash.php"> Dashboard </a> 
-          <a href="../profiles/cashierViewProfile.php"> Profile </a>
-          <a href="../cashierbills/createbill.php"> Create Bill </a>
-          <a href="../promotion/cashierReadPromotion.php"> Promotions </a>
-          <a href="../Cashier View Bill History/CashierViewAllBills.php"> Bill History </a> 
-          <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a> 
-          <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>
-          <a href="../appointments/cashierReadsAppointments.php"> Appointments </a>
-          <a href="../Cashier Customer register/cashier register customer.php"> Customer </a>
+          <a href="../dashboards/cashierDash.php"> Dashboard </a><hr> 
+          <a href="../profiles/cashierViewProfile.php"> Profile </a><hr>
+          <a href="../cashierbills/createbill.php"> Create Bill </a><hr>
+          <a href="../promotion/cashierReadPromotion.php"> Promotions </a><hr>
+          <a href="../Cashier View Bill History/CashierViewAllBills.php"> Bill History </a><hr> 
+          <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a><hr>
+          <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a><hr>
+          <a href="../appointments/cashierReadsAppointments.php"> Appointments </a><hr>
+          <a href="../Cashier Customer register/cashier register customer.php"> Customer </a><hr>
         </div>
 
         <div class="col-16 content">

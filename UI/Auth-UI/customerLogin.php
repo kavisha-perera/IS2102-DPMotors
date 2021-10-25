@@ -9,7 +9,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp     position: relative;
   bottom: 30px;-->
   <link rel="stylesheet" href="../../css/main.css">
-	<title>Customer Log in </title>
+	<title>Log in </title>
     <style>
         body {
         background: #021257;}

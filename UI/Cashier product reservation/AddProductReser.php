@@ -120,7 +120,7 @@ if(isset($_SESSION['employeeid']))
 
             <div class="row1">
               <div class="pr-form-label">
-                <label for="">PID</label>
+                <label for="">PRODUCT ID</label>
               </div>
               <div class="pr-form-input">
                 <input type="text" name="pid" class="pr-input-box" />
@@ -129,7 +129,7 @@ if(isset($_SESSION['employeeid']))
 
             <div class="row1">
               <div class="pr-form-label">
-                <label for="">PR.NAME</label>
+                <label for="">PRODUCT NAME</label>
               </div>
               <div class="pr-form-label">
                 <input type="text" name="prname" class="pr-input-box" />
