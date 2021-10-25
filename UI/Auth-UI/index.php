@@ -163,7 +163,7 @@ session_start();
         </div>
         <div class="col-12">
             <br>
-            <h1 style="font-size: 7vw;">011 2XXXXXX</h1>
+            <h1 style="font-size: 7vw;">077 307 2710</h1>
         </div>
         <div class="col-12">
             <hr>
@@ -215,7 +215,7 @@ session_start();
                 <div class="contact-deets">
                     <img src="../../images/landing page/call.png" style="width: 17px; height: 17px;">
                     &nbsp;&nbsp; <!--keeping horizontal space-->
-                    <p> 011 2XXXXXX | 07X XXXXXXX</p>
+                    <p> 011 2XXXXXX | 077 307 2710</p>
                     <br>
                 </div>
                 <br>
