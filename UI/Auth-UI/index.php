@@ -94,7 +94,7 @@ session_start();
 
                 <div class="row mySlides fade" id="displayNone">
                     <div class="col-6" align="middle">
-                        <img src="../../images/customer/book.png" class="servicesImages">
+                        <img src="../../images/landing page/services/maintainance.png" class="servicesImages">
                     </div>
                     <div class="col-6 servicesDescription">
                         <h2>Interior Detailing</h2>
@@ -117,7 +117,7 @@ session_start();
 
                 <div class="row mySlides fade" id="displayNone">
                     <div class="col-6" align="middle">
-                        <img src="../../images/customer/book.png" class="servicesImages">
+                        <img src="../../images/landing page/services/maintainance.png" class="servicesImages">
                     </div>
                     <div class="col-6 servicesDescription">
                         <h2>Cut & Polish</h2>
