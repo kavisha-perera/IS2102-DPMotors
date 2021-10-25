@@ -100,8 +100,8 @@ if(isset($_SESSION['employeeid']))
                             <td></td>
                             <td></td>
                             <td><button class="th-button-icon" onclick="OnClickOpenCancelMessage()"><img src="../../images/billhistory/cancel.png" class="th-svg-icons"></button></td>
-                            <td><button class="th-button-icon"> <a href="../CashierProductExchange/CashierProductRefund.html"><img src="../../images/billhistory/refund.png" class="th-svg-icons"></a></button></td>
-                            <td><button class="th-button-icon"><a href="../CashierProductExchange/CashierProductExchange.html"><img src="../../images/billhistory/exchange.png" class="th-svg-icons"></a></button></td>
+                            <td><button class="th-button-icon"> <a href="../CashierProductExchange/CashierProductRefund.php"><img src="../../images/billhistory/refund.png" class="th-svg-icons"></a></button></td>
+                            <td><button class="th-button-icon"><a href="../CashierProductExchange/CashierProductExchange.php"><img src="../../images/billhistory/exchange.png" class="th-svg-icons"></a></button></td>
                         </tr>
                         <tr>
                             <td></td> <!--table values-->
@@ -110,8 +110,8 @@ if(isset($_SESSION['employeeid']))
                             <td></td>
                             <td></td>
                             <td><button class="th-button-icon" onclick="OnClickOpenCancelMessage()"><img src="../../images/billhistory/cancel.png" class="th-svg-icons"></button></td>
-                            <td><button class="th-button-icon"> <a href="../CashierProductExchange/CashierProductRefund.html"><img src="../../images/billhistory/refund.png" class="th-svg-icons"></a></button></td>
-                            <td><button class="th-button-icon"><a href="../CashierProductExchange/CashierProductExchange.html"><img src="../../images/billhistory/exchange.png" class="th-svg-icons"></a></button></td>
+                            <td><button class="th-button-icon"> <a href="../CashierProductExchange/CashierProductRefund.php"><img src="../../images/billhistory/refund.png" class="th-svg-icons"></a></button></td>
+                            <td><button class="th-button-icon"><a href="../CashierProductExchange/CashierProductExchange.php"><img src="../../images/billhistory/exchange.png" class="th-svg-icons"></a></button></td>
                         </tr>
 
                       </tbody>

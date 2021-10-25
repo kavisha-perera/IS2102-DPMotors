@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if(isset($_SESSION['employeeid']))
+{
+    $employeeid =  $_SESSION['employeeid'];
+}else{
+
+    header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-cashierDashboard");
+}
+
+?>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -17,7 +29,9 @@
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
         </div>
         <div class="col-14 navbar"> 
-            <button class="navButton"> Log Out </button> 
+        <form action="../../includes/logout-inc.php">
+                <button class="navButton"> Log Out </button>
+            </form>
         </div>
     </div>
 
@@ -38,7 +52,7 @@
                 </div>
         </div>
         <div class="col-10 smallWel">
-            <p> Welcome @Cashier_01</p>
+        <p> Welcome @ <?php echo  $employeeid ?></p>
         </div>
     </div>
                    
@@ -46,7 +60,7 @@
 
     <div class="row r3">
         <div class="col-15 sideNav">
-            <p> Welcome @Cashier_01</p> <hr>
+            <p> Welcome @ <?php echo  $employeeid ?></p><hr>
             <a href="../dashboards/cashierDash.php"> Dashboard </a><hr> 
             <a href="../profiles/cashierViewProfile.php"> Profile </a><hr>
             <a href="../cashierbills/createbill.php"> Create Bill </a><hr>

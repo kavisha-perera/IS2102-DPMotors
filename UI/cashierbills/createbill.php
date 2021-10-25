@@ -74,10 +74,10 @@ if(isset($_SESSION['employeeid']))
             <!--main content here-->
                 <div class="row r3-1 roundbox">
                     <div class="col-6 d-icon">
-                        <a href="./createservicebill.html"><img src="../../images/cashier/servicebill.png" class="dashboardIcon"></a>
+                        <a href="./createservicebill.php"><img src="../../images/cashier/servicebill.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-6 d-icon">
-                        <a href="./createproductbill.html"><img src="../../images/cashier/productbill.png" class="dashboardIcon"></a>
+                        <a href="./createproductbill.php"><img src="../../images/cashier/productbill.png" class="dashboardIcon"></a>
                     </div>
                 </div>
         </div>

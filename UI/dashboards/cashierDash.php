@@ -77,7 +77,7 @@ if(isset($_SESSION['employeeid']))
             <!--main content here-->
                 <div class="row r3-1">
                     <div class="col-4 d-icon">
-                        <a href="../manage inventory/CashierReadInventory.html"><img src="../../images/cashier/inventory.png" class="dashboardIcon"></a>
+                        <a href="../manage inventory/CashierReadInventory.php"><img src="../../images/cashier/inventory.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
                         <a href="../promotion/cashierReadPromotion.php"><img src="../../images/cashier/promo.png" class="dashboardIcon"></a>
