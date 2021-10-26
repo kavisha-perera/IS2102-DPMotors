@@ -87,28 +87,50 @@ if(isset($_SESSION['employeeid']))
                       <th>BILL NO</th> <!--table properties-->
                       <th>BILL TYPE</th>
                       <th>FIRST NAME</th> 
-                      <th>DATE TIME</th>
+                      <th>DATE </th>
                       <th>DELIVERY ADDRESS</th>
                       <th colspan="3" style="text-align: center;">CONTROLS</th>
                     </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>SB-73109</td> <!--table values-->
+                            <td>Service</td>
+                            <td>Jhon</td>
+                            <td>2021-10-06</td>
+                            <td>B25,Unagalavehera,Battaramulla</td>
                             <td><button class="th-button-icon" onclick="OnClickOpenCancelMessage()"><img src="../../images/billhistory/cancel.png" class="th-svg-icons"></button></td>
                             <td><button class="th-button-icon"> <a href="../CashierProductExchange/CashierProductRefund.php"><img src="../../images/billhistory/refund.png" class="th-svg-icons"></a></button></td>
                             <td><button class="th-button-icon"><a href="../CashierProductExchange/CashierProductExchange.php"><img src="../../images/billhistory/exchange.png" class="th-svg-icons"></a></button></td>
                         </tr>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>SP-528901</td> <!--table values-->
+                            <td>Product</td>
+                            <td>Amal</td>
+                            <td>2021-10-06</td>
+                            <td>24,Gmapaha,Talawa</td>
+                            <td><button class="th-button-icon" onclick="OnClickOpenCancelMessage()"><img src="../../images/billhistory/cancel.png" class="th-svg-icons"></button></td>
+                            <td><button class="th-button-icon"> <a href="../CashierProductExchange/CashierProductRefund.php"><img src="../../images/billhistory/refund.png" class="th-svg-icons"></a></button></td>
+                            <td><button class="th-button-icon"><a href="../CashierProductExchange/CashierProductExchange.php"><img src="../../images/billhistory/exchange.png" class="th-svg-icons"></a></button></td>
+                        </tr>
+
+                        <tr>
+                            <td>SP-528902</td> <!--table values-->
+                            <td>Product</td>
+                            <td>Kamal</td>
+                            <td>2021-10-06</td>
+                            <td>Bangadeniya,Colombo</td>
+                            <td><button class="th-button-icon" onclick="OnClickOpenCancelMessage()"><img src="../../images/billhistory/cancel.png" class="th-svg-icons"></button></td>
+                            <td><button class="th-button-icon"> <a href="../CashierProductExchange/CashierProductRefund.php"><img src="../../images/billhistory/refund.png" class="th-svg-icons"></a></button></td>
+                            <td><button class="th-button-icon"><a href="../CashierProductExchange/CashierProductExchange.php"><img src="../../images/billhistory/exchange.png" class="th-svg-icons"></a></button></td>
+                        </tr>
+
+                        <tr>
+                            <td>SB-73110</td> <!--table values-->
+                            <td>Service</td>
+                            <td>Palitha</td>
+                            <td>2021-10-06</td>
+                            <td>24/2,Colombo.</td>
                             <td><button class="th-button-icon" onclick="OnClickOpenCancelMessage()"><img src="../../images/billhistory/cancel.png" class="th-svg-icons"></button></td>
                             <td><button class="th-button-icon"> <a href="../CashierProductExchange/CashierProductRefund.php"><img src="../../images/billhistory/refund.png" class="th-svg-icons"></a></button></td>
                             <td><button class="th-button-icon"><a href="../CashierProductExchange/CashierProductExchange.php"><img src="../../images/billhistory/exchange.png" class="th-svg-icons"></a></button></td>

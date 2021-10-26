@@ -83,10 +83,10 @@ if(isset($_SESSION['employeeid']))
       
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="firstname">SERVICE DATETIME</label>
+                      <label for="firstname">SERVICE DATE</label>
                     </div>
                     <div class="pr-form-input">
-                      <input type="date" name="servicerecords" class="pr-input-box" />
+                      <input type="date" name="servicerecords" class="pr-input-box" min="2021-01-01" max="2041-01-01"/>
                     </div>
                   </div>
       

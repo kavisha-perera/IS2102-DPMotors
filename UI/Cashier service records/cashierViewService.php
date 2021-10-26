@@ -98,7 +98,7 @@ $service_list = $_service->getService();
 
                     <tr>
                       <th>INDEX</th> <!--table properties-->
-                      <th>SERVICE DATETIME</th>
+                      <th>SERVICE DATE</th>
                       <th>VEHICLE SERVICE TYPE</th>
                       <th>CUSTOMER NIC</th>
                       <th>CUSTOMER EMAIL</th>

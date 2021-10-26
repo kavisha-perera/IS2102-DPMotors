@@ -89,31 +89,31 @@ if(isset($_SESSION['employeeid']))
                       <th>SERVICE TYPE</th>
                       <th>VEHICLE NO</th>
                       <th>SERVICE PRICE</th>
-                      <th>DATE TIME</th>
+                      <th>DATE</th>
                       <th colspan="3" style="text-align: center;">CONTROLS</th>
                     </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>SB-73109</td> <!--table values-->
+                            <td>Service</td>
+                            <td>Jhon</td>
+                            <td>Car Wash</td>
+                            <td>EJ-0920</td>
+                            <td>LKR 1000</td>
+                            <td>2021-10-06</td>
                             <td><button class="th-button-icon" onclick="OnClickOpenCancelMessage()"><img src="../../images/billhistory/cancel.png" class="th-svg-icons"></button></td>
                             <td><button class="th-button-icon"> <a href="../CashierProductExchange/CashierProductRefund.php"><img src="../../images/billhistory/refund.png" class="th-svg-icons"></a></button></td>
                             <td><button class="th-button-icon"><a href="../CashierProductExchange/CashierProductExchange.php"><img src="../../images/billhistory/exchange.png" class="th-svg-icons"></a></button></td>
                         </tr>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>SB-73110</td> <!--table values-->
+                            <td>Service</td>
+                            <td>Palitha</td>
+                            <td>Suspension Repairs</td>
+                            <td>AP-0420</td>
+                            <td>LKR 7000</td>
+                            <td>2021-10-06</td>
                             <td><button class="th-button-icon" onclick="OnClickOpenCancelMessage()"><img src="../../images/billhistory/cancel.png" class="th-svg-icons"></button></td>
                             <td><button class="th-button-icon"> <a href="../CashierProductExchange/CashierProductRefund.php"><img src="../../images/billhistory/refund.png" class="th-svg-icons"></a></button></td>
                             <td><button class="th-button-icon"><a href="../CashierProductExchange/CashierProductExchange.php"><img src="../../images/billhistory/exchange.png" class="th-svg-icons"></a></button></td>

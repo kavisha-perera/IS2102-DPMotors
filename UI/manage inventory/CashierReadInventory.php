@@ -92,20 +92,20 @@ if(isset($_SESSION['employeeid']))
                     </thead>
                     <tbody>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>IN001</td> <!--table values-->
+                            <td>40</td>
+                            <td>Car Tyres</td>
+                            <td>CEAT Sri Lanka</td>
+                            <td>Somasiri Hewa</td>
                             
                         </tr>
 
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>IN002</td> <!--table values-->
+                            <td>20</td>
+                            <td>Engine Oil cans</td>
+                            <td>Mobil</td>
+                            <td>K.Piydasa</td>
                            
                         </tr>
 

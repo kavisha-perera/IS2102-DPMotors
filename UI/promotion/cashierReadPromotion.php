@@ -78,7 +78,7 @@ if(isset($_SESSION['employeeid']))
                 <div class="th-table-container1">
                     
 
-                    <h3><U>PROMOTION RECORDS</U></h3><!--table name-->
+                    <h3 style="margin-bottom:20px;"><U>PROMOTION RECORDS</U></h3><!--table name-->
                 <table class="th-user-table">
                     <thead>
                     <tr>
@@ -91,32 +91,32 @@ if(isset($_SESSION['employeeid']))
                     </thead>
                     <tbody>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>1</td> <!--table values-->
+                            <td>Free Car Wash With Every Vehicle Service This November</td>
+                            <td>Nov-Deal</td>
+                            <td>2021-11-30</td>
+                            <td>Inactive</td>
                         </tr>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>2</td> <!--table values-->
+                            <td>Buy One Get One</td>
+                            <td>Oct-deal</td>
+                            <td>2021-10-30</td>
+                            <td>Active</td>
                         </tr>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>3</td> <!--table values-->
+                            <td>Get Labour Charges Off on All Services This april</td>
+                            <td>AvurudhuDeal</td>
+                            <td>2022-04-28</td>
+                            <td>Inactive</td>
                         </tr>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>4</td> <!--table values-->
+                            <td>Happy Hour on Friday 5.00p.m. to 6.00p.m.</td>
+                            <td>HappyFriday</td>
+                            <td>2021-10-20</td>
+                            <td>active</td>
                         </tr>
                         
                       </tbody>

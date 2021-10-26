@@ -95,53 +95,30 @@ if(isset($_SESSION['employeeid']))
                     </thead>
                     <tbody>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>1</td> <!--table values-->
+                            <td>Interim</td>
+                            <td>2021-10-15</td>
+                            <td>10.30 a.m.</td>
+                            <td>Jhon</td>
+                            <td>Doe</td>
+                            <td>CAX0050</td>
+                            <td>Ford Mustang</td>
+                            <td>0716245698</td>
+                            <td>jhonD@gmail.com</td>
                         </tr>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>2</td> <!--table values-->
+                            <td>Full service</td>
+                            <td>2021-10-18</td>
+                            <td>2.00 p.m.</td>
+                            <td>Jane</td>
+                            <td>Doe</td>
+                            <td>GL-0851</td>
+                            <td>Toyata Corolla</td>
+                            <td>0714569875</td>
+                            <td>janeD@gmail.com</td>
                         </tr>
-                        <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>                        
+                                           
 
                       </tbody>
                   </table>

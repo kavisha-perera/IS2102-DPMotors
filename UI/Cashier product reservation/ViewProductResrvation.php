@@ -92,7 +92,7 @@ $PReservation_list = $_PReservation->getPReservation();
                 <div class="th-table-container1">
                     <h2 class="th-th2">PRODUCT RESERVATIONS</h2><!--table name-->
                     <div class="th-add-new-button">
-                        <button class="navButton" onclick="document.location='AddProductReser.php'"><b> ADD NEW</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
+                        <button class="navButton" onclick="document.location='AddProductReser.php'"  style="margin-top:30px;"><b> ADD NEW</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
                     </div>
                     <div class="th-other-buttons">
                         <button class="navButton" onclick="document.location='ViewProductResrvation.php'"><b> Products related</b></button>
@@ -101,7 +101,7 @@ $PReservation_list = $_PReservation->getPReservation();
                 <table class="th-user-table">
                     <thead>
                     <tr>
-                      <th>PRODUCT RESERVATION NO</th> <!--table properties-->
+                      <th>P.RESERVATION NO</th> <!--table properties-->
                       <th>FIRST NAME</th>
                       <th>LAST NAME</th> 
                       <th>CONTACT NUMBER</th>
@@ -109,7 +109,7 @@ $PReservation_list = $_PReservation->getPReservation();
                       <th>PRODUCT ID</th>
                       <th>PRODUCT NAME</th>
                       <th>QUANTITY</th>
-                      <th>DELIVERY DATETIME</th>
+                      <th>DELIVERY DATE</th>
                       <th>DELIVERY METHOD</th>
                       <th colspan="2" style="text-align: center;">CONTROLS</th>
                     </tr>

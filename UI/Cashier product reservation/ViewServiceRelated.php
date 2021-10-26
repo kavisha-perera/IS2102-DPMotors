@@ -77,7 +77,7 @@ if(isset($_SESSION['employeeid']))
                 <div class="th-table-container1">
                     <h2 class="th-th2">PRODUCT RESERVATIONS-SERVICE</h2><!--table name-->
                     <div class="th-add-new-button">
-                        <button class="navButton" onclick="document.location='AddProductReser.php'"><b> ADD NEW</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
+                        <button class="navButton" onclick="document.location='AddProductReser.php'" style="margin-top:30px;"><b> ADD NEW</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
                     </div>
                     <div class="th-other-buttons">
                         <button class="navButton" onclick="document.location='ViewProductResrvation.php'"><b> Products related</b></button>
@@ -86,7 +86,7 @@ if(isset($_SESSION['employeeid']))
                 <table class="th-user-table">
                     <thead>
                     <tr>
-                      <th>PRODUCT RSERVATION NO</th> <!--table properties-->
+                      <th>P.RSERVATION NO</th> <!--table properties-->
                       <th>FIRST NAME</th>
                       <th>LAST NAME</th> 
                       <th>CONTACT NUMBER</th>
@@ -94,37 +94,52 @@ if(isset($_SESSION['employeeid']))
                       <th>PRODUCT ID</th>
                       <th>PRODUCT NAME</th>
                       <th>QUANTITY</th>
-                      <th>DELIVERY DATETIME</th>
+                      <th>DELIVERY DATE</th>
                       <th>DELIVERY METHOD</th>
                       <th colspan="2" style="text-align: center;">CONTROLS</th>
                     </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>1</td> <!--table values-->
+                            <td>Sunil</td>
+                            <td>Gamage</td>
+                            <td>0712345672</td>
+                            <td>16,Dummaladeniya,Wennappuwa.</td>
+                            <td>P-01</td>
+                            <td>Air Filters</td>
+                            <td>1</td>
+                            <td>2021-10-04</td>
+                            <td>Pick up</td>
                             <td><button class="th-button-icon" onclick="document.location='UpdateProductReserv.php'"><img src="../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
                             <td><button class="th-button-icon"  onclick="document.location='DeleteProductReserve.php'" ><img src="../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
                         </tr>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>2</td> <!--table values-->
+                            <td>Saman</td>
+                            <td>Wijesiri</td>
+                            <td>0761412452</td>
+                            <td>Haggala,Battaramulla South.</td>
+                            <td>P-06</td>
+                            <td>MK Japanese Brake pads</td>
+                            <td>4</td>
+                            <td>2021-10-06</td>
+                            <td>Pick up</td>
+                            <td><button class="th-button-icon" onclick="document.location='UpdateProductReserv.php'"><img src="../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
+                            <td><button class="th-button-icon" onclick="document.location='DeleteProductReserve.php'"><img src="../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td> <!--table values-->
+                            <td>Ameera</td>
+                            <td>Silva</td>
+                            <td>0715678901</td>
+                            <td>b31,Gonahaddenawa,Pita Kotte.</td>
+                            <td>P-03</td>
+                            <td>KYB Shock Absorbers</td>
+                            <td>2</td>
+                            <td>2021-10-06</td>
+                            <td>Pick up</td>
                             <td><button class="th-button-icon" onclick="document.location='UpdateProductReserv.php'"><img src="../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
                             <td><button class="th-button-icon" onclick="document.location='DeleteProductReserve.php'"><img src="../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
                         </tr>

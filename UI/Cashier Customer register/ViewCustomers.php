@@ -84,7 +84,7 @@ if(isset($_SESSION['employeeid']))
                 <table class="th-user-table">
                     <thead>
                     <tr>
-                      <th>CUS NO.</th> <!--table properties-->
+                      <th>CUS NO</th> <!--table properties-->
                       <th>FIRSTNAME</th>
                       <th>LAST NAME</th> 
                       <th>NIC</th>
@@ -95,22 +95,22 @@ if(isset($_SESSION['employeeid']))
                     </thead>
                     <tbody>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>1</td> <!--table values-->
+                            <td>Shenal</td>
+                            <td>Chandrasena</td>
+                            <td>986756789V</td>
+                            <td>0712343456</td>
+                            <td>Shenal98@gmail.com</td>
+                            <td>Kottawa,Maakubura</td>
                         </tr>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>2</td> <!--table values-->
+                            <td>Kaveesha</td>
+                            <td>Jayakodi</td>
+                            <td>967889012V</td>
+                            <td>0767834667</td>
+                            <td>Kaveesha767@gmail.com</td>
+                            <td>20,Battaramulla,Wearahera</td>
                         </tr>
 
                       </tbody>

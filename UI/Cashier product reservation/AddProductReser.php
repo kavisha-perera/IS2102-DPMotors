@@ -141,19 +141,21 @@ if(isset($_SESSION['employeeid']))
                 <label for="">QUANTITY</label>
               </div>
               <div class="pr-form-input">
-                <input type="text" name="quantity" class="pr-input-box" />
+                <input type="text" name="quantity" class="pr-input-box" min="1" max="100" steps="1" value="1"/>
               </div>
             </div>
 
             <div class="row1">
               <div class="pr-form-label">
-                <label for="">DELIVERY DATETIME</label>
+                <label for="">DELIVERY DATE</label>
               </div>
               <div class="pr-form-input">
                 <input
                   type="date"
                   name="deliverydatetime"
                   class="pr-input-box"
+                  min="2021-10-25"
+                  max="2041-01-01"
                 />
               </div>
             </div>

@@ -88,29 +88,29 @@ if(isset($_SESSION['employeeid']))
                       <th>PID</th> 
                       <th>PR.NAME</th>
                       <th>PRICE</th>
-                      <th>DATE TIME</th>
+                      <th>DATE</th>
                       <th colspan="3" style="text-align: center;">CONTROLS</th>
                     </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>SP-528901</td> <!--table values-->
+                            <td>Amal</td>
+                            <td>P-02</td>
+                            <td>Shock Absobers</td>
+                            <td>LKR 5500</td>
+                            <td>2021-10-06</td>
                             <td><button class="th-button-icon" onclick="OnClickOpenCancelMessage()"><img src="../../images/billhistory/cancel.png" class="th-svg-icons"></button></td>
                             <td><button class="th-button-icon"> <a href="../CashierProductExchange/CashierProductRefund.php"><img src="../../images/billhistory/refund.png" class="th-svg-icons"></a></button></td>
                             <td><button class="th-button-icon"><a href="../CashierProductExchange/CashierProductExchange.php"><img src="../../images/billhistory/exchange.png" class="th-svg-icons"></a></button></td>
                         </tr>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>SP-528902</td> <!--table values-->
+                            <td>Kamal</td>
+                            <td>P-07</td>
+                            <td>Liqui Moly Zinc Spray</td>
+                            <td>LKR 1900</td>
+                            <td>2021-10-06</td>
                             <td><button class="th-button-icon" onclick="OnClickOpenCancelMessage()"><img src="../../images/billhistory/cancel.png" class="th-svg-icons"></button></td>
                             <td><button class="th-button-icon"> <a href="../CashierProductExchange/CashierProductRefund.php"><img src="../../images/billhistory/refund.png" class="th-svg-icons"></a></button></td>
                             <td><button class="th-button-icon"><a href="../CashierProductExchange/CashierProductExchange.php"><img src="../../images/billhistory/exchange.png" class="th-svg-icons"></a></button></td>
