@@ -18,9 +18,6 @@ $deliverymethod = isset($_POST["deliverymethod"]) ? $_POST["deliverymethod"] : n
 
 
 //see if variables are empty or not
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
 
 if (
     !empty($fname) & 
