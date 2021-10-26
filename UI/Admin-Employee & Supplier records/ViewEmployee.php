@@ -206,7 +206,14 @@ if(isset($_SESSION['employeeid']))
                             <label for="designation" class="th-user-label">Designation</label>
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="text" name="designation" class="th-emsu-input">
+                        <select name="designation" class="th-emsu-input">
+                                <option>Service Advisor</option>
+                                <option>Supervisor</option>
+                                <option>Head Mechanic</option>
+                                <option>Junior Mechanic</option>
+                                <option>Car Washer</option>
+                                <option>Interior Detailer</option>                                 
+                            </select> 
                         </div>
                     </div>
             
@@ -291,7 +298,14 @@ if(isset($_SESSION['employeeid']))
                             <label for="designation"class="th-user-label">Designation</label>
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="text" name="designation" class="th-emsu-input">
+                            <select name="designation" class="th-emsu-input">
+                                <option>Service Advisor</option>
+                                <option>Supervisor</option>
+                                <option>Head Mechanic</option>
+                                <option>Junior Mechanic</option>
+                                <option>Car Washer</option>
+                                <option>Interior Detailer</option>                                 
+                            </select> 
                         </div>
                     </div>
 

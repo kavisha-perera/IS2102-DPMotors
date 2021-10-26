@@ -173,7 +173,7 @@ if(isset($_SESSION['id']))
                             <span class="popuptext" id="myPopup">
                                 <p>CALL TO CANCEL RESERVATION</p>
                                 <br>
-                                <h1 style="color: #f37a82;">011 2XXXXXX</h1>
+                                <h1 style="color: #f37a82;">077 307 2710</h1>
                                 <br>
                             </span>
                         </div>
