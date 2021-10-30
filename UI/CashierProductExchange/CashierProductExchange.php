@@ -8,6 +8,7 @@ if(isset($_SESSION['employeeid']))
 
     header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-cashierDashboard");
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,8 +17,7 @@ if(isset($_SESSION['employeeid']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css" />
-    <script src="../../javascript/preserve.js"></script>
-    <title>Product Exchange</title>
+    <title>Add new product Reservation</title>
   </head>
   <body>
     <div class="row r1">
@@ -41,113 +41,112 @@ if(isset($_SESSION['employeeid']))
       <div class="col-2 sideNav-dropdown">
         <img src="../../images/dropdown.svg" class="dropButton" />
         <div class="dropdown-content">
-          <a href="../dashboards/cashierDash.php"> Dashboard </a>
-            <a href="../profiles/cashierViewProfile.php"> Profile </a>
-            <a href="../cashierbills/createbill.php"> Create Bill </a>
-            <a href="../promotion/cashierReadPromotion.php"> Promotions </a>
-            <a href="../Cashier View Bill History/CashierViewAllBills.php"> Bill History </a>
-            <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a>
-            <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>
-            <a href="../appointments/cashierReadsAppointments.php"> Appointments </a>
-            <a href="../Cashier Customer register/cashier register customer.php"> Customer </a>
+              <a href="../dashboards/cashierDash.php"> Dashboard </a> 
+              <a href="../profiles/cashierViewProfile.php"> Profile </a>
+              <a href="../cashierbills/createbill.php"> Create Bill </a>
+              <a href="../promotion/cashierReadPromotion.php"> Promotions </a>
+              <a href="../Cashier View Bill History/CashierViewAllBills.php"> Bill History </a> 
+              <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a> 
+              <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>
+              <a href="../appointments/cashierReadsAppointments.php"> Appointments </a>
+              <a href="../Cashier Customer register/cashier register customer.php"> Customer </a>
+        </div>
       </div>
       <div class="col-10 smallWel">
-      <p> Welcome @ <?php echo  $employeeid ?></p>
+      <p> Welcome @ <?php echo  $employeeid ?>
       </div>
     </div>
     <!--End of Dropdown for screens with width less than 800px-->
 
     <div class="row r3">
       <div class="col-15 sideNav">
-        <p> Welcome @ <?php echo  $employeeid ?></p><hr />
-        <a href="../dashboards/cashierDash.php"> Dashboard </a><hr> 
-        <a href="../profiles/cashierViewProfile.php"> Profile </a><hr>
-        <a href="../cashierbills/createbill.php"> Create Bill </a><hr>
-        <a href="../promotion/cashierReadPromotion.php"> Promotions </a><hr>
-        <a href="../Cashier View Bill History/CashierViewAllBills.php"> Bill History </a><hr>  
-        <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a><hr> 
-        <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a><hr> 
-        <a href="../appointments/cashierReadsAppointments.php"> Appointments </a><hr>
-        <a href="../Cashier Customer register/cashier register customer.php"> Customer </a><hr>
+      <p> Welcome @ <?php echo  $employeeid ?><hr> 
+      <a href="../dashboards/cashierDash.php"> Dashboard </a><hr> 
+            <a href="../profiles/cashierViewProfile.php"> Profile </a><hr>
+            <a href="../cashierbills/createbill.php"> Create Bill </a><hr>
+            <a href="../promotion/cashierReadPromotion.php"> Promotions </a><hr>
+            <a href="../Cashier View Bill History/CashierViewAllBills.php"> Bill History </a><hr>  
+            <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a><hr> 
+            <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a><hr> 
+            <a href="../appointments/cashierReadsAppointments.php"> Appointments </a><hr>
+            <a href="../Cashier Customer register/cashier register customer.php"> Customer </a><hr>
       </div>
 
       <div class="col-16 content">
         <!--main content here-->
         <div class="pr-form-container">
-            <form action="#" method="post">
-              <div class="row1">
-                <div class="pr-form-title">
-                  <h2 style="margin-bottom: 20px;">EXCHANGE FORM</h2>
-                </div>
+          <form action="AddProductReserve-inc.php" method="post">
+            <div class="row1">
+              <div class="pr-form-title">
+                <h2 style="margin-bottom:20px;">EXCHANGE FORM</h2>
               </div>
-  
-              <div class="row1">
-                <div class="pr-form-label">
-                  <label for="billtype">BILL TYPE</label>
-                </div>
-                <div class="pr-form-input">
-                  <select id="billtype" name="bill">
-                    <option value="active">Service</option>
-                    <option value="inactive">Product</option>
-                </select>
-                </div>
-              </div>
-  
-              <div class="row1">
-                <div class="pr-form-label">
-                  <label for="billno">BILL NO</label>
-                </div>
-                <div class="pr-form-input">
-                  <input type="text" name="billno" class="pr-input-box" />
-                </div>
-              </div>
-  
-              <div class="row1">
-                <div class="pr-form-label">
-                  <label for="firstname">FIRST NAME</label>
-                </div>
-                <div class="pr-form-input">
-                  <input type="text" name="fname" class="pr-input-box" />
-                </div>
-              </div>
-  
-              <div class="row1">
-                <div class="pr-form-label">
-                  <label for="lastname">LAST NAME</label>
-                </div>
-                <div class="pr-form-input">
-                  <input type="text" name="lname" class="pr-input-box" />
-                </div>
-              </div>
-  
-              <div class="row1">
-                <div class="pr-form-label">
-                  <label for="contact">CONTACT NUMBER</label>
-                </div>
-                <div class="pr-form-input">
-                  <input type="tel" name="contact" class="pr-input-box" />
-                </div>
-              </div>
-  
-              <div class="row1">
-                <div class="pr-form-label">
-                  <label for="address">ADDRESS</label>
-                </div>
-                <div class="pr-form-label">
-                  <input type="text" name="fname" class="pr-input-box" />
-                </div>
-              </div>
-  
-  
-              <div class="pr-form-add" style="margin-top: 10px">
-                <button class="pr-form-add-button" name="submit" >EXCHANGE</button>
+            </div>
 
-                <button class="pr-form-add-button" name="submit" type="reset">CLEAR</button>
+            
+            <div class="row1">
+              <div class="pr-form-label">
+                <label for="firstname">BILL NO</label>
               </div>
-            </form>
-          </div>
-          
+              <div class="pr-form-input">
+                <input type="text" name="fname" class="pr-input-box" />
+              </div>
+            </div>
 
+            <div class="row1">
+              <div class="pr-form-label">
+                <label for="lastname">BILL TYPE</label>
+              </div>
+              <div class="pr-form-input">
+              <select name="billtype" class="th-emsu-input">
+                  <option>Product</option>
+                  <option>Service</option>                                
+              </select> 
+              </div>
+            </div>
+
+            <div class="row1">
+              <div class="pr-form-label">
+                <label for="firstname">FIRST NAME</label>
+              </div>
+              <div class="pr-form-input">
+                <input type="text" name="fname" class="pr-input-box" />
+              </div>
+            </div>
+
+            <div class="row1">
+              <div class="pr-form-label">
+                <label for="lastname">LAST NAME</label>
+              </div>
+              <div class="pr-form-input">
+                <input type="text" name="lname" class="pr-input-box" />
+              </div>
+            </div>
+
+            <div class="row1">
+              <div class="pr-form-label">
+                <label for="">CONTACT NUMBER</label>
+              </div>
+              <div class="pr-form-input">
+                <input type="tel" name="contact" class="pr-input-box" />
+              </div>
+            </div>
+
+            <div class="row1">
+              <div class="pr-form-label">
+                <label for=""> ADDRESS</label>
+              </div>
+              <div class="pr-form-input">
+                <input type="text" name="address" class="pr-input-box" />
+              </div>
+            </div>
+
+
+            <div style="float:right;margin:30px;"> 
+                    <button class="navButton"> EXCHANGE</button> 
+                    <button class="navButton contact" type="reset"> CLEAR </button>
+                </div>
+          </form>
+        </div>
       </div>
     </div>
 

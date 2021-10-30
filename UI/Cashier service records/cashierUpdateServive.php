@@ -95,7 +95,11 @@ if(isset($_SESSION['employeeid']))
                       <label for="lastname">SERVICE TYPE</label>
                     </div>
                     <div class="pr-form-input">
-                      <input type="text" name="servicetype" class="pr-input-box" />
+                    <select name="serviceType" class="th-emsu-input">
+                       <option>Full Service</option>
+                       <option>Interior & Exterior Designing</option> 
+                       <option>Car Wash</option>                               
+                    </select> 
                     </div>
                   </div>
       

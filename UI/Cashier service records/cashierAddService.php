@@ -88,7 +88,7 @@ if(isset($_SESSION['employeeid']))
                       <label for="firstname">SERVICE DATE</label>
                     </div>
                     <div class="pr-form-input">
-                      <input type="date" name="serviceDate" class="pr-input-box" min="2021-01-01" min="2041-01-01"/>
+                      <input type="date" name="serviceDate" class="pr-input-box" min="2021-10-25" min="2041-01-01"/>
                     </div>
                   </div>
       
@@ -97,7 +97,11 @@ if(isset($_SESSION['employeeid']))
                       <label for="lastname">SERVICE TYPE</label>
                     </div>
                     <div class="pr-form-input">
-                      <input type="text" name="serviceType" class="pr-input-box" />
+                    <select name="serviceType" class="th-emsu-input">
+                       <option>Full Service</option>
+                       <option>Interior & Exterior Designing</option> 
+                       <option>Car Wash</option>                               
+                    </select> 
                     </div>
                   </div>
 

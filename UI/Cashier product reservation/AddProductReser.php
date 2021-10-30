@@ -165,7 +165,10 @@ if(isset($_SESSION['employeeid']))
                 <label for="">DELIVERY METHOD</label>
               </div>
               <div class="pr-form-input">
-                <input type="text" name="deliverymethod" class="pr-input-box" />
+              <select name="deliverymethod" class="th-emsu-input">
+                  <option>Courier</option>
+                  <option>Pick Up</option>                                
+              </select> 
               </div>
             </div>
 
