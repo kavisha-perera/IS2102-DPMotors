@@ -69,8 +69,8 @@ if(isset($_SESSION['employeeid']))
                                     <a href="../dashboards/managerDash.php" > Dashboard </a>  
                                     <a href="../profiles/managerViewProfile.php" > Profile </a>
                                     <a href="../appointments/readAppointments.php"  > Appointments </a> 
-                                    <a href="../Cashier service records/cashierAddService.php"> Vehicle Service Records </a>
-                                    <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>  
+                                    <a href="../Cashier service records/managerViewServiceRecords.php"> Vehicle Service Records </a>
+                                    <a href="../Cashier product reservation/managerViewProductResrvation.php"> Product Reservations </a> 
                                     <a href="../Cashier View Bill History/ManagerViewAllBills.php"> Payment History </a> 
                                     <a href="../promotion/readPromotion.php"class="active"> Promotions </a> 
                                 </div>
@@ -87,8 +87,8 @@ if(isset($_SESSION['employeeid']))
             <a href="../dashboards/managerDash.php" > Dashboard </a>  
                                     <a href="../profiles/managerViewProfile.php"> Profile </a>
                                     <a href="../appointments/readAppointments.php" > Appointments </a> 
-                                    <a href="../Cashier service records/cashierAddService.php"> Vehicle Service Records </a>
-                                    <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>  
+                                    <a href="../Cashier service records/managerViewServiceRecords.php"> Vehicle Service Records </a>
+                                    <a href="../Cashier product reservation/managerViewProductResrvation.php"> Product Reservations </a> 
                                     <a href="../Cashier View Bill History/ManagerViewAllBills.php"> Payment History </a> 
                                     <a href="../promotion/readPromotion.php" class="active"> Promotions </a> 
         </div>
@@ -104,13 +104,13 @@ if(isset($_SESSION['employeeid']))
                     <h2 style="color:#021257;" align="center">CREATE PROMOTION</h2>
                     <input type="text" placeholder="Description" name="descrip" required>
                     <input type="text" placeholder="Code" name="code" required>
-                    <input type="text" placeholder="Valid Till" name="validtill" id="date" required>
+                    <input type="date" placeholder="Valid Till" name="validtill" id="date" min="2021-10-25" required>
                     <input type="text" placeholder="State" name="promoState" required>
                     
-                   <!-- <datalist id="state">
+                   <datalist id="State">
                         <option value="Active">
                         <option value="Inactive"    list="state" >
-                    </datalist>-->
+                    </datalist>
     
                     <div class="raw">
                     <button type="submit" name="login" class="loginButton" >CREATE PROMOTION</button>

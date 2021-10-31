@@ -52,8 +52,8 @@ if(isset($_SESSION['employeeid']))
                                     <a href="../dashboards/managerDash.php" class="active"> Dashboard </a>  
                                     <a href="../profiles/managerViewProfile.php"> Profile </a>
                                     <a href="../appointments/readAppointments.php"> Appointments </a> 
-                                    <a href="../Cashier service records/cashierAddService.php"> Vehicle Service Records </a>
-                                    <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>  
+                                    <a href="../Cashier service records/managerViewServiceRecords.php"> Vehicle Service Records </a>
+                                    <a href="../Cashier product reservation/managerViewProductResrvation.php"> Product Reservations </a>  
                                     <a href="../Cashier View Bill History/ManagerViewAllBills.php"> Payment History </a> 
                                     <a href="../promotion/readPromotion.php"> Promotions </a> 
                                 </div>
@@ -70,8 +70,8 @@ if(isset($_SESSION['employeeid']))
             <a href="../dashboards/managerDash.php" class="active"> Dashboard </a>  
                                     <a href="../profiles/managerViewProfile.php"> Profile </a>
                                     <a href="../appointments/readAppointments.php"> Appointments </a> 
-                                    <a href="../Cashier service records/cashierAddService.php"> Vehicle Service Records </a>
-                                    <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>  
+                                    <a href="../Cashier service records/managerViewServiceRecords.php"> Vehicle Service Records </a>
+                                    <a href="../Cashier product reservation/managerViewProductResrvation.php"> Product Reservations </a>  
                                     <a href="../Cashier View Bill History/ManagerViewAllBills.php"> Payment History </a> 
                                     <a href="../promotion/readPromotion.php"> Promotions </a> 
         </div>
@@ -83,13 +83,13 @@ if(isset($_SESSION['employeeid']))
                         <a href="../dashboards/managerDash.php"><img src="../../images/manager/reports.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../manage inventory/manageinventory.html"><img src="../../images/manager/inventory.png" class="dashboardIcon"></a>
+                        <a href="../managerInventory&Supplier/managerManageInventory.php"><img src="../../images/manager/inventory.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../Admin-Employee & Supplier records/ViewSupplier.php"><img src="../../images/manager/supplier.png" class="dashboardIcon"></a>
+                        <a href="../managerInventory&Supplier/managerViewSupplier.php"><img src="../../images/manager/supplier.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../Cashier product reservation/ViewProductResrvation.php"><img src="../../images/manager/product.png" class="dashboardIcon"></a>
+                        <a href="../Cashier product reservation/managerViewProductResrvation.php"><img src="../../images/manager/product.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
                         <a href="../dashboards/managerDash.php"><img src="../../images/manager/salesreports.png" class="dashboardIcon"></a>
@@ -101,7 +101,7 @@ if(isset($_SESSION['employeeid']))
                         <a href="../appointments/readAppointments.php"><img src="../../images/manager/appointment.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../Cashier service records/cashierAddService.php"><img src="../../images/manager/servicerecord.png" class="dashboardIcon"></a>
+                        <a href="../Cashier service records/managerViewServiceRecords.php"><img src="../../images/manager/servicerecord.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
                         <a href="../dashboards/managerDash.php"><img src="../../images/manager/other.png" class="dashboardIcon"></a>

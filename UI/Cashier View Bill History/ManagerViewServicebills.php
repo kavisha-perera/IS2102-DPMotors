@@ -45,8 +45,8 @@ if(isset($_SESSION['employeeid']))
                                     <a href="../dashboards/managerDash.php"> Dashboard </a>  
                                     <a href="../profiles/managerViewProfile.php"> Profile </a>
                                     <a href="../appointments/readAppointments.php"> Appointments </a> 
-                                    <a href="../Cashier service records/cashierAddService.php"> Vehicle Service Records </a>
-                                    <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>  
+                                    <a href="../Cashier service records/managerViewServiceRecords.php"> Vehicle Service Records </a>
+                                    <a href="../Cashier product reservation/managerViewProductResrvation.php"> Product Reservations </a> 
                                     <a href="../Cashier View Bill History/ManagerViewAllBills.php"  class="active"> Payment History </a> 
                                     <a href="../promotion/readPromotion.php"> Promotions </a> 
                                 </div>
@@ -63,8 +63,8 @@ if(isset($_SESSION['employeeid']))
             <a href="../dashboards/managerDash.php" > Dashboard </a>  
                                     <a href="../profiles/managerViewProfile.php"> Profile </a>
                                     <a href="../appointments/readAppointments.php"> Appointments </a> 
-                                    <a href="../Cashier service records/cashierAddService.php"> Vehicle Service Records </a>
-                                    <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>  
+                                    <a href="../Cashier service records/managerViewServiceRecords.php"> Vehicle Service Records </a>
+                                    <a href="../Cashier product reservation/managerViewProductResrvation.php"> Product Reservations </a> 
                                     <a href="../Cashier View Bill History/ManagerViewAllBills.php" class="active"> Payment History </a> 
                                     <a href="../promotion/readPromotion.php"> Promotions </a> 
         </div>

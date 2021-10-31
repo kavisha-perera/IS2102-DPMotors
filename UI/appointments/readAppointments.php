@@ -50,8 +50,8 @@ if(isset($_SESSION['employeeid']))
                                     <a href="../dashboards/managerDash.php" > Dashboard </a>  
                                     <a href="../profiles/managerViewProfile.php" > Profile </a>
                                     <a href="../appointments/readAppointments.php" class="active" > Appointments </a> 
-                                    <a href="../Cashier service records/cashierAddService.php"> Vehicle Service Records </a>
-                                    <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>  
+                                    <a href="../Cashier service records/managerViewServiceRecords.php"> Vehicle Service Records </a>
+                                    <a href="../Cashier product reservation/managerViewProductResrvation.php"> Product Reservations </a> 
                                     <a href="../Cashier View Bill History/ManagerViewAllBills.php"> Payment History </a> 
                                     <a href="../promotion/readPromotion.php"> Promotions </a> 
                                 </div>
@@ -68,8 +68,8 @@ if(isset($_SESSION['employeeid']))
             <a href="../dashboards/managerDash.php" > Dashboard </a>  
                                     <a href="../profiles/managerViewProfile.php"> Profile </a>
                                     <a href="../appointments/readAppointments.php" class="active"> Appointments </a> 
-                                    <a href="../Cashier service records/cashierAddService.php"> Vehicle Service Records </a>
-                                    <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>  
+                                    <a href="../Cashier service records/managerViewServiceRecords.php"> Vehicle Service Records </a>
+                                    <a href="../Cashier product reservation/managerViewProductResrvation.php"> Product Reservations </a> 
                                     <a href="../Cashier View Bill History/ManagerViewAllBills.php"> Payment History </a> 
                                     <a href="../promotion/readPromotion.php"> Promotions </a> 
         </div>
@@ -101,30 +101,30 @@ if(isset($_SESSION['employeeid']))
                     </thead>
                     <tbody>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>1</td> <!--table values-->
+                            <td>Interim</td>
+                            <td>2021-10-15</td>
+                            <td>10.30 a.m.</td>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>CAX 0050</td>
+                            <td>Ford Mustang</td>
+                            <td>0716245698</td>
+                            <td>johnD@gmail.com</td>
                             <td><button class="navButton" style=" background-color: #6EE327;" onclick="document.location='updateAppointments.php'">UPDATE</button></td>
                             <td><button class="navButton" style=" background-color: #EE1E2B;" onclick="document.location='deleteAppointments.php'">DELETE</button></td>
                         </tr>
                         <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>2</td> <!--table values-->
+                            <td>Full Service</td>
+                            <td>2021-10-18</td>
+                            <td>2.00 p.m.</td>
+                            <td>Jane</td>
+                            <td>Doe</td>
+                            <td>GL-0851</td>
+                            <td>Toyota Corolla</td>
+                            <td>0714569875</td>
+                            <td>janeD@gmail.com</td>
                             <td><button class="navButton" style=" background-color: #6EE327;" onclick="document.location='updateAppointments.php'">UPDATE</button></td>
                             <td><button class="navButton" style=" background-color: #EE1E2B;" onclick="document.location='deleteAppointments.php'">DELETE</button></td>
                         </tr>
