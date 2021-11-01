@@ -1,0 +1,25 @@
+.th-other-buttons{
+    float: left;
+    padding: 15px;
+    border: 0px solid;
+    margin-bottom: 5px;
+    text-align: center;
+    display: flex;
+	justify-content: start; 
+    background-color: #ffffff;
+}
+
+#th-update-pr,#th-update-service,#th-register-custom,#th-cancel-bill {
+
+        display: none;
+        position: absolute;
+        top: 10%;
+}
+
+#th-delete-preser,#th-pr-delete{
+
+    display: none;
+    position: absolute;
+    top: 10%;
+}
+

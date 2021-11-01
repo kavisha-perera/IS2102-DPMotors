@@ -1,0 +1,53 @@
+
+@media (max-width: 800px) {
+    /* For mobile/tablet view: */
+
+    .catelogueItems{
+        width:50%;
+    }
+
+}
+
+.productsCatalogueContent{
+    min-height: 800px;
+}
+
+.catalogueVideo{
+    max-width: fit-content;
+}
+
+.catalogueBottomBanner{
+    bottom: 0;
+    text-align: center;
+    background-color: #0870af;
+}
+
+.catalogueBottomBannerImage{
+    max-width: 70%;
+    border-radius: 90px 0px 0px 90px;
+}
+
+.catalogueSection1{
+    color: #021257;
+}
+
+.catalogueMenue, .catalogueMenue a {
+    display: flex;
+    text-decoration: none;
+    color: #021257;
+}
+
+.catelogueItems{
+    padding: 15px;
+    line-height: 25px;
+    background-color:#FFFAFA;
+    border: 1px solid #C4C4C4;
+}
+
+.catelogueAlt-1{
+    background-color: rgb(250, 242, 242);
+}
+
+.catelogueAlt-2{
+    background-color:rgb(249, 249, 253);
+}

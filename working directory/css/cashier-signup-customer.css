@@ -1,0 +1,89 @@
+/*-------------------------THARUSHI-CUSTOMER SIGN UP CSS-----------------------------------------*/
+
+
+
+/*div class container css code */
+.th-container{
+  text-align: center;
+  background: #C4C4C4;
+  border-radius: 90px 0px;
+  margin-top: 25px;
+  margin-left: 5%;
+  width: 90%;
+
+}
+
+/*css code of form title*/
+#title-th{
+  text-align: center;
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  margin-top: 25px;
+  color: #021257;
+}
+
+/*css code of form text elements*/
+.nameth{
+  text-align: right;
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  color: #021257;
+  
+  }
+  
+#lnameth{
+      text-align: right;
+      font-family: sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 15px;
+      color: #021257;
+      
+      }
+
+/*css code of form input boxes*/    
+.th-cus-form-input{
+      width: 100%;
+      padding:12px 20px;
+      display: inline-block;
+      border: 1px solid #cccccc;
+      background: #ffffff;
+      box-sizing: border-box;
+  }
+
+/*styling span class for required "*" symbol with CSS*/
+.th-required{
+    width:5px;
+    color:#ED1F28;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------*/
+.roundbox{
+  border-radius: 15px 50px;
+  background: grey;
+  padding: 20px; 
+  margin: 10%;
+}
+.paddress{
+  text-align: left;
+  font-style: italic;
+  color: white;
+  font-size: small;
+}
+
+.searchbar{
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 5px 10px;
+}
+.billtextbox{
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 10px 10px;
+}

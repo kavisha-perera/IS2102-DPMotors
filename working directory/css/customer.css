@@ -1,0 +1,91 @@
+/******************************CUSTOMER MANAGE APPOINTMENT, SERVICE RECORDS & PRODUCT RESERVATIONS************************************/
+
+.BookAppLabel{
+    text-align: left;
+    font-size:12.5px;
+    color: #000000;
+    padding-left: 12%;
+}
+
+.BookAppForm{
+    text-align: left;
+}
+
+#serviceApp, input[type=date] , .serviceApp{
+    width:70%;
+    height:35px;
+    border-radius: 10px;
+    border: 2px solid #C4C4C4;
+    background: #FFFAFA;
+    text-align: center;
+    font-weight:lighter;
+}
+
+select option{
+    font-weight:lighter;
+}
+
+.termsConditions{
+    font-weight:lighter;
+    color: #000000;
+    font-size: 11px;
+}
+
+.payButton, .calltoCancel{
+    background-color: #EE1E2B;
+    width: fit-content;
+    border-radius: 25px;
+}
+
+.payIcon{
+    max-width: 10%;
+    min-width: 60px;
+    width:auto;
+    padding: 10px;
+    height: auto;
+}
+
+.appList{
+    width:100%;
+    border-radius: 30px;
+    background-color:#FFFAFA;
+    border: 2px solid #C4C4C4;
+    font-size: 12px;
+}
+
+.appList th, .appList td{
+    padding: 10px;
+    text-align: left;
+
+}
+
+.tableIcon , .saveIcon{
+    width:20px;
+    cursor: pointer;
+}
+
+.saveIcon{
+    margin-left: 15px;
+}
+
+.tableTextarea{
+    height: 150px;
+}
+
+@media (max-width: 800px) {
+    /* For mobile/tablet view: */
+        
+        .saveIcon-null{     /* these to controls the column lenghts of the row containing download and print buttons*/
+            width:70%;
+        }
+        .saveIcon-main{
+            width:30%;
+        }
+
+    }
+
+
+.buttons-inline{
+    display: flex;
+    justify-content: center;
+}
