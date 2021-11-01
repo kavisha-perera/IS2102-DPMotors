@@ -1,0 +1,31 @@
+@import "responsive.css";
+
+@import "dashboard.css";
+
+@import "profile.css";
+
+@import "customer.css";
+
+@import "calltoCancel.css";
+
+@import "readBill.css";
+
+@import "login.css";
+
+@import "cashier-signup-customer.css";
+
+@import "promotions-customer.css";
+
+@import "employee-supplier.css";
+
+@import "admin.css";
+
+@import "landingPage.css";
+
+@import "promotion.css";
+
+@import "form.css";
+
+@import "th-other.css";
+
+@import "productsCatalogue.css";

@@ -1,0 +1,86 @@
+.pr-form-container {
+  border-radius: 4px;
+  width: 50%;
+  background-color: #ffffff;
+  margin: auto;
+  font-family: sans-serif;
+}
+
+.pr-form-title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.row1:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+label {
+  padding: 10px 10px 10px 0;
+  display: inline-block;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pr-form-label {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.pr-form-input {
+  float: right;
+  width: 75%;
+  margin-top: 6px;
+}
+
+.pr-input-box {
+  width: 400px !important;
+  padding: 4px !important;
+  border: 1px solid #c4c4c4 !important;
+  border-radius: 4px !important;
+  display: inline-block !important;
+}
+
+.pr-form-add-button {
+  background-color: #111b47;
+  color: white;
+  padding: 10px 10px;
+  border-radius: 45px 45px 45px 45px;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  width: 100px;
+  float: right;
+}
+
+@media screen and (max-width: 800px) {
+  .pr-form-container {
+    /*for the container with content to fit any screen below 800px*/
+    overflow-x: scroll;
+    width: 100%;
+  }
+
+  .pr-form-label,
+  .pr-form-input,
+  .pr-form-add-button {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  label {
+    /*for form labels*/
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .pr-input-box {
+    /*for form input boxes*/
+    display: flex;
+    justify-content: center;
+    padding-top: 0%;
+  }
+}
