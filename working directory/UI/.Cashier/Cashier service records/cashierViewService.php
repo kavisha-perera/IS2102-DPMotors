@@ -13,8 +13,8 @@ if(isset($_SESSION['employeeid']))
 
 <?php
 
-include "../../classes/DB.php";
-include "../../classes/serviceRecord.php";
+include "../../../classes/DB.php";
+include "../../../classes/serviceRecord.php";
 
 $_service = new Service(DB::connection());
 
@@ -28,15 +28,15 @@ $service_list = $_service->getService();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
-    <link rel="stylesheet" href="../../css/main.css">
-    <script src="../../javascript/empsup_pop-up.js"></script>
+    <link rel="stylesheet" href="../../../css/main.css">
+    <script src="../../../javascript/empsup_pop-up.js"></script>
 	<title>View Service Records</title>
 </head>
 <body>
 
     <div class="row r1">
         <div class="col-13">
-            <img src="../../images/logo.png" class="navLogo">
+            <img src="../../../images/logo.png" class="navLogo">
         </div>
         <div class="col-nav">
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
@@ -128,8 +128,8 @@ $service_list = $_service->getService();
                             <td><?php echo $value['vehicleModel'] ?> </td>
                             <td><?php echo $value['mechanicName'] ?> </td>
                             <td><?php echo $value['description'] ?> </td>
-                            <td><button class="th-button-icon" onclick="document.location='cashierUpdateServive.php'"><img src="../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
-                            <td><button class="th-button-icon" onclick="document.location='cashierDeleteService.php'"><img src="../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
+                            <td><button class="th-button-icon" onclick="document.location='cashierUpdateServive.php'"><img src="../../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
+                            <td><button class="th-button-icon" onclick="document.location='cashierDeleteService.php'"><img src="../../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
                         </tr>
 
                         <?php } ?>

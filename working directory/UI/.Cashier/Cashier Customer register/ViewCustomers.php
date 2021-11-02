@@ -16,14 +16,14 @@ if(isset($_SESSION['employeeid']))
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
-    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../../css/main.css">
 	<title>View Customers</title>
 </head>
 <body>
 
     <div class="row r1">
         <div class="col-13">
-            <img src="../../images/logo.png" class="navLogo">
+            <img src="../../../images/logo.png" class="navLogo">
         </div>
         <div class="col-nav">
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
@@ -95,22 +95,13 @@ if(isset($_SESSION['employeeid']))
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td> <!--table values-->
-                            <td>Shenal</td>
-                            <td>Chandrasena</td>
-                            <td>986756789V</td>
-                            <td>0712343456</td>
-                            <td>Shenal98@gmail.com</td>
-                            <td>Kottawa,Maakubura</td>
-                        </tr>
-                        <tr>
-                            <td>2</td> <!--table values-->
-                            <td>Kaveesha</td>
-                            <td>Jayakodi</td>
-                            <td>967889012V</td>
-                            <td>0767834667</td>
-                            <td>Kaveesha767@gmail.com</td>
-                            <td>20,Battaramulla,Wearahera</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
 
                       </tbody>

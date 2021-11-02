@@ -1,4 +1,4 @@
-<?php
+d<?php
 session_start();
 
 if(isset($_SESSION['employeeid']))
@@ -15,14 +15,14 @@ if(isset($_SESSION['employeeid']))
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
-    <link rel="stylesheet" href="../../css/main.css" />
-    <script src="../../javascript/preserve.js"></script>
+    <link rel="stylesheet" href="../../../css/main.css" />
+    <script src="../../../javascript/preserve.js"></script>
     <title>Update Product Reservation</title>
   </head>
   <body>
     <div class="row r1">
       <div class="col-13">
-        <img src="../../images/logo.png" class="navLogo" />
+        <img src="../../../images/logo.png" class="navLogo" />
       </div>
       <div class="col-nav">
         <h4 class="navSlogan">

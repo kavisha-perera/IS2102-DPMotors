@@ -16,13 +16,13 @@ if(isset($_SESSION['employeeid']))
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
-    <link rel="stylesheet" href="../../css/main.css" />
-    <title>Add new product Reservation</title>
+    <link rel="stylesheet" href="../../../css/main.css" />
+    <title>Product Exchange</title>
   </head>
   <body>
     <div class="row r1">
       <div class="col-13">
-        <img src="../../images/logo.png" class="navLogo" />
+        <img src="../../../images/logo.png" class="navLogo" />
       </div>
       <div class="col-nav">
         <h4 class="navSlogan">
@@ -75,7 +75,7 @@ if(isset($_SESSION['employeeid']))
       <div class="col-16 content">
         <!--main content here-->
         <div class="pr-form-container">
-          <form action="AddProductReserve-inc.php" method="post">
+          <form action="#" method="post">
             <div class="row1">
               <div class="pr-form-title">
                 <h2 style="margin-bottom:20px;">EXCHANGE FORM</h2>

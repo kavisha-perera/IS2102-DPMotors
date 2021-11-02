@@ -13,8 +13,8 @@ if(isset($_SESSION['employeeid']))
 
 <?php
 
-include "../../classes/DB.php";
-include "../../classes/ProductReservation.php";
+include "../../../classes/DB.php";
+include "../../../classes/ProductReservation.php";
 
 $_PReservation = new PReservation(DB::connection());
 
@@ -29,15 +29,15 @@ $PReservation_list = $_PReservation->getPReservation();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
-    <link rel="stylesheet" href="../../css/main.css">
-    <script src="../../javascript/empsup_pop-up.js"></script>
+    <link rel="stylesheet" href="../../../css/main.css">
+    <script src="../../../javascript/empsup_pop-up.js"></script>
 	<title>View Product Reservation</title>
 </head>
 <body>
 
     <div class="row r1">
         <div class="col-13">
-            <img src="../../images/logo.png" class="navLogo">
+            <img src="../../../images/logo.png" class="navLogo">
         </div>
         <div class="col-nav">
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
@@ -133,8 +133,8 @@ $PReservation_list = $_PReservation->getPReservation();
                         <td><?php echo $value['quantity']?></td> 
                         <td><?php echo $value ['deliverydatetime']?></td>                  
                         <td><?php echo $value ['deliverymethod']?></td>
-                        <td><button class='th-button-icon' onclick = "document.location='UpdateProductReserv.php'" ><img src='../../images/Employee & Supplier/edit.svg' class='th-svg-icons'></button></td>  
-                        <td><button class='th-button-icon' onclick = "document.location= 'DeleteProductReserve.php'"><img src='../../images/Employee & Supplier/delete.svg' class='th-svg-icons'></button></td>
+                        <td><button class='th-button-icon' onclick = "document.location='UpdateProductReserv.php'" ><img src='../../../images/Employee & Supplier/edit.svg' class='th-svg-icons'></button></td>  
+                        <td><button class='th-button-icon' onclick = "document.location= 'DeleteProductReserve.php'"><img src='../../../images/Employee & Supplier/delete.svg' class='th-svg-icons'></button></td>
                     </tr>
                         
                     <?php } ?>

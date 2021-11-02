@@ -15,15 +15,15 @@ if(isset($_SESSION['employeeid']))
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
-    <link rel="stylesheet" href="../../css/main.css">
-    <script src="../../javascript/preserve.js"></script>
+    <link rel="stylesheet" href="../../../css/main.css">
+    <script src="../../../javascript/preserve.js"></script>
 	<title>Register Customer</title>
 </head>
 <body>
 
     <div class="row r1">
         <div class="col-13">
-            <img src="../../images/logo.png" class="navLogo">
+            <img src="../../../images/logo.png" class="navLogo">
         </div>
         <div class="col-nav">
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
@@ -111,10 +111,10 @@ if(isset($_SESSION['employeeid']))
  
               <div class="row">
                 <div class="col-4">
-                    <label class="nameth"><b>CONTACT</b></label>
+                    <label class="nameth"><b>NIC</b></label>
                 </div>
                 <div class="col-8">
-                    <input type="text" name="contact" class="th-cus-form-input"><br>
+                    <input type="text" name="nic" class="th-cus-form-input"><br>
                 </div>
               </div>
               
@@ -123,7 +123,7 @@ if(isset($_SESSION['employeeid']))
                       <label class="nameth"><b><span class="th-required">*</span>PASSWORD</b></label>
                   </div>
                   <div class="col-8">
-                      <input type="password" name="password" class="th-cus-form-input" placeholder="password must be more than 6 characters"><br>
+                      <input type="password" name="password" class="th-cus-form-input" placeholder="enter a password"><br>
                   </div>
               </div>
               
@@ -132,7 +132,7 @@ if(isset($_SESSION['employeeid']))
                       <label class="nameth"><b><span class="th-required">*</span>CONFIRM PASSWORD</b></label>
                   </div>
                   <div class="col-8">
-                      <input type="password" name="password" class="th-cus-form-input" placeholder="re-enter password"><br>
+                      <input type="password" name="confirmpw" class="th-cus-form-input" placeholder="re-enter password"><br>
                   </div>
               </div>
               

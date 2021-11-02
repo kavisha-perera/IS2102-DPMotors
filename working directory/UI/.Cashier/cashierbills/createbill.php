@@ -15,14 +15,14 @@ if(isset($_SESSION['employeeid']))
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
-    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../../css/main.css">
 	<title>Create Bill</title>
 </head>
 <body>
 
     <div class="row r1">
         <div class="col-13">
-            <img src="../../images/logo.png" class="navLogo">
+            <img src="../../../images/logo.png" class="navLogo">
         </div>
         <div class="col-nav">
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
@@ -74,10 +74,10 @@ if(isset($_SESSION['employeeid']))
             <!--main content here-->
                 <div class="row r3-1 roundbox">
                     <div class="col-6 d-icon">
-                        <a href="./createservicebill.php"><img src="../../images/cashier/servicebill.png" class="dashboardIcon"></a>
+                        <a href="./createservicebill.php"><img src="../../../images/cashier/servicebill.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-6 d-icon">
-                        <a href="./createproductbill.php"><img src="../../images/cashier/productbill.png" class="dashboardIcon"></a>
+                        <a href="./createproductbill.php"><img src="../../../images/cashier/productbill.png" class="dashboardIcon"></a>
                     </div>
                 </div>
         </div>

@@ -46,7 +46,7 @@ if(isset($_SESSION['employeeid']))
                                     <a href="../profiles/cashierViewProfile.php"> Profile </a>
                                     <a href="../cashierbills/createbill.php"> Create Bill </a>
                                     <a href="../promotion/cashierReadPromotion.php"> Promotions </a>
-                                    <a href="../Cashier View Bill History/CashierViewAllBills.php"> Bill History </a> 
+                                    <a href="../Cashier/Cashier View Bill History/CashierViewAllBills.php"> Bill History </a> <!--*-->
                                     <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a> 
                                     <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>
                                     <a href="../appointments/cashierReadsAppointments.php"> Appointments </a>
@@ -66,7 +66,7 @@ if(isset($_SESSION['employeeid']))
             <a href="../profiles/cashierViewProfile.php"> Profile </a><hr>
             <a href="../cashierbills/createbill.php"> Create Bill </a><hr>
             <a href="../promotion/cashierReadPromotion.php"> Promotions </a><hr>
-            <a href="../Cashier View Bill History/CashierViewAllBills.php"> Bill History </a><hr>  
+            <a href="../Cashier/Cashier View Bill History/CashierViewAllBills.php"> Bill History </a><hr><!--*-->
             <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a><hr> 
             <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a><hr> 
             <a href="../appointments/cashierReadsAppointments.php"> Appointments </a><hr>
@@ -76,30 +76,31 @@ if(isset($_SESSION['employeeid']))
         <div class="col-16 content">
             <!--main content here-->
                 <div class="row r3-1">
-                    <div class="col-4 d-icon">
-                        <a href="../manage inventory/CashierReadInventory.php"><img src="../../images/cashier/inventory.png" class="dashboardIcon"></a>
+                <div class="col-4 d-icon">
+                        <a href="../Cashier/cashierbills/createbill.php"><img src="../../images/cashier/bill.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../promotion/cashierReadPromotion.php"><img src="../../images/cashier/promo.png" class="dashboardIcon"></a>
+                        <a href="../Cashier/CashierReadInventory.php"><img src="../../images/cashier/inventory.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../Cashier View Bill History/CashierViewAllBills.php"><img src="../../images/cashier/billhis.png" class="dashboardIcon"></a>
+                        <a href="../Cashier/cashierReadPromotion.php"><img src="../../images/cashier/promo.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../Cashier service records/cashierViewService.php"><img src="../../images/cashier/servicerecord.png" class="dashboardIcon"></a>
+                        <a href="../Cashier/Cashier View Bill History/CashierViewAllBills.php"><img src="../../images/cashier/billhis.png" class="dashboardIcon"></a><!--*-->
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../Cashier product reservation/ViewProductResrvation.php"><img src="../../images/cashier/product.png" class="dashboardIcon"></a>
+                        <a href="../Cashier/Cashier service records/cashierViewService.php"><img src="../../images/cashier/servicerecord.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../appointments/cashierReadsAppointments.php"><img src="../../images/cashier/appointment.png" class="dashboardIcon"></a>
+                        <a href="../Cashier/Cashier product reservation/ViewProductResrvation.php"><img src="../../images/cashier/product.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../Cashier Customer register/cashier register customer.php"><img src="../../images/cashier/customer.png" class="dashboardIcon"></a>
+                        <a href="../Cashier/cashierReadsAppointments.php"><img src="../../images/cashier/appointment.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../cashierbills/createbill.php"><img src="../../images/cashier/bill.png" class="dashboardIcon"></a>
+                        <a href="../Cashier/Cashier Customer register/cashier register customer.php"><img src="../../images/cashier/customer.png" class="dashboardIcon"></a>
                     </div>
+                    
                 </div>
         </div>
     </div>

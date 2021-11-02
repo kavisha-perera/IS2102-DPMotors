@@ -14,14 +14,14 @@ if(isset($_SESSION['employeeid']))
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
-    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../../css/main.css">
 	<title>cashier read bill-service</title>
 </head>
 <body>
 
     <div class="row r1">
         <div class="col-13">
-            <img src="../../images/logo.png" class="navLogo">
+            <img src="../../../images/logo.png" class="navLogo">
         </div>
         <div class="col-nav">
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
@@ -74,8 +74,8 @@ if(isset($_SESSION['employeeid']))
             <div class="row">
                 <div class="col-9 saveIcon-null"><!--blank column with 75%width--></div>
                 <div class="col-3 saveIcon-main saveBill">
-                    <img src="../../images/tableIcons/download.png" class="saveIcon">
-                    <img src="../../images/tableIcons/printing.png" class="saveIcon">
+                    <img src="../../../images/tableIcons/download.png" class="saveIcon">
+                    <img src="../../../images/tableIcons/printing.png" class="saveIcon">
                 </div>
             </div>
             <div class="Bill"> <!--bill starts here-->
@@ -83,7 +83,7 @@ if(isset($_SESSION['employeeid']))
                          <!--row containing dp motors details inside the bill-->
                 <div class="row">
                     <div class="col-13 billHeaderCol1">
-                        <img src="../../images/logo.png" class="BillLogo">
+                        <img src="../../../images/logo.png" class="BillLogo">
                     </div>
                     <div class="col-3 billHeaderCol2 BillHeaderText">
                         <h4>DP MOTORS</h4>

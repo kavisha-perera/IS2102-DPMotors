@@ -14,15 +14,15 @@ if(isset($_SESSION['employeeid']))
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
-    <link rel="stylesheet" href="../../css/main.css">
-    <script src="../../javascript/empsup_pop-up.js"></script>
+    <link rel="stylesheet" href="../../../css/main.css">
+    <script src="../../../javascript/empsup_pop-up.js"></script>
 	<title>View Product Reservation-Service</title>
 </head>
 <body>
 
     <div class="row r1">
         <div class="col-13">
-            <img src="../../images/logo.png" class="navLogo">
+            <img src="../../../images/logo.png" class="navLogo">
         </div>
         <div class="col-nav">
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
@@ -101,47 +101,18 @@ if(isset($_SESSION['employeeid']))
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td> <!--table values-->
-                            <td>Sunil</td>
-                            <td>Gamage</td>
-                            <td>0712345672</td>
-                            <td>16,Dummaladeniya,Wennappuwa.</td>
-                            <td>P-01</td>
-                            <td>Air Filters</td>
-                            <td>1</td>
-                            <td>2021-10-04</td>
-                            <td>Pick up</td>
-                            <td><button class="th-button-icon" onclick="document.location='UpdateProductReserv.php'"><img src="../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
-                            <td><button class="th-button-icon"  onclick="document.location='DeleteProductReserve.php'" ><img src="../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
-                        </tr>
-                        <tr>
-                            <td>2</td> <!--table values-->
-                            <td>Saman</td>
-                            <td>Wijesiri</td>
-                            <td>0761412452</td>
-                            <td>Haggala,Battaramulla South.</td>
-                            <td>P-06</td>
-                            <td>MK Japanese Brake pads</td>
-                            <td>4</td>
-                            <td>2021-10-06</td>
-                            <td>Pick up</td>
-                            <td><button class="th-button-icon" onclick="document.location='UpdateProductReserv.php'"><img src="../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
-                            <td><button class="th-button-icon" onclick="document.location='DeleteProductReserve.php'"><img src="../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
-                        </tr>
-
-                        <tr>
-                            <td>3</td> <!--table values-->
-                            <td>Ameera</td>
-                            <td>Silva</td>
-                            <td>0715678901</td>
-                            <td>b31,Gonahaddenawa,Pita Kotte.</td>
-                            <td>P-03</td>
-                            <td>KYB Shock Absorbers</td>
-                            <td>2</td>
-                            <td>2021-10-06</td>
-                            <td>Pick up</td>
-                            <td><button class="th-button-icon" onclick="document.location='UpdateProductReserv.php'"><img src="../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
-                            <td><button class="th-button-icon" onclick="document.location='DeleteProductReserve.php'"><img src="../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
+                            <td></td> <!--table values-->
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><button class="th-button-icon" onclick="document.location='UpdateProductReserv.php'"><img src="../../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
+                            <td><button class="th-button-icon"  onclick="document.location='DeleteProductReserve.php'" ><img src="../../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
                         </tr>
 
                       </tbody>
