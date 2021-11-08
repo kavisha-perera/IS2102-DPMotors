@@ -3,30 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
-    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../../css/main.css">
 	<title>product catalogue</title>
 </head>
 <body>
 
     <div class="row r1">
-        <div class="col-13">
-            <img src="../../images/logo.png" class="navLogo">
-        </div>
-        <div class="col-nav">
-            <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
-        </div>
-        <div class="col-14 navbar"> 
-            <a href="../Auth-UI/index.php#home">Home</a> 
-            <a href="../Auth-UI/index.php#about">About</a>
-            <a href="../Auth-UI/index.php#services">Services</a>
-            <a href="../customer gerneral/productsCatalogue.html">Products</a>
-            <form action="../Auth-UI/customerLogin.php">
-                <button class="navButton"> Log In </button>
-            </form>
-            <form action="../Auth-UI/index.php#contact">
-                <button class="navButton contact"> Contact Us </button>
-            </form>
-        </div>
+        <?php include_once("../customerTopNav.php");?>
     </div>
 
      <div class="row r3">
@@ -42,7 +25,7 @@
                 <div class="row catalogueSection1">
                     <div class="col-6 catalogueVideo">
                         <video autoplay muted loop id="myVideo">
-                            <source src="../../video/products.mp4" type="video/mp4">
+                            <source src="../../../video/products.mp4" type="video/mp4">
                         </video>
                     </div>
                     <div class="col-6">
@@ -50,7 +33,7 @@
                         <p>Drop by DP Motors or simply call <span style = "font-size:x-large; color: #ED1F28;">077 307 2710</span> to get your spare-parts and lubricants delivered to your door step!!</p>
                         <br><br>
                         <div class="catalogueMenue">
-                            <img src="../../images/productCatalogue/category.png" style="width: 17px; height: 17px;">
+                            <img src="../../../images/productCatalogue/category.png" style="width: 17px; height: 17px;">
                             &nbsp;&nbsp; <!--keeping horizontal space-->
                             <p><a href="#category1">CATEGORY 1</a> </p>
                         </div>
@@ -58,7 +41,7 @@
                         <br>
 
                         <div class="catalogueMenue">
-                            <img src="../../images/productCatalogue/category.png" style="width: 17px; height: 17px;">
+                            <img src="../../../images/productCatalogue/category.png" style="width: 17px; height: 17px;">
                             &nbsp;&nbsp; <!--keeping horizontal space-->
                             <p><a href="#category2">CATEGORY 2</a> </p>
                         </div>
@@ -66,7 +49,7 @@
                         <br>
 
                         <div class="catalogueMenue">
-                            <img src="../../images/productCatalogue/category.png" style="width: 17px; height: 17px;">
+                            <img src="../../../images/productCatalogue/category.png" style="width: 17px; height: 17px;">
                             &nbsp;&nbsp; <!--keeping horizontal space-->
                             <p><a href="#category3">CATEGORY 3</a> </p>
                         </div>
@@ -231,7 +214,7 @@
         <div class="row">
             <div class="col-12 catalogueBottomBanner">
                 <br><br> <br><br> 
-                <img src="../../images/productCatalogue/banner.jpg" class="catalogueBottomBannerImage">
+                <img src="../../../images/productCatalogue/banner.jpg" class="catalogueBottomBannerImage">
                 <br><br> <br><br> 
             </div>
         </div>

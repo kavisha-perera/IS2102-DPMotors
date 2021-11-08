@@ -187,9 +187,9 @@ session_start();
                 <br>
                 <p><a href="#services">Our Services</a></p>
                 <br>
-                <p><a href="../customer gerneral/productsCatalogue.html">Products</a></p>
+                <p><a href="../Customer/customer gerneral/productsCatalogue.php">Products</a></p>
                 <br>
-                <p><a href="../customer gerneral/general promotions.html">Promotions</a></p>
+                <p><a href="../Customer/customer gerneral/general promotions.php">Promotions</a></p>
             </div>
         </div>
         <div class="col-3 sec5-3">

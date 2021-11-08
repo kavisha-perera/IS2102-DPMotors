@@ -3,30 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
-    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../../css/main.css">
 	<title>customer delete service record</title>
 </head>
 <body>
 
     <div class="row r1">
-        <div class="col-13">
-            <img src="../../images/logo.png" class="navLogo">
-        </div>
-        <div class="col-nav">
-            <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
-        </div>
-        <div class="col-14 navbar"> 
-            <a href="../landing page/index.html#home">Home</a> 
-            <a href="../landing page/index.html#about">About</a>
-            <a href="../landing page/index.html#services">Services</a>
-            <a href="../customer gerneral/productsCatalogue.html">Products</a>
-            <form action="#">
-                <button class="navButton"> Log Out </button>
-            </form>
-            <form action="../landing page/index.html#contact">
-                <button class="navButton contact"> Contact Us </button>
-            </form>
-        </div>
+        <?php include_once("../customerTopNav.php");?>
     </div>
 
     <div class="row deleteWarning"> <!--do not use r2 cus it has been used for something else-->

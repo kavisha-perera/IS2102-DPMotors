@@ -7,7 +7,7 @@ if(isset($_SESSION['id']))
 }
 
 ?>
-
+ 
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -22,23 +22,47 @@ if(isset($_SESSION['id']))
             /* to show the active link in navbar */
             background-color:#344CB4; 
         }
+        .hide-in-dashboard{
+            display:none;
+        }
     </style>
 </head>
 <body>
 
     <div class="row r1">
-    <?php include_once("../.Customer/customerTopNav.php");?>
+   
+        <div class="col-13">
+            <img src="../../images/logo.png" class="navLogo">
+        </div>
+        <div class="col-nav">
+            <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
+        </div>
+        <div class="col-14 navbar"> 
+            <a href="../Auth-UI/index.php#home">Home</a> 
+            <a href="../Auth-UI/index.php#about">About</a>
+            <a href="../Auth-UI/index.php#services">Services</a>
+            <a href="../Customer/customer gerneral/productsCatalogue.php">Products</a>
+            <form action="../../../includes/logout-inc.php">
+                <button class="navButton"> Log Out </button>
+            </form>
+            
+            <form action="../Auth-UI/index.php#contact">
+                <button class="navButton contact"> Contact Us </button>
+            </form>
+
+        </div>
+
     </div>
 
     <!-- Start of Dropdown for screens with width less than 800px-->
                     <div class="row r2">
-                    <?php include_once("../.Customer/customerSide-MiniNav.php");?>
+                    <?php include_once("../Customer/customerSide-MiniNav.php");?>
                     </div>
     <!--End of Dropdown for screens with width less than 800px-->
 
     <div class="row r3">
         <div class="col-15 sideNav">
-            <?php include_once("../.Customer/customerSideNav.php");?>
+            <?php include_once("../Customer/customerSideNav.php");?>
         </div>
 
 
@@ -46,32 +70,32 @@ if(isset($_SESSION['id']))
             <!--main content here-->
                 <div class="row r3-1">
                     <div class="col-4 d-icon">
-                        <a href="../customer appointments/viewAppointments.php">
+                        <a href="../Customer/customer appointments/viewAppointments.php">
                             <img src="../../images/customer/appointment.png" class="dashboardIcon">
                         </a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../customer service records/viewServices.php">
+                        <a href="../Customer/customer service records/viewServices.php">
                             <img src="../../images/customer/record.png" class="dashboardIcon">
                         </a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../customer product reservations/viewPReservationList.php">
+                        <a href="../Customer/ustomer product reservations/viewPReservationList.php">
                             <img src="../../images/customer/product.png" class="dashboardIcon">
                         </a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../customer payment history/viewBillList.php">
+                        <a href="../Customer/customer payment history/viewBillList.php">
                             <img src="../../images/customer/payhis.png" class="dashboardIcon">
                         </a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../customer gerneral/customer read promotions.php">
+                        <a href="../Customer/customer gerneral/customer read promotions.php">
                             <img src="../../images/customer/promo.png" class="dashboardIcon">
                         </a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../customer appointments/bookAppointment.php">
+                        <a href="../Customer/customer appointments/bookAppointment.php">
                             <img src="../../images/customer/book.png" class="dashboardIcon">
                         </a>
                     </div>
