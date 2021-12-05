@@ -1,13 +1,5 @@
 <?php
-session_start();
 
-if(isset($_SESSION['employeeid']))
-{
-    $employeeid =  $_SESSION['employeeid'];
-}else{
-
-    header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-adminDashboard");
-}
 
 ?>
 
@@ -64,7 +56,7 @@ if(isset($_SESSION['employeeid']))
 
     <div class="row r3">
         <div class="col-15 sideNav">
-            <p>Welcome @ <?php echo  $employeeid ?></p> <hr>
+            <p>Welcome @ <?php  ?></p> <hr>
             <a href="../dashboards/adminDash.php"> Dashboard </a>  <hr>
             <a href="../profiles/adminViewProfile.html"> Profile </a><hr>
             <a href="#" class="active"> Accounts </a> <hr>
