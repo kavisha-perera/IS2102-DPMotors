@@ -1,15 +1,3 @@
-<?php
-session_start();
-
-if(isset($_SESSION['employeeid']))
-{
-    $employeeid =  $_SESSION['employeeid'];
-}else{
-
-    header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-managerDashboard");
-}
-
-?>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>

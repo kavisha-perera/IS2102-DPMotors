@@ -1,5 +1,13 @@
 <?php
+session_start();
 
+if($_SESSION['type'] == "admin")
+{
+    $email =  $_SESSION['email'];
+}else{
+
+    header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-adminDashboard");
+}
 
 ?>
 
@@ -49,17 +57,17 @@
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
-                            <p>Welcome @ <?php echo  $employeeid ?></p>
+                            <p>Welcome  <?php echo  $email ?></p>
                         </div>
                     </div>
     <!--End of Dropdown for screens with width less than 800px-->
 
     <div class="row r3">
         <div class="col-15 sideNav">
-            <p>Welcome @ <?php  ?></p> <hr>
+            <p>Welcome  <?php echo $email  ?></p> <hr>
             <a href="../dashboards/adminDash.php"> Dashboard </a>  <hr>
             <a href="../profiles/adminViewProfile.html"> Profile </a><hr>
-            <a href="#" class="active"> Accounts </a> <hr>
+            <a href="#" classS="active"> Accounts </a> <hr>
             <a href="../manage inventory/manageinventory.html"> Inventory </a><hr>
             <a href="../manage promotions/managepromotions.php"> Promotions </a>  <hr>
             <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> <hr>

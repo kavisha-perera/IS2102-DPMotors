@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-if(isset($_SESSION['employeeid']))
+if($_SESSION['type'] == "admin")
 {
-    $employeeid =  $_SESSION['employeeid'];
+    $email =  $_SESSION['email'];
 }else{
 
-    header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-adminDashboard");
+    header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-adminDashboard");
 }
 
 ?>
@@ -51,26 +51,26 @@ if(isset($_SESSION['employeeid']))
                                 <div class="dropdown-content">
                                     <a href="#" > Dashboard </a>  
                                     <a href="../profiles/adminViewProfile.html"> Profile </a>
-                                    <a href="../manage accounts/manage.php"> Accounts </a> 
-                                    <a href="../manage inventory/manageinventory.html"> Inventory </a>
+                                    <a href="../manageAccounts/manage.php"> Accounts </a> 
+                                    <a href="../manageInventory/manageinventory.html"> Inventory </a>
                                     <a href="../managepromotions/managepromotions.php"> Promotions </a>  
                                     <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> 
                                     <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a> 
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
-                            <p> Welcome @ <?php echo  $employeeid ?></p>
+                            <p> Welcome  <?php echo  $email ?></p>
                         </div>
                     </div>
     <!--End of Dropdown for screens with width less than 800px-->
 
     <div class="row r3">
         <div class="col-15 sideNav">
-            <p> Welcome @ <?php echo  $employeeid ?></p> <hr>
+            <p> Welcome <?php echo  $email ?></p> <hr>
                 <a href="#" class="active"> Dashboard </a> <hr> 
                 <a href="../profiles/adminViewProfile.html"> Profile </a> <hr> 
-                <a href="../manage accounts/manage.php"> Accounts </a> <hr> 
-                <a href="../manage inventory/manageinventory.html"> Inventory</a> <hr> 
+                <a href="../manageAccounts/manage.php"> Accounts </a> <hr> 
+                <a href="../manageInventory/manageinventory.html"> Inventory</a> <hr> 
                 <a href="../managepromotions/managepromotions.php"> Promotions </a> <hr> 
                 <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> <hr> 
                 <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a> <hr> 
@@ -80,10 +80,10 @@ if(isset($_SESSION['employeeid']))
             <!--main content here-->
                 <div class="row r3-1">
                     <div class="col-4 d-icon">
-                        <a href="../manage accounts/manage.php"><img src="../../images/admin/accoun.png" class="dashboardIcon"></a>
+                        <a href="../manageAccounts/manage.php"><img src="../../images/admin/accoun.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../manage inventory/manageinventory.html"><img src="../../images/admin/inventory.png" class="dashboardIcon"></a>
+                        <a href="../manageInventory/manageinventory.html"><img src="../../images/admin/inventory.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
                         <a href="../managepromotions/managepromotions.php"><img src="../../images/admin/promo.png" class="dashboardIcon"></a>

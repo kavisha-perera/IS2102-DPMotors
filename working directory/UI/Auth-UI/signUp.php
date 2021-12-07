@@ -134,7 +134,8 @@
                 </div>
 
                 <input type="text" placeholder="Email Address" name="email" required>
-                <input type="text" placeholder="NIC Number" name="nic" required>    
+                <input type="text" placeholder="NIC Number" name="nic" required>  
+                <input type="hidden"  name="type" value="customer" >     
 
                 <div class="flex-container">
                     <input type="password" placeholder="Password" name="password" required>  

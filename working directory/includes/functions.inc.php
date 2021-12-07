@@ -2,10 +2,10 @@
 
 //***********************signup functions*********************
 
-function emptyInputSignup($fname, $lname,  $email, $nic, $password, $confirmpw) {
+function emptyInputSignup($fname, $lname,  $email, $nic, $password, $confirmpw , $type) {
     $result;
 
-    if(empty($fname) || empty($lname) || empty($email) || empty($nic) || empty($password) || empty($confirmpw) ) {
+    if(empty($fname) || empty($lname) || empty($email) || empty($nic) || empty($password) || empty($confirmpw) ||  empty($type) ) {
 
         $result = true;
     }
@@ -69,9 +69,9 @@ function emailTaken($conn, $email , $nic) {
     mysqli_stmt_close($stmt);
 }
 
-function createCustomer($conn, $fname, $lname,  $email, $nic, $password){
+function createCustomer($conn, $fname, $lname,  $email, $nic, $password , $type){
 
-    $sql = "INSERT INTO users (fname, lname, email, nic, password) VALUES (?, ?, ?, ?, ?);"; 
+    $sql = "INSERT INTO users (fname, lname, email, nic, password , type) VALUES (?, ?, ?, ?, ?, ?);"; 
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
         header("location: ../UI/Auth-UI/signUp.php?error=stmtfailed");
@@ -80,11 +80,24 @@ function createCustomer($conn, $fname, $lname,  $email, $nic, $password){
 
     $hashedPwd = password_hash($password , PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "sssss" , $fname, $lname,  $email, $nic, $hashedPwd);
+    mysqli_stmt_bind_param($stmt, "ssssss" , $fname, $lname,  $email, $nic, $hashedPwd , $type);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
-    header("location: ../UI/Auth-UI/login.php?error=none-registration-sucess");
+    if($type == "admin")
+    {
+        header("location: ../UI/manageAccounts/adminaccounts.php");
+    }elseif($type == "manager")
+    {
+        header("location: ../UI/manageAccounts/manageraccounts.php");
+    }elseif($type == "cashier")
+    {
+        header("location: ../UI/manageAccounts/cashieraccounts.php");
+    }else{
+        header("location: ../UI/Auth-UI/login.php?error=none-registration-sucess");
+
+    }
+
     exit();   
 
 }
@@ -127,8 +140,34 @@ function loginUser($conn, $email, $password){
         session_start();
         $_SESSION['id'] = $emailExists["id"];
         $_SESSION['email'] = $emailExists["email"];
+        $_SESSION['type'] = $emailExists["type"];
 
-        header("location: ../UI/Auth-UI/customerDash.php");
+
+
+        switch($emailExists["type"]){
+
+         case "customer":
+            header("location: ../UI/Auth-UI/customerDash.php");
+            break;
+
+        case "admin":
+            header("location: ../UI/dashboards/adminDash.php");
+            break;
+
+        case "manager":
+            header("location: ../UI/dashboards/managerDash.php");
+            break;
+
+        case "cashier":
+            header("location: ../UI/dashboards/cashierDash.php");
+            break;
+
+            default:
+            header("location: ../UI/Auth-UI/login.php");
+
+        }
+
+
         exit();
     }
 

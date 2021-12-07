@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-if(isset($_SESSION['employeeid']))
+if($_SESSION['type'] == "admin")
 {
-    $employeeid =  $_SESSION['employeeid'];
+    $email =  $_SESSION['email'];
 }else{
 
-    header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-adminDashboard");
+    header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-managerDashboard");
 }
 
 ?>
@@ -18,7 +18,7 @@ if(isset($_SESSION['employeeid']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css">
     <script src="../../javascript/empsup_pop-up.js"></script>
-	<title>Customer Accounts</title>
+	<title>Manager Accounts</title>
 </head>
 <body>
 
@@ -30,9 +30,7 @@ if(isset($_SESSION['employeeid']))
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
         </div>
         <div class="col-14 navbar"> 
-        <form action="../../includes/logout-inc.php">
-                <button class="navButton"> Log Out </button>
-            </form> 
+            <button class="navButton"> Log Out </button> 
         </div>
     </div>
 
@@ -42,8 +40,8 @@ if(isset($_SESSION['employeeid']))
 
     <div class="row r3">
         <div class="col-15 ">
-            <p> Welcome @<?php echo  $employeeid ?></p><br><br><br>
-            <img src="../../images/admin/customer.png" style="width: 250px;" alt=""><br><br><br><br><br>
+            <p> Welcome <?php echo  $email ?></p><br><br><br>
+            <img src="../../images/admin/manager.png" style="width: 250px;" alt=""><br><br><br><br><br>
             <button class="adminbutton1" onclick="OnClickOpenAddEmloyee()" >+ Add New</button>
             <br><br><br><br><br>
             <p style="text-align: center;"> <a href="manage.php" class="backbutton"><button class="navButton">Back </button></a></p>
@@ -57,41 +55,34 @@ if(isset($_SESSION['employeeid']))
                 <div class="th-table-container1">
                     
                     
-                    <h2 class="th-th2">Customer Accounts<h2><!--table name-->
+                    <h2 class="th-th2">Manager Accounts<h2><!--table name-->
                 <table class="th-user-table">
                     <thead>
-                    <tr>
-                      <th>AccountNo</th> <!--table properties-->
+                    <th>AccountNo</th> <!--table properties-->
                       <th>First name</th>
                       <th>Last name</th> 
+                      <th>Email</th>
                       <th>NIC</th>
-                      <th>Contact</th>
-                      <th>Address</th>
                       <th colspan="2" style="text-align: center;">Controls</th>
                     </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><button class="th-button-icon" onclick="OnClickOpenUpdateEmployee()"><img src="../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
-                            <td><button class="th-button-icon" onclick="OnClickOpenDeleteEmployee()"><img src="../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
-                        </tr>
+                    <?php
+                        $conn = mysqli_connect("localhost", "root", "", "is2102");
 
-                        <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><button class="th-button-icon" onclick="OnClickOpenUpdateEmployee()"><img src="../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
-                            <td><button class="th-button-icon" onclick="OnClickOpenDeleteEmployee()"><img src="../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
-                        </tr>
+                        $sql = "SELECT id, fname, lname,email, nic  FROM users where type='manager'";
+                        $result = $conn->query($sql);
+                        if ($result->num_rows > 0) {
+                        // output data of each row
+                        while($row = $result->fetch_assoc()) {
+                        echo "<tr><td>" . $row["id"]. "</td><td>" . $row["fname"] . "</td><td>". $row["lname"] . "</td><td>". $row["email"] . "</td><td>"
+                        . $row["nic"]. "</td><td><button class='th-button-icon' onclick='OnClickOpenUpdateEmployee()'><img src='../../images/Employee & Supplier/edit.svg' class='th-svg-icons'></button></td>
+                        <td><button class='th-button-icon' onclick='OnClickOpenDeleteEmployee()'><img src='../../images/Employee & Supplier/delete.svg' class='th-svg-icons'></button></td></tr>";
+                        }
+                        echo "</table>";
+                        } else { echo "0 results"; }
+                        $conn->close();
+                        ?>
 
                       </tbody>
                   </table>
@@ -100,10 +91,10 @@ if(isset($_SESSION['employeeid']))
 <!-----------------------------------------------------New Employee form as a Pop-Up---------------------------------------------------------->
 
             <div class="th-addemployee-conatiner" id="th-add-employee">
-                <form action="../../includes/signup-inc.php" method="post">
+                <form action="../../includes/signup.inc.php" method="post">
                     <div class="th-emp-row">
                         <div class="th-employee-form-title">
-                            <h2 style="margin-bottom:20px;">New Customer</h2>
+                            <h2 style="margin-bottom:20px;">New Manager</h2>
                         </div>
                         <div class="th-emp-close" onclick="OnClickCloseAddEmployee()">
                              <span class="th-emp-close-button">X</span>
@@ -137,8 +128,8 @@ if(isset($_SESSION['employeeid']))
                         </div>
                     </div>
             
-                   
-                   
+
+            
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
                             <label for="address" class="th-user-label">Email Address</label class="th-emsu-input">
@@ -148,14 +139,14 @@ if(isset($_SESSION['employeeid']))
                         </div>
                     </div>
 
-                    <div class="th-emp-row">
+            <!--        <div class="th-emp-row">
                         <div class="th-emp-form-label">
                             <label for="Employee ID" class="th-user-label">Employee ID</label class="th-emsu-input">
                         </div>
                         <div class="th-emp-form-input">
                             <input type="text" name="employeeid" class="th-emsu-input">
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
@@ -176,9 +167,7 @@ if(isset($_SESSION['employeeid']))
                     </div>
 
 
-                    <input type="hidden" name="type" class="th-emsu-input" value="customer">
-                    
-            
+                    <input type="hidden" name="type" class="th-emsu-input" value="manager">
                     
             
                     <div class="th-emp-addb">
@@ -193,10 +182,10 @@ if(isset($_SESSION['employeeid']))
 
 <!-----------------------------------------------------Employee Update form as a Pop-Up-------------------------------------------------------->
             <div class="th-addemployee-conatiner" id="th-update-employee">
-                <form action="#" method="post">
+                <form action="../../includes/signup-inc.php" method="post">
                     <div class="th-emp-row">
                         <div class="th-employee-form-title">
-                            <h2 style="margin-bottom:20px;">Customer</h2>
+                            <h2 style="margin-bottom:20px;">Manager</h2>
                         </div>
                         <div class="th-emp-close" onclick="OnClickCloseUpdateEmployee()">
                              <span class="th-emp-close-button">X</span>
@@ -241,10 +230,19 @@ if(isset($_SESSION['employeeid']))
             
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="address"class="th-user-label">Address</label class="th-emsu-input">
+                            <label for="address"class="th-user-label"> Email Address</label class="th-emsu-input">
                         </div>
                         <div class="th-emp-form-input">
                             <input type="text" name="email" class="th-emsu-input">
+                        </div>
+                    </div>
+
+                    <div class="th-emp-row">
+                        <div class="th-emp-form-label">
+                            <label for="Employee ID" class="th-user-label">Employee ID</label class="th-emsu-input">
+                        </div>
+                        <div class="th-emp-form-input">
+                            <input type="text" name="employeeid" class="th-emsu-input">
                         </div>
                     </div>
             

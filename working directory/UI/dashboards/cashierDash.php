@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-if(isset($_SESSION['employeeid']))
+if($_SESSION['type'] == "cashier")
 {
-    $employeeid =  $_SESSION['employeeid'];
+    $email =  $_SESSION['email'];
 }else{
 
-    header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-cashierDashboard");
+    header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-cashierDashboard");
 }
 
 ?>
@@ -54,14 +54,14 @@ if(isset($_SESSION['employeeid']))
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
-                            <p> Welcome @ <?php echo  $employeeid ?></p>
+                            <p> Welcome @ <?php echo  $email ?></p>
                         </div>
                     </div>
     <!--End of Dropdown for screens with width less than 800px-->
 
     <div class="row r3">
         <div class="col-15 sideNav">
-            <p> Welcome @ <?php echo  $employeeid ?></p> <hr>
+            <p> Welcome @ <?php echo  $email ?></p> <hr>
             <a href="../dashboards/cashierDash.php"> Dashboard </a><hr> 
             <a href="../profiles/cashierViewProfile.php"> Profile </a><hr>
             <a href="../cashierbills/createbill.php"> Create Bill </a><hr>
