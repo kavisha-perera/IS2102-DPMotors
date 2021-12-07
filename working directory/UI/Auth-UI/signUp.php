@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 
 <!DOCTYPE html>
 <html>
@@ -51,7 +48,7 @@ session_start();
             <a href="../Auth-UI/index.php#about">About</a>
             <a href="../Auth-UI/index.php#services">Services</a>
             <a href="../customer gerneral/productsCatalogue.html">Products</a>
-            <form action="../Auth-UI/customerLogin.php">
+            <form action="../Auth-UI/login.php">
                 <button class="navButton"> Log In </button>
             </form>
             <form action="../landing page/index.html#contact">
@@ -69,7 +66,9 @@ session_start();
 
           <!--displaying errors & success-->
 
-        <?php
+
+
+          <?php
             $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
             if (strpos ($fullUrl, "error=stmtfailed") == true) {
@@ -92,8 +91,8 @@ session_start();
                 
                 exit();
             }
-            elseif (strpos ($fullUrl, "error=invalid-email") == true) {
-                echo "<p class='error'>You seem to have entered an invaild email<br/></p>
+            elseif (strpos ($fullUrl, "error=invalidEmail") == true) {
+                echo "<p class='error'>You seem to have entered an invalid email<br/></p>
                 <br/>
                 <br/>
                 <form action='../Auth-UI/signUp.php' class='error'>
@@ -101,7 +100,7 @@ session_start();
                 </form> ";
                 exit();
             }
-            elseif (strpos ($fullUrl, "error=passwordsDontMmatch") == true) {
+            elseif (strpos ($fullUrl, "error=passwordsdontmatch") == true) {
                 echo "<p class='error'>Your Passwords Don't Match. <br/></p>
                 <br/>
                 <br/>
@@ -110,7 +109,7 @@ session_start();
                 </form> ";
                 exit();
             }
-            elseif (strpos ($fullUrl, "error=EmailTaken") == true) {
+            elseif (strpos ($fullUrl, "error=emailexists") == true) {
                 echo "<p class='error'>Your Email or NIC is already registered with us <br/></p>
                 <br/>
                 <br/>
@@ -125,7 +124,7 @@ session_start();
         <!------------------>
 
 
-            <form action="../../includes/signup-inc.php" method="post">
+        <form action="../../includes/signup.inc.php" method="post">
         
                 <h2 align ="center">SIGN UP</h2>
 

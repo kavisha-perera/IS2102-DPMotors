@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 
 
 <!DOCTYPE HTML>
@@ -26,7 +23,7 @@ session_start();
             <a href="#about">About</a>
             <a href="#services">Services</a>
             <a href="../customer gerneral/productsCatalogue.html">Products</a>
-            <form action="../Auth-UI/customerLogin.php">
+            <form action="../Auth-UI/login.php">
                 <button class="navButton"> Log In </button>
             </form>
             <form action="#contact">

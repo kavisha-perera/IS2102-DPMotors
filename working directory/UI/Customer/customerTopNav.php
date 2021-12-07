@@ -12,7 +12,7 @@
         <a href="../../Auth-UI/index.php#about">About</a>
         <a href="../../Auth-UI/index.php#services">Services</a>
         <a href="../customer gerneral/productsCatalogue.php">Products</a>
-        <form action="../../../includes/logout-inc.php">
+        <form action="../../../includes/logout.inc.php">
             <button class="navButton"> Log Out </button>
         </form>
 

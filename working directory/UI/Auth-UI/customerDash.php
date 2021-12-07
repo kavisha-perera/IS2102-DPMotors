@@ -1,13 +1,11 @@
-<?php
+ <?php
+
 session_start();
 
-if(isset($_SESSION['id']))
-{
+if (isset($_SESSION['id'])) {
     $customerEmail =  $_SESSION['email'];
 }
-
 ?>
- 
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -42,7 +40,7 @@ if(isset($_SESSION['id']))
             <a href="../Auth-UI/index.php#about">About</a>
             <a href="../Auth-UI/index.php#services">Services</a>
             <a href="../Customer/customer gerneral/productsCatalogue.php">Products</a>
-            <form action="../../../includes/logout-inc.php">
+            <form action="../../includes/logout.inc.php">
                 <button class="navButton"> Log Out </button>
             </form>
             
