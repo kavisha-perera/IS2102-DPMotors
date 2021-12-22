@@ -1,10 +1,15 @@
 <?php
+
+include '../../../includes/dbh.inc.php';
+
+
 session_start();
 
 if(isset($_SESSION['id']))
 {
     $customerEmail =  $_SESSION['email'];
 }
+
 
 ?>
 
@@ -22,6 +27,10 @@ if(isset($_SESSION['id']))
         }
         .hide-in-others{
             display:none;
+        }
+
+        input[type=text], input[type=password] {
+            padding: 12px 20px;
         }
     </style>
 </head>
@@ -47,96 +56,129 @@ if(isset($_SESSION['id']))
             <!--main content here-->
 
             <!--div container for customer to hold customer profile details form-->
-            <div class="col-12 ProfileContainer">
+            <div class="col-12">
 
                 <div class="row r3-1">
                     <div class="col-12">
-                        <h2 class="title"><b>MY PROFILE</b><h2></h2>
+                        <h3 class="title"><b> MY PROFILE <hr></b><h3></h2>
                     </div>
                 </div>
 
                 <!--start of form to get details-->
-                <form action="cusform.php" method="GET">
-            
-                <div class="row r3-2">
-                    <div class="col-4 profileLabel">
-                        <label>ACCOUNT NO </label>
-                    </div>
-                    <div class="col-8 profileform">
-                        <input type="text"  class="profileV" name="cusAccountNo">
-                    </div>
-                </div>
+           
+               <?php  $sql = "SELECT * FROM users WHERE id='{$_SESSION['id']}'";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+
                 <div class="row r3-3">
-                    <div class="col-4 profileLabel">
-                        <label>FIRST NAME </label>
+                    <div class="col-2 profileLabel">
+                        <label>FULL NAME </label>
                     </div>
-                    <div class="col-8 profileform">
-                        <input type="text" class="profileV" name="fname">
+                    <div class="col-6 profileform">
+                        <input type="text" class="profileV" name="name" value="<?php echo $row['fname']; ?> <?php echo $row['lname']; ?>">
                     </div>
-                </div> 
-                <div class="row r3-4">
-                    <div class="col-4 profileLabel">
-                        <label>LAST NAME </label>
-                    </div>
-                    <div class="col-8 profileform">
-                        <input type="text" class="profileV" name="lname">
-                    </div>
-                </div> 
-                <div class="row r3-5">
-                    <div class="col-4 profileLabel">
-                        <label>NIC </label>
-                    </div>
-                    <div class="col-8 profileform">
-                        <input type="text" class="profileV" name="nic">
-                    </div>
-                </div> 
-                <div class="row r3-6">
-                    <div class="col-4 profileLabel">
-                        <label>EMAIL ADDRESS </label>
-                    </div>
-                    <div class="col-8 profileform">
-                        <input type="text" class="profileV" name="email">
-                    </div>
+                    <div class="col-4 hide-in-small"> </div>
                 </div>
+
                 <div class="row r3-7">
-                    <div class="col-4 profileLabel">
-                        <label>CONTACT </label>
+                    <div class="col-2 profileLabel">
+                        <label>CONTACT NO</label>
                     </div>
-                    <div class="col-8 profileform">
-                        <input type="text" class="profileV" name="contact">
+                    <div class="col-6 profileform">
+                        <input type="text" class="profileV" name="contact" placeholder="07XXXXXXXX">
                     </div>
+                    <div class="col-4 hide-in-small"> </div>
                 </div>
+
                 <div class="row r3-8">
-                    <div class="col-4 profileLabel">
+                    <div class="col-2 profileLabel">
                         <label>ADDRESS </label>
                     </div>
-                    <div class="col-8 profileform">
-                        <input type="text" class="profileV" name="address">
+                    <div class="col-6 profileform">
+                        <input type="text" class="profileV" name="address" placeholder="your address">
                     </div>
-                </div>
-                <div class="row r3-9">
-                    <div class="col-4 profileLabel">
-                        <label>PASSWORD</label>
-                    </div>
-                    <div class="col-8 profileform">
-                        <input type="password" class="profileV" name="password">
-                    </div>
-                </div>
-
-                </form><!--have closed the form before the button. look into this and fix when putting php-->
-
-                <div class="row r3-10">
-                    <div class="col-12 buttons-inline">  
+                    <div class="col-4 buttons-inline"> 
                         <form action="./customerUpdateProfile.php">
                             <button class="navButton"> Edit Profile </button>
                         </form>
+                    </div>
+                </div>
+
+                          
+               <div class="row r3-1">
+                    <div class="col-12">
+                        <br>
+                        <h3 class="title"><b> LOGIN CREDENTIALS <hr></b><h3></h2>
+                    </div>
+                </div>
+
+                <div class="row r3-5">
+                    <div class="col-2 profileLabel">
+                        <label>NIC </label>
+                    </div>
+                    <div class="col-6 profileform">
+                        <input type="text" class="profileV" name="nic" value="<?php echo $row['nic']; ?>">
+                    </div>
+                    <div class="col-4 buttons-inline"> 
+                        <form action="./customerUpdateProfile.php">
+                            <button class="navButton"> Change </button>
+                        </form>
+                    </div>
+                </div> 
+
+                <div class="row r3-6">
+                    <div class="col-2 profileLabel">
+                        <label>EMAIL ADDRESS </label>
+                    </div>
+                    <div class="col-6 profileform">
+                        <input type="text" class="profileV" name="email" value="<?php echo $row['email']; ?>">
+                    </div>
+                    <div class="col-4 buttons-inline"> 
+                        <form action="./customerUpdateProfile.php">
+                            <button class="navButton"> Change </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="row r3-9">
+                    <div class="col-2 profileLabel">
+                        <label>PASSWORD</label>
+                    </div>
+                    <div class="col-6 profileform">
+                        <input type="password" class="profileV" name="password" value="**********">
+                    </div>
+                    <div class="col-4 buttons-inline"> 
+                        <form action="./customerUpdateProfile.php">
+                            <button class="navButton"> Change</button>
+                        </form>
+                    </div>
+                </div>
+
+            <?php
+                }
+            }
+
+            ?>
+
+                <div class="row r3-1">
+                    <div class="col-12">
+                        <br>
+                        <h3 class="title"><b> USER ACCOUNT<hr></b><h3></h2>
+                    </div>
+                </div>
+
+                <div class="row r3-9">
+                    <div class="col-2 profileLabel"> </div>
+                    <div class="col-6 profileform"></div>
+                    <div class="col-4 buttons-inline"> 
                         <form action="./customerDeleteAccount.php">
-                            <button class="navButton delete"> Delete  </button>
+                            <button class="navButton delete"> Delete  </button> <!--or deactivate-->
                         </form>   
                     </div>
-                </div>            
-
-     
+                </div>
+ 
         </div>
     </div>
 
