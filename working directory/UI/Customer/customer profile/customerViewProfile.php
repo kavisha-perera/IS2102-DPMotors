@@ -122,7 +122,7 @@ if(isset($_SESSION['id']))
                         <input type="text" class="profileV" name="nic" value="<?php echo $row['nic']; ?>">
                     </div>
                     <div class="col-4 buttons-inline"> 
-                        <form action="./customerUpdateProfile.php">
+                        <form action="./customerChangeNIC.php">
                             <button class="navButton"> Change </button>
                         </form>
                     </div>
@@ -136,7 +136,7 @@ if(isset($_SESSION['id']))
                         <input type="text" class="profileV" name="email" value="<?php echo $row['email']; ?>">
                     </div>
                     <div class="col-4 buttons-inline"> 
-                        <form action="./customerUpdateProfile.php">
+                        <form action="./customerChangeEmail.php">
                             <button class="navButton"> Change </button>
                         </form>
                     </div>
@@ -150,7 +150,7 @@ if(isset($_SESSION['id']))
                         <input type="password" class="profileV" name="password" value="**********">
                     </div>
                     <div class="col-4 buttons-inline"> 
-                        <form action="./customerUpdateProfile.php">
+                        <form action="./customerChangePassword.php">
                             <button class="navButton"> Change</button>
                         </form>
                     </div>

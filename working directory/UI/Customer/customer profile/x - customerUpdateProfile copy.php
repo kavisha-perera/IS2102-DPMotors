@@ -58,36 +58,68 @@ if(isset($_SESSION['id']))
                 <!--start of form to get details-->
                 <form action="cusform.php" method="POST">
             
+                <div class="row r3-2">
+                    <div class="col-4 profileLabel">
+                        <label>ACCOUNT NO </label>
+                    </div>
+                    <div class="col-8 profileform">
+                        <input type="text"  class="profileV" name="cusAccountNo">
+                    </div>
+                </div>
                 <div class="row r3-3">
-                    <div class="col-4 profileLabel updateCPL">
+                    <div class="col-4 profileLabel">
                         <label>FIRST NAME </label>
                     </div>
                     <div class="col-8 profileform">
-                        <input type="text" class="profileV updateCPF" name="fname">
+                        <input type="text" class="profileV" name="fname">
                     </div>
                 </div> 
                 <div class="row r3-4">
-                    <div class="col-4 profileLabel updateCPL">
+                    <div class="col-4 profileLabel">
                         <label>LAST NAME </label>
                     </div>
                     <div class="col-8 profileform">
-                        <input type="text" class="profileV updateCPF" name="lname">
+                        <input type="text" class="profileV" name="lname">
                     </div>
                 </div> 
+                <div class="row r3-5">
+                    <div class="col-4 profileLabel">
+                        <label>NIC </label>
+                    </div>
+                    <div class="col-8 profileform">
+                        <input type="text" class="profileV" name="nic">
+                    </div>
+                </div> 
+                <div class="row r3-6">
+                    <div class="col-4 profileLabel">
+                        <label>EMAIL ADDRESS </label>
+                    </div>
+                    <div class="col-8 profileform">
+                        <input type="text" class="profileV" name="email">
+                    </div>
+                </div>
                 <div class="row r3-7">
-                    <div class="col-4 profileLabel updateCPL">
+                    <div class="col-4 profileLabel">
                         <label>CONTACT </label>
                     </div>
                     <div class="col-8 profileform">
-                        <input type="text" class="profileV updateCPF" name="contact">
+                        <input type="text" class="profileV" name="contact">
                     </div>
                 </div>
                 <div class="row r3-8">
-                    <div class="col-4 profileLabel updateCPL">
+                    <div class="col-4 profileLabel">
                         <label>ADDRESS </label>
                     </div>
                     <div class="col-8 profileform">
-                        <input type="text" class="profileV updateCPF" name="address">
+                        <input type="text" class="profileV" name="address">
+                    </div>
+                </div>
+                <div class="row r3-9">
+                    <div class="col-4 profileLabel">
+                        <label>PASSWORD</label>
+                    </div>
+                    <div class="col-8 profileform">
+                        <input type="password" class="profileV" name="password">
                     </div>
                 </div>
             

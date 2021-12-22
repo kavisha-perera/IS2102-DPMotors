@@ -51,7 +51,7 @@ if(isset($_SESSION['id']))
 
                 <div class="row r3-1">
                     <div class="col-12">
-                        <h2 class="title"><b>UPDATE PROFILE</b><h2></h2>
+                        <h2 class="title"><b>CHANGE PASSWORD</b><h2></h2>
                     </div>
                 </div>
 
@@ -60,43 +60,38 @@ if(isset($_SESSION['id']))
             
                 <div class="row r3-3">
                     <div class="col-4 profileLabel updateCPL">
-                        <label>FIRST NAME </label>
+                        <label>CURRENT PASSWORD </label>
                     </div>
                     <div class="col-8 profileform">
-                        <input type="text" class="profileV updateCPF" name="fname">
+                        <input type="password" class="profileV updateCPF" name="oldpassword">
                     </div>
                 </div> 
-                <div class="row r3-4">
+                <div class="row r3-3">
                     <div class="col-4 profileLabel updateCPL">
-                        <label>LAST NAME </label>
+                        <label>NEW PASSWORD </label>
                     </div>
                     <div class="col-8 profileform">
-                        <input type="text" class="profileV updateCPF" name="lname">
+                        <input type="password" class="profileV updateCPF" name="password">
                     </div>
                 </div> 
-                <div class="row r3-7">
+                <div class="row r3-3">
                     <div class="col-4 profileLabel updateCPL">
-                        <label>CONTACT </label>
+                        <label>CONFIRM PASSWORD </label>
                     </div>
                     <div class="col-8 profileform">
-                        <input type="text" class="profileV updateCPF" name="contact">
+                        <input type="password" class="profileV updateCPF" name="confirmpwd">
                     </div>
-                </div>
-                <div class="row r3-8">
-                    <div class="col-4 profileLabel updateCPL">
-                        <label>ADDRESS </label>
-                    </div>
-                    <div class="col-8 profileform">
-                        <input type="text" class="profileV updateCPF" name="address">
-                    </div>
-                </div>
+                </div> 
             
             </form><!--have closed the form before the button. look into this and fix when putting php-->
 
                 <div class="row r3-10">
-                    <div class="col-12">
+                    <div class="col-12 buttons-inline">
                         <form action="./customerViewProfile.php">
                             <button class="navButton"> Save </button>
+                        </form>
+                        <form action="./customerViewProfile.php">
+                            <button class="navButton"> Cancel </button>
                         </form>
                     </div>
                 </div>            

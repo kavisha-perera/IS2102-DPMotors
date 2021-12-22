@@ -12,8 +12,13 @@
     text-align: left;
     font-size:12px;
     color: rgb(8, 8, 8);
-    padding-left: ;
+  /*  padding-left: ; */
 }
+
+.updateCPL{
+    padding-left:20% ;
+}
+
 
 .profileform{
     text-align: left; /*to align the columns holding the form text boxes*/
@@ -25,6 +30,10 @@
     border-radius: 10px;
     border: 2px solid #C4C4C4;
     background: #FFFAFA;
+}
+
+.updateCPF{
+    width: 70%;
 }
 
 .delete{
@@ -71,6 +80,14 @@
         padding-top: 10;
         width: 65%;
         }
+
+    .updateCPL{
+        padding-left: 5%;
+    }
+
+    .updateCPF{
+        width: 100%;
+    }
 
     .hide-in-small{
         display: none;
