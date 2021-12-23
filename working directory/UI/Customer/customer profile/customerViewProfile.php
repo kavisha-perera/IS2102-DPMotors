@@ -182,9 +182,29 @@ if(isset($_SESSION['id']))
         </div>
     </div>
 
-    
+         <!--displaying update success messages-->
+                <?php
+                
+                $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
+                if (strpos ($fullUrl, "error=passwordupdateSuccess") == true) {
+                        echo "
+                        <script>alert('PASSOWRD UPDATED SUCCESSFULLY!');</script>";
+                        exit();
+                    }
+                    if (strpos ($fullUrl, "error=ProfileupdateSucess") == true) {
+                        echo "
+                        <script>alert('PROFILE UPDATED SUCCESSFULLY!');</script>";
+                        exit();
+                    }
+                    if (strpos ($fullUrl, "NICupdateSucess") == true) {
+                        echo "
+                        <script>alert('NIC UPDATED SUCCESSFULLY!');</script>";
+                        exit();
+                    }
+            ?>
 
+        <!--*************************************-->
 
  <!--   <footer>
         <div class="row">

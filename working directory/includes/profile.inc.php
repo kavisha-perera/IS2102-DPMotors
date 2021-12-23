@@ -75,5 +75,6 @@ if (isset($_POST["password-submit"])){
     }
 
     updatePASSWORD($conn, $oldpassword, $newpassword, $confirmpwd); 
+    
 
 }

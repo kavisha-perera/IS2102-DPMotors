@@ -27,6 +27,12 @@ if(isset($_SESSION['id']))
         input[type=text], input[type=password] {
             padding: 12px 20px; }
 
+        .error{
+        text-align:center;
+        line-height:2;
+        color:#ED1F28;
+        }
+
 
     </style>
 </head>
@@ -90,7 +96,26 @@ if(isset($_SESSION['id']))
                     </div>
                 </div>            
 
-               
+                <?php
+                
+                $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+                if (strpos ($fullUrl, "error=email-nic-exists") == true) {
+                        echo "
+                        <br/>                  
+                        <p class='error'> This NIC Address Is Already Registered With Us <br/></p>
+                        <br/>";
+                        exit();
+                    }
+                    if (strpos ($fullUrl, "error=incorrectpassword") == true) {
+                        echo "
+                        <br/>                  
+                        <p class='error'> The Password You Entered is Incorrect<br/></p>
+                        <br/>";
+                        exit();
+                    }
+                ?>
+            
 
 
         </div>

@@ -9,7 +9,7 @@ function updateProfile($conn, $fname, $lname, $contact, $address){
     $result = mysqli_query($conn, $updateProfile);
 
     if ($result) {
-        header("location: ../UI/Customer/customer profile/customerViewProfile.php?error=updateSucess");
+        header("location: ../UI/Customer/customer profile/customerViewProfile.php?error=ProfileupdateSucess");
         exit();
     }
 }
@@ -76,7 +76,7 @@ function updateNIC($conn, $nic, $password){
                 $result = mysqli_query($conn, $updateNIC);
 
                 if ($result) {
-                    header("location: ../UI/Customer/customer profile/customerViewProfile.php?error=updateSucess");
+                    header("location: ../UI/Customer/customer profile/customerViewProfile.php?error=NICupdateSucess");
                     exit();
                 }
             }
@@ -105,7 +105,7 @@ function updateEMAIL($conn, $email, $password){
                 $result = mysqli_query($conn, $updateEMAIL);
 
                 if ($result) {
-                    header("location: ../UI/Customer/customer profile/customerViewProfile.php?error=updateSucess");
+                    header("location: ../UI/Customer/customer profile/customerViewProfile.php?error=EmailupdateSucess");
                     exit();
                 }
             }
@@ -152,7 +152,7 @@ function updatePASSWORD($conn, $oldpassword, $newpassword, $confirmpwd){
                 $result = mysqli_query($conn, $updatePassword);
 
                 if ($result) {
-                    echo "<script>alert('Password Updated successfully.');</script>";
+                    header("location: ../UI/Customer/customer profile/customerViewProfile.php?error=passwordupdateSuccess");
                     exit();
                 }
             }
