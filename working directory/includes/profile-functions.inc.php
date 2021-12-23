@@ -145,7 +145,10 @@ function updatePASSWORD($conn, $oldpassword, $newpassword, $confirmpwd){
             }
 
             elseif ($checkPwd === true) {
-                $updatePassword = "UPDATE users SET password='$newpassword' WHERE id='{$_SESSION["id"]}'";
+
+                $hashedPwd = password_hash($newpassword , PASSWORD_DEFAULT);
+
+                $updatePassword = "UPDATE users SET password='$hashedPwd' WHERE id='{$_SESSION["id"]}'";
                 $result = mysqli_query($conn, $updatePassword);
 
                 if ($result) {
