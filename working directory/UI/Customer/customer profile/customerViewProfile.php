@@ -87,7 +87,7 @@ if(isset($_SESSION['id']))
                         <label>CONTACT NO</label>
                     </div>
                     <div class="col-6 profileform">
-                        <input type="text" class="profileV" name="contact" placeholder="07XXXXXXXX">
+                        <input type="text" class="profileV" name="contact" placeholder="07XXXXXXXX" value="<?php echo $row['contact']; ?>">
                     </div>
                     <div class="col-4 hide-in-small"> </div>
                 </div>
@@ -97,7 +97,7 @@ if(isset($_SESSION['id']))
                         <label>ADDRESS </label>
                     </div>
                     <div class="col-6 profileform">
-                        <input type="text" class="profileV" name="address" placeholder="your address">
+                        <input type="text" class="profileV" name="address" placeholder="your address" value="<?php echo $row['address']; ?>">
                     </div>
                     <div class="col-4 buttons-inline"> 
                         <form action="./customerUpdateProfile.php">

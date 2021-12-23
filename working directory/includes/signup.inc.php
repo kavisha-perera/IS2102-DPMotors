@@ -11,7 +11,7 @@ if (isset($_POST["submit"])){
     $type = $_POST["type"];
 
     require_once 'dbh.inc.php';
-    require_once 'functions.inc.php';
+    require_once 'auth-functions.inc.php';
 
     if (emptyInputSignup($fname, $lname,  $email, $nic, $password, $confirmpw , $type) !== false){
         header("location: ../UI/Auth-UI/signUp.php?error=emptyinput");

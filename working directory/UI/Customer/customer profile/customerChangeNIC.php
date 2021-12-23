@@ -23,6 +23,11 @@ if(isset($_SESSION['id']))
         .hide-in-others{
             display:none;
         }
+
+        input[type=text], input[type=password] {
+            padding: 12px 20px; }
+
+
     </style>
 </head>
 <body>
@@ -56,14 +61,14 @@ if(isset($_SESSION['id']))
                 </div>
 
                 <!--start of form to get details-->
-                <form action="cusform.php" method="POST">
+                <form action="../../../includes/profile.inc.php" method="POST">
             
                 <div class="row r3-3">
                     <div class="col-4 profileLabel updateCPL">
                         <label>PASSWORD </label>
                     </div>
                     <div class="col-8 profileform">
-                        <input type="password" class="profileV updateCPF" name="password">
+                        <input type="password" class="profileV updateCPF" name="password" required>
                     </div>
                 </div> 
                 <div class="row r3-4">
@@ -71,17 +76,14 @@ if(isset($_SESSION['id']))
                         <label>NEW NIC </label>
                     </div>
                     <div class="col-8 profileform">
-                        <input type="text" class="profileV updateCPF" name="nic">
+                        <input type="text" class="profileV updateCPF" name="nic" required>
                     </div>
                 </div> 
-            
-            </form><!--have closed the form before the button. look into this and fix when putting php-->
 
                 <div class="row r3-10">
                     <div class="col-12 buttons-inline">
-                        <form action="./customerViewProfile.php">
-                            <button class="navButton"> Save </button>
-                        </form>
+                            <button type="submit" name="nic-submit" class="navButton"> Save </button>
+                </form>
                         <form action="./customerViewProfile.php">
                             <button class="navButton"> Cancel </button>
                         </form>

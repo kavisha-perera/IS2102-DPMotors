@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+include '../../../includes/dbh.inc.php';
+
 if(isset($_SESSION['id']))
 {
     $customerEmail =  $_SESSION['email'];
@@ -23,6 +25,10 @@ if(isset($_SESSION['id']))
         .hide-in-others{
             display:none;
         }
+
+        input[type=text], input[type=password] {
+            padding: 12px 20px; }
+
     </style>
 </head>
 <body>
@@ -55,15 +61,21 @@ if(isset($_SESSION['id']))
                     </div>
                 </div>
 
+                <?php  $sql = "SELECT * FROM users WHERE id='{$_SESSION['id']}'";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+
                 <!--start of form to get details-->
-                <form action="cusform.php" method="POST">
+                <form action="../../../includes/profile.inc.php" method="POST">
             
                 <div class="row r3-3">
                     <div class="col-4 profileLabel updateCPL">
                         <label>FIRST NAME </label>
                     </div>
                     <div class="col-8 profileform">
-                        <input type="text" class="profileV updateCPF" name="fname">
+                        <input type="text" class="profileV updateCPF" name="fname" value="<?php echo $row['fname']; ?>" required>
                     </div>
                 </div> 
                 <div class="row r3-4">
@@ -71,7 +83,7 @@ if(isset($_SESSION['id']))
                         <label>LAST NAME </label>
                     </div>
                     <div class="col-8 profileform">
-                        <input type="text" class="profileV updateCPF" name="lname">
+                        <input type="text" class="profileV updateCPF" name="lname" value="<?php echo $row['lname']; ?>" required>
                     </div>
                 </div> 
                 <div class="row r3-7">
@@ -79,7 +91,7 @@ if(isset($_SESSION['id']))
                         <label>CONTACT </label>
                     </div>
                     <div class="col-8 profileform">
-                        <input type="text" class="profileV updateCPF" name="contact">
+                        <input type="text" class="profileV updateCPF" name="contact" value="<?php echo $row['contact']; ?>" required>
                     </div>
                 </div>
                 <div class="row r3-8">
@@ -87,16 +99,19 @@ if(isset($_SESSION['id']))
                         <label>ADDRESS </label>
                     </div>
                     <div class="col-8 profileform">
-                        <input type="text" class="profileV updateCPF" name="address">
+                        <input type="text" class="profileV updateCPF" name="address" value="<?php echo $row['address']; ?>" required>
                     </div>
                 </div>
-            
-            </form><!--have closed the form before the button. look into this and fix when putting php-->
+        
+                <?php
+                }
+            }
 
+            ?>
+            
                 <div class="row r3-10">
                     <div class="col-12">
-                        <form action="./customerViewProfile.php">
-                            <button class="navButton"> Save </button>
+                            <button type="submit" name="profile-submit" class="navButton"> Save </button>
                         </form>
                     </div>
                 </div>            
