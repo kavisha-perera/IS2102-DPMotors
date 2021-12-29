@@ -78,7 +78,7 @@ if (isset($_SESSION['id'])) {
                         </a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../Customer/ustomer product reservations/viewPReservationList.php">
+                        <a href="../Customer/customer product reservations/viewPReservationList.php">
                             <img src="../../images/customer/product.png" class="dashboardIcon">
                         </a>
                     </div>
