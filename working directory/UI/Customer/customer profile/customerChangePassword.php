@@ -114,6 +114,13 @@ if(isset($_SESSION['id']))
                         <br/>";
                         exit();
                     }
+                    if (strpos ($fullUrl, "error=passwordsdontmatch") == true) {
+                        echo "
+                        <br/>                  
+                        <p class='error'> The New Passwords Don't Match<br/></p>
+                        <br/>";
+                        exit();
+                    }
                 ?>
                
 
