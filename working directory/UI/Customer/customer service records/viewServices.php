@@ -73,8 +73,8 @@ if(isset($_SESSION['id']))
                                 <td>CAK-3990</td>
                                 <td>11-09-2021</td>
                                 <td>Engine Check</td>
-                                <td style="text-align: right;"><a href="./readService.php"><img src="../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
-                                <td><a href="./deleteServiceRecord.html"><img src="../../images/tableIcons/delete.png" class="tableIcon"></a></td>
+                                <td style="text-align: right;"><a href="./readService.php"><img src="../../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
+                                <td><a href="./deleteServiceRecord.html"><img src="../../../images/tableIcons/delete.png" class="tableIcon"></a></td>
                             </tr>
                             <tr class="appListItems">
                                 <td>SRec-1621</td>

@@ -52,8 +52,8 @@ if(isset($_SESSION['id']))
                 <div class="row r3-1">
                     <div class="col-9 saveIcon-null"><!--blank column with 75%width--></div>
                     <div class="col-3 saveIcon-main">
-                        <img src="../../images/tableIcons/download.png" class="saveIcon">
-                        <img src="../../images/tableIcons/printing.png" class="saveIcon">
+                        <img src="../../../images/tableIcons/download.png" class="saveIcon">
+                        <img src="../../../images/tableIcons/printing.png" class="saveIcon">
                     </div>
                 </div>
 
