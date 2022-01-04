@@ -40,7 +40,7 @@
         <a href="../Auth-UI/index.php#home">Home</a> 
             <a href="../Auth-UI/index.php#about">About</a>
             <a href="../Auth-UI/index.php#services">Services</a>
-            <a href="../customer gerneral/productsCatalogue.html">Products</a>
+            <a href="../Customer/customer gerneral/productsCatalogue.php">Products</a>
             <form action="../Auth-UI/signUp.php">
                 <button class="navButton"> Sign Up</button>
             </form>

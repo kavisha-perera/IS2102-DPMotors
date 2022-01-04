@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -15,32 +20,7 @@
      <div class="row r3">
 
         <div class="col-12 content">
-            <!--main content here-->
-                <div class="row">
-                    <div class="col-12">
-                        <h1 class="PromoTitle">PROMOTIONS</h1>
-                    </div>
-                </div>
-                <div class="row r3-1">
-                    <div class="col-6 promoDeets">
-                        <a href="#"><img src="../../../images/promotions/sample1.jpg" class="promotionBanner"></a>
-                        <h4>PROMO NAME</h4>
-                        <h5>PROMO CODE</h5>
-                        <p>promotion description</p>
-                    </div>
-                    <div class="col-6 promoDeets">
-                        <a href="#"><img src="../../../images/promotions/sample2.jpg" class="promotionBanner"></a>
-                        <h4>PROMO NAME</h4>
-                        <h5>PROMO CODE</h5>
-                        <p>promotion description</p>
-                    </div>
-                    <div class="col-6 promoDeets">
-                        <a href="#"><img src="../../../images/promotions/sample3.png" class="promotionBanner"></a>
-                        <h4>PROMO NAME</h4>
-                        <h5>PROMO CODE</h5>
-                        <p>promotion description</p>
-                    </div>
-                </div>
+        <?php include_once("./promotions-content.php");?>
         </div>
     </div>
 

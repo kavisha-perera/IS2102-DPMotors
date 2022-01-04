@@ -1,4 +1,7 @@
+<?php
+session_start();
 
+?>
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -22,13 +25,34 @@
             <a href="#home">Home</a> 
             <a href="#about">About</a>
             <a href="#services">Services</a>
-            <a href="../customer gerneral/productsCatalogue.html">Products</a>
-            <form action="../Auth-UI/login.php">
-                <button class="navButton"> Log In </button>
-            </form>
-            <form action="#contact">
-                <button class="navButton contact"> Contact Us </button>
-            </form>
+            <a href="../Customer/customer gerneral/productsCatalogue.php">Products</a>
+            <?php 
+            if (isset($_SESSION['id'])){
+                echo "
+                <form action='../../../includes/logout.inc.php'>
+                <button class='navButton'> Log Out </button>
+                </form> 
+                <form action='../../Auth-UI/index.php#contact'>
+                <button class='navButton contact'> Contact Us </button>
+                </form>
+                &nbsp;&nbsp; 
+                <form action='./customerDash.php'>
+                <button style='border:0px;cursor:pointer;'> <img src='../../images/profile-login.png' style='max-width:35px;'></button>
+                </form>
+                ";   
+             }
+
+             else {
+                echo "<form action='./login.php'>
+                <button class='navButton'> Log In </button>
+                </form>
+                <form action='#contact'>
+                <button class='navButton contact'> Contact Us </button>
+                </form>";
+                 
+             }
+
+             ?>
         </div>
     </div>
    
