@@ -1,3 +1,10 @@
+<?php 
+include '../../../includes/dbh.inc.php';
+
+session_start();
+?>
+
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -69,139 +76,49 @@
                     <br><br>
                     
                     <h3> &nbsp;&nbsp;  CATEGORY 1</h3>
-
                     <br><br>
+                    <!--start getting details according to the category-->
+                        <?php  $sql = "SELECT * FROM stock WHERE catergory='EO' ";
+                            $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
 
                     <!--item container-->
                     <div class="col-3 catelogueItems">
-                        <img src="" class="promotionBanner">
-                        <h4>PRODUCT NAME</h4>
-                        <h5>LKR 0.00</h5>
-                        <p>product description</p>
+                        <img src="https://drive.google.com/uc?export=view&id=<?php echo $row['p_image']; ?>" class="promotionBanner">
+                        <h4><?php echo $row['p_brand']; ?> <?php echo $row['p_name']; ?></h4>
+                        <h5>LKR <?php echo $row['selling_price']; ?>/-</h5>
+                        <h6><?php echo $row['p_desc']; ?></h6>
+                        
+                        <?php $avail_sql = "SELECT COUNT(*) AS stock_count FROM products WHERE stock_code='{$row['stock_code']}'";
+                            $availability = mysqli_query($conn, $avail_sql);
+                            $data=mysqli_fetch_assoc($availability);
+                            if($data['stock_count'] > 0){    
+
+                        ?>
+                        <h6 style="color:green">Available: <?php echo $data['stock_count']; ?></h6>
+                        <?php
+                            }
+                            else{
+                                echo " <h6 style='color:red'>Out of Stock</h6>";
+                            }
+                        ?>
+                        
                     </div>
 
-                    <!--item container-->
-                    <div class="col-3 catelogueItems">
-                        <img src="" class="promotionBanner">
-                        <h4>PRODUCT NAME</h4>
-                        <h5>LKR 0.00</h5>
-                        <p>product description</p>
-                    </div>
-
-                    <!--item container-->
-                    <div class="col-3 catelogueItems">
-                        <img src="" class="promotionBanner">
-                        <h4>PRODUCT NAME</h4>
-                        <h5>LKR 0.00</h5>
-                        <p>product description</p>
-                    </div>
-
-                    <!--item container-->
-                    <div class="col-3 catelogueItems">
-                        <img src="" class="promotionBanner">
-                        <h4>PRODUCT NAME</h4>
-                        <h5>LKR 0.00</h5>
-                        <p>product description</p>
-                    </div>
-
-                    <!--item container-->
-                    <div class="col-3 catelogueItems">
-                        <img src="" class="promotionBanner">
-                        <h4>PRODUCT NAME</h4>
-                        <h5>LKR 0.00</h5>
-                        <p>product description</p>
-                    </div>
+                     <?php
+                         }
+                    } ?>
 
                 </div>
+
 
                 <br><br><br>
                 <!----------------------end of one product category------------------------->
 
 
-                <!----------------------start of one product category------------------------->
-
-                <div class="row catelogueAlt-2"><a id="category2"></a>
-
-                    <br><br>
-                    
-                    <h3> &nbsp;&nbsp;  CATEGORY 2</h3>
-
-                    <br><br>
-
-                    <!--item container-->
-                    <div class="col-3 catelogueItems">
-                        <img src="" class="promotionBanner">
-                        <h4>PRODUCT NAME</h4>
-                        <h5>LKR 0.00</h5>
-                        <p>product description</p>
-                    </div>
-
-                    <!--item container-->
-                    <div class="col-3 catelogueItems">
-                        <img src="" class="promotionBanner">
-                        <h4>PRODUCT NAME</h4>
-                        <h5>LKR 0.00</h5>
-                        <p>product description</p>
-                    </div>
-
-                    <!--item container-->
-                    <div class="col-3 catelogueItems">
-                        <img src="" class="promotionBanner">
-                        <h4>PRODUCT NAME</h4>
-                        <h5>LKR 0.00</h5>
-                        <p>product description</p>
-                    </div>
-
-                    <!--item container-->
-                    <div class="col-3 catelogueItems">
-                        <img src="" class="promotionBanner">
-                        <h4>PRODUCT NAME</h4>
-                        <h5>LKR 0.00</h5>
-                        <p>product description</p>
-                    </div>
-
-                </div>
-                    <br><br><br>
-                <!----------------------end of one product category------------------------->
-
-                <!----------------------start of one product category------------------------->
-
-                <div class="row catelogueAlt-1"><a id="category3"></a>
-
-                    <br><br>
-                    
-                    <h3> &nbsp;&nbsp;  CATEGORY 3</h3>
-
-                    <br><br>
-
-                    <!--item container-->
-                    <div class="col-3 catelogueItems">
-                        <img src="" class="promotionBanner">
-                        <h4>PRODUCT NAME</h4>
-                        <h5>LKR 0.00</h5>
-                        <p>product description</p>
-                    </div>
-
-                    <!--item container-->
-                    <div class="col-3 catelogueItems">
-                        <img src="" class="promotionBanner">
-                        <h4>PRODUCT NAME</h4>
-                        <h5>LKR 0.00</h5>
-                        <p>product description</p>
-                    </div>
-
-                    <!--item container-->
-                    <div class="col-3 catelogueItems">
-                        <img src="" class="promotionBanner">
-                        <h4>PRODUCT NAME</h4>
-                        <h5>LKR 0.00</h5>
-                        <p>product description</p>
-                    </div>
-
-                </div>
-                    <br><br><br>
-                <!----------------------end of one product category------------------------->
-
+               <!--copy paste the above, according to the number of product catergories we're having-->
 
  
 
