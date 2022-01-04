@@ -12,6 +12,25 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
 	<title>product catalogue</title>
+    <style>
+        input[type=text] {
+        padding: 6px;
+        width:300px;
+        height:45px;
+        border-radius;
+        font-size: 13px;
+        border: 2px solid red;
+        }
+
+        .search-container button {
+        padding: 6px 10px;
+        height:30px;
+        border: none;
+        cursor: pointer;
+}
+        
+
+    </style>
 </head>
 <body>
 
@@ -59,6 +78,15 @@ session_start();
                             <img src="../../../images/productCatalogue/category.png" style="width: 17px; height: 17px;">
                             &nbsp;&nbsp; <!--keeping horizontal space-->
                             <p><a href="#category3">CATEGORY 3</a> </p>
+                        </div>
+
+                        <br>
+
+                        <div class="search-container">
+                            <form action="">
+                            <input type="text" placeholder="Search.." name="search">
+                            <button type="submit" style="background-color:white;"><img src="../../../images/productCatalogue/s.png" style="max-width:30px; "></button>
+                            </form>
                         </div>
 
 
