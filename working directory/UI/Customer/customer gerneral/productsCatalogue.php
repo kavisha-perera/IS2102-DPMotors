@@ -15,19 +15,19 @@ session_start();
     <style>
         input[type=text] {
         padding: 6px;
-        width:300px;
-        height:45px;
+        width:90%;
+        height:40px;
         border-radius;
         font-size: 13px;
         border: 2px solid red;
         }
 
         .search-container button {
-        padding: 6px 10px;
-        height:30px;
         border: none;
         cursor: pointer;
-}
+        }
+
+
         
 
     </style>
@@ -81,14 +81,15 @@ session_start();
                         </div>
 
                         <br>
-
-                        <div class="search-container">
-                            <form action="">
-                            <input type="text" placeholder="Search.." name="search">
-                            <button type="submit" style="background-color:white;"><img src="../../../images/productCatalogue/s.png" style="max-width:30px; "></button>
+                    <!----------------------search container------------------------>
+                        <div class="search-container" style="border: 0px solid black">
+                            <form action="./productsCatalogue-search.php" method="POST">
+                            <input type="text" placeholder="what are you looking for? " name="search">
+                            <button type="submit" name="submit" style="background-color:white; border:0px solid black;"> <img src="../../../images/productCatalogue/s.png" style="max-width:27px;"></button>
                             </form>
                         </div>
 
+                    <!----------------------close search container------------------------>
 
                     </div>
                 </div>
@@ -125,7 +126,7 @@ session_start();
                             if($data['stock_count'] > 0){    
 
                         ?>
-                        <h6 style="color:green">Available: <?php echo $data['stock_count']; ?></h6>
+                        <h6 style="color:green">Available Qty: <?php echo $data['stock_count']; ?></h6>
                         <?php
                             }
                             else{
