@@ -43,7 +43,7 @@ if (isset($_SESSION['id'])) {
             <?php 
             if (isset($_SESSION['id'])){
                 echo "
-                <form action='../../../includes/logout.inc.php'>
+                <form action='../../includes/logout.inc.php'>
                 <button class='navButton'> Log Out </button>
                 </form> 
                 <form action='./Auth-UI/index.php#contact'>

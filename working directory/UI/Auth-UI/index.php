@@ -1,4 +1,7 @@
 <?php
+
+include '../../includes/dbh.inc.php';
+
 session_start();
 
 ?>
@@ -10,7 +13,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css">
     <script type="text/javascript" src="../../javascript/servicesSlideshow.js"></script>
-	<title>customer profile page</title>
+	<title>DP MOTORS</title>
 </head>
 <body>
 
@@ -27,22 +30,54 @@ session_start();
             <a href="#services">Services</a>
             <a href="../Customer/customer gerneral/productsCatalogue.php">Products</a>
             <?php 
-            if (isset($_SESSION['id'])){
-                echo "
-                <form action='../../../includes/logout.inc.php'>
-                <button class='navButton'> Log Out </button>
-                </form> 
-                <form action='../../Auth-UI/index.php#contact'>
-                <button class='navButton contact'> Contact Us </button>
-                </form>
-                &nbsp;&nbsp; 
-                <form action='./customerDash.php'>
-                <button style='border:0px;cursor:pointer;'> <img src='../../images/profile-login.png' style='max-width:35px;'></button>
-                </form>
-                ";   
-             }
+            if (isset($_SESSION['id'])){ 
+            //this if statement checks if the session has started and if a session with the id exists
 
-             else {
+                $sql = "SELECT * FROM users WHERE id='{$_SESSION['id']}'"; //takes the user info from the id
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) { 
+
+                        echo "
+                        <form action='../../includes/logout.inc.php'>
+                        <button class='navButton'> Log Out </button>
+                        </form> 
+                        <form action='../../Auth-UI/index.php#contact'>
+                        <button class='navButton contact'> Contact Us </button>
+                        </form>
+                        &nbsp;&nbsp; ";
+
+                        //the following if/else statements check the user type and direct them to their respective dashboards
+
+                        if($row['type'] == 'manager'){  //if type = manager, link to manager dashboard
+                        echo "<form action='../dashboards/managerDash.php'>
+                        <button style='border:0px;cursor:pointer;'> <img src='../../images/profile-login.png' style='max-width:35px;'></button>
+                        </form>
+                        ";   }
+
+                        elseif($row['type'] == 'admin'){ //if type = admin, link to admin dashboard
+                            echo "<form action='../dashboards/adminDash.php'>
+                            <button style='border:0px;cursor:pointer;'> <img src='../../images/profile-login.png' style='max-width:35px;'></button>
+                            </form>
+                            ";   }
+
+                        elseif($row['type'] == 'cashier'){ //if type = cashier, link to cashier dashboard
+                            echo "<form action='../dashboards/cashierDash.php'>
+                            <button style='border:0px;cursor:pointer;'> <img src='../../images/profile-login.png' style='max-width:35px;'></button>
+                            </form>
+                            ";   }
+
+                        else{ //if its not any of the above types, direct to customer dashboard
+                            echo "<form action='./customerDash.php'>
+                            <button style='border:0px;cursor:pointer;'> <img src='../../images/profile-login.png' style='max-width:35px;'></button>
+                            </form>
+                            ";   }
+                    }
+                } 
+            }
+
+            //this is the else of the very first if statement. if a session is not in place, display these info
+             else { 
                 echo "<form action='./login.php'>
                 <button class='navButton'> Log In </button>
                 </form>
