@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+include '../../../includes/dbh.inc.php';
+
 if(isset($_SESSION['id']))
 {
     $customerEmail =  $_SESSION['email'];
@@ -24,6 +26,18 @@ if(isset($_SESSION['id']))
         .hide-in-others{
             display:none;
         }
+        .billdescription{
+            width:100%;
+            font-size:11px;
+        }
+        @media (max-width: 800px) {
+            .tableTextarea{
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        }
+
     </style>
 </head>
 <body>
@@ -64,6 +78,32 @@ if(isset($_SESSION['id']))
                     </div>
                 </div>
 
+                <?php
+
+                // Check existence of id parameter before processing further
+                if (isset($_POST["view"])){
+
+                    $reserve_id = $_POST["view"];
+
+                    $sql = "SELECT * FROM reservedforsale WHERE res_sale_id = ? ;"; 
+                    $stmt = mysqli_stmt_init($conn);
+                    if(!mysqli_stmt_prepare($stmt, $sql)){
+                        header("location: ../UI/Auth-UI/signUp.php?error=stmtfailed");
+                        exit();
+                    }
+
+                    mysqli_stmt_bind_param($stmt, "s" , $reserve_id);
+                    mysqli_stmt_execute($stmt);
+
+                    $resultData = mysqli_stmt_get_result($stmt);
+
+                    if (mysqli_num_rows($resultData) > 0) {
+                        while ($row = mysqli_fetch_assoc($resultData)) {
+                    
+                ?>
+
+
+
                 <!--start of form to get details-->
                 <form action="pReservation.php" method="GET">
             
@@ -72,15 +112,15 @@ if(isset($_SESSION['id']))
                         <label>P.RESERVATION NUMBER </label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="productResNo" disabled>
+                        <input type="text" class="serviceApp" name="productResNo" value=" <?php echo $row['reservation_no']; ?>">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-4 BookAppLabel">
-                        <label>DELIVERY DATE & TIME</label>
+                        <label>DELIVERY DATE</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="date" class="serviceApp" name="deliveryDateTime" disabled>
+                        <input type="text" class="serviceApp" name="deliveryDateTime" value=" <?php echo $row['due_date']; ?>">
                     </div>
                 </div> 
                 <div class="row">
@@ -88,7 +128,7 @@ if(isset($_SESSION['id']))
                         <label>DELIVERY METHOD</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="deliveryMethod" disabled>
+                        <input type="text" class="serviceApp" name="deliveryMethod" value=" <?php echo $row['delivery_method']; ?>">
                     </div>
                 </div> 
                 <div class="row">
@@ -96,7 +136,7 @@ if(isset($_SESSION['id']))
                         <label>DELIVERY ADDRESS</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="deliveryAddress" disabled>
+                        <input type="text" class="serviceApp" name="deliveryAddress" value=" <?php echo $row['cus_address']; ?>">
                     </div>
                 </div>
                 <div class="row">
@@ -104,7 +144,7 @@ if(isset($_SESSION['id']))
                         <label>CUSTOMER NAME</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="resCusName" disabled>
+                        <input type="text" class="serviceApp" name="resCusName" value=" <?php echo $row['cus_name']; ?>">
                     </div>
                 </div>
                 <div class="row">
@@ -112,7 +152,7 @@ if(isset($_SESSION['id']))
                         <label>CONTACT NUMBER</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="resContactNo" disabled>
+                        <input type="text" class="serviceApp" name="resContactNo" value=" <?php echo $row['cus_contact']; ?>">
                     </div>
                 </div>
                 <div class="row">
@@ -120,7 +160,41 @@ if(isset($_SESSION['id']))
                         <label>DESCRIPTION</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <textarea class="serviceApp tableTextarea" name="pResDescription" disabled> </textarea>
+                        <div class="serviceApp tableTextarea" name="pResDescription" >
+                            <table class="billdescription">
+
+                                <tr>
+                                    <th>Reserved Product</th>
+                                    <th>Unit Price</th>
+                                    <th>Order Qty</th>
+                                    <th>Amount</th>                                   
+                                </tr>
+
+                                <tr>
+                                    <th colspan="4">
+                                        <br><hr><br>
+                                    </th>                                  
+                                </tr>
+
+
+                                <?php  
+                                    $query = "SELECT * FROM stock INNER JOIN reserved_products ON stock.stock_code = reserved_products.p_code WHERE reserved_products.reservation_no = '{$row['reservation_no']}'";
+                                    $results = mysqli_query($conn, $query);
+                                    if (mysqli_num_rows($results) > 0) {
+                                        while ($products = mysqli_fetch_assoc($results)) {
+                                ?>
+                                <tr>
+                                    <td><?php echo $products['p_brand']; ?> <?php echo $products['p_name']; ?></td>
+                                    <td>LKR <?php echo $products['selling_price']; ?></td>
+                                    <td><?php echo $products['quantity']; ?></td>
+                                    <td>LKR <?php echo $products['selling_price'] * $products['quantity'];  ?></td>
+                                <tr>
+                            <?php 
+                                }
+                            }
+                            ?>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -131,6 +205,15 @@ if(isset($_SESSION['id']))
                         <input type="text" class="serviceApp" name="resBillAmount" disabled>
                     </div>
                 </div>
+
+                <?php
+
+                        }
+                    }
+                }
+                ?>
+
+
 
             </form><!--have closed the form before the button. look into this and fix when putting php-->
 
