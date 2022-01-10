@@ -205,6 +205,14 @@ if(isset($_SESSION['id']))
                         <input type="text" class="serviceApp" name="resBillAmount" disabled>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-4 BookAppLabel">
+                        <label>SPECIAL NOTES</label>
+                    </div>
+                    <div class="col-8 BookAppForm">
+                        <input type="text" class="serviceApp" name="resBillAmount" value=" <?php echo $row['remarks']; ?>">
+                    </div>
+                </div>
 
                 <?php
 

@@ -1,0 +1,20 @@
+
+if(search bar submit button isset){
+    if(search has matched results){
+
+        display table with results;
+        add refresh page button; /*this button refreshes the page to when the submit is not isset */
+    }
+    else{
+        echo "no results";
+        add refresh page button;
+    }
+}
+else{
+    if(there are any product reservations under customer){
+        display table results;
+    }
+    else{
+        echo "no product reservations available";
+    }
+}
