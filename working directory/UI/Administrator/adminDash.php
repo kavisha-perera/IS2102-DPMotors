@@ -3,15 +3,13 @@ session_start();
 
 if($_SESSION['type'] == "admin")
 {
-    $email =  $_SESSION['email'];
+    $adminEmail =  $_SESSION['email'];
 }else{
 
     header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-adminDashboard");
 }
 
 ?>
-
-
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -20,60 +18,33 @@ if($_SESSION['type'] == "admin")
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css">
 	<title>admin dashboard</title>
+
+    <style>
+        .Nav-dashboard{
+            /* to show the active link in navbar */
+            background-color:#344CB4; 
+        }
+        .hide-in-dashboard{
+            display:none;
+        }
+    </style>
+
 </head>
 <body>
 
     <div class="row r1">
-        <div class="col-13">
-            <img src="../../images/logo.png" class="navLogo">
-        </div>
-        <div class="col-nav">
-            <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
-        </div>
-        <div class="col-14 navbar"> 
-            <a href="../Auth-UI/index.php#home">Home</a> 
-            <a href="../Auth-UI/index.php#about">About</a>
-            <a href="../Auth-UI/index.php#services">Services</a>
-            <a href="../customer gerneral/productsCatalogue.html">Products</a>
-            <form action="../../includes/logout.inc.php">
-                <button class="navButton"> Log Out </button>
-            </form> 
-            <form action="../Auth-UI/index.php#contact">
-                <button class="navButton contact"> Contact Us </button>
-            </form>
-        </div>
+        <?php include_once("./adminTopNav.php") ?>
     </div>
 
     <!-- Start of Dropdown for screens with width less than 800px-->
-                    <div class="row r2">
-                        <div class="col-2 sideNav-dropdown" >
-                                <img src="../../images/dropdown.svg" class="dropButton">
-                                <div class="dropdown-content">
-                                    <a href="#" > Dashboard </a>  
-                                    <a href="../profiles/adminViewProfile.html"> Profile </a>
-                                    <a href="../manageAccounts/manage.php"> Accounts </a> 
-                                    <a href="../manageInventory/manageinventory.html"> Inventory </a>
-                                    <a href="../managepromotions/managepromotions.php"> Promotions </a>  
-                                    <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> 
-                                    <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a> 
-                                </div>
-                        </div>
-                        <div class="col-10 smallWel">
-                            <p> Welcome  <?php echo  $email ?></p>
-                        </div>
-                    </div>
+    <div class="row r2">
+        <?php include_once("./adminSide-MiniNav.php") ?>
+    </div>
     <!--End of Dropdown for screens with width less than 800px-->
 
     <div class="row r3">
         <div class="col-15 sideNav">
-            <p> Welcome <?php echo  $email ?></p> <hr>
-                <a href="#" class="active"> Dashboard </a> <hr> 
-                <a href="../profiles/adminViewProfile.html"> Profile </a> <hr> 
-                <a href="../manageAccounts/manage.php"> Accounts </a> <hr> 
-                <a href="../manageInventory/manageinventory.html"> Inventory</a> <hr> 
-                <a href="../managepromotions/managepromotions.php"> Promotions </a> <hr> 
-                <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> <hr> 
-                <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a> <hr> 
+            <?php include_once("./adminTopNav.php") ?>
         </div>
 
         <div class="col-16 content">
