@@ -44,7 +44,7 @@ if($_SESSION['type'] == "admin")
 
     <div class="row r3">
         <div class="col-15 sideNav">
-            <?php include_once("./adminTopNav.php") ?>
+            <?php include_once("./adminSideNav.php") ?>
         </div>
 
         <div class="col-16 content">
