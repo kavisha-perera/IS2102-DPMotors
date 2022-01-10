@@ -154,15 +154,19 @@ if(isset($_SESSION['id']))
                             
                                 </td>
                             </tr>
-
-                            <?php }
-                        } ?>
+                                                                       
+                   <?php }
+                        } 
+                    ?>
 
                         </tbody>
+
                         </table>
 
-                    </div>
-                </div>
+                   </div>
+
+
+               </div>
 
 
         </div>

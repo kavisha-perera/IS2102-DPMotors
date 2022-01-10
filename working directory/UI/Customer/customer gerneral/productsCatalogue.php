@@ -82,6 +82,7 @@ session_start();
 
                         <br>
                     <!----------------------search container------------------------>
+                    
                         <div class="search-container" style="border: 0px solid black">
                             <form action="./productsCatalogue-search.php" method="POST">
                             <input type="text" placeholder="what are you looking for? " name="search" required>
