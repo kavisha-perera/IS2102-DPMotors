@@ -34,26 +34,26 @@
                 //the following if/else statements check the user type and direct them to their respective dashboards
 
                         if($row['type'] == 'manager'){  //if type = manager, link to manager dashboard
-                        echo "<form action='../dashboards/managerDash.php'>
-                        <button style='border:0px;cursor:pointer;'> <img src='../../images/profile-login.png' style='max-width:35px;'></button>
+                        echo "<form action='../../dashboards/managerDash.php'>
+                        <button style='border:0px;cursor:pointer;'> <img src='../../../images/profile-login.png' style='max-width:35px;'></button>
                         </form>
                         ";   }
 
                         elseif($row['type'] == 'admin'){ //if type = admin, link to admin dashboard
-                            echo "<form action='../dashboards/adminDash.php'>
-                            <button style='border:0px;cursor:pointer;'> <img src='../../images/profile-login.png' style='max-width:35px;'></button>
+                            echo "<form action='../../dashboards/adminDash.php'>
+                            <button style='border:0px;cursor:pointer;'> <img src='../../../images/profile-login.png' style='max-width:35px;'></button>
                             </form>
                             ";   }  
 
                         elseif($row['type'] == 'cashier'){ //if type = cashier, link to cashier dashboard
-                            echo "<form action='../dashboards/cashierDash.php'>
-                            <button style='border:0px;cursor:pointer;'> <img src='../../images/profile-login.png' style='max-width:35px;'></button>
+                            echo "<form action='../../dashboards/cashierDash.php'>
+                            <button style='border:0px;cursor:pointer;'> <img src='../../../images/profile-login.png' style='max-width:35px;'></button>
                             </form>
                             ";   }
 
                         else{ //if its not any of the above types, direct to customer dashboard
                             echo "<form action='./customerDash.php'>
-                            <button style='border:0px;cursor:pointer;'> <img src='../../images/profile-login.png' style='max-width:35px;'></button>
+                            <button style='border:0px;cursor:pointer;'> <img src='../../../images/profile-login.png' style='max-width:35px;'></button>
                             </form>
                             ";   }
                     }
