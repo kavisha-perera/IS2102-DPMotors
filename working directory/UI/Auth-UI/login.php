@@ -37,14 +37,14 @@
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
         </div>
         <div class="col-14 navbar"> 
-        <a href="../Auth-UI/index.php#home">Home</a> 
+            <a href="../Auth-UI/index.php#home">Home</a> 
             <a href="../Auth-UI/index.php#about">About</a>
             <a href="../Auth-UI/index.php#services">Services</a>
             <a href="../Customer/customer gerneral/productsCatalogue.php">Products</a>
             <form action="../Auth-UI/signUp.php">
                 <button class="navButton"> Sign Up</button>
             </form>
-            <form action="../landing page/index.html#contact">
+            <form action="./index.php#contact">
                 <button class="navButton contact"> Contact Us </button>
             </form>
         </div>

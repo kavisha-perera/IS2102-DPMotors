@@ -38,7 +38,7 @@ if($_SESSION['type'] == "admin")
             <form action="../../includes/logout.inc.php">
                 <button class="navButton"> Log Out </button>
             </form> 
-            <form action="../landing page/index.html#contact">
+            <form action="../Auth-UI/index.php#contact">
                 <button class="navButton contact"> Contact Us </button>
             </form>
         </div>

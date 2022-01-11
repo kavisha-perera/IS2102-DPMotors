@@ -151,7 +151,7 @@ function loginUser($conn, $email, $password){
             break;
 
         case "admin":
-            header("location: ../UI/dashboards/adminDash.php");
+            header("location: ../UI/Administrator/adminDash.php");
             break;
 
         case "manager":
