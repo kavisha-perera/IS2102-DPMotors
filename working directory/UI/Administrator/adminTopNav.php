@@ -1,7 +1,7 @@
 <!--customer topnav bar -->
 
 <div class="col-13">
-    <img src="../../images/logo.png" class="navLogo">
+    <img src="../../../images/logo.png" class="navLogo">
 </div>
 <div class="col-nav">
     <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
@@ -23,7 +23,7 @@
                 </form>
                 &nbsp;&nbsp; 
                 <form action='./adminDash.php'>
-                <button style='border:0px;cursor:pointer;'> <img src='../../images/profile-login.png' style='max-width:35px;'></button>
+                <button style='border:0px;cursor:pointer;'> <img src='../../../images/profile-login.png' style='max-width:35px;'></button>
                 </form>
                 ";   
              }
