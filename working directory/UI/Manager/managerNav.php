@@ -18,12 +18,12 @@
                                 <img src="../../../images/dropdown.svg" class="dropButton">
                                 <div class="dropdown-content">
                                     <a href="../../dashboards/managerDash.php" > Dashboard </a>  
-                                    <a href="../../profiles/managerViewProfile.php" > Profile </a>
+                                    <a href="../managerProfile/managerViewProfile.php" > Profile </a>
                                     <a href="../appointments/readAppointments.php"  > Appointments </a> 
                                     <a href="../Cashier service records/managerViewServiceRecords.php"> Vehicle Service Records </a>
                                     <a href="../Cashier product reservation/managerViewProductResrvation.php"> Product Reservations </a> 
                                     <a href="../Cashier View Bill History/ManagerViewAllBills.php"> Payment History </a> 
-                                    <a href="../promotion/readPromotion.php"class="active"> Promotions </a> 
+                                    <a href="../promotion/readPromotion.php"> Promotions </a> 
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
@@ -36,10 +36,10 @@
         <div class="col-15 sideNav">
             <!--<p> Welcome @ <?php echo  $employeeid ?></p> <hr> -->
                                     <a href="../../dashboards/managerDash.php" > Dashboard </a>  
-                                    <a href="../../profiles/managerViewProfile.php"> Profile </a>
-                                    <a href="../../appointments/readAppointments.php" > Appointments </a> 
+                                    <a href="../managerProfile/managerViewProfile.php"> Profile </a>
+                                    <a href="../appointments/readAppointments.php" > Appointments </a> 
                                     <a href="../Cashier service records/managerViewServiceRecords.php"> Vehicle Service Records </a>
                                     <a href="../Cashier product reservation/managerViewProductResrvation.php"> Product Reservations </a> 
                                     <a href="../Cashier View Bill History/ManagerViewAllBills.php"> Payment History </a> 
-                                    <a href="../promotion/readPromotion.php" class="active"> Promotions </a> 
+                                    <a href="../promotion/readPromotion.php"> Promotions </a> 
         </div>

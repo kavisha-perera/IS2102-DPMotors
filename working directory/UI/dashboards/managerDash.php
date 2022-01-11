@@ -48,12 +48,12 @@ if($_SESSION['type'] == "manager")
                                 <img src="../../images/dropdown.svg" class="dropButton">
                                 <div class="dropdown-content">
                                     <a href="../dashboards/managerDash.php" class="active"> Dashboard </a>  
-                                    <a href="../profiles/managerViewProfile.php"> Profile </a>
+                                    <a href="../Manager/managerProfile/managerViewProfile.php"> Profile </a>
                                     <a href="../appointments/readAppointments.php"> Appointments </a> 
                                     <a href="../Cashier service records/managerViewServiceRecords.php"> Vehicle Service Records </a>
                                     <a href="../Cashier product reservation/managerViewProductResrvation.php"> Product Reservations </a>  
                                     <a href="../Cashier View Bill History/ManagerViewAllBills.php"> Payment History </a> 
-                                    <a href="../promotion/readPromotion.php"> Promotions </a> 
+                                    <a href="../Manager/promotion/readPromotion.php"> Promotions </a> 
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
@@ -65,13 +65,13 @@ if($_SESSION['type'] == "manager")
     <div class="row r3">
         <div class="col-15 sideNav">
             <p> Welcome  <?php echo  $email ?></p> <hr>
-            <a href="../dashboards/managerDash.php" class="active"> Dashboard </a>  
-                                    <a href="../profiles/managerViewProfile.php"> Profile </a>
+                                    <a href="../dashboards/managerDash.php" class="active"> Dashboard </a>  
+                                    <a href="../Manager/managerProfile/managerViewProfile.php"> Profile </a>
                                     <a href="../appointments/readAppointments.php"> Appointments </a> 
                                     <a href="../Cashier service records/managerViewServiceRecords.php"> Vehicle Service Records </a>
                                     <a href="../Cashier product reservation/managerViewProductResrvation.php"> Product Reservations </a>  
                                     <a href="../Cashier View Bill History/ManagerViewAllBills.php"> Payment History </a> 
-                                    <a href="../promotion/readPromotion.php"> Promotions </a> 
+                                    <a href="../Manager/promotion/readPromotion.php"> Promotions </a> 
         </div>
 
         <div class="col-16 content">

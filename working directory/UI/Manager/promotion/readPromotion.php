@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-if(isset($_SESSION['employeeid']))
+if($_SESSION['type'] == "manager")
 {
-    $employeeid =  $_SESSION['employeeid'];
+    $email =  $_SESSION['email'];
 }else{
 
-    header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-managerDashboard");
+    header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-managerDashboard");
 }
 
 ?>
