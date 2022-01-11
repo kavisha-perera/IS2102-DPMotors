@@ -40,7 +40,7 @@
                         ";   }
 
                         elseif($row['type'] == 'admin'){ //if type = admin, link to admin dashboard
-                            echo "<form action='../../dashboards/adminDash.php'>
+                            echo "<form action='../../Administrator/adminDash.php'>
                             <button style='border:0px;cursor:pointer;'> <img src='../../../images/profile-login.png' style='max-width:35px;'></button>
                             </form>
                             ";   }  
