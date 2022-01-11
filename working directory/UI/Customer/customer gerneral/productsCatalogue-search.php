@@ -129,7 +129,10 @@ session_start();
                         <div class='col-3'></div>
                     </div>
                     <div class='row'>
-                        <div class='col-12'> <h6 align='center'> Sorry, no products matched your search. Try Again </h6> </div>
+                        <div class='col-12'> <h6 align='center'> Sorry, no products matched your search. Try Again </h6>
+                        <br>
+                        <img src='../../../images/customer/no-results.png' style='max-width:300px; display: block; margin-left: auto; margin-right: auto;'> 
+                    </div>
                     </div>
                 
                 <?php
