@@ -164,6 +164,8 @@ if(isset($_SESSION['id']))
                         <h6>- sorry, no results matched your search. try again -  </h6>
                         <br>
                         <button onClick='location.href=location.href'  class='refresh-button'><img src='../../../images/customer/refresh.png' class='tableIcon'> </button>
+                        <br>
+                        <img src='../../../images/customer/no-results.png' style='max-width:250px;'>
                         ";
                     }
                 }
@@ -212,7 +214,9 @@ if(isset($_SESSION['id']))
                         <?php
                             }
                             else{
-                                echo "<h6>- no current product reservations -  </h6>";
+                                echo "<h6>- no current product reservations -  </h6>
+                                <br>
+                                <img src='../../../images/customer/no-results.png' style='max-width:250px;'>";
                             }
 
                             ?>
