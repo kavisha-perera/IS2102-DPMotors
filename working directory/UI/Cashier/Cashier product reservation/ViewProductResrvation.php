@@ -1,28 +1,5 @@
-<?php
-session_start();
-
-if(isset($_SESSION['employeeid']))
-{
-    $employeeid =  $_SESSION['employeeid'];
-}else{
-
-    header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-cashierDashboard");
-}
-
-?>
-
-<?php
-
-include "../../../classes/DB.php";
-include "../../../classes/ProductReservation.php";
-
-$_PReservation = new PReservation(DB::connection());
-
-$PReservation_list = $_PReservation->getPReservation();
 
 
-
-?>
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -115,29 +92,23 @@ $PReservation_list = $_PReservation->getPReservation();
                     </tr>
                     </thead>
                     <tbody>
-                    <?php
-                    
-                    foreach ($PReservation_list as $key => $value) {
 
-                        $prno =  trim($value['prno']); 
-                    ?>
 
                     <tr>
-                        <td><?php echo $value['prno'] ?> </td>
-                        <td><?php echo $value['fname']?></td>
-                        <td><?php echo $value['lname']?></td> 
-                        <td><?php echo $value['contact']?></td>                  
-                        <td><?php echo $value['address']?></td>
-                        <td><?php echo $value['pid']?></td>
-                        <td><?php echo $value['prname']?></td>
-                        <td><?php echo $value['quantity']?></td> 
-                        <td><?php echo $value ['deliverydatetime']?></td>                  
-                        <td><?php echo $value ['deliverymethod']?></td>
+                        <td></td>
+                        <td></td>
+                        <td></td> 
+                        <td></td>                  
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td> 
+                        <td>></td>                  
+                        <td></td>
                         <td><button class='th-button-icon' onclick = "document.location='UpdateProductReserv.php'" ><img src='../../../images/Employee & Supplier/edit.svg' class='th-svg-icons'></button></td>  
                         <td><button class='th-button-icon' onclick = "document.location= 'DeleteProductReserve.php'"><img src='../../../images/Employee & Supplier/delete.svg' class='th-svg-icons'></button></td>
                     </tr>
-                        
-                    <?php } ?>
+            
 
                       </tbody>
                   </table>
