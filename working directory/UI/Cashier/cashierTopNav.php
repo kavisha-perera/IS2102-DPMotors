@@ -13,9 +13,6 @@
                 <button class='navButton'> Log Out </button>
                 </form> 
                 &nbsp;&nbsp; 
-                <form action='../dashboards/cashierDash.php'>
-                <button style='border:0px;cursor:pointer;'> <img src='../../../images/profile-login.png' style='max-width:35px;'></button>
-                </form>
                 ";   
              }
 
