@@ -27,7 +27,7 @@
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
-                            <!--<p> Welcome @ <?php echo $employeeid ?></p>-->
+                         <p> Welcome @ <?php echo $employeeid ?></p>
                         </div>
                     </div>
     <!--End of Dropdown for screens with width less than 800px-->
