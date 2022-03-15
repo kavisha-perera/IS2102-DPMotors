@@ -24,6 +24,23 @@ if(isset($_SESSION['id']))
         .hide-in-others{
             display:none;
         }
+        .ServiceRecordTable{
+            width:100%;
+            font-size: 12px;
+            padding:2px;  
+            background-color:#FFFAFA;
+ 
+        }
+
+        .ServiceRecordTable th{
+            background-color:#fdbe88;
+        }
+
+        .ServiceRecordTable th, .ServiceRecordTable td{
+            width: 15px;
+            height:40px;
+            border: 1px solid #9e9994;
+        }
     </style>
 </head>
 <body>
@@ -59,74 +76,79 @@ if(isset($_SESSION['id']))
 
             <!--div container for customer to hold customer profile details form-->
             <div class="col-12 ProfileContainer" id="print-content">
+
+            <?php
+
+            // Check existence of id parameter before processing further
+            if (isset($_POST["view"])){
+
+                $vehicle_no = $_POST["view"];
+
+                $sql = "SELECT * FROM vehicleservicerecords WHERE vehicleNo = ? ;"; 
+                $stmt = mysqli_stmt_init($conn);
+                if(!mysqli_stmt_prepare($stmt, $sql)){
+                    header("location: ./viewService.php?error=stmtfailed");
+                    exit();
+                }
+
+                mysqli_stmt_bind_param($stmt, "s" , $vehicle_no);
+                mysqli_stmt_execute($stmt);
+
+                $resultData = mysqli_stmt_get_result($stmt);
+
+                if (mysqli_num_rows($resultData) > 0) {
+    
+            ?>
                 
                 <div class="row r3-1">
                     <div class="col-12">
-                        <h2 class="title"><b>SERVICE RECORD #number</b><h2></h2>
+                        <h3 class="title"><b>VEHICLE NO: <?php echo $vehicle_no; ?> </b></h3>
+                        <br>
                     </div>
                 </div>
+               
+                    <div class="col-12">
+                        <table class="ServiceRecordTable">
+                                <thead>
+                                    <tr>
+                                    <th>No</th>
+                                    <th>Service Date</th>
+                                    <th>Mileage</th>
+                                    <th>Engine Oil</th> 
+                                    <th>Gear Oil</th> 
+                                    <th>A/C Filter</th> 
+                                    <th>Oil Filter</th>
+                                    <th>ATF Oil</th>
+                                    <th>Coolant</th> 
+                                    <th>Air Filter</th> 
+                                    <th>Next Service Date</th>    
+                                    </tr>
+                                </thead>
+                                <tbody> <!--add php & sql here-->
+                                <?php while ($row = mysqli_fetch_assoc($resultData)) { ?>
+                                    <tr>
+                                        <td><?php echo $row['serviceNo']; ?></td>
+                                        <td><?php echo $row['dateOfService']; ?></td>
+                                        <td><?php echo $row['milage']; ?></td>
+                                        <td><?php echo $row['engineOil']; ?></td>
+                                        <td><?php echo $row['gearOil']; ?></td>
+                                        <td><?php echo $row['A/Cfilter']; ?></td>
+                                        <td><?php echo $row['oilFilter']; ?></td>
+                                        <td><?php echo $row['ATFoil']; ?></td>
+                                        <td><?php echo $row['coolant']; ?></td>
+                                        <td><?php echo $row['airFilter']; ?></td>
+                                        <td><?php echo $row['nextServiceDate']; ?></td>
+                                    </tr>
+                                    <?php }
+                                    }
+                                }?>
+                                </tbody>
+                        </table>
+                    </div>
 
-                <!--start of form to get details-->
-                <form action="serviceRec.php" method="GET">
-            
-                <div class="row r3-2">
-                    <div class="col-4 BookAppLabel">
-                        <label>SERVICE NUMBER </label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="serviceRecNo" disabled>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label>SERVICE DATE & TIME</label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <input type="date" class="serviceApp" name="serviceDateTime" disabled>
-                    </div>
-                </div> 
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label>SERVICE TYPE</label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="sericeType" disabled>
-                    </div>
-                </div> 
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label>VEHICLE NUMBER</label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="vehicleNo" disabled>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label>VEHICLE MODEL</label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="vehicleModel" disabled>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label>MECHANIC NAME</label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="empNo" disabled>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label>DESCRIPTION</label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <textarea class="serviceApp tableTextarea" name="ServiceDes" disabled> </textarea>
-                    </div>
-                </div>
 
-            </form><!--have closed the form before the button. look into this and fix when putting php-->
+
+
 
                 <div class="row formspacing">
                     <form action="./viewServices.php">

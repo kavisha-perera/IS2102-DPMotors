@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+include '../../../includes/dbh.inc.php';
+
 if(isset($_SESSION['id']))
 {
     $customerEmail =  $_SESSION['email'];
@@ -22,6 +24,15 @@ if(isset($_SESSION['id']))
         }
         .hide-in-others{
             display:none;
+        }
+        .recordBooks{
+            width:180px;
+            height:130px;
+            border-radius:0 40px;
+            border-style:solid;
+            border-color: #000066;
+            color:#000066;
+            background-color:#F2F2F2;
         }
     </style>
 </head>
@@ -51,50 +62,28 @@ if(isset($_SESSION['id']))
                
                 <div class="row r3-1">
                     <div class="col-12">
-                        <h2 class="title"><b>VEHICLE SERVICE RECORD</b></h2>
+                        <h2 class="title"><b>VEHICLE SERVICE RECORD BOOKS</b></h2>
                         <br>
                     </div>
                 </div>
+                
                 <div class="row r3-1">
                     <div class="col-12" style="overflow-x: auto;">
-                        <table class="appList"> <!--add php later. basic html structure has been made-->
-                        <thead>
-                            <tr>
-                                <th>RECORD NO</th>
-                                <th>VEHICLE NO</th>
-                                <th>DATE</th>
-                                <th>DESCRIPTION</th>
-                                <th colspan="2" style="text-align: center;">MAKE CHANGES</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="appListItems">
-                                <td>SRec-1923</td>
-                                <td>CAK-3990</td>
-                                <td>11-09-2021</td>
-                                <td>Engine Check</td>
-                                <td style="text-align: right;"><a href="./readService.php"><img src="../../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
-                                <td><a href="./deleteServiceRecord.html"><img src="../../../images/tableIcons/delete.png" class="tableIcon"></a></td>
-                            </tr>
-                            <tr class="appListItems">
-                                <td>SRec-1621</td>
-                                <td>KO-4456</td>
-                                <td>02-07-2021</td>
-                                <td>Full Service</td>
-                                <td style="text-align: right;"><a href="./readService.php"><img src="../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
-                                <td><a href="./deleteServiceRecord.html"><img src="../../images/tableIcons/delete.png" class="tableIcon"></a></td>
-                            </tr>
-                            <tr class="appListItems">
-                                <td>SRec-1608</td>
-                                <td>KO-4456</td>
-                                <td>27-06-2021</td>
-                                <td>Air Filter Change</td>
-                                <td style="text-align: right;"><a href="./readService.php"><img src="../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
-                                <td><a href="./deleteServiceRecord.html"><img src="../../images/tableIcons/delete.png" class="tableIcon"></a></td>
-                            </tr>
+                    
+                    <?php  $sql = "SELECT distinct vehicleNo FROM vehicleservicerecords WHERE customerEmail = '{$_SESSION['email']}'";
+                            $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
 
-                        </tbody>
-                        </table>
+                        <div class="col-3">
+                            <form action='./readService.php' method="post">
+                                <button class='navButton recordBooks' name="view" value="<?php echo $row['vehicleNo']; ?>"><?php echo $row['vehicleNo']; ?></button>
+                            </form>
+                        </div>
+                        <?php 
+                            }
+                        }?>
 
                     </div>
                 </div>

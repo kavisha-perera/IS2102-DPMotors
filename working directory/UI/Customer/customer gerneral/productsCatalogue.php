@@ -148,7 +148,7 @@ session_start();
                 <!----------------------end of one product category------------------------->
 
 
-               <!--copy paste the above, according to the number of product catergories we're having-->
+               
 
  
 
