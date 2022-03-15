@@ -6,7 +6,7 @@
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
         </div>
         <div class="col-14 navbar"> 
-            <form action="../../includes/logout-inc.php">
+            <form action="../../../includes/logout.inc.php">
                 <button class="navButton"> Log Out </button>
             </form>
         </div>
@@ -28,14 +28,14 @@
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
-                         <p> Welcome @ <?php echo $email ?></p>
+                         <p> Welcome <?php echo $email ?></p>
                         </div>
                     </div>
     <!--End of Dropdown for screens with width less than 800px-->
 
     <div class="row r3">
         <div class="col-15 sideNav">
-            <!--<p> Welcome @ <?php echo  $email ?></p> <hr> -->
+            <p> Welcome <?php echo $email ?></p> <hr> 
                                     <a href="../dashboard/managerDash.php" > Dashboard </a>  
                                     <a href="../managerProfile/managerViewProfile.php"> Profile </a>
                                     <a href="../promotion/readPromotion.php"> Promotions </a> 
