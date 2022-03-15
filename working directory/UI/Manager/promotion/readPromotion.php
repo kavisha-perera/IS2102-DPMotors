@@ -133,8 +133,6 @@ include_once("../../../includes/promotions.inc.php");
                 <form action="readPromotion.php" method="post">
             
 
-                | promoNo | description                                              | code    | validtill                  | promoState | image |
-
                     <div class="raw">
                     <input type="text" placeholder="Description" name="description" required>
                     </div>
