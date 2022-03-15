@@ -8,4 +8,3 @@ function OnClickCloseDeletePromotion()
 {
     document.getElementById('th-delete-promotion').style.display = "none";
 }
-
