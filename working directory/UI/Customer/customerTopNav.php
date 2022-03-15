@@ -1,4 +1,12 @@
 <!--customer topnav bar -->
+<?php
+
+include '../../../includes/dbh.inc.php';
+
+
+
+?>
+
 
 <div class="col-13">
     <img src="../../../images/logo.png" class="navLogo">
@@ -52,7 +60,7 @@
                             ";   }
 
                         else{ //if its not any of the above types, direct to customer dashboard
-                            echo "<form action='./customerDash.php'>
+                            echo "<form action='../../Auth-UI/customerDash.php'>
                             <button style='border:0px;cursor:pointer;'> <img src='../../../images/profile-login.png' style='max-width:35px;'></button>
                             </form>
                             ";   }
