@@ -11,6 +11,30 @@ if($_SESSION['type'] == "cashier")
     header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-cashierDashboard");
 }
 
+$cus_list= '';
+
+//getting the list of customers
+
+$query="SELECT * FROM users ORDER BY id";
+$customers = mysqli_query($conn, $query);
+
+if ($customers) {
+    while ($value = mysqli_fetch_assoc($customers)){
+        $cus_list .="<tr>";
+        $cus_list .="<td>{$value['id']}</td>";
+        $cus_list .="<td>{$value['fname']}</td>";
+        $cus_list .="<td>{$value['lname']}</td>";
+        $cus_list .="<td>{$value['email']}</td>";
+        $cus_list .="<td>{$value['nic']}</td>";
+        $cus_list .="<td>{$value['contact']}</td>";
+        $cus_list .="<td>{$value['address']}</td>";
+        $cus_list .="</tr>";
+
+    }
+}else{
+    echo "Database connection failed.";
+}
+
 ?>
 
 <!DOCTYPE HTML>
@@ -36,6 +60,7 @@ if($_SESSION['type'] == "cashier")
         font-size: 13px;
         border: 2px solid black;
         margin-right:10px;
+        margin-top:5px;
         }
 
         .search-container button {
@@ -69,11 +94,13 @@ if($_SESSION['type'] == "cashier")
             
             <div style="overflow-x:auto;">
                 <div class="th-table-container1">
+
+                <h2 class="th-th2" style="margin-bottom:0;">CUSTOMERS</h2><!--table name-->
                          
                          <!--search container start-->
                          <div class="col-4 search-container">
                         <form action="./viewCustomers.php" method="POST">
-                            <input type="text" placeholder="Search.. " name="search" required>
+                            <input type="text" placeholder="Search.. " name="search" autofocus>
                             <button type="submit" name="submit" style="background-color:white; border:0px solid black;"> <img src="../../../images/productCatalogue/s.png" style="max-width:20px;"></button>
                         </form>
                     </div>
@@ -83,7 +110,7 @@ if($_SESSION['type'] == "cashier")
                     
 
                     <!--Customer details table-->
-                    <h2 class="th-th2" style="margin-bottom:0;">CUSTOMERS</h2><!--table name-->
+                  
                 <table class="th-user-table">
                 <div class="th-add-new-button">
                         <button class="navButton" onclick="document.location='cashier register customer.php'"><b> ADD NEW</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
@@ -101,28 +128,8 @@ if($_SESSION['type'] == "cashier")
                     </tr>
                     </thead>
                     <tbody>
-
-                    <?php  
-                        $query = "SELECT * FROM users";
-                        $results = mysqli_query($conn, $query);
-                        if (mysqli_num_rows($results) > 0) {
-                                while ($value = mysqli_fetch_assoc($results)) {
-                    ?>
-
-                    <tr>
-                        <td><?php echo $value['id']; ?></td>
-                        <td><?php echo $value['fname']; ?></td>
-                        <td><?php echo $value['lname']; ?></td>
-                        <td><?php echo $value['email']; ?></td>
-                        <td><?php echo $value['nic']; ?></td>
-                        <td><?php echo $value['contact']; ?></td>
-                        <td><?php echo $value['address']; ?></td>
-                    </tr>
-
-                    <?php 
-                            }
-                        }
-                    ?>
+                    
+                    <?php echo $cus_list; ?>
 
                     </tbody>
                    

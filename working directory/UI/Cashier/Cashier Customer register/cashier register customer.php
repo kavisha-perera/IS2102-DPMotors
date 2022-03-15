@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 if($_SESSION['type'] == "cashier")
 {
     $email =  $_SESSION['email'];
@@ -10,7 +11,6 @@ if($_SESSION['type'] == "cashier")
 }
 
 ?>
-
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -48,6 +48,7 @@ if($_SESSION['type'] == "cashier")
         </div>
 
 
+ 
         <div class="col-16 content">
             <!--main content here-->
             <div class="row">
@@ -62,10 +63,10 @@ if($_SESSION['type'] == "cashier")
 
               <div class="row">
                   <div class="col-4">
-                      <label class="nameth"><b><span class="th-required">*</span>FIRST NAME </b></label>
+                      <label class="nameth"><b>FIRST NAME </b></label>
                   </div>
                   <div class="col-8">
-                      <input type="text" name="fname" class="th-cus-form-input"> 
+                      <input type="text" name="fname" class="th-cus-form-input" required> 
                   </div>
               </div>
               <div class="row">
@@ -73,15 +74,15 @@ if($_SESSION['type'] == "cashier")
                       <label id="lnameth"><b>LAST NAME</b></label>
                   </div>
                   <div class="col-8">
-                      <input type="text" name="lname" class="th-cus-form-input"><br>
+                      <input type="text" name="lname" class="th-cus-form-input" required><br>
                   </div>
               </div>
               <div class="row"> 
                   <div class="col-4">
-                      <label class="nameth"><b><span class="th-required">*</span>EMAIL </b></label>
+                      <label class="nameth"><b>EMAIL </b></label>
                   </div>
                   <div class="col-8"> 
-                      <input type="text" name="email" class="th-cus-form-input"><br>
+                      <input type="text" name="email" class="th-cus-form-input" required><br>
                   </div>
               </div>
  
@@ -90,31 +91,38 @@ if($_SESSION['type'] == "cashier")
                     <label class="nameth"><b>NIC</b></label>
                 </div>
                 <div class="col-8">
-                    <input type="text" name="nic" class="th-cus-form-input"><br>
+                    <input type="text" name="nic" class="th-cus-form-input" required><br>
                 </div>
               </div>
               
               <div class="row">
                   <div class="col-4">
-                      <label class="nameth"><b><span class="th-required">*</span>PASSWORD</b></label>
+                      <label class="nameth"><b>PASSWORD</b></label>
                   </div>
                   <div class="col-8">
-                      <input type="password" name="password" class="th-cus-form-input" placeholder="enter a password"><br>
+                      <input type="password" name="password" class="th-cus-form-input" placeholder="enter a password" required><br>
                   </div>
               </div>
               
               <div class="row">
                   <div class="col-4">
-                      <label class="nameth"><b><span class="th-required">*</span>CONFIRM PASSWORD</b></label>
+                      <label class="nameth"><b>CONFIRM PASSWORD</b></label>
                   </div>
                   <div class="col-8">
-                      <input type="password" name="confirmpw" class="th-cus-form-input" placeholder="re-enter password"><br>
+                      <input type="password" name="confirmpw" class="th-cus-form-input" placeholder="re-enter password" required><br>
                   </div>
               </div>
+
+              <div class="raw">
+                <br/>
+                <h5><input type="checkbox" name="agree" required> I agree to the 
+                <a href="./terms.html" target="_blank"> 
+                terms and conditions</a>.
+                </h5>
               
               <div class="row">
                   <div class="col-12">
-                      <button class="navButton"> SIGN UP </button>
+                      <button class="navButton" name="submit"> SIGN UP </button>
                   </div>
               </div>
           </form>
