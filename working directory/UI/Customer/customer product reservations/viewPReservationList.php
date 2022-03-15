@@ -16,6 +16,7 @@ if(isset($_SESSION['id']))
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/searchbar.css">
     <script type="text/javascript" src="../../../javascript/popup.js"></script>
 	<title>customer read service record</title>
     <style>
@@ -25,29 +26,6 @@ if(isset($_SESSION['id']))
         }
         .hide-in-others{
             display:none;
-        }
-
-        input[type=text] {
-        padding: 6px;
-        width:80%;
-        height:30px;
-        border-radius:50px;
-        font-size: 13px;
-        border: 2px solid black;
-        }
-
-        .search-container button {
-        justify-self:end;
-        border: none;
-        cursor: pointer;
-        }
-
-        .refresh-button{
-        width:fit-content;
-        cursor: pointer;
-        padding: 5px 15px;
-        background-color:white;
-        border:none;
         }
 
         @media (max-width: 800px) {

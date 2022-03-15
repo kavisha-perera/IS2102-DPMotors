@@ -1,0 +1,22 @@
+.search-container input[type=text] {
+    padding: 6px;
+    width:80%;
+    height:30px;
+    border-radius:50px;
+    font-size: 13px;
+    border: 2px solid black;
+    }
+
+.search-container button {
+    justify-self:end;
+    border: none;
+    cursor: pointer;
+    }
+
+    .refresh-button{
+    width:fit-content;
+    cursor: pointer;
+    padding: 5px 15px;
+    background-color:white;
+    border:none;
+    }
