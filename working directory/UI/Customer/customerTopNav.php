@@ -23,6 +23,8 @@ include '../../../includes/dbh.inc.php';
         <?php 
             if (isset($_SESSION['id'])){
 
+            include '../../../includes/dbh.inc.php';    
+
             //this if statement checks if the session has started and if a session with the id exists
 
                 $sql = "SELECT * FROM users WHERE id='{$_SESSION['id']}'"; //takes the user info from the id

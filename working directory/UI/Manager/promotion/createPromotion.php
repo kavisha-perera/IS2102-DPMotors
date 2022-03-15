@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+if($_SESSION['type'] == "manager")
+{
+    $email =  $_SESSION['email'];
+}else{
+
+    header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-managerDashboard");
+}
+
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
