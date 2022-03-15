@@ -17,6 +17,7 @@ if(isset($_SESSION['id']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
     <script type="text/javascript" src="../../../javascript/popup.js"></script>
+    <script type="text/javascript" src="../../../javascript/print.js"></script>
 	<title>customer read service record</title>
     <style>
         .Nav-ProductRes{
@@ -30,12 +31,16 @@ if(isset($_SESSION['id']))
             width:100%;
             font-size:11px;
         }
+
+        .BookAppLabel{
+                color:red;
+            }
+
         @media (max-width: 800px) {
             .tableTextarea{
             overflow-x: hidden;
             overflow-y: auto;
         }
-
         }
 
     </style>
@@ -61,24 +66,20 @@ if(isset($_SESSION['id']))
         <div class="col-16 content">
             <!--main content here-->
 
-            <!--div container for customer to hold customer profile details form-->
-            <div class="col-12 ProfileContainer">
-                
-                <div class="row r3-1">
+            <div class="row r3-1">
                     <div class="col-9 saveIcon-null"><!--blank column with 75%width--></div>
                     <div class="col-3 saveIcon-main">
-                        <img src="../../../images/tableIcons/download.png" class="saveIcon">
+                        <!--<img src="../../../images/tableIcons/download.png" class="saveIcon">-->
+                        <a onclick="printSection('print-content')">
                         <img src="../../../images/tableIcons/printing.png" class="saveIcon">
+                        </a>
                     </div>
                 </div>
 
-                <div class="row r3-1">
-                    <div class="col-12">
-                        <h2 class="title"><b>PRODUCT RESERVATION #number</b><h2></h2>
-                    </div>
-                </div>
+            <!--div container for reservation details.  form-->
+            <div class="col-12 ProfileContainer" id="print-content">
 
-                <?php
+            <?php
 
                 // Check existence of id parameter before processing further
                 if (isset($_POST["view"])){
@@ -101,7 +102,12 @@ if(isset($_SESSION['id']))
                         while ($row = mysqli_fetch_assoc($resultData)) {
                     
                 ?>
-
+                
+                <div class="row r3-1">
+                    <div class="col-12">
+                        <h2 class="title"><b>PRODUCT RESERVATION NO: <?php echo $row['reservation_no']; ?></b><h2></h2>
+                    </div>
+                </div>
 
 
                 <!--start of form to get details-->
@@ -162,7 +168,7 @@ if(isset($_SESSION['id']))
                     <div class="col-8 BookAppForm">
                         <div class="serviceApp tableTextarea" name="pResDescription" >
                             <table class="billdescription">
-
+                                <!--break down of the reserved items-->
                                 <tr>
                                     <th>Reserved Product</th>
                                     <th>Unit Price</th>

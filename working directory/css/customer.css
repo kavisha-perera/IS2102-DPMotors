@@ -7,6 +7,8 @@
     padding-left: 12%;
 }
 
+/*color: ;*/
+
 .BookAppForm{
     text-align: left;
 }
@@ -80,6 +82,10 @@ select option{
         }
         .saveIcon-main{
             width:30%;
+        }
+
+        .BookAppLabel{
+            font-size:9px;
         }
 
     }

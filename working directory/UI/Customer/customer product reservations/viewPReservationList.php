@@ -98,7 +98,8 @@ if(isset($_SESSION['id']))
                             
                         </form>
                     </div>
-                </div>
+
+                 </div>
                 <div class="row r3-1">
                     <div class="col-12" style="overflow-x: auto;">
 
