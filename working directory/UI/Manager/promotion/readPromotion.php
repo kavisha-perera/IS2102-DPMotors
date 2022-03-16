@@ -53,6 +53,7 @@ include_once("../../../includes/promotions.inc.php");
                       <th>Code</th> 
                       <th>Valid Till</th>
                       <th>State</th>
+                      <th>Discount</th>
                       <th>Update</th>
                       <th>Delete</th>
                     </tr>
@@ -66,7 +67,7 @@ include_once("../../../includes/promotions.inc.php");
                     
                 $result = fetchResults($conn) ;
 
-                if ($result->num_rows > 0) {
+                if ( $result != false && $result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
                       
@@ -89,6 +90,8 @@ include_once("../../../includes/promotions.inc.php");
                         
 
                         </td>
+                        <td><?php echo $row['discount']  ?> </td>
+
                             <td><button class="navButton open-modal" style=" background-color: #6EE327;" data-val="<?php echo $row['promoNo']  ?>" data-target="modal-2" >UPDATE</button></td>
                             <td><button class="navButton open-modal" style=" background-color: #EE1E2B;" data-val="<?php echo $row['promoNo']  ?>" data-target="modal-3" ></a>DELETE</button></td>
                         </tr> 
@@ -101,14 +104,7 @@ include_once("../../../includes/promotions.inc.php");
                     }
                 }
                 ?>
-                    
-
-
-
-                    
-                        
-
-                   
+                                       
                     <?php  ?>
 
 
@@ -148,6 +144,10 @@ include_once("../../../includes/promotions.inc.php");
                         <option selected="selected" value="active">Active</option>
                         <option value="inactive">Inactive</option>
                     </select>
+                    </div>
+
+                    <div class="raw">
+                    <input type="number" placeholder="discount" name="discount" required>
                     </div>
                     
                     <div class="raw">
@@ -209,6 +209,11 @@ include_once("../../../includes/promotions.inc.php");
                         <option value="inactive">Inactive</option>
                     </select>
                     </div>
+
+                    <div class="raw">
+                    <input type="number" placeholder="discount" name="discount" required id="updatediscount">
+                    </div>
+                    
 
                     <div class="raw">
                         <input type="hidden" name="image" value=""  id="updatehiddenimage"/>

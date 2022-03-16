@@ -16,18 +16,16 @@ if (isset($_POST["create"])){
     $validtill= $_POST["validtill"];
     $promoState= $_POST["promoState"];
     $image= $_POST["image"];
+    $discount= $_POST["discount"];
 
 
-
-    $sql = "INSERT INTO promotions (description, code, validtill, promoState, image) VALUES (?, ?, ?, ?, ?);"; 
+    $sql = "INSERT INTO promotions (description, code, validtill, promoState, image, discount) VALUES (?, ?, ?, ?, ?, ?);"; 
     $stmt = mysqli_stmt_init($conn);
-    if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("location: ../UI/Auth-UI/signUp.php?error=stmtfailed");
-        exit();
-    }
+    mysqli_stmt_prepare($stmt, $sql);
+    
     
 
-    mysqli_stmt_bind_param($stmt, "sssss" , $description, $code,  $validtill, $promoState, $image );
+    mysqli_stmt_bind_param($stmt, "sssssd" , $description, $code,  $validtill, $promoState, $image, $discount);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
@@ -65,12 +63,14 @@ if (isset($_POST["update"])){
     $promoState = $_POST["promoState"];
     $image = $_POST["image"];
     $promoNo = $_POST["promoNo"];
+    $discount= $_POST["discount"];
 
 
 
 
 
-    $sql = "UPDATE promotions SET  description = ? , code = ? , validtill = ? , promoState = ? , image = ? WHERE promoNo = ?"; 
+
+    $sql = "UPDATE promotions SET  description = ? , code = ? , validtill = ? , promoState = ? , image = ? , discount = ? WHERE promoNo = ?"; 
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
         header("location: ../UI/Auth-UI/signUp.php?error=stmtfailed");
@@ -78,7 +78,7 @@ if (isset($_POST["update"])){
     }
     
 
-    mysqli_stmt_bind_param($stmt, "ssssss" , $description, $code,  $validtill, $promoState, $image , $promoNo);
+    mysqli_stmt_bind_param($stmt, "sssssds" , $description, $code,  $validtill, $promoState, $image ,  $discount , $promoNo);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
