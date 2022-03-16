@@ -24,23 +24,26 @@ if(isset($_SESSION['id']))
         .hide-in-others{
             display:none;
         }
+        .title{
+            text-align: left;
+            padding-left:10px;
+        }
         .ServiceRecordTable{
             width:100%;
             font-size: 12px;
             padding:2px;  
             background-color:#FFFAFA;
- 
-        }
-
-        .ServiceRecordTable th{
-            background-color:#fdbe88;
-        }
-
+         }
         .ServiceRecordTable th, .ServiceRecordTable td{
             width: 15px;
-            height:40px;
+            height:30px;
             border: 1px solid #9e9994;
         }
+        .ServiceRecordTable th{
+            background-color:#fdbe88;
+            height:40px;
+        }
+
     </style>
 </head>
 <body>
@@ -82,7 +85,8 @@ if(isset($_SESSION['id']))
             // Check existence of id parameter before processing further
             if (isset($_POST["view"])){
 
-                $vehicle_no = $_POST["view"];
+                $vehicle_no = $_POST["vehicleNo"];
+                $vehicle_model = $_POST["vehicleModel"];
 
                 $sql = "SELECT * FROM vehicleservicerecords WHERE vehicleNo = ? ;"; 
                 $stmt = mysqli_stmt_init($conn);
@@ -101,9 +105,11 @@ if(isset($_SESSION['id']))
             ?>
                 
                 <div class="row r3-1">
-                    <div class="col-12">
-                        <h3 class="title"><b>VEHICLE NO: <?php echo $vehicle_no; ?> </b></h3>
-                        <br>
+                    <div class="col-3">
+                        <h4 class="title"><b>VEHICLE NO: <?php echo $vehicle_no; ?> </b></h4>
+                      </div>
+                    <div class="col-7">
+                        <h4 class="title"><b>VEHICLE NO: <?php echo $vehicle_model; ?> </b></h4>
                     </div>
                 </div>
                
