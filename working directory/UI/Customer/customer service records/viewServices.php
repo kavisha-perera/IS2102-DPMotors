@@ -27,9 +27,9 @@ if(isset($_SESSION['id']))
             display:none;
         }
         .recordBooks{
-            width:180px;
-            height:130px;
-            border-radius:0 40px;
+            width:150px;
+            height:150px;
+            border-radius:50%;
             border-style:solid;
             border-color: #000066;
             color:#000066;
@@ -87,7 +87,7 @@ if(isset($_SESSION['id']))
 
                         $search = $_POST['search'];  // gets value sent over search form
 
-                        $sql = "SELECT distinct vehicleNo FROM vehicleservicerecords WHERE customerEmail = '{$_SESSION['email']}' AND (vehicleNo LIKE '%$search%')";
+                        $sql = "SELECT distinct vehicleNo, vehicleModel FROM vehicleservicerecords WHERE customerEmail = '{$_SESSION['email']}' AND (vehicleNo LIKE '%$search%')";
 
                         $result = $conn->query($sql);
                         if (mysqli_num_rows($result) > 0){
@@ -96,7 +96,11 @@ if(isset($_SESSION['id']))
 
                         <div class="col-3">
                             <form action='./readService.php' method="post">
-                                <button class='navButton recordBooks' name="view" value="<?php echo $row['vehicleNo']; ?>"><?php echo $row['vehicleNo']; ?></button>
+                            <button class='navButton recordBooks' name="view" value="<?php echo $row['vehicleNo'];?>">
+                                    <h3><?php echo $row['vehicleNo']; ?></h3>
+                                    <br>
+                                    <?php echo $row['vehicleModel']; ?>
+                                </button>
                             </form>
                         </div>
                         <?php 
@@ -114,7 +118,7 @@ if(isset($_SESSION['id']))
                     }
                     else{
                     ?>
-                            <?php  $sql = "SELECT distinct vehicleNo FROM vehicleservicerecords WHERE customerEmail = '{$_SESSION['email']}'";
+                            <?php  $sql = "SELECT distinct vehicleNo, vehicleModel FROM vehicleservicerecords WHERE customerEmail = '{$_SESSION['email']}'";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
@@ -122,7 +126,13 @@ if(isset($_SESSION['id']))
 
                         <div class="col-3">
                             <form action='./readService.php' method="post">
-                                <button class='navButton recordBooks' name="view" value="<?php echo $row['vehicleNo']; ?>"><?php echo $row['vehicleNo']; ?></button>
+                                <input type="hidden" name="vehicleModel" value="<?php echo $row['vehicleModel']; ?>">
+                                <input type="hidden" name="vehicleNo" value="<?php echo $row['vehicleNo']; ?>">
+                                <button type="submit" class='navButton recordBooks' name="view">
+                                    <h3><?php echo $row['vehicleNo']; ?></h3>
+                                    <br>
+                                    <?php echo $row['vehicleModel']; ?>
+                                </button>
                             </form>
                         </div>
                         <?php 
