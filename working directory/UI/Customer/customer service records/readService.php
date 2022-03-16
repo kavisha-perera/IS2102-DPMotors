@@ -34,14 +34,16 @@ if(isset($_SESSION['id']))
             padding:2px;  
             background-color:#FFFAFA;
          }
-        .ServiceRecordTable th{
-            background-color:#fdbe88;
-        }
         .ServiceRecordTable th, .ServiceRecordTable td{
             width: 15px;
-            height:40px;
+            height:30px;
             border: 1px solid #9e9994;
         }
+        .ServiceRecordTable th{
+            background-color:#fdbe88;
+            height:40px;
+        }
+
     </style>
 </head>
 <body>

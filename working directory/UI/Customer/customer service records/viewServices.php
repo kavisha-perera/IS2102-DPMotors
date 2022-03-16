@@ -96,7 +96,9 @@ if(isset($_SESSION['id']))
 
                         <div class="col-3">
                             <form action='./readService.php' method="post">
-                            <button class='navButton recordBooks' name="view" value="<?php echo $row['vehicleNo'];?>">
+                                <input type="hidden" name="vehicleModel" value="<?php echo $row['vehicleModel']; ?>">
+                                <input type="hidden" name="vehicleNo" value="<?php echo $row['vehicleNo']; ?>">
+                                <button type="submit" class='navButton recordBooks' name="view">
                                     <h3><?php echo $row['vehicleNo']; ?></h3>
                                     <br>
                                     <?php echo $row['vehicleModel']; ?>
