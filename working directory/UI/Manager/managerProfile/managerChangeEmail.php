@@ -3,7 +3,7 @@ session_start();
 
 if(isset($_SESSION['id']))
 {
-    $customerEmail =  $_SESSION['email'];
+    $email =  $_SESSION['email'];
 }
 
 ?>
@@ -14,7 +14,7 @@ if(isset($_SESSION['id']))
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
-	<title>customer update profile page</title>
+	<title>manager update profile page</title>
     <style>
         .Nav-profile{
             /* to show the active link in navbar */
@@ -56,7 +56,7 @@ if(isset($_SESSION['id']))
         <div class="col-16 content">
             <!--main content here-->
 
-            <!--div container for customer to hold customer profile details form-->
+            <!--div container for manager to hold manager profile details form-->
             <div class="col-12 ProfileContainer">
 
                 <div class="row r3-1">
@@ -89,7 +89,7 @@ if(isset($_SESSION['id']))
                     <div class="col-12 buttons-inline">
                             <button type="submit" name="email-submit" class="navButton"> Save </button>
                 </form>
-                        <form action="./customerViewProfile.php">
+                        <form action="./managerViewProfile.php">
                             <button class="navButton"> Cancel </button>
                         </form>
                     </div>
