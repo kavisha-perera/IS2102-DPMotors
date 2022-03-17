@@ -1,15 +1,17 @@
 <?php
 session_start();
 
-if(isset($_SESSION['employeeid']))
+
+if($_SESSION['type'] == "cashier")
 {
-    $employeeid =  $_SESSION['employeeid'];
+    $email =  $_SESSION['email'];
 }else{
 
-    header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-cashierDashboard");
+    header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-cashierDashboard");
 }
 
 ?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -18,144 +20,197 @@ if(isset($_SESSION['employeeid']))
     <link rel="stylesheet" href="../../../css/main.css">
     <script src="../../../javascript/empsup_pop-up.js"></script>
 	<title>Vehicle Service Records</title>
+  <style>
+        .Nav-service{
+            /* to show the active link in navbar */
+            background-color:#344CB4; 
+        }
+        .hide-in-others{
+            display:none;
+        }
+    </style>
 </head>
 <body>
-
-    <div class="row r1">
-        <div class="col-13">
-            <img src="../../../images/logo.png" class="navLogo">
-        </div>
-        <div class="col-nav">
-            <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
-        </div>
-        <div class="col-14 navbar"> 
-        <form action="../../includes/logout-inc.php">
-                <button class="navButton"> Log Out </button>
-            </form>
-        </div>
+  
+<div class="row r1">
+<?php include_once("../cashierTopNav.php") ?>
+</div>
     </div>
+<!-- Start of Dropdown for screens with width less than 800px-->
+<div class="row r2">
+        <?php include_once("../cashierSide-MiniNav.php") ?>
+    </div>
+<!--End of Dropdown for screens with width less than 800px-->
 
-    <!-- Start of Dropdown for screens with width less than 800px-->
-                    <div class="row r2">
-                        <div class="col-2 sideNav-dropdown" >
-                                <img src="../../images/dropdown.svg" class="dropButton">
-                                <div class="dropdown-content">
-                                    <a href="../dashboards/cashierDash.php"> Dashboard </a> 
-                                    <a href="../profiles/cashierViewProfile.php"> Profile </a>
-                                    <a href="../cashierbills/createbill.php"> Create Bill </a>
-                                    <a href="../promotion/cashierReadPromotion.php"> Promotions </a>
-                                    <a href="../Cashier View Bill History/CashierViewAllBills.php"> Bill History </a> 
-                                    <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a> 
-                                    <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>
-                                    <a href="../appointments/cashierReadsAppointments.php"> Appointments </a>
-                                    <a href="../Cashier Customer register/cashier register customer.php"> Customer </a>
-                                </div>
-                        </div>
-                        <div class="col-10 smallWel">
-                        <p> Welcome @ <?php echo  $employeeid ?></p>
-                        </div>
-                    </div>
-    <!--End of Dropdown for screens with width less than 800px-->
-
-    <div class="row r3">
+<div class="row r3">
         <div class="col-15 sideNav">
-        <p> Welcome @ <?php echo  $employeeid ?></p>
-            <a href="../dashboards/cashierDash.php"> Dashboard </a><hr> 
-            <a href="../profiles/cashierViewProfile.php"> Profile </a><hr>
-            <a href="../cashierbills/createbill.php"> Create Bill </a><hr>
-            <a href="../promotion/cashierReadPromotion.php"> Promotions </a><hr>
-            <a href="../Cashier View Bill History/CashierViewAllBills.php"> Bill History </a><hr>  
-            <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a><hr> 
-            <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a><hr> 
-            <a href="../appointments/cashierReadsAppointments.php"> Appointments </a><hr>
-            <a href="../Cashier Customer register/cashier register customer.php"> Customer </a><hr>
+            <?php include_once("../cashierSideNav.php") ?> 
         </div>
 
         <div class="col-16 content">
             <!--main content here-->
             <div class="pr-form-container">
-                <form action="../../includes/cashier-services-inc.php" method="post">
+                <form action="#" method="post">
+
                   <div class="row1">
                     <div class="pr-form-title">
                       <h2>ADD NEW SERVICE RECORDS</h2>
                     </div>
                   </div>
     
-                  <br/><br/><br/>
+                  <br/><br/>
 
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="firstname">SERVICE DATE</label>
+                      <label for="serviceNo">Service No.</label>
                     </div>
                     <div class="pr-form-input">
-                      <input type="date" name="serviceDate" class="pr-input-box" min="2021-10-25" min="2041-01-01"/>
+                      <input type="text" name="serviceNo" class="pr-input-box" />
+                    </div>
+                  </div>
+
+                  <div class="row1">
+                    <div class="pr-form-label">
+                      <label for="customerEmail">Customer email</label>
+                    </div>
+                    <div class="pr-form-input">
+                      <input type="text" name="customerEmail" class="pr-input-box" />
                     </div>
                   </div>
       
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="lastname">SERVICE TYPE</label>
+                      <label for="vehicleNo">Vehicle No.</label>
                     </div>
                     <div class="pr-form-input">
-                    <select name="serviceType" class="th-emsu-input">
-                       <option>Full Service</option>
-                       <option>Interior & Exterior Designing</option> 
-                       <option>Car Wash</option>                               
+                      <input type="text" name="vehicleNo" class="pr-input-box" />
+                    </div>
+                  </div>
+
+                  <div class="row1">
+                    <div class="pr-form-label">
+                      <label for="vehicleNo">Vehicle Model</label>
+                    </div>
+                    <div class="pr-form-input">
+                      <input type="text" name="vehicleModel" class="pr-input-box" />
+                    </div>
+                  </div>
+
+                  <div class="row1">
+                    <div class="pr-form-label">
+                      <label for="dateOfService">Date of Service</label>
+                    </div>
+                    <div class="pr-form-input">
+                      <input type="date" name="dateOfService" class="pr-input-box" min="2022-03-16" max="2042-01-01"/>
+                    </div>
+                  </div>
+      
+                  <div class="row1">
+                    <div class="pr-form-label">
+                      <label for="milage">Milage</label>
+                    </div>
+                    <div class="pr-form-input">
+                      <input type="text" name="milage" class="pr-input-box" />
+                    </div>
+                  </div>
+
+                  <div class="row1">
+                    <div class="pr-form-label">
+                      <label for="enginOil">Engine Oil</label>
+                    </div>
+                    <div class="pr-form-input">
+                    <select name="oilType" class="th-emsu-input">
+                       <option> - </option>
+                       <option>Top Up</option> 
+                       <option>Refill</option>                               
                     </select> 
                     </div>
                   </div>
 
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="">CUSTOMER NIC</label>
+                      <label for="gearOil">Gear Oil</label>
                     </div>
                     <div class="pr-form-input">
-                      <input type="text" name="cusNIC" class="pr-input-box" />
+                    <select name="oilType" class="th-emsu-input">
+                       <option> - </option>
+                       <option>Top Up</option> 
+                       <option>Refill</option>                               
+                    </select> 
                     </div>
                   </div>
 
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="">CUSTOMER EMAIL</label>
+                      <label for="A/Cfilter">A/C Filter</label>
                     </div>
                     <div class="pr-form-input">
-                      <input type="text" name="cusEmail" class="pr-input-box" />
+                    <select name="filterType" class="th-emsu-input">
+                       <option> - </option>
+                       <option>Clean</option> 
+                       <option>Replace</option>                               
+                    </select> 
                     </div>
                   </div>
-      
+
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="">VEHICLE NUMBER</label>
+                      <label for="oilFilter">Oil Filter</label>
                     </div>
                     <div class="pr-form-input">
-                      <input type="text" name="vehicleNo" class="pr-input-box" />
+                    <select name="filterType" class="th-emsu-input">
+                       <option> - </option>
+                       <option>Change</option>                                
+                    </select> 
                     </div>
                   </div>
-      
+
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="">VEHICLE MODEL</label>
+                      <label for="ATFoil">ATF Oil</label>
                     </div>
                     <div class="pr-form-input">
-                      <input type="text" name="vehicleModel" class="pr-input-box" />
+                    <select name="oilType" class="th-emsu-input">
+                       <option> - </option>
+                       <option>Top Up</option> 
+                       <option>Refill</option>                               
+                    </select> 
                     </div>
                   </div>
-      
+
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="">MECHANIC NAME</label>
+                      <label for="coolant">Coolant</label>
                     </div>
                     <div class="pr-form-input">
-                      <input type="text" name="mechanicName" class="pr-input-box" />
+                    <select name="coolantType" class="th-emsu-input">
+                       <option> - </option>
+                       <option>Top Up</option> 
+                       <option>Refill</option>                               
+                    </select> 
                     </div>
                   </div>
-      
+
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="">DESCRIPTION</label>
+                      <label for="airFilter">Air filter</label>
                     </div>
+                    <div class="pr-form-input">
+                    <select name="filterType" class="th-emsu-input">
+                       <option> - </option>
+                       <option>Clean</option> 
+                       <option>Replace</option>                               
+                    </select> 
+                    </div>
+                  </div>
+
+                  
+                  <div class="row1">
                     <div class="pr-form-label">
-                      <textarea name="description" class="pr-input-box" style="height:100px;"> </textarea>
+                      <label for="nextServiceDate">Next date of service</label>
+                    </div>
+                    <div class="pr-form-input">
+                      <input type="date" name="serviceDate" class="pr-input-box" min="2022-03-16" max="2042-01-01"/>
                     </div>
                   </div>
          

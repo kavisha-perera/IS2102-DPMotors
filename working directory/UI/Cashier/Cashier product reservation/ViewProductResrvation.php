@@ -1,6 +1,16 @@
+<?php
+session_start();
 
 
+if($_SESSION['type'] == "cashier")
+{
+    $email =  $_SESSION['email'];
+}else{
 
+    header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-cashierDashboard");
+}
+
+?>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -9,58 +19,50 @@
     <link rel="stylesheet" href="../../../css/main.css">
     <script src="../../../javascript/empsup_pop-up.js"></script>
 	<title>View Product Reservation</title>
+    <style>
+        .Nav-pr{
+            /* to show the active link in navbar */
+            background-color:#344CB4; 
+        }
+        .hide-in-others{
+            display:none;
+        }
+
+        input[type=text] {
+        padding: 8px;
+        width:80%;
+        height:35px;
+        font-size: 13px;
+        border: 2px solid black;
+        margin-right:10px;
+        margin-top:5px;
+        }
+
+        .search-container button {
+        justify-self:end;
+        border: none;
+        cursor: pointer;
+        }
+
+    </style>
 </head>
 <body>
-
-    <div class="row r1">
-        <div class="col-13">
-            <img src="../../../images/logo.png" class="navLogo">
-        </div>
-        <div class="col-nav">
-            <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
-        </div>
-        <div class="col-14 navbar"> 
-        <form action="../../includes/logout-inc.php">
-                <button class="navButton"> Log Out </button>
-            </form>
-        </div>
+    
+<div class="row r1">
+<?php include_once("../cashierTopNav.php") ?>
+</div>
     </div>
+<!-- Start of Dropdown for screens with width less than 800px-->
+<div class="row r2">
+        <?php include_once("../cashierSide-MiniNav.php") ?>
+    </div>
+<!--End of Dropdown for screens with width less than 800px-->
 
-    <!-- Start of Dropdown for screens with width less than 800px-->
-                    <div class="row r2">
-                        <div class="col-2 sideNav-dropdown" >
-                                <img src="../../images/dropdown.svg" class="dropButton">
-                                <div class="dropdown-content">
-                                    <a href="../dashboards/cashierDash.php"> Dashboard </a> 
-                                    <a href="../profiles/cashierViewProfile.php"> Profile </a>
-                                    <a href="../cashierbills/createbill.php"> Create Bill </a>
-                                    <a href="../promotion/cashierReadPromotion.php"> Promotions </a>
-                                    <a href="../Cashier View Bill History/CashierViewAllBills.php"> Bill History </a> 
-                                    <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a> 
-                                    <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a>
-                                    <a href="../appointments/cashierReadsAppointments.php"> Appointments </a>
-                                    <a href="../Cashier Customer register/cashier register customer.php"> Customer </a>
-                                </div>
-                        </div>
-                        <div class="col-10 smallWel">
-                        <p> Welcome @ <?php echo  $employeeid ?></p>
-                        </div>
-                    </div>
-    <!--End of Dropdown for screens with width less than 800px-->
-
-    <div class="row r3">
+<div class="row r3">
         <div class="col-15 sideNav">
-            <p> Welcome @ <?php echo  $employeeid ?></p> <hr>
-            <a href="../dashboards/cashierDash.php"> Dashboard </a><hr> 
-            <a href="../profiles/cashierViewProfile.php"> Profile </a><hr>
-            <a href="../cashierbills/createbill.php"> Create Bill </a><hr>
-            <a href="../promotion/cashierReadPromotion.php"> Promotions </a><hr>
-            <a href="../Cashier View Bill History/CashierViewAllBills.php"> Bill History </a><hr>  
-            <a href="../Cashier service records/cashierViewService.php"> Vehicle Service Records </a><hr> 
-            <a href="../Cashier product reservation/ViewProductResrvation.php"> Product Reservations </a><hr> 
-            <a href="../appointments/cashierReadsAppointments.php"> Appointments </a><hr>
-            <a href="../Cashier Customer register/cashier register customer.php"> Customer </a><hr>
+            <?php include_once("../cashierSideNav.php") ?> 
         </div>
+
 
         <div class="col-16 content">
             <!--main content here-->
@@ -103,7 +105,7 @@
                         <td></td>
                         <td></td>
                         <td></td> 
-                        <td>></td>                  
+                        <td></td>                  
                         <td></td>
                         <td><button class='th-button-icon' onclick = "document.location='UpdateProductReserv.php'" ><img src='../../../images/Employee & Supplier/edit.svg' class='th-svg-icons'></button></td>  
                         <td><button class='th-button-icon' onclick = "document.location= 'DeleteProductReserve.php'"><img src='../../../images/Employee & Supplier/delete.svg' class='th-svg-icons'></button></td>

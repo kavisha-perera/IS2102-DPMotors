@@ -12,23 +12,23 @@
 </div>
 
 <div class="hide-in-dashboard">
-    <a href="../cashierProfile/cashierViewProfile1.php" class="Nav-profile"> Profile </a><hr> 
-    <a href="../cashierbills/createbill.php" class="Nav-bill"> Create Bill </a>
-    <a href="../promotion/cashierReadPromotion.php" class="Nav-promo"> Promotions </a>
-    <a href="../Cashier View Bill History/CashierViewAllBills.php" class="Nav-viewbill"> Bill History </a> 
-    <a href="../Cashier service records/cashierViewService.php"class="Nav-service"> Vehicle Service Records </a> 
-    <a href="../Cashier product reservation/ViewProductResrvation.php" class="Nav-pr"> Product Reservations </a>
-    <a href="../appointments/cashierReadsAppointments.php" class="Nav-appointment"> Appointments </a>
-    <a href="../Cashier Customer register/cashier register customer.php"class="Nav-customer"> Customer </a>
+    <a href="../cashierProfile/cashierViewProfile1.php" class="Nav-profile"> Profile </a><hr/> 
+    <a href="../cashierbills/createbill.php" class="Nav-bill"> Create Bill </a><hr/>
+    <a href="../promotion/cashierReadPromotion.php" class="Nav-promo"> Promotions </a><hr/>
+    <a href="../Cashier View Bill History/CashierViewAllBills.php" class="Nav-viewbill"> Bill History </a><hr/>
+    <a href="../Cashier service records/cashierViewService.php"class="Nav-service"> Vehicle Service Records </a><hr/> 
+    <a href="../Cashier product reservation/ViewProductResrvation.php" class="Nav-pr"> Product Reservations </a><hr/>
+    <a href="../appointments/cashierReadsAppointments.php" class="Nav-appointment"> Appointments </a><hr/>
+    <a href="../Cashier Customer register/cashier register customer.php"class="Nav-customer"> Customer </a><hr/>
 </div>
 
 <div class="hide-in-others">
     <a href="../Cashier/cashierProfile/cashierViewProfile1.php" class="Nav-profile"> Profile </a><hr> 
-    <a href="../Cashier/cashierbills/createbill.php" class="Nav-bill" > Create Bill </a>
-    <a href="../promotion/cashierReadPromotion.php"class="Nav-promo"> Promotions </a>
-    <a href="../Cashier/Cashier View Bill History/CashierViewAllBills.php" class="Nav-viewbill"> Bill History </a> 
-    <a href="../Cashier/Cashier service records/cashierViewService.php" class="Nav-service"> Vehicle Service Records </a> 
-    <a href="../Cashier/Cashier product reservation/ViewProductResrvation.php"class="Nav-pr"> Product Reservations </a>
-    <a href="../appointments/cashierReadsAppointments.php"class="Nav-app"> Appointments </a>
-    <a href="../Cashier/Cashier Customer register/cashier register customer.php"class="Nav-cus"> Customer </a>
+    <a href="../Cashier/cashierbills/createbill.php" class="Nav-bill" > Create Bill </a><hr/>
+    <a href="../promotion/cashierReadPromotion.php"class="Nav-promo"> Promotions </a><hr/>
+    <a href="../Cashier/Cashier View Bill History/CashierViewAllBills.php" class="Nav-viewbill"> Bill History </a><hr/> 
+    <a href="../Cashier/Cashier service records/cashierViewService.php" class="Nav-service"> Vehicle Service Records </a><hr/> 
+    <a href="../Cashier/Cashier product reservation/ViewProductResrvation.php"class="Nav-pr"> Product Reservations </a><hr/>
+    <a href="../appointments/cashierReadsAppointments.php"class="Nav-app"> Appointments </a><hr/>
+    <a href="../Cashier/Cashier Customer register/cashier register customer.php"class="Nav-cus"> Customer </a><hr/>
 </div>
