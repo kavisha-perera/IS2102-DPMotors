@@ -1,15 +1,16 @@
 <?php
 session_start();
 
-if(isset($_SESSION['employeeid']))
+
+if($_SESSION['type'] == "cashier")
 {
-    $employeeid =  $_SESSION['employeeid'];
+    $email =  $_SESSION['email'];
 }else{
 
-    header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-cashierDashboard");
+    header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-cashierDashboard");
 }
-
 ?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
