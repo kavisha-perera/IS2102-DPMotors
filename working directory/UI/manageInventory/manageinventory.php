@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+    $email =  $_SESSION['email'];
 ?>
 
 <!DOCTYPE HTML>
@@ -22,7 +22,7 @@ session_start();
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
         </div>
         <div class="col-14 navbar"> 
-            <form action="../../includes/logout-inc.php">
+            <form action="../../includes/logout.inc.php">
                 <button class="navButton"> Log Out </button>
             </form> 
         </div>
@@ -34,11 +34,11 @@ session_start();
 
     <div class="row r3">
         <div class="col-15 ">
-            <p align="center"> Welcome </p><br><br><br>
+            <p align="center"> User <?php echo $email?> </p><br><br><br>
             <img src="../../images/admin/inventory.png" style="width: 250px;" alt=""><br><br><br><br><br>
             <button class="adminbutton1" onclick="OnClickOpenAddEmloyee()" >+ Add New</button>
             <br><br><br><br><br>
-            <p style="text-align: center;"> <a href="../dashboards/adminDash.php" class="backbutton"><button class="navButton">Back </button></a></p>
+            <p style="text-align: center;"> <button onclick="history.back()" class="navButton">Back </button></p>
             <br><br><br>
         </div>
 
