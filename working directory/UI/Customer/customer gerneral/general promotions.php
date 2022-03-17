@@ -20,7 +20,7 @@ session_start();
      <div class="row r3">
 
         <div class="col-12 content">
-        <?php include_once("./promotions-content.php");?>
+        <?php include_once("./promotions-content.php");?> <!--promotions content linked-->
         </div>
     </div>
 

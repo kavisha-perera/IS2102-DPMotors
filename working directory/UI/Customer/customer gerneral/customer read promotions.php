@@ -46,7 +46,7 @@ if(isset($_SESSION['id']))
 
         <div class="col-16 content">
             <!--main content here-->
-            <?php include_once("./promotions-content.php");?>
+            <?php include_once("./promotions-content.php");?> <!--promotions content linked-->
         </div>
     </div>
 
