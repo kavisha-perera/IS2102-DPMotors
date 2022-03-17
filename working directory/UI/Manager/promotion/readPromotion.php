@@ -18,7 +18,7 @@ if($_SESSION['type'] == "manager")
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
-    <script type="text/javascript" src="../../../javascript/promotionPopup.js"></script>
+   
 	<title>Read Promotions</title>
 </head>
  
@@ -31,18 +31,14 @@ include_once("../../../includes/promotions.inc.php");
 
 ?>
 
+
         <div class="col-16 content">
             <!--main content here-->
 
             <div style="overflow-x:auto;">
                 <div class="th-table-container1">
                     
-
                     <h3><U>PROMOTION RECORDS</U></h3><!--table name-->
-
-
-
-
 
                 <table class="th-user-table">
                     <thead>
@@ -59,12 +55,9 @@ include_once("../../../includes/promotions.inc.php");
                     </tr>
                     </thead>
                     <tbody>
-                  
-
-                    
+                                    
                 <?php
-
-                    
+    
                 $result = fetchResults($conn) ;
 
                 if ( $result != false && $result->num_rows > 0) {
@@ -72,8 +65,6 @@ include_once("../../../includes/promotions.inc.php");
                     while($row = $result->fetch_assoc()) {
                       
                     ?>
-
-
                         <tr>
 
                             <td> <?php echo $row['promoNo'] ?> </td>
@@ -89,14 +80,13 @@ include_once("../../../includes/promotions.inc.php");
                             </select>
                         
 
-                        </td>
-                        <td><?php echo $row['discount']  ?> </td>
+                            </td>
+                        
+                            <td><?php echo $row['discount']  ?> </td>
 
-                            <td><button class="navButton open-modal" style=" background-color: #6EE327;" data-val="<?php echo $row['promoNo']  ?>" data-target="modal-2" >UPDATE</button></td>
-                            <td><button class="navButton open-modal" style=" background-color: #EE1E2B;" data-val="<?php echo $row['promoNo']  ?>" data-target="modal-3" ></a>DELETE</button></td>
+                            <td><button class="navButton open-modal" style=" background-color: #6EE327;" data-val="<?php echo $row['promoNo']  ?>" data-target="modal-2" onclick="openUpdatePromotion(this)" >UPDATE</button></td>
+                            <td><button class="navButton open-modal" style=" background-color: #EE1E2B;" data-val="<?php echo $row['promoNo']  ?>" data-target="modal-3"  onclick="openDeletePromotion(this)"></a>DELETE</button></td>
                         </tr> 
-
-
 
 
 
@@ -105,11 +95,9 @@ include_once("../../../includes/promotions.inc.php");
                 }
                 ?>
                                        
-                    <?php  ?>
-
-
+            
                         <div class="th-add-new-button">
-                            <button class="navButton open-modal" data-target="modal-1" ><b> + Add</b></a></button>
+                            <button class="navButton open-modal" data-target="modal-1" onclick="openAddPromotion()" ><b> + Add</b></a></button>
                         </div> 
 
                       </tbody>
@@ -122,7 +110,7 @@ include_once("../../../includes/promotions.inc.php");
 <div id="modal-1" class="modal-window">
 
 
-<button class="modal-btn modal-hide">Close</button>
+<button class="modal-btn modal-hide" onclick="closeAddPromotion()" >Close</button>
 
 <h2 style="color:#021257;" align="center">CREATE PROMOTION</h2>
     <div class="raw">     
@@ -175,15 +163,11 @@ include_once("../../../includes/promotions.inc.php");
 
 
 
-
-
-
-
 </div>
 
 
 <div id="modal-2" class="modal-window">
-<button class="modal-btn modal-hide">Close</button>
+<button class="modal-btn modal-hide" onclick="closeUpdatePromotion()" >Close</button>
 
 <h2 style="color:#021257;" align="center">Update PROMOTION</h2>
     <div class="raw">     
@@ -245,7 +229,7 @@ include_once("../../../includes/promotions.inc.php");
 
 
 <div id="modal-3" class="modal-window">
-    <button class="modal-btn modal-hide">Close</button>
+    <button class="modal-btn modal-hide" onclick="closeDeletePromotion()" >Close</button>
 
     <div class="row deleteWarning"> <!--do not use r2 cus it has been used for something else-->
         <div class="col-12">
@@ -266,176 +250,14 @@ include_once("../../../includes/promotions.inc.php");
 </div>
 
 
-<div class="modal-fader"></div>
+<div class="modal-fader" id="backgroundfader"></div>
 
 
 
 
 </div>
     
-
-
-
-
-
-<script type="text/javascript">
- (function () {
-    document.querySelectorAll(".open-modal").forEach(function (trigger) {
-        trigger.addEventListener("click", function () {
-            hideAllModalWindows();
-            showModalWindow(this);
-        });
-    });
-    
-    document.querySelectorAll(".modal-hide").forEach(function (closeBtn) {
-        closeBtn.addEventListener("click", function () {
-            hideAllModalWindows();
-        });
-    });
-    
-    document.querySelector(".modal-fader").addEventListener("click", function () {
-        hideAllModalWindows();
-    });
-})();
-
-
-
-function showModalWindow (buttonEl) {
-    var modalTarget = "#" + buttonEl.getAttribute("data-target");
-    var datavalue = buttonEl.getAttribute("data-val");
-
-
-
-    if(buttonEl.getAttribute("data-target") == "modal-3"){
-        document.getElementById("deletehiddenvalue").value = datavalue;
-    }
-
-
-    if(buttonEl.getAttribute("data-target") == "modal-2"){
-        
-       var dataRaw = buttonEl.parentNode.parentNode;
-
-
-       var promoId = dataRaw.cells[0].innerHTML;
-       var image = dataRaw.cells[1].firstChild.nextSibling.src;
-       var description = dataRaw.cells[2].innerHTML;
-       var code = dataRaw.cells[3].innerHTML;
-       var validTill = dataRaw.cells[4].innerHTML;
-       var State = dataRaw.cells[5].firstChild.nextSibling.value;
-
-
-
-       document.getElementById("updatePromoNo").value = promoId;
-       document.getElementById("updatedescription").value = description;
-       document.getElementById("updatecode").value = code;
-       document.getElementById("updatedate").value = validTill.trim();
-       document.getElementById("updatestates").value = State;
-       document.getElementById("updateimg").src = image;
-       document.getElementById("updatehiddenimage").value = image;
-
-       console.log(validTill);
-
-
-    }
-
-
-    
-    document.querySelector(".modal-fader").className += " active";
-    document.querySelector(modalTarget).className += " active";
-
-
-
-}
-function hideAllModalWindows () {
-    var modalFader = document.querySelector(".modal-fader");
-    var modalWindows = document.querySelectorAll(".modal-window");
-    
-    if(modalFader.className.indexOf("active") !== -1) {
-        modalFader.className = modalFader.className.replace("active", "");
-    }
-    
-    modalWindows.forEach(function (modalWindow) {
-        if(modalWindow.className.indexOf("active") !== -1) {
-            modalWindow.className = modalWindow.className.replace("active", "");
-        }
-    });
-}
-
-
-function encodeImageFileAsURL(element) {
-  var file = element.files[0];
-  var reader = new FileReader();
-  reader.onloadend = function() {
-    console.log('RESULT', reader.result)
-    document.getElementById('img').setAttribute(
-        'src',
-        reader.result
-    );
-    document.getElementById('hiddenimage').value= reader.result;
-
-  }
-  reader.readAsDataURL(file);
-}
-
-
-
-function encodeUpdateImageFileAsURL(element) {
-  var file = element.files[0];
-  var reader = new FileReader();
-  reader.onloadend = function() {
-    console.log('RESULT', reader.result)
-    document.getElementById('updateimg').setAttribute(
-        'src',
-        reader.result
-    );
-    document.getElementById('updatehiddenimage').value= reader.result;
-
-  }
-  reader.readAsDataURL(file);
-}
-  
-
-
-function changeState(stateEle){
-
-var stateValue = stateEle.value;
-var promoNo = stateEle.getAttribute("data-state");
-
-console.log(stateValue);
-console.log(promoNo);
-
-var form = document.createElement('form');
-form.method = "post";
-form.action = "readPromotion.php";
-
-      var promoElement = document.createElement('input');
-      promoElement.type = 'hidden';
-      promoElement.name = "promoNo";
-      promoElement.value =  promoNo;
-
-      var stateElement = document.createElement('input');
-      stateElement.type = 'hidden';
-      stateElement.name = "promoState";
-      stateElement.value =  stateValue;
-
-
-      var indicator = document.createElement('input');
-      indicator.type = 'hidden';
-      indicator.name = "stateChange";
-      indicator.value =  "stateChange";
-
-      form.appendChild(promoElement);
-      form.appendChild(stateElement);
-      form.appendChild(indicator);
-
-document.body.appendChild(form);
-form.submit();     
-
-}
-
-
-
-</script>
+<script type="text/javascript" src="../../../javascript/managerPromotion.js"></script>
 
 </body>
 </html>
