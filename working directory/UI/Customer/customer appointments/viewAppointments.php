@@ -24,6 +24,10 @@ if(isset($_SESSION['id']))
         .hide-in-others{
             display:none;
         }
+        .changeButton{
+            background-color: #FFFAFA;
+            border: 0 solid #FFFAFA;
+        }
     </style>
 </head>
 <body>
@@ -90,8 +94,27 @@ if(isset($_SESSION['id']))
                                 <td><?php echo $row['vehicleNo'];?></td>
                                 <td><?php echo $row['serviceType'];?></td>
                                 <td><?php echo $row['date'];?> <?php echo $row['timeslot'];?></td>
-                                <td><a href="./readAppointment.php"><img src="../../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
-                                <td><a href="./rescheduleAppointment.php"><img src="../../../images/tableIcons/reschedule.png" class="tableIcon"></a></td>
+
+                                <td> <!--read the appointment record in detail-->
+                                    <form action="./readAppointment.php" method="post">
+                                        <input type="hidden" name="slotId" value="<?php echo $row['scheduleId'];?>">
+                                        <input type="hidden" name="appId" value="<?php echo $row['id'];?>">
+                                        <button class="changeButton" type="submit" name="readApp">
+                                            <img src="../../../images/tableIcons/zoomIn.png" class="tableIcon">
+                                        </button>                               
+                                    </form>
+                                </td>
+
+                                <td> <!--reschedule record in detail-->
+                                    <form action="./rescheduleAppointment.php" method="post">
+                                        <input type="hidden" name="slotId" value="<?php echo $row['scheduleId'];?>">
+                                        <input type="hidden" name="appId" value="<?php echo $row['id'];?>">
+                                        <button class="changeButton" type="submit" name="reschedule">
+                                            <img src="../../../images/tableIcons/reschedule.png" class="tableIcon">
+                                        </button>                               
+                                    </form>
+                                </td>
+
                                 <td><a href="./cancelAppointment.php"><img src="../../../images/tableIcons/delete.png" class="tableIcon"></a></td>
                             </tr>
 

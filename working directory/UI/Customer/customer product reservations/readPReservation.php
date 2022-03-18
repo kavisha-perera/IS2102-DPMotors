@@ -86,17 +86,8 @@ if(isset($_SESSION['id']))
 
                     $reserve_id = $_POST["view"];
 
-                    $sql = "SELECT * FROM reservedforsale WHERE res_sale_id = ? ;"; 
-                    $stmt = mysqli_stmt_init($conn);
-                    if(!mysqli_stmt_prepare($stmt, $sql)){
-                        header("location: ../UI/Auth-UI/signUp.php?error=stmtfailed");
-                        exit();
-                    }
-
-                    mysqli_stmt_bind_param($stmt, "s" , $reserve_id);
-                    mysqli_stmt_execute($stmt);
-
-                    $resultData = mysqli_stmt_get_result($stmt);
+                    $sql = "SELECT * FROM reservedforsale WHERE res_sale_id = '$reserve_id' ";
+                    $resultData = $conn->query($sql);
 
                     if (mysqli_num_rows($resultData) > 0) {
                         while ($row = mysqli_fetch_assoc($resultData)) {

@@ -18,6 +18,7 @@ if(isset($_SESSION['id']))
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/schedule.css">
 	<title>customer book appointment</title>
     <style>
         .Nav-Appointments{
@@ -27,41 +28,7 @@ if(isset($_SESSION['id']))
         .hide-in-others{
             display:none;
         }
-        .dateCard{
-            padding:10px;
-            width:200px;
-            height:170px;
-            background-color:#FFFAFA;
-            border: 2px solid silver;
-            margin-left:5px;
-            margin-top:5px;
-            border-radius:20px;
-        }
-        .today{
-            background-color:#9cadfc;
-        }
-        .availDate{
-            
-            text-align:center;
-            height: 30px;
-        }
-        .bookButton{
-            border-color:#cb1403;
-            color:white;
-            width:90px;
-            text-align:center;
-            border-radius:5px;
-            background-color:#cb1403;
-        }
-        .timeslotsListed{
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .timeslotsListed td{
-            padding:2px;
-            width:50px;
-            text-align:center;
-        }
+
     </style>
 </head>
 <body>
@@ -94,10 +61,11 @@ if(isset($_SESSION['id']))
                 //getting all the distinct dates starting from the current date
                     $sql = "SELECT DISTINCT date FROM schedule WHERE date >=CURDATE() ORDER BY date LIMIT 14";
                     $result = $conn->query($sql); 
+                    
                     if (mysqli_num_rows($result) > 0){
-                        while($row = $result->fetch_assoc() ){
-                            $no_of_results = mysqli_num_rows($result);
+                        while ($row = mysqli_fetch_assoc($result)) {
 
+                            date_default_timezone_set("Asia/Bangkok"); //set default timezone
                             $today = date("Y-m-d"); //assign the current date to variable $today
 
                             //display two slightly different datecards after checking if the date retrieved from the database is today
@@ -105,6 +73,8 @@ if(isset($_SESSION['id']))
                    
                 ?>
                 <!-- if ($row['date'] == $today) -->
+
+                
                 <div class="col-3 dateCard today">
                     <h4  class="availDate">TODAY: <?php echo $row['date'];?></h4>
                     <hr style="height:5px;">
@@ -113,8 +83,7 @@ if(isset($_SESSION['id']))
                             $sql2 = "SELECT DISTINCT timeslot, id FROM schedule WHERE state='open' AND date='{$row['date']}' ";
                             $result2 = $conn->query($sql2); 
                             if (mysqli_num_rows($result2) > 0){
-                                while($row2 = $result2->fetch_assoc() ){
-                                            $no_of_results2 = mysqli_num_rows($result2);
+                                while ($row2 = mysqli_fetch_assoc($result2)) {
                         ?>
 
                         <!--A table that shows all the available timeslots with BOOK buttons-->
@@ -159,8 +128,7 @@ if(isset($_SESSION['id']))
                             $sql2 = "SELECT DISTINCT timeslot, id FROM schedule WHERE state='open' AND date='{$row['date']}' ";
                             $result2 = $conn->query($sql2); 
                             if (mysqli_num_rows($result2) > 0){
-                                while($row2 = $result2->fetch_assoc() ){
-                                            $no_of_results2 = mysqli_num_rows($result2);
+                                while ($row2 = mysqli_fetch_assoc($result2)) {
                         ?>
 
                         <!--A table that shows all the available timeslots with BOOK buttons-->

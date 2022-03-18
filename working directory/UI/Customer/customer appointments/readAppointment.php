@@ -59,13 +59,28 @@ if(isset($_SESSION['id']))
 
             <!--div container for customer to hold customer profile details form-->
             <div class="col-12 ProfileContainer" id="print-content">
+
+            <?php 
+            if (isset($_POST["readApp"])){
+                $app_no = $_POST["appId"];
+
+                $sql = "SELECT * FROM appointments WHERE id = '$app_no' ";
+                $result = $conn->query($sql);
+               
+                if(mysqli_num_rows($result) > 0){
+
+                while ($row = mysqli_fetch_assoc($result)) {
+
+            
+            ?>
                 
                 <div class="row r3-1">
                     <div class="col-12">
-                        <h2 class="title"><b>APPOINTMENT #number</b><h2></h2>
+                        <h2 class="title"><b>APPOINTMENT NO <?php echo $row["id"]; ?></b><h2></h2>
                     </div>
                 </div>
 
+                
                 <!--start of form to get details-->
                 <form action="bookApp.php" method="GET">
             
@@ -74,7 +89,7 @@ if(isset($_SESSION['id']))
                         <label>SERVICE TYPE </label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="serviceType" disabled>
+                        <input type="text" class="serviceApp" name="serviceType" value = "<?php echo $row["serviceType"]; ?>" readonly>
                     </div>
                 </div>
                 <div class="row">
@@ -82,7 +97,7 @@ if(isset($_SESSION['id']))
                         <label>APPOINTMENT DATE </label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="date" class="serviceApp" name="appDate" disabled>
+                        <input type="date" class="serviceApp" name="appDate" value = "<?php echo $row["date"]; ?>" readonly>
                     </div>
                 </div> 
                 <div class="row">
@@ -90,7 +105,7 @@ if(isset($_SESSION['id']))
                         <label>APPOINTMENT TIME</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="timeslot" disabled>
+                        <input type="text" class="serviceApp" name="timeslot" value = "<?php echo $row["timeslot"]; ?>" readonly>
                     </div>
                 </div> 
                 <div class="row">
@@ -98,7 +113,7 @@ if(isset($_SESSION['id']))
                         <label>FIRST NAME </label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="fname" disabled>
+                        <input type="text" class="serviceApp" name="fname" value = "<?php echo $row["fname"]; ?>" readonly>
                     </div>
                 </div> 
                 <div class="row">
@@ -106,7 +121,7 @@ if(isset($_SESSION['id']))
                         <label>LAST NAME</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="lname" disabled>
+                        <input type="text" class="serviceApp" name="lname" value = "<?php echo $row["lname"]; ?>" readonly>
                     </div>
                 </div>
                 <div class="row">
@@ -114,7 +129,7 @@ if(isset($_SESSION['id']))
                         <label>VEHICLE NUMBER</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="vehicleNo" disabled>
+                        <input type="text" class="serviceApp" name="vehicleNo" value = "<?php echo $row["vehicleNo"]; ?>" readonly>
                     </div>
                 </div>
                 <div class="row">
@@ -122,7 +137,7 @@ if(isset($_SESSION['id']))
                         <label>VEHICLE MODEL</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="vehicleModel" disabled>
+                        <input type="text" class="serviceApp" name="vehicleModel" value = "<?php echo $row["vehicleType"]; ?>" readonly>
                     </div>
                 </div>
                 <div class="row">
@@ -130,7 +145,7 @@ if(isset($_SESSION['id']))
                         <label>CONTACT NUMBER</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="AppContactNo" disabled>
+                        <input type="text" class="serviceApp" name="AppContactNo" value = "<?php echo $row["contact"]; ?>" readonly>
                     </div>
                 </div>
                 <div class="row">
@@ -138,26 +153,41 @@ if(isset($_SESSION['id']))
                         <label>EMAIL ADDRESS</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="AppService" disabled>
+                        <input type="text" class="serviceApp" name="email" value = "<?php echo $row["email"]; ?>" readonly>
                     </div>
                 </div>
 
-            </form><!--have closed the form before the button. look into this and fix when putting php-->
+
+            </form>
 
                 <div class="row formspacing">
-                    <div class="col-12 buttons-inline">  
+                    <div class="col-12 buttons-inline"> 
+
+                        <!--go back to appointment list-->
                         <form action="./viewAppointments.php">
                             <button class="navButton"> GO BACK </button>
                         </form>
-                        <form action="./rescheduleAppointment.php">
-                            <button  class="navButton" style="width:fit-content;"> RESCHEDULE </button>
+
+                        <!--reschedule this appointment-->
+                        <form action="./rescheduleAppointment.php" method="post">
+                            <input type="hidden" name="slotId" value="<?php echo $row['scheduleId'];?>">
+                            <input type="hidden" name="appId" value="<?php echo $row['id'];?>">
+                            <button class="navButton" style="width: 110px;" type="submit" name="reschedule"> RESCHEDULE                                      
+                            </button>                               
                         </form>  
+
                         <form action="./cancelAppointment.php">
                             <button  class="navButton" style="background-color: #EE1E2B;"> CANCEL </button>
                         </form>
                     </div>
-                </div>            
+                </div>   
 
+                <?php 
+                }
+            }
+        }
+            
+            ?>
 
 
         </div>

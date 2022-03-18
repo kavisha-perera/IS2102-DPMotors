@@ -26,3 +26,24 @@ if (isset($_POST["book"])){
     header("location: ../UI/Customer/customer appointments/viewAppointments.php?error=BookingSucess");
 
 }
+
+/*statement to reschedule appointment*/
+if (isset($_POST["reschedule"])){
+    $slotId = $_POST["slotId"];
+    $OLDslotID = $_POST["OLDslotId"];
+    $appId = $_POST["appId"];
+    $newTime = $_POST["newTime"];
+    $newDate = $_POST["newDate"];
+
+    require_once 'dbh.inc.php';
+    require_once 'appointment-func.php';
+
+    updateSlotState($conn, $slotId);
+
+    reschedule($conn, $slotId, $newTime, $newDate, $appId );
+
+    releaseSlotState($conn, $OLDslotID);
+
+    header("location: ../UI/Customer/customer appointments/viewAppointments.php?error=RescheduleSucess");
+
+}

@@ -88,19 +88,10 @@ if(isset($_SESSION['id']))
                 $vehicle_no = $_POST["vehicleNo"];
                 $vehicle_model = $_POST["vehicleModel"];
 
-                $sql = "SELECT * FROM vehicleservicerecords WHERE vehicleNo = ? ;"; 
-                $stmt = mysqli_stmt_init($conn);
-                if(!mysqli_stmt_prepare($stmt, $sql)){
-                    header("location: ./viewService.php?error=stmtfailed");
-                    exit();
-                }
-
-                mysqli_stmt_bind_param($stmt, "s" , $vehicle_no);
-                mysqli_stmt_execute($stmt);
-
-                $resultData = mysqli_stmt_get_result($stmt);
-
-                if (mysqli_num_rows($resultData) > 0) {
+                $sql = "SELECT * FROM vehicleservicerecords WHERE vehicleNo = '$vehicle_no' ;";
+                $result = $conn->query($sql); 
+                
+                if (mysqli_num_rows($result) > 0) {
     
             ?>
                 
@@ -131,7 +122,7 @@ if(isset($_SESSION['id']))
                                     </tr>
                                 </thead>
                                 <tbody> <!--add php & sql here-->
-                                <?php while ($row = mysqli_fetch_assoc($resultData)) { ?>
+                                <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                                     <tr>
                                         <td><?php echo $row['serviceNo']; ?></td>
                                         <td><?php echo $row['dateOfService']; ?></td>
