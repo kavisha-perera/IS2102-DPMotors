@@ -54,7 +54,7 @@
             </form>    
         </div>
         <div class="col-12">
-            <a href="../Auth-UI/terms.html" class="termsConditions" target="_blank"><p>terms & conditions</p></a>
+            <a href="../../Auth-UI/terms.html" class="termsConditions" target="_blank"><p>terms & conditions</p></a>
         </div>
     </div>
 

@@ -65,7 +65,7 @@ if(isset($_SESSION['id']))
                         <button class="navButton"> GO BACK </button>
                     </form>
                     <br>
-                    <a href="../Auth-UI/terms.html" class="termsConditions" target="_blank"><p>terms & conditions</p></a> <br>
+                    <a href="../../Auth-UI/terms.html" class="termsConditions" target="_blank"><p>terms & conditions</p></a> <br>
                 </div>
 
                 <!--start displaying date cards-->
