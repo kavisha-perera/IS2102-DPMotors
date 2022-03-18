@@ -92,7 +92,7 @@ if(isset($_SESSION['id']))
 
                 <?php
                 //getting all the distinct dates starting from the current date
-                    $sql = "SELECT DISTINCT date FROM schedule WHERE date >=CURDATE() LIMIT 14";
+                    $sql = "SELECT DISTINCT date FROM schedule WHERE date >=CURDATE() ORDER BY date LIMIT 14";
                     $result = $conn->query($sql); 
                     if (mysqli_num_rows($result) > 0){
                         while($row = $result->fetch_assoc() ){
