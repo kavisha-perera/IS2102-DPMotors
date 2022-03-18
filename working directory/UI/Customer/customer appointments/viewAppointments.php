@@ -57,6 +57,13 @@ if(isset($_SESSION['id']))
                     </div>
                 </div>
 
+                <?php 
+                
+                $sql = "SELECT * FROM appointments WHERE email = '{$_SESSION['email']}'";
+                $results = $conn->query($sql);
+                        if (mysqli_num_rows($results) > 0){                
+                ?>
+
                 <div class="row r3-1">
                     <div class="col-12">
                         <h2 class="title"><b>VIEW PENDING APPOINTMENTS</b><h2></h2>
@@ -75,25 +82,27 @@ if(isset($_SESSION['id']))
                             </tr>
                         </thead>
                         <tbody>
+
+                        <?php while ($row = mysqli_fetch_assoc($results)) { ?>
+
                             <tr class="appListItems">
-                                <td>RA-9082</td>
-                                <td>CAK-3390</td>
-                                <td>Interior Detailing</td>
-                                <td>27-10-2021</td>
+                                <td><?php echo $row['id'];?></td>
+                                <td><?php echo $row['vehicleNo'];?></td>
+                                <td><?php echo $row['serviceType'];?></td>
+                                <td><?php echo $row['date'];?> <?php echo $row['timeslot'];?></td>
                                 <td><a href="./readAppointment.php"><img src="../../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
                                 <td><a href="./rescheduleAppointment.php"><img src="../../../images/tableIcons/reschedule.png" class="tableIcon"></a></td>
                                 <td><a href="./cancelAppointment.php"><img src="../../../images/tableIcons/delete.png" class="tableIcon"></a></td>
                             </tr>
-                            <tr class="appListItems">
-                                <td>RA-12094</td>
-                                <td>KH-2314</td>
-                                <td>Full Service</td>
-                                <td>03-11-2021</td>
-                                <td><a href="./readAppointment.php"><img src="../../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
-                                <td><a href="./rescheduleAppointment.php"><img src="../../images/tableIcons/reschedule.png" class="tableIcon"></a></td>
-                                <td><a href="./cancelAppointment.php"><img src="../../images/tableIcons/delete.png" class="tableIcon"></a></td>
-                            </tr>
 
+                        <?php 
+                        }
+                    }
+                    else{
+                        echo "<h5>- NO PENDING APPOINTMENTS - </h5>" ;
+                    }
+                        
+                        ?>
 
                         </tbody>
                         </table>

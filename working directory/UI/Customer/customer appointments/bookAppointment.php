@@ -1,4 +1,7 @@
 <?php
+
+include '../../../includes/dbh.inc.php';
+
 session_start();
 
 if(isset($_SESSION['id']))
@@ -24,6 +27,41 @@ if(isset($_SESSION['id']))
         .hide-in-others{
             display:none;
         }
+        .dateCard{
+            padding:10px;
+            width:200px;
+            height:170px;
+            background-color:#FFFAFA;
+            border: 2px solid silver;
+            margin-left:5px;
+            margin-top:5px;
+            border-radius:20px;
+        }
+        .today{
+            background-color:#9cadfc;
+        }
+        .availDate{
+            
+            text-align:center;
+            height: 30px;
+        }
+        .bookButton{
+            border-color:#cb1403;
+            color:white;
+            width:90px;
+            text-align:center;
+            border-radius:5px;
+            background-color:#cb1403;
+        }
+        .timeslotsListed{
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .timeslotsListed td{
+            padding:2px;
+            width:50px;
+            text-align:center;
+        }
     </style>
 </head>
 <body>
@@ -44,132 +82,134 @@ if(isset($_SESSION['id']))
         </div>
 
         <div class="col-16 content">
-            <!--main content here-->
-
-            <!--div container for customer to hold customer profile details form-->
-            <div class="col-12 ProfileContainer">
-
-                <div class="row r3-1">
-                    <div class="col-12">
-                        <h2 class="title"><b>BOOK APPOINTMENT</b><h2></h2>
-                    </div>
+            <div class="row">
+                <div class="col-12">
+                    <h2 style="text-align:center;">BOOKING SCHEDULE FOR THE UPCOMING 14 DAYS</h2>
+                    <br>
                 </div>
 
-                <!--start of form to get details-->
-                <form action="bookApp.php" method="POST">
-            
-                <div class="row r3-2">
-                    <div class="col-4 BookAppLabel">
-                        <label>SELECT SERVICE TYPE </label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <select id ="serviceApp" name="serviceType">
-                            <option value ="Maintainace & Repair">Maintainace & Repair</option>
-                            <option value ="Car Body Wash">Car Body Wash</option>
-                            <option value ="Car Wash & Full Service">Car Wash & Full Service</option>
-                            <option value ="Interior Detailing">Interior Detailing</option>
-                            <option value ="Cut & Polish">Cut & Polish</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label>SELECT APPOINTMENT DATE </label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <input type="date" class="serviceApp" name="appDate">
-                    </div>
-                </div> 
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label>SELECT TIMESLOT</label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <select id ="serviceApp" name="timeslot">
-                            <option value =""> - </option>
-                            <option value =""> - </option>
-                        </select>
-                    </div>
-                </div> 
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label>FIRST NAME </label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="fname">
-                    </div>
-                </div> 
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label>LAST NAME</label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="lname">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label>VEHICLE NUMBER</label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="vehicleNo">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label>VEHICLE MODEL</label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="vehicleModel">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label>CONTACT NUMBER</label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="AppContactNo">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label>EMAIL ADDRESS</label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="AppService">
-                    </div>
-                </div>
+                <!--start displaying date cards-->
 
-            </form> <!--have closed the form before the button. look into this and fix when putting php-->
+                <?php
+                //getting all the distinct dates starting from the current date
+                    $sql = "SELECT DISTINCT date FROM schedule WHERE date >=CURDATE() LIMIT 14";
+                    $result = $conn->query($sql); 
+                    if (mysqli_num_rows($result) > 0){
+                        while($row = $result->fetch_assoc() ){
+                            $no_of_results = mysqli_num_rows($result);
 
-                <div class="row formspacing">
-                    <div class="col-12">
-                        <form action="./confirmAppointment.php">
-                            <button type="submit" class="navButton">NEXT</button>
-                        </form>
-                    </div>
-                </div>            
+                            $today = date("Y-m-d"); //assign the current date to variable $today
 
-                
+                            //display two slightly different datecards after checking if the date retrieved from the database is today
+                            if ($row['date'] == $today){
+                   
+                ?>
+                <!-- if ($row['date'] == $today) -->
+                <div class="col-3 dateCard today">
+                    <h4  class="availDate">TODAY: <?php echo $row['date'];?></h4>
+                    <hr style="height:5px;">
+                        <!--retrieve all the timeslots from the database under the retrieved date-->
+                        <?php
+                            $sql2 = "SELECT DISTINCT timeslot, id FROM schedule WHERE state='open' AND date='{$row['date']}' ";
+                            $result2 = $conn->query($sql2); 
+                            if (mysqli_num_rows($result2) > 0){
+                                while($row2 = $result2->fetch_assoc() ){
+                                            $no_of_results2 = mysqli_num_rows($result2);
+                        ?>
 
+                        <!--A table that shows all the available timeslots with BOOK buttons-->
+                        <table class="timeslotsListed">
+                            <tr>
+                                <td><h5><?php echo $row2['timeslot'];?></h5></td>
+                                <td>
+                                    <form action="./bookAppointment-form.php" method="post">
+                                        <input type="hidden" name="slotId" value="<?php echo $row2['id'];?>">
+                                        <button type="submit" name="book" class="bookButton">
+                                            BOOK
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
 
-        </div>
-    </div>
+                        <?php
+                            } //close timeslot while loop
+                        } //close timeslot if statement
+                        else{
+                            //no timeslots under date concerned
+                            echo "<br>";
+                            echo "<h5 style='text-align:center;'>NO TIMESLOTS AVAILABLE</h5>";
+                        }
+                        ?>       
 
-    
+                </div> <!--close datecard that shows todays timeslots-->
+
+                <?php
+                //if the date retrieved from the database is not today
+                    }
+                else{
+                ?>
+
+                 <!-- else of {if ($row['date'] == $today)} -->
+                <div class="col-3 dateCard">
+                    <h4  class="availDate">DATE: <?php echo $row['date'];?></h4>
+                    <hr style="height:5px;">
+                        <!--retrieve all the timeslots from the database under the retrieved date-->
+                        <?php
+                            $sql2 = "SELECT DISTINCT timeslot, id FROM schedule WHERE state='open' AND date='{$row['date']}' ";
+                            $result2 = $conn->query($sql2); 
+                            if (mysqli_num_rows($result2) > 0){
+                                while($row2 = $result2->fetch_assoc() ){
+                                            $no_of_results2 = mysqli_num_rows($result2);
+                        ?>
+
+                        <!--A table that shows all the available timeslots with BOOK buttons-->
+                        <table class="timeslotsListed">
+                            <tr>
+                                <td><h5><?php echo $row2['timeslot'];?></h5></td>
+                                <td>
+                                    <form action="./bookAppointment-form.php" method="post">
+                                        <input type="hidden" name="slotId" value="<?php echo $row2['id'];?>">
+                                        <button type="submit" name="book" class="bookButton">
+                                            BOOK
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
 
 
 
- <!--   <footer>
-        <div class="row">
-            <div class="col-12">
-                <h4>CONTACT</h4><br>
-                <p>1088, 1 Battaramulla, Pannipitiya Rd, Battaramulla 10120 </p>
-                011 2XXXXXX | 07X XXXXXXX </p>
-                dpmotors@gmail.com</p>
+                        <?php
+                            } //close timeslot while loop
+                        } //close timeslot if statement
+                        else{
+                            //no timeslots under date concerned
+                            echo "<br>";
+                            echo "<h5 style='text-align:center;'>NO TIMESLOTS AVAILABLE</h5>";
+                        }
+                        ?>       
+
+                </div> <!--close datecard-->
+
+                <?php
+                }    //close else of {if ($row['date'] == $today)}
+                ?>  
+
+
+            <?php
+                } //close while loop that retrieves dates from the database
+            } //close if statement that retrieves dates from the database
+            ?>
+
+
+
+                <!--all the div tags after this comment is important and accounted for!-->
             </div>
         </div>
-    </footer> -->
+    </div>      
+
+
 
 </body>
 </html>
