@@ -94,7 +94,7 @@ if(isset($_SESSION['id']))
                         <label>APPOINTMENT DATE</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="appDate" value="<?php echo $row['date'];?>">
+                        <input type="text" class="serviceApp" name="appDate" value="<?php echo $row['date'];?>" readonly>
                     </div>
                 </div> 
                 <div class="row">
@@ -102,7 +102,7 @@ if(isset($_SESSION['id']))
                         <label>APPOINTMENT TIMESLOT</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="appTime" value="<?php echo $row['timeslot'];?>">
+                        <input type="text" class="serviceApp" name="appTime" value="<?php echo $row['timeslot'];?>" readonly>
                     </div>
                 </div>
 
@@ -184,7 +184,7 @@ if(isset($_SESSION['id']))
                         <label>EMAIL ADDRESS</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="email" value="<?php echo $customer['email'];?>">
+                        <input type="text" class="serviceApp" name="email" value="<?php echo $customer['email'];?>" readonly>
                     </div>
                 </div>
 

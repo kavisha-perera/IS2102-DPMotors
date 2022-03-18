@@ -59,7 +59,7 @@ if(isset($_SESSION['id']))
 
                 <?php 
                 
-                $sql = "SELECT * FROM appointments WHERE email = '{$_SESSION['email']}'";
+                $sql = "SELECT * FROM appointments WHERE state = 'pending' AND email = '{$_SESSION['email']}'";
                 $results = $conn->query($sql);
                         if (mysqli_num_rows($results) > 0){                
                 ?>
