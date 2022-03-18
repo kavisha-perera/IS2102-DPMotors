@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+include '../../../includes/dbh.inc.php';
 
 if($_SESSION['type'] == "cashier")
 {
@@ -9,8 +10,6 @@ if($_SESSION['type'] == "cashier")
 
     header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-cashierDashboard");
 }
-
-
 
 $fname_error=$lname_error=$email_error=$nic_error=$password_error="";
 $fname=$lname=$email=$nic=$password="";
@@ -86,7 +85,7 @@ function test_input($data) {
     <script src="../../../javascript/cash-password.js"></script>
 	<title>Register Customer</title>
     <style>
-        .Nav-cus{
+        .Nav-customer{
             /* to show the active link in navbar */
             background-color:#344CB4; 
         }
@@ -111,7 +110,6 @@ function test_input($data) {
         <div class="col-15 sideNav">
             <?php include_once("../cashierSideNav.php") ?> 
         </div>
-
 
  
         <div class="col-16 content">

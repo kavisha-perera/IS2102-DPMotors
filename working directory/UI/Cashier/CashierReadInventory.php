@@ -32,18 +32,18 @@ if($_SESSION['type'] == "cashier")
 <body>
 
 <div class="row r1">
-<?php include_once("../cashierTopNav.php") ?>
+<?php include_once("cashierTopNav.php") ?>
 </div>
     </div>
 <!-- Start of Dropdown for screens with width less than 800px-->
 <div class="row r2">
-        <?php include_once("../cashierSide-MiniNav.php") ?>
+        <?php include_once("cashierSide-MiniNav.php") ?>
     </div>
 <!--End of Dropdown for screens with width less than 800px-->
 
 <div class="row r3">
         <div class="col-15 sideNav">
-            <?php include_once("../cashierSideNav.php") ?> 
+            <?php include_once("cashierSideNav.php") ?> 
         </div>
         <div class="col-16 content">
             <!--main content here-->
