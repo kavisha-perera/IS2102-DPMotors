@@ -33,7 +33,7 @@ if($_SESSION['type'] == "admin")
             <a href="../landing page/index.php#about">About</a>
             <a href="../landing page/index.php#services">Services</a>
             <a href="../customer gerneral/productsCatalogue.html">Products</a>
-            <form action="../../includes/logout-inc.php">
+            <form action="../../includes/logout.inc.php">
                 <button class="navButton"> Log Out </button>
             </form> 
             <form action="../landing page/index.html#contact">

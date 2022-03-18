@@ -21,11 +21,11 @@ if($_SESSION['type'] == "cashier")
     <link rel="stylesheet" href="../../../css/main.css" />
     <title>Add new product Reservation</title>
     <style>
-        .Nav-dashboard{
+        .Nav-pr{
             /* to show the active link in navbar */
             background-color:#344CB4; 
         }
-        .hide-in-dashboard{
+        .hide-in-others{
             display:none;
         }
       </style>

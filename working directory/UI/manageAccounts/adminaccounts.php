@@ -30,7 +30,7 @@ if($_SESSION['type'] == "admin")
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
         </div>
         <div class="col-14 navbar"> 
-        <form action="../../includes/logout-inc.php">
+        <form action="../../includes/logout.inc.php">
                 <button class="navButton"> Log Out </button>
             </form> 
         </div>
@@ -133,7 +133,7 @@ if($_SESSION['type'] == "admin")
                    
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="address" class="th-user-label">Email Address</label class="th-emsu-input">
+                            <label for="email" class="th-user-label">Email Address</label class="th-emsu-input">
                         </div>
                         <div class="th-emp-form-input">
                             <input type="text" name="email" class="th-emsu-input">
@@ -151,19 +151,19 @@ if($_SESSION['type'] == "admin")
 
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="address" class="th-user-label">Password</label class="th-emsu-input">
+                            <label for="password" class="th-user-label">Password</label class="th-emsu-input">
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="text" name="password" class="th-emsu-input">
+                            <input type="password" name="password" class="th-emsu-input">
                         </div>
                     </div>
 
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="Employee ID" class="th-user-label">Confirm Password</label class="th-emsu-input">
+                            <label for="confirm password" class="th-user-label">Confirm Password</label class="th-emsu-input">
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="text" name="confirmpw" class="th-emsu-input">
+                            <input type="password" name="confirmpw" class="th-emsu-input">
                         </div>
                     </div>
 

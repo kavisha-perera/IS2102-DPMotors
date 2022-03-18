@@ -45,7 +45,7 @@ if ($customers) {
     <link rel="stylesheet" href="../../../css/main.css">
 	<title>View Customers</title>
     <style>
-        .Nav-cus{
+        .Nav-customer{
             /* to show the active link in navbar */
             background-color:#344CB4; 
         }

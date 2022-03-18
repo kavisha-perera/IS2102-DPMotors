@@ -1,14 +1,6 @@
 <?php
 session_start();
-
-if($_SESSION['type'] == "manager")
-{
     $email =  $_SESSION['email'];
-}else{
-
-    header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-managerDashboard");
-}
-
 ?>
 
 <!DOCTYPE HTML>
@@ -16,13 +8,39 @@ if($_SESSION['type'] == "manager")
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
-    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../css/main.css">
     <script src="../../javascript/empsup_pop-up.js"></script>
-	<title>Employee Accounts</title>
+	<title>Inventory Records</title>
 </head>
 <body>
 
-<?php include_once("../managerNav.php");?>
+    <div class="row r1">
+        <div class="col-13">
+            <img src="../../images/logo.png" class="navLogo">
+        </div>
+        <div class="col-nav">
+            <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
+        </div>
+        <div class="col-14 navbar"> 
+            <form action="../../includes/logout.inc.php">
+                <button class="navButton"> Log Out </button>
+            </form> 
+        </div>
+    </div>
+
+    <!-- Start of Dropdown for screens with width less than 800px-->
+                   
+    <!--End of Dropdown for screens with width less than 800px-->
+
+    <div class="row r3">
+        <div class="col-15 ">
+            <p align="center"> User <?php echo $email?> </p><br><br><br>
+            <img src="../../images/admin/inventory.png" style="width: 250px;" alt=""><br><br><br><br><br>
+            <button class="adminbutton1" onclick="OnClickOpenAddEmloyee()" >+ Add New</button>
+            <br><br><br><br><br>
+            <p style="text-align: center;"> <button onclick="history.back()" class="navButton">Back </button></p>
+            <br><br><br>
+        </div>
 
         <div class="col-16 content">
             <!--main content here-->
@@ -31,18 +49,15 @@ if($_SESSION['type'] == "manager")
                 <div class="th-table-container1">
                     
                     
-                    <h2 class="th-th2">Employee Accounts<h2><!--table name-->
+                    <h2 class="th-th2">Inventory Records<h2><!--table name-->
                 <table class="th-user-table">
                     <thead>
                     <tr>
-                      <th>AccountNo</th> <!--table properties-->
-                      <th>First name</th>
-                      <th>Last name</th> 
-                      <th>NIC</th>
-                      <th>Contact</th>
-                      <th>Address</th>
-                      <th>Designation</th>
-
+                      <th>Code</th> <!--table properties-->
+                      <th>Size</th>
+                      <th>Name</th> 
+                      <th>Brand</th>
+                      <th>Supplier</th>
                       <th colspan="2" style="text-align: center;">Controls</th>
                     </tr>
                     </thead>
@@ -53,10 +68,8 @@ if($_SESSION['type'] == "manager")
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td>Supplier</td>
-                            <td><button class="th-button-icon" onclick="OnClickOpenUpdateEmployee()"><img src="../../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
-                            <td><button class="th-button-icon" onclick="OnClickOpenDeleteEmployee()"><img src="../../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
+                            <td><button class="th-button-icon" onclick="OnClickOpenUpdateEmployee()"><img src="../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
+                            <td><button class="th-button-icon" onclick="OnClickOpenDeleteEmployee()"><img src="../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
                         </tr>
 
                         <tr>
@@ -65,29 +78,21 @@ if($_SESSION['type'] == "manager")
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td>Spare Part</td>
-                            <td><button class="th-button-icon" onclick="OnClickOpenUpdateEmployee()"><img src="../../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
-                            <td><button class="th-button-icon" onclick="OnClickOpenDeleteEmployee()"><img src="../../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
+                            <td><button class="th-button-icon" onclick="OnClickOpenUpdateEmployee()"><img src="../../images/Employee & Supplier/edit.svg" class="th-svg-icons"></button></td>
+                            <td><button class="th-button-icon" onclick="OnClickOpenDeleteEmployee()"><img src="../../images/Employee & Supplier/delete.svg" class="th-svg-icons"></button></td>
                         </tr>
 
                       </tbody>
                   </table>
-                  <br><br><br>
-
-                              <p style="text-align: center;"> <a href="" class=""><button class="navButton">+ Add New </button></a></p>
-            <br><br><br>
-        </div>
-
             </div>
 <!-------------------------ADD,UPDATE and DELETE related HTML are in the View Employee page becuz they all are pop-ups------------------------>
 <!-----------------------------------------------------New Employee form as a Pop-Up---------------------------------------------------------->
 
             <div class="th-addemployee-conatiner" id="th-add-employee">
-                <form action="../../includes/signup-inc.php" method="post">
+                <form action="#" method="post">
                     <div class="th-emp-row">
                         <div class="th-employee-form-title">
-                            <h2 style="margin-bottom:20px;">New Employee</h2>
+                            <h2 style="margin-bottom:20px;">New Inventory</h2>
                         </div>
                         <div class="th-emp-close" onclick="OnClickCloseAddEmployee()">
                              <span class="th-emp-close-button">X</span>
@@ -96,80 +101,50 @@ if($_SESSION['type'] == "manager")
                     <!---start of new employee form-->
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="firstname" class="th-user-label">First Name</label>
+                            <label for="code" class="th-user-label">Code</label>
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="text" name="fname" class="th-emsu-input">
+                            <input type="text" name="code" class="th-emsu-input">
                         </div>
                     </div>
             
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="lastname" class="th-user-label">Last Name</label>
+                            <label for="size" class="th-user-label">Size</label>
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="text" name="lname" class="th-emsu-input">
+                            <input type="text" name="size" class="th-emsu-input">
                         </div>
                     </div>
             
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="nic" class="th-user-label">NIC</label class="th-emsu-input">
+                            <label for="name" class="th-user-label">Name</label class="th-emsu-input">
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="text" name="nic" class="th-emsu-input">
+                            <input type="text" name="name" class="th-emsu-input">
                         </div>
                     </div>
             
-                   
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="address" class="th-user-label">Email Address</label class="th-emsu-input">
+                            <label for="brand" class="th-user-label">Brand</label class="th-emsu-input">
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="text" name="email" class="th-emsu-input">
+                            <input type="text" name="brand" class="th-emsu-input">
                         </div>
                     </div>
-
+            
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="Employee ID" class="th-user-label">Employee ID</label class="th-emsu-input">
+                            <label for="supplier" class="th-user-label">Supplier</label class="th-emsu-input">
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="text" name="employeeid" class="th-emsu-input">
+                            <input type="text" name="supplier" class="th-emsu-input">
                         </div>
                     </div>
-
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="designation" class="th-user-label">Designation</label>
-                        </div>
-                        <div class="th-emp-form-input">
-                            <input type="text" name="designation" class="th-emsu-input">
-                        </div>
-                    </div>
-<!--                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="address" class="th-user-label">Password</label class="th-emsu-input">
-                        </div>
-                        <div class="th-emp-form-input">
-                            <input type="text" name="password" class="th-emsu-input">
-                        </div>
-                    </div>
-
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="Employee ID" class="th-user-label">Confirm Password</label class="th-emsu-input">
-                        </div>
-                        <div class="th-emp-form-input">
-                            <input type="text" name="confirmpw" class="th-emsu-input">
-                        </div>
-                    </div> -->
-
-
-                    <input type="hidden" name="type" class="th-emsu-input" value="admin">
+            
                     
-            
             
                     <div class="th-emp-addb">
                         <button class="navButton" name="submit">ADD</button>
@@ -186,7 +161,7 @@ if($_SESSION['type'] == "manager")
                 <form action="#" method="post">
                     <div class="th-emp-row">
                         <div class="th-employee-form-title">
-                            <h2 style="margin-bottom:20px;">Employee</h2>
+                            <h2 style="margin-bottom:20px;">Inventory</h2>
                         </div>
                         <div class="th-emp-close" onclick="OnClickCloseUpdateEmployee()">
                              <span class="th-emp-close-button">X</span>
@@ -195,61 +170,55 @@ if($_SESSION['type'] == "manager")
                     <!---start of update supplier form-->
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="firstname" class="th-user-label">First Name</label>
+                            <label for="code" class="th-user-label">Code</label>
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="text" name="fname" class="th-emsu-input">
+                            <input type="text" name="code" class="th-emsu-input">
                         </div>
                     </div>
             
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="lastname" class="th-user-label">Last Name</label>
+                            <label for="size" class="th-user-label">Size</label>
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="text" name="lname" class="th-emsu-input">
+                            <input type="text" name="size" class="th-emsu-input">
                         </div>
                     </div>
             
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="nic"class="th-user-label">NIC</label class="th-emsu-input">
+                            <label for="name" class="th-user-label">Name</label class="th-emsu-input">
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="text" name="nic" class="th-emsu-input">
+                            <input type="text" name="name" class="th-emsu-input">
                         </div>
                     </div>
             
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="contact"class="th-user-label">Contact Number</label class="th-emsu-input">
+                            <label for="brand" class="th-user-label">Brand</label class="th-emsu-input">
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="text" name="contact" class="th-emsu-input">
+                            <input type="text" name="brand" class="th-emsu-input">
                         </div>
                     </div>
             
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="address"class="th-user-label"> Email Address</label class="th-emsu-input">
+                            <label for="supplier" class="th-user-label">Supplier</label class="th-emsu-input">
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="text" name="email" class="th-emsu-input">
+                            <input type="text" name="supplier" class="th-emsu-input">
                         </div>
                     </div>
-
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="Employee ID" class="th-user-label">Employee ID</label class="th-emsu-input">
-                        </div>
-                        <div class="th-emp-form-input">
-                            <input type="text" name="employeeid" class="th-emsu-input">
-                        </div>
-                    </div>
+            
+                    
             
                     <div class="th-emp-addb">
                         <button class="navButton" name="submit" style="background-color: #2fd138; color:#000000">UPDATE</button>
                     </div>
+            
                 </form>
             </div>
    

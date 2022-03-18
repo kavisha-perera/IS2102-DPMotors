@@ -1,13 +1,10 @@
 <?php
 session_start();
 
-// if(isset($_SESSION['type']))
-// {
-//     $type =  $_SESSION['type'];
-// }else{
-
-//     header("location: ../UI/Auth-UI/customerLogin.php?error=unscuccessful-attempt-managerDashboard");
-// }
+if(isset($_SESSION['id']))
+{
+    $email =  $_SESSION['email'];
+}
 
 ?>
 

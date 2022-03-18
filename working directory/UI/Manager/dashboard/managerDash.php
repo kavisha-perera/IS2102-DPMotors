@@ -31,7 +31,7 @@ if($_SESSION['type'] == "manager")
                         <a href="../dashboard/managerDash.php"><img src="../../../images/manager/reports.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../managerInventory&Supplier/managerManageInventory.php"><img src="../../../images/manager/inventory.png" class="dashboardIcon"></a>
+                        <a href="../../manageInventory/manageinventory.php"><img src="../../../images/manager/inventory.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
                         <a href="../managerInventory&Supplier/managerViewSupplier.php"><img src="../../../images/manager/supplier.png" class="dashboardIcon"></a>

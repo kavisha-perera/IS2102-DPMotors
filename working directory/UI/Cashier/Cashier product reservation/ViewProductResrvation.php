@@ -70,6 +70,20 @@ if($_SESSION['type'] == "cashier")
             <div style="overflow-x:auto;">
                 <div class="th-table-container1">
                     <h2 class="th-th2">PRODUCT RESERVATIONS</h2><!--table name-->
+
+                    <!--search container start-->
+                    <div class="col-4 search-container">
+                        <form action="./viewCustomers.php" method="POST">
+                            <input type="text" placeholder="Search.. " name="search" autofocus>
+                            <button type="submit" name="submit" style="background-color:white; border:0px solid black;"> <img src="../../../images/productCatalogue/s.png" style="max-width:20px;"></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row r3-1">
+                    <div class="col-12" style="overflow-x: auto;">
+                    
+
+                    <!--Product Reservation details table-->
                     <div class="th-add-new-button">
                         <button class="navButton" onclick="document.location='AddProductReser.php'"  style="margin-top:30px;"><b> ADD NEW</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
                     </div>
