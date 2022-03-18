@@ -176,9 +176,13 @@ if(isset($_SESSION['id']))
                             </button>                               
                         </form>  
 
-                        <form action="./cancelAppointment.php">
-                            <button  class="navButton" style="background-color: #EE1E2B;"> CANCEL </button>
-                        </form>
+                        <!--cancel this appointment-->
+                        <form action="./cancelAppointment.php" method="post">
+                            <input type="hidden" name="slotId" value="<?php echo $row['scheduleId'];?>">
+                            <input type="hidden" name="appId" value="<?php echo $row['id'];?>">
+                            <button  class="navButton" style="background-color: #EE1E2B;" type="submit" name="cancel"> CANCEL </button>                              
+                        </form> 
+                         
                     </div>
                 </div>   
 

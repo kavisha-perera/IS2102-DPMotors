@@ -47,3 +47,21 @@ if (isset($_POST["reschedule"])){
     header("location: ../UI/Customer/customer appointments/viewAppointments.php?error=RescheduleSucess");
 
 }
+
+/*statement to cancel appointment*/
+if (isset($_POST["cancel"])){
+    
+    $OLDslotID = $_POST["OLDslotId"];
+    $appId = $_POST["appId"];
+
+
+    require_once 'dbh.inc.php';
+    require_once 'appointment-func.php';
+
+    releaseSlotState($conn, $OLDslotID);
+
+    cancel($conn, $appId );
+
+    header("location: ../UI/Customer/customer appointments/viewAppointments.php?error=cancelSucess");
+
+}

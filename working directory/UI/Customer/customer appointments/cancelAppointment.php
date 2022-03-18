@@ -21,11 +21,36 @@
             <p>Are you sure you want to <span style="color: #D72731">cancel this appointment?</span></p>
         </div>
         <div class="col-12 buttons-inline">  
-            <form action="./readAppointment.php">
+            <form action="./viewAppointments.php">
                 <button class="navButton"> NO </button>
             </form>
-            <form action="./viewAppointments.php">
-                <button class="navButton delete"> YES </button>
+            
+            <form action="../../../includes/appointment.inc.php" method="post">
+
+            <?php
+
+            if(isset($_POST["cancel"])){
+
+            $OLDslotId = $_POST["slotId"];
+            $appId = $_POST["appId"]; 
+
+            $sql1="SELECT * FROM appointments WHERE id ='$appId' ";
+                                $result3 = $conn->query($sql1);
+
+                                if(mysqli_num_rows($result3) > 0){
+
+                                    while($row3 = mysqli_fetch_assoc($result3)){ ?>
+
+                <input type="hidden" name="OLDslotId" value="<?php echo $row3['scheduleId'];?>">
+                <input type="hidden" name="appId" value="<?php echo $row3['id'];?>">
+
+            <?php 
+                    } 
+                } 
+            }
+            ?>
+
+                <button class="navButton delete" name="cancel" type="submit"> YES </button>
             </form>    
         </div>
         <div class="col-12">

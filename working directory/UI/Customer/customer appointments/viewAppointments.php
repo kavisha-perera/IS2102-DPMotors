@@ -115,7 +115,16 @@ if(isset($_SESSION['id']))
                                     </form>
                                 </td>
 
-                                <td><a href="./cancelAppointment.php"><img src="../../../images/tableIcons/delete.png" class="tableIcon"></a></td>
+                                <td>                                    
+                                    <!--cancel this appointment-->
+                                    <form action="./cancelAppointment.php" method="post">
+                                        <input type="hidden" name="slotId" value="<?php echo $row['scheduleId'];?>">
+                                        <input type="hidden" name="appId" value="<?php echo $row['id'];?>">
+                                        <button  class="changeButton" type="submit" name="cancel"> 
+                                            <img src="../../../images/tableIcons/delete.png" class="tableIcon">
+                                        </button>                              
+                                    </form> 
+                                </td>
                             </tr>
 
                         <?php 

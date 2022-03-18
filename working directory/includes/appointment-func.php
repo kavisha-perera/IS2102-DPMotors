@@ -54,3 +54,15 @@ function releaseSlotState($conn, $OLDslotID){
         exit();
     }
 }
+
+/*function to delete appointment table to have new slot*/
+function cancel($conn, $appId ){
+
+    $cancel = "DELETE FROM appointments WHERE id='$appId' ";
+    $result = mysqli_query($conn, $cancel);
+
+    if (!$result) {
+        header("location: ../UI/Customer/customer appointments/cancelAppointment.php?error=appointment error");
+        exit();
+    }
+}

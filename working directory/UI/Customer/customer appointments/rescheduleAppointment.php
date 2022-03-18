@@ -64,6 +64,8 @@ if(isset($_SESSION['id']))
                     <form action="./viewAppointments.php">
                         <button class="navButton"> GO BACK </button>
                     </form>
+                    <br>
+                    <a href="../Auth-UI/terms.html" class="termsConditions" target="_blank"><p>terms & conditions</p></a> <br>
                 </div>
 
                 <!--start displaying date cards-->
