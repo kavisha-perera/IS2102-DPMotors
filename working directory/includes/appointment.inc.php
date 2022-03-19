@@ -23,7 +23,7 @@ if (isset($_POST["book"])){
     createAppointment($conn, $slotId, $appDate, $appTime, $serviceType, $vehicleNo, $vehicleModel, $fname, $lname, $contact, $email, $appointmentState);
 
     
-    header("location: ../UI/Customer/customer appointments/viewAppointments.php?error=BookingSucess");
+    header("location: ../UI/Customer/customer appointments/viewAppointments.php?error=BookingSuccess");
 
 }
 
@@ -44,7 +44,7 @@ if (isset($_POST["reschedule"])){
 
     releaseSlotState($conn, $OLDslotID);
 
-    header("location: ../UI/Customer/customer appointments/viewAppointments.php?error=RescheduleSucess");
+    header("location: ../UI/Customer/customer appointments/viewAppointments.php?error=RescheduleSuccess");
 
 }
 
@@ -62,6 +62,6 @@ if (isset($_POST["cancel"])){
 
     cancel($conn, $appId );
 
-    header("location: ../UI/Customer/customer appointments/viewAppointments.php?error=cancelSucess");
+    header("location: ../UI/Customer/customer appointments/viewAppointments.php?error=cancelSuccess");
 
 }

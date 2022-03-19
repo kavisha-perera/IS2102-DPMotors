@@ -110,7 +110,31 @@ session_start();
         </div>
         <div class="col-5 LandingAppButton">
             <br><br>
-            <a href="#"><img src="../../images/customer/book.png" class="bookButton"></a>
+
+            <?php 
+            if (isset($_SESSION['id'])){ 
+            //this if statement checks if the session has started and if a session with the id exists
+
+                $sql = "SELECT * FROM users WHERE id='{$_SESSION['id']}' AND (type = 'customer' OR type='') "; //takes the user info from the id
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) { ?>
+
+                    <a href="../Customer/customer appointments/bookAppointment.php"><img src="../../images/customer/book.png" class="bookButton"></a>
+
+                <?php 
+                    }
+                }
+            }
+            else{
+                ?>
+                    <a href="./login.php"><img src="../../images/customer/book.png" class="bookButton"></a>
+
+            <?php 
+            }
+            ?>
+
+
         </div>
 
     </div>

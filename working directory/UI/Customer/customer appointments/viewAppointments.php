@@ -79,9 +79,10 @@ if(isset($_SESSION['id']))
                         <thead>
                             <tr>
                                 <th>RESERVATION NO</th>
+                                <th>APPOITMENT DATE</th>
+                                <th>TIMESLOT</th>
                                 <th>VEHICLE NO</th>
                                 <th>SERVICE TYPE</th>
-                                <th>DATE & TIME</th>
                                 <th colspan="3" style="text-align: center;">MAKE CHANGES</th>
                             </tr>
                         </thead>
@@ -91,10 +92,10 @@ if(isset($_SESSION['id']))
 
                             <tr class="appListItems">
                                 <td><?php echo $row['id'];?></td>
+                                <td><?php echo $row['date'];?> </td>
+                                <td><?php echo $row['timeslot'];?></td>
                                 <td><?php echo $row['vehicleNo'];?></td>
                                 <td><?php echo $row['serviceType'];?></td>
-                                <td><?php echo $row['date'];?> <?php echo $row['timeslot'];?></td>
-
                                 <td> <!--read the appointment record in detail-->
                                     <form action="./readAppointment.php" method="post">
                                         <input type="hidden" name="slotId" value="<?php echo $row['scheduleId'];?>">
@@ -146,20 +147,32 @@ if(isset($_SESSION['id']))
         </div>
     </div>
 
-    
+          <!--displaying appointment success messages-->
+          <?php
+                
+                $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+                if (strpos ($fullUrl, "error=BookingSuccess") == true) {
+                        echo "
+                        <script>alert('YOUR SERVICE APPOINMENT HAS BEEN BOOKED! SEE IT HERE.');</script>";
+                        exit();
+                    }
+                    if (strpos ($fullUrl, "error=RescheduleSuccess") == true) {
+                        echo "
+                        <script>alert('YOUR SERVICE APPOINMENT HAS BEEN SUCCESSFULLY RESCHEDULED!');</script>";
+                        exit();
+                    }
+                    if (strpos ($fullUrl, "error=cancelSuccess") == true) {
+                        echo "
+                        <script>alert('YOUR SERVICE APPOINMENT HAS BEEN SUCCESSFULLY CANCELLED!');</script>";
+                        exit();
+                    }
+            ?>
+
+        <!--*************************************-->   
 
 
 
- <!--   <footer>
-        <div class="row">
-            <div class="col-12">
-                <h4>CONTACT</h4><br>
-                <p>1088, 1 Battaramulla, Pannipitiya Rd, Battaramulla 10120 </p>
-                011 2XXXXXX | 07X XXXXXXX </p>
-                dpmotors@gmail.com</p>
-            </div>
-        </div>
-    </footer> -->
 
 </body>
 </html>
