@@ -32,7 +32,7 @@ if($_SESSION['type'] == "cashier")
 
         input[type=text] {
         padding: 8px;
-        width:80%;
+        width:90%;
         height:35px;
         font-size: 13px;
         border: 2px solid black;
