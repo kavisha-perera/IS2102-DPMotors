@@ -147,20 +147,32 @@ if(isset($_SESSION['id']))
         </div>
     </div>
 
-    
+          <!--displaying appointment success messages-->
+          <?php
+                
+                $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+                if (strpos ($fullUrl, "error=BookingSuccess") == true) {
+                        echo "
+                        <script>alert('YOUR SERVICE APPOINMENT HAS BEEN BOOKED! SEE IT HERE.');</script>";
+                        exit();
+                    }
+                    if (strpos ($fullUrl, "error=RescheduleSuccess") == true) {
+                        echo "
+                        <script>alert('YOUR SERVICE APPOINMENT HAS BEEN SUCCESSFULLY RESCHEDULED!');</script>";
+                        exit();
+                    }
+                    if (strpos ($fullUrl, "error=cancelSuccess") == true) {
+                        echo "
+                        <script>alert('YOUR SERVICE APPOINMENT HAS BEEN SUCCESSFULLY CANCELLED!');</script>";
+                        exit();
+                    }
+            ?>
+
+        <!--*************************************-->   
 
 
 
- <!--   <footer>
-        <div class="row">
-            <div class="col-12">
-                <h4>CONTACT</h4><br>
-                <p>1088, 1 Battaramulla, Pannipitiya Rd, Battaramulla 10120 </p>
-                011 2XXXXXX | 07X XXXXXXX </p>
-                dpmotors@gmail.com</p>
-            </div>
-        </div>
-    </footer> -->
 
 </body>
 </html>
