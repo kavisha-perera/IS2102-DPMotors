@@ -13,8 +13,7 @@ if($_SESSION['type'] == "cashier")
 
 $cus_list= '';
 
-//getting the list of customers
-
+//getting the list of customers 
 $query="SELECT * FROM users ORDER BY id";
 $customers = mysqli_query($conn, $query);
 
@@ -99,10 +98,10 @@ if ($customers) {
                          
                          <!--search container start-->
                          <div class="col-4 search-container">
-                        <form action="./viewCustomers.php" method="POST">
+                        <form action="viewCustomers.php" method="GET">
                             <input type="text" placeholder="Search.. " name="search" autofocus>
                             <button type="submit" name="submit" style="background-color:white; border:0px solid black;"> <img src="../../../images/productCatalogue/s.png" style="max-width:20px;"></button>
-                        </form>
+                      </form>
                     </div>
                 </div>
                 <div class="row r3-1">

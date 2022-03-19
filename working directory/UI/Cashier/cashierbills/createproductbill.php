@@ -57,9 +57,9 @@ if($_SESSION['type'] == "cashier")
                     <p class="paddress">Battaramulla, Sri Lanka.</p><br>
                     <form action="#">
                         <label for="customer" class="th-user-label" >Customer</label>
-                        <input type="text" placeholder="Search..." name="search" class="searchbar"><br><br>
+                        <input type="text" placeholder="Search..." name="search" class="searchbar" autofocus><br><br>
                         <label for="product" class="th-user-label" >Product</label>
-                        <input type="text" placeholder="Search..." name="search" class="searchbar"><br><br>
+                        <input type="text" placeholder="Search..." name="search" class="searchbar" autofocus><br><br>
                         
                         
                         <table class="th-user-table">
