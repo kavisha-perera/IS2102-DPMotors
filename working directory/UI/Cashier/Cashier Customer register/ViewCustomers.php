@@ -12,9 +12,18 @@ if($_SESSION['type'] == "cashier")
 }
 
 $cus_list= '';
+$search= '';
 
-//getting the list of customers 
-$query="SELECT * FROM users ORDER BY id";
+//getting the list of customers  
+if(isset($_GET['search'])){
+
+    $search = mysqli_real_escape_string($conn,$_GET['search']);
+    $query="SELECT * FROM users WHERE (fname LIKE '%{$search}%' OR lname LIKE '%{$search}%' OR nic LIKE '%{$search}%' OR email LIKE '%{$search}%') ORDER BY id";
+} else{
+
+    $query="SELECT * FROM users ORDER BY id";
+}
+
 $customers = mysqli_query($conn, $query);
 
 if ($customers) {
@@ -54,7 +63,7 @@ if ($customers) {
 
         input[type=text] {
         padding: 8px;
-        width:80%;
+        width:90%;
         height:35px;
         font-size: 13px;
         border: 2px solid black;
@@ -99,7 +108,7 @@ if ($customers) {
                          <!--search container start-->
                          <div class="col-4 search-container">
                         <form action="viewCustomers.php" method="GET">
-                            <input type="text" placeholder="Search.. " name="search" autofocus>
+                            <input type="text" placeholder="Search by first or last name or nic " name="search" value="<?php echo $search; ?>" autofocus required>
                             <button type="submit" name="submit" style="background-color:white; border:0px solid black;"> <img src="../../../images/productCatalogue/s.png" style="max-width:20px;"></button>
                       </form>
                     </div>
@@ -112,7 +121,7 @@ if ($customers) {
                   
                 <table class="th-user-table">
                 <div class="th-add-new-button">
-                        <button class="navButton" onclick="document.location='cashier register customer.php'"><b> ADD NEW</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
+                        <button class="navButton" onclick="document.location='ViewCustomers.php'"><b> REFRESH</b></button><button class="navButton" onclick="document.location='cashier register customer.php'">ADD NEW</button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
                     </div>
 
                     <thead>
