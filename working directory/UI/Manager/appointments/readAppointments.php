@@ -15,6 +15,26 @@ if(isset($_SESSION['id']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
 	<title>Read Appointments</title>
+
+    <style>
+        .appointmentButton{
+            width:400px;
+            height:100px;
+            cursor: pointer;
+            font-size:18px;
+        }
+        .buttonGrid{
+            /*center align table */
+            margin-left: auto;
+            margin-right: auto;
+
+            border-spacing: 30px 15px;
+        }
+        .tableIcon{
+            width:30px;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -24,58 +44,55 @@ if(isset($_SESSION['id']))
 
         <div class="col-16 content">
             <!--main content here-->
+            <div class = "row" style="overflow-x:auto; text-align:center;">
+                
+                <div class="col-12">
+                    <h1>VEHICLE SERVICE APPOINTMENTS</h1>
+                </div>
+                <div class="col-12">
 
-            <div style="overflow-x:auto;">
-                <div class="th-table-container1">
-                    
-                    <table class="th-user-table">
-                    <thead>
+                <table class="buttonGrid">
                     <tr>
-                   <!--table properties-->
-                      <th>NO.</th>
-                      <th>SERVICE TYPE</th>
-                      <th>APPOINTMENT DATE</th>
-                      <th>APPOINTMENT TIME</th> 
-                      <th>FIRST NAME</th>
-                      <th>LAST NAME</th>
-                      <th>VEHICLE NUMBER</th>
-                      <th>VEHICLE MODEL</th>
-                      <th>CONTACT NUMBER</th>
-                      <th>EMAIL ADDRESS</th>
-                      <th>Update</th>
-                      <th>Delete</th>
+                        <td rowspan="4">
+                            <form action="./schedule.php">
+                                <button type="submit" class="appointmentButton"> 
+                                SCHEDULE <br>
+                                <img src="../../../images/tableIcons/reschedule.png" class="tableIcon">
+                                </button>
+                            </form>
+                        </td>
                     </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td> <!--table values-->
-                            <td>Interim</td>
-                            <td>2021-10-15</td>
-                            <td>10.30 a.m.</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>CAX 0050</td>
-                            <td>Ford Mustang</td>
-                            <td>0716245698</td>
-                            <td>johnD@gmail.com</td>
-                            <td><button class="navButton" style=" background-color: #6EE327;" onclick="document.location='updateAppointments.php'">UPDATE</button></td>
-                            <td><button class="navButton" style=" background-color: #EE1E2B;" onclick="document.location='deleteAppointments.php'">DELETE</button></td>
-                        </tr>
-                        <tr>
-                            <td>2</td> <!--table values-->
-                            <td>Full Service</td>
-                            <td>2021-10-18</td>
-                            <td>2.00 p.m.</td>
-                            <td>Jane</td>
-                            <td>Doe</td>
-                            <td>GL-0851</td>
-                            <td>Toyota Corolla</td>
-                            <td>0714569875</td>
-                            <td>janeD@gmail.com</td>
-                            <td><button class="navButton" style=" background-color: #6EE327;" onclick="document.location='updateAppointments.php'">UPDATE</button></td>
-                            <td><button class="navButton" style=" background-color: #EE1E2B;" onclick="document.location='deleteAppointments.php'">DELETE</button></td>
-                        </tr>
+                    <tr>
+                        <td>
+                            <form action="./readAppointments-pending.php">
+                                <button type="submit" class="appointmentButton"> PENDING APPOINTMENTS  </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <form action="./readAppointments-completed.php">
+                                <button type="submit" class="appointmentButton">COMPLETED APPOINTMENTS </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <form action="./readAppointments-missed.php">
+                                <button type="submit" class="appointmentButton"> MISSED APPOINTMENTS </button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
 
-                      </tbody>
-                  </table>
+
+
+               </div>
+
+
+
             </div>
+        </div>
+
+</body>
+</html>

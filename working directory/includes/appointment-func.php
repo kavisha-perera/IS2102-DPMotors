@@ -66,3 +66,59 @@ function cancel($conn, $appId ){
         exit();
     }
 }
+
+
+/*function to check if the timeslot already exits*/
+function slotExits($conn, $appDate , $appTime) {
+
+    $sql = "SELECT * FROM schedule WHERE date = ? AND timeslot = ?;"; 
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../UI/Manager/appointments/manageSlots.php.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "ss" , $appDate , $appTime);
+    mysqli_stmt_execute($stmt);
+
+    $resultData = mysqli_stmt_get_result($stmt);
+
+    if ($row = mysqli_fetch_assoc($resultData)) {
+        return $row;
+    }
+    else {
+        $result = false;
+        return $result;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
+
+//manager
+function createSlot($conn, $appDate , $appTime, $appointmentState){
+
+    $sql = "INSERT INTO schedule (date, timeslot, state) VALUES (?, ?, ?);"; 
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../UI/Manager/appointments/manageSlots.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "sss" , $appDate , $appTime, $appointmentState);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);  
+
+}
+
+/*function to delete slot*/
+function deleteSlot($conn, $appDate , $appTime){
+
+    $deleteSlot = "DELETE FROM schedule WHERE date='$appDate' AND timeslot='$appTime' ";
+    $result = mysqli_query($conn, $deleteSlot);
+
+    if (!$result) {
+        header("location: ../UI/Manager/appointments/manageSlots.php?error=appointment error");
+        exit();
+    }
+}

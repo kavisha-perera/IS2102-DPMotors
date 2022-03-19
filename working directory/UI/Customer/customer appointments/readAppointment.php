@@ -105,7 +105,7 @@ if(isset($_SESSION['id']))
                         <label>APPOINTMENT TIME</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="timeslot" value = "<?php echo $row["timeslot"]; ?>" readonly>
+                        <input type="text" class="serviceApp" name="timeslot" value = "<?php echo $row["timeslot"]; ?>:00" readonly>
                     </div>
                 </div> 
                 <div class="row">

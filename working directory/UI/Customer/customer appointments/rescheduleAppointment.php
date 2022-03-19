@@ -93,7 +93,7 @@ if(isset($_SESSION['id']))
                     <hr style="height:5px;">
                         <!--retrieve all the timeslots from the database under the retrieved date-->
                         <?php
-                            $sql2 = "SELECT DISTINCT timeslot, id FROM schedule WHERE state='open' AND date='{$row['date']}' ";
+                            $sql2 = "SELECT DISTINCT timeslot, id FROM schedule WHERE state='open' AND date='{$row['date']}' order by timeslot ";
                             $result2 = $conn->query($sql2); 
                             if (mysqli_num_rows($result2) > 0){
                                 while ($row2 = mysqli_fetch_assoc($result2)) {
@@ -102,7 +102,7 @@ if(isset($_SESSION['id']))
                         <!--A table that shows all the available timeslots with BOOK buttons-->
                         <table class="timeslotsListed">
                             <tr>
-                                <td><h5><?php echo $row2['timeslot'];?></h5></td>
+                                <td><h5><?php echo $row2['timeslot'];?>:00</h5></td>
                                 <td>
                                 <form action="../../../includes/appointment.inc.php" method="post">
                                 <?php
@@ -158,7 +158,7 @@ if(isset($_SESSION['id']))
                     <hr style="height:5px;">
                         <!--retrieve all the timeslots from the database under the retrieved date-->
                         <?php
-                            $sql2 = "SELECT DISTINCT timeslot, id FROM schedule WHERE state='open' AND date='{$row['date']}' ";
+                            $sql2 = "SELECT DISTINCT timeslot, id FROM schedule WHERE state='open' AND date='{$row['date']}' order by timeslot ";
                             $result2 = $conn->query($sql2); 
                             if (mysqli_num_rows($result2) > 0){
                                 while ($row2 = mysqli_fetch_assoc($result2)) {
@@ -167,7 +167,7 @@ if(isset($_SESSION['id']))
                         <!--A table that shows all the available timeslots with BOOK buttons-->
                         <table class="timeslotsListed">
                             <tr>
-                                <td><h5><?php echo $row2['timeslot'];?></h5></td>
+                                <td><h5><?php echo $row2['timeslot'];?>:00</h5></td>
                                 <td>
                                 <form action="../../../includes/appointment.inc.php" method="post">
                                 <?php
