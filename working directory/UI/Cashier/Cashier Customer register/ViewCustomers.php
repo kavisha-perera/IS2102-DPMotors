@@ -106,7 +106,7 @@ if ($customers) {
                 <h2 class="th-th2" style="margin-bottom:0;">CUSTOMERS</h2><!--table name-->
                          
                          <!--search container start-->
-                         <div class="col-4 search-container">
+                    <div class="col-4 search-container">
                         <form action="viewCustomers.php" method="GET">
                             <input type="text" placeholder="Search by first or last name or nic " name="search" value="<?php echo $search; ?>" autofocus required>
                             <button type="submit" name="submit" style="background-color:white; border:0px solid black;"> <img src="../../../images/productCatalogue/s.png" style="max-width:20px;"></button>

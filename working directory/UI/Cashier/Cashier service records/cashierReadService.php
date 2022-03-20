@@ -13,6 +13,20 @@ if($_SESSION['type'] == "cashier")
 
 ?>
 
+<?php
+
+$search= '';
+
+//getting the list of vehicles 
+if(isset($_GET['search'])){
+
+    $search = mysqli_real_escape_string($conn,$_GET['search']);
+    $query="SELECT * FROM vehicleservicerecords	WHERE (serviceNo LIKE '%{$search}%' OR dateOfService LIKE '%{$search}%') ORDER BY id ASC";
+} else{
+
+    $query="SELECT  * FROM vehicleservicerecords";
+}
+?>
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -96,20 +110,27 @@ if($_SESSION['type'] == "cashier")
                 if (isset($_POST["view"])){
                     $vehicle_no = $_POST["vehicleNo"];
                     $vehicle_model = $_POST["vehicleModel"];
-                    $query = "SELECT * FROM vehicleservicerecords WHERE vehicleNo = '$vehicle_no' ;";
                     $result = mysqli_query($conn,$query);
 
                     if (mysqli_num_rows($result) > 0) {
                 ?>
 
                 <div class="row r3-1">
-                    <div class="col-3">
-                        <h4 class="title"><b>VEHICLE NO: <?php echo $vehicle_no; ?> </b></h4>
+                    <div class="col-3" style="width:30%;margin-top:30px;">
+                        <h4 class="title"><b>VEHICLE NO: <?php echo $vehicle_no; ?> </b></h4> 
                       </div>
-                    <div class="col-7">
-                        <h4 class="title"><b>VEHICLE NO: <?php echo $vehicle_model; ?> </b></h4>
+                    <div class="col-7" style="width:30%;margin-top:30px;">
+                        <h4 class="title"><b>VEHICLE MODEL: <?php echo $vehicle_model; ?> </b></h4>
+                    </div>
+                    <div class="col-4 search-container" style="width:40%;margin-top:20px;">
+                        <form action="./cashierReadService.php" method="GET">
+                            <input type="text" placeholder="Search by service no or service date " name="search" value="<?php echo $search; ?>" autofocus required>
+                            <button type="submit" name="submit" style="background-color:white; border:0px solid black;"> <img src="../../../images/productCatalogue/s.png" style="max-width:20px;"></button>
+                      </form>
                     </div>
                 </div>
+
+                <button class="navButton" style="float:right;"onclick="document.location='cashierAddRecord.php'">ADD NEW</button>
 
                 <div class="col-12">
                         <table class="ServiceRecordTable">

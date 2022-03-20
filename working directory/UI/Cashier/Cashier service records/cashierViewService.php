@@ -12,6 +12,19 @@ if($_SESSION['type'] == "cashier")
 }
 
 ?>
+<?php
+$search= '';
+
+//getting the list of vehicles 
+if(isset($_GET['search'])){
+
+    $search = mysqli_real_escape_string($conn,$_GET['search']);
+    $query="SELECT distinct vehicleNo,vehicleModel FROM vehicleservicerecords	WHERE (vehicleNo LIKE '%{$search}%' OR vehicleModel LIKE '%{$search}%') ORDER BY id";
+} else{
+
+    $query="SELECT distinct vehicleNo, vehicleModel FROM vehicleservicerecords	 ORDER BY id ASC;";
+}
+?>
 
 
 
@@ -95,14 +108,14 @@ if($_SESSION['type'] == "cashier")
 
                     <!--search container start-->
                     <div class="col-4 search-container">
-                    <form action="./cashierViewService.php" method="POST">
-                            <input type="text" placeholder="Search by Vehicle No or Customer email " name="search" autofocus required>
+                    <form action="./cashierViewService.php" method="GET">
+                            <input type="text" placeholder="Search by Vehicle No or Customer email " name="search" value="<?php echo $search; ?>"autofocus required>
                             <button type="submit" name="submit" style="background-color:white; border:0px solid black;"> <img src="../../../images/productCatalogue/s.png" style="max-width:20px;"></button>
                       </form>
                     </div>
 
                     <div class="th-add-new-button">
-                        <button class="navButton" onclick="document.location='./cashierAddService.php'"  style="margin-top:30px;"><b> ADD NEW</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
+                        <button class="navButton" onclick="document.location='./cashierAddRecord.php'"  style="margin-top:30px;"><b> ADD NEW</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
                     </div>
                     <div class="th-add-new-button">
                         <button class="navButton" onclick="document.location='./cashierViewService.php'"  style="margin-top:30px;"><b> REFRESH</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
@@ -111,8 +124,7 @@ if($_SESSION['type'] == "cashier")
                 <div class="row r3-1">
                     <div class="col-12" style="overflow-x: auto;">
                     <?php
-                    $query="SELECT distinct vehicleNo, vehicleModel FROM vehicleservicerecords ORDER BY id ASC;";
-                    $result = mysqli_query($conn,$query);
+                        $result = mysqli_query($conn,$query);
                         if (mysqli_num_rows($result) > 0){
                             while ($row = mysqli_fetch_assoc($result)) {
 

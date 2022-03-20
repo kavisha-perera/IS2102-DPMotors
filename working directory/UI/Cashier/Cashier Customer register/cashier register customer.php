@@ -83,7 +83,7 @@ if(isset($_POST['submit'])){
         $query="INSERT INTO users (";
         $query.="fname,lname,email,nic,password";
         $query.=") VALUES (";
-        $query.="'{$fname}','{$lname}','{$email}','{$nic}','{$password}'";
+        $query.="'{$fname}','{$lname}','{$email}','{$nic}','{$hashed_password}'";
         $query.=")";
 
         $result = mysqli_query($conn, $query);

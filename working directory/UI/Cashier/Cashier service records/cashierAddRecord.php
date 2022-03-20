@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+include '../../../includes/dbh.inc.php';
 
 if($_SESSION['type'] == "cashier")
 {
@@ -10,6 +11,72 @@ if($_SESSION['type'] == "cashier")
     header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-cashierDashboard");
 }
 
+?>
+
+<?php
+// define variables and set to empty values
+$vehicleNoerr = $email_error="";
+$serviceNo=$dateOfService=$milage=$engineOil=$gearOil=$ACfilter=$oilFilter=$ATFoil=$coolant=$airFilter=$nextServiceDate="";
+
+if(isset($_POST['submit'])){
+
+  if (empty($_POST["customerEmail"])) {
+    $email_error = "Email is required";
+  } else {
+    $customerEmail = test_input($_POST["customerEmail"]);
+    // check if e-mail address is well-formed
+    if (!filter_var($customerEmail, FILTER_VALIDATE_EMAIL)) {
+        $email_error = "Invalid email format";
+    }
+}
+    
+  $vehicleNo=mysqli_real_escape_string($conn, $_POST["VehicleNo"]);
+  $query = mysqli_query($conn, "SELECT * FROM vehicleservicerecords	 WHERE VehicleNo = '".$_POST["VehicleNo"]."'");
+  if(mysqli_num_rows($query)>0) {
+    $vehicleNoerr =' <br>This Vehicle No already registered.';
+  }
+
+  if(empty($email_error) && empty($vehicleNoerr)) {
+    //sanitising variables *email & nic variables are already sanitized.
+    $serviceNo=mysqli_real_escape_string($conn, $_POST["serviceNo"]);
+    $vehicleModel=mysqli_real_escape_string($conn, $_POST["vehicleModel"]);
+    $dateOfService=mysqli_real_escape_string($conn, $_POST["dateOfService"]);
+    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
+    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
+    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
+    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
+    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
+    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
+    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
+    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
+    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
+    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
+    $serviceDate=mysqli_real_escape_string($conn, $_POST["serviceDate"]);
+
+    //add new records to the database
+    $query="INSERT INTO users (";
+    $query.="serviceNo,vehicleModel,dateOfService,milage";
+    $query.=") VALUES (";
+    $query.="'{$serviceNo}','{$customerEmail}','{$vehicleNo}','{$vehicleModel}','{$dateOfService}','{$milage}','{$password}','{$password}','{$nic}','{$password}''{$nic}','{$password}''{$serviceDate}'";
+    $query.=")";
+
+    $result = mysqli_query($conn, $query);
+
+    if($result){
+        header("location: ViewCustomers.php?users_added=true");
+    }else{
+        $errors[]= "Failed to add new record.";
+    }
+ }
+    
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
 ?>
 
 <!DOCTYPE HTML>
@@ -50,7 +117,7 @@ if($_SESSION['type'] == "cashier")
         <div class="col-16 content">
             <!--main content here-->
             <div class="pr-form-container">
-                <form action="#" method="post">
+                <form action="cashierAddRecord.php" method="post">
 
                   <div class="row1">
                     <div class="pr-form-title">
@@ -75,24 +142,33 @@ if($_SESSION['type'] == "cashier")
                     </div>
                     <div class="pr-form-input">
                       <input type="text" name="customerEmail" class="pr-input-box" />
+                      <span class="error"><?php echo $email_error;?></span>
                     </div>
                   </div>
       
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="vehicleNo">Vehicle No.</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="text" name="vehicleNo" class="pr-input-box" />
-                    </div>
-                  </div>
 
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="vehicleNo">Vehicle Model</label>
+                      <label for="nameth">Vehicle No.</label>
                     </div>
                     <div class="pr-form-input">
-                      <input type="text" name="vehicleModel" class="pr-input-box" />
+                      <input type="text" name="VehicleNo" class="pr-input-box" />
+                      <span class="error"><?php echo $vehicleNoerr;?></span>
+                    </div>
+                  </div>
+
+              
+                  <div class="row1">
+                    <div class="pr-form-label">
+                      <label for="nameth">Vehicle Model</label>
+                    </div>
+                    <div class="pr-form-input">
+                    <select name="vehicleModel" class="th-emsu-input">
+                       <option> - </option>
+                       <option>Toyota Axio</option> 
+                       <option>Toyota Corolla</option>    
+                       <option>Suzuki Maruti</option>  
+                    </select>
                     </div>
                   </div>
 
