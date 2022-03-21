@@ -47,7 +47,7 @@ if($_SESSION['type'] == "admin")
                         <div class="col-2 sideNav-dropdown" >
                                 <img src="../../images/dropdown.svg" class="dropButton">
                                 <div class="dropdown-content">
-                                    <a href="../dashboards/adminDash.php"> Dashboard </a>  
+                                    <a href="../Administrator/adminDash.php"> Dashboard </a>  
                                     <a href="../profiles/adminViewProfile.html"> Profile </a>
                                     <a href="#"> Accounts </a> 
                                     <a href="../manage inventory/manageinventory.html"> Inventory </a>
@@ -65,7 +65,7 @@ if($_SESSION['type'] == "admin")
     <div class="row r3">
         <div class="col-15 sideNav">
             <p>Welcome  <?php echo $email  ?></p> <hr>
-            <a href="../dashboards/adminDash.php"> Dashboard </a>  <hr>
+            <a href="../Administrator/adminDash.php"> Dashboard </a>  <hr>
             <a href="../profiles/adminViewProfile.html"> Profile </a><hr>
             <a href="#" classS="active"> Accounts </a> <hr>
             <a href="../manage inventory/manageinventory.html"> Inventory </a><hr>

@@ -46,7 +46,7 @@ if($_SESSION['type'] == "admin")
             <img src="../../images/admin/admin.png" style="width: 250px;" alt=""><br><br><br><br><br>
             <button class="adminbutton1" onclick="OnClickOpenAddEmloyee()" >+ Add New</button>
             <br><br><br><br><br>
-            <p style="text-align: center;"> <a href="manage.php" class="backbutton"><button class="navButton">Back </button></a></p>
+            <p style="text-align: center;"> <button onclick="history.back()" class="navButton">Back </button></p>
             <br><br><br>
         </div>
 
@@ -70,22 +70,27 @@ if($_SESSION['type'] == "admin")
                     </tr>
                     </thead>
                     <tbody>
-                    <?php
-                        $conn = mysqli_connect("localhost", "root", "", "is2102");
+                        <?php
+                            $conn = mysqli_connect("localhost", "root", "", "is2102");
 
-                        $sql = "SELECT id, fname, lname,email, nic  FROM users where type='admin'";
-                        $result = $conn->query($sql);
-                        if ($result->num_rows > 0) {
-                        // output data of each row
-                        while($row = $result->fetch_assoc()) {
-                        echo "<tr><td>" . $row["id"]. "</td><td>" . $row["fname"] . "</td><td>". $row["lname"] . "</td><td>". $row["email"] . "</td><td>"
-                        . $row["nic"]. "</td><td><button class='th-button-icon' onclick='OnClickOpenUpdateEmployee()'><img src='../../images/Employee & Supplier/edit.svg' class='th-svg-icons'></button></td>
-                        <td><button class='th-button-icon' onclick='OnClickOpenDeleteEmployee()'><img src='../../images/Employee & Supplier/delete.svg' class='th-svg-icons'></button></td></tr>";
-                        }
-                        echo "</table>";
-                        } else { echo "0 results"; }
-                        $conn->close();
+                            $sql = "SELECT id, fname, lname,email, nic  FROM users where type='admin'";
+                            $result = $conn->query($sql);
+                            $i=0;
+                            while($row = mysqli_fetch_array($result)) {
                         ?>
+                        <tr>
+                            <td><?php echo $row["id"]; ?></td>
+                            <td><?php echo $row["fname"];?></td>
+                            <td><?php echo $row["lname"];?></td>
+                            <td><?php echo $row["email"];?></td>
+                            <td><?php echo $row["nic"];?></td>
+                            <td><a href="update.process.php?id=<?php echo $row["id"]; ?>"><button class="th-button-icon" onclick="OnClickOpenUpdateEmployee()"><img src='../../images/Employee & Supplier/edit.svg' class='th-svg-icons'></button></a></td>
+                            <td><a href="delete.process.php?id=<?php echo $row["id"]; ?>"><button class="th-button-icon" onclick="OnClickOpenDeleteEmployee()"><img src='../../images/Employee & Supplier/delete.svg' class='th-svg-icons'></button></a></td>
+                        </tr>
+                        <?php
+                            $i++;
+                            }
+                            ?>
                       </tbody>
                   </table>
             </div>
@@ -184,7 +189,7 @@ if($_SESSION['type'] == "admin")
 
 <!-----------------------------------------------------Employee Update form as a Pop-Up-------------------------------------------------------->
             <div class="th-addemployee-conatiner" id="th-update-employee">
-                <form action="#" method="post">
+                <form action="update.process.php" method="post">
                     <div class="th-emp-row">
                         <div class="th-employee-form-title">
                             <h2 style="margin-bottom:20px;">Administrator</h2>
