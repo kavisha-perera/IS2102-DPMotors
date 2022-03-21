@@ -129,7 +129,7 @@ if(isset($_SESSION['id']))
                                         <td><?php echo $row['milage']; ?></td>
                                         <td><?php echo $row['engineOil']; ?></td>
                                         <td><?php echo $row['gearOil']; ?></td>
-                                        <td><?php echo $row['A/Cfilter']; ?></td>
+                                        <td><?php echo $row['ACfilter']; ?></td>
                                         <td><?php echo $row['oilFilter']; ?></td>
                                         <td><?php echo $row['ATFoil']; ?></td>
                                         <td><?php echo $row['coolant']; ?></td>

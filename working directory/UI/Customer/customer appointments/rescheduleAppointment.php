@@ -78,7 +78,7 @@ if(isset($_SESSION['id']))
                     if (mysqli_num_rows($result) > 0){
                         while ($row = mysqli_fetch_assoc($result)) {
 
-                            date_default_timezone_set("Asia/Bangkok"); //set default timezone
+                            date_default_timezone_set("Asia/Kolkata"); //set default timezone
                             $today = date("Y-m-d"); //assign the current date to variable $today
 
                             //display two slightly different datecards after checking if the date retrieved from the database is today
