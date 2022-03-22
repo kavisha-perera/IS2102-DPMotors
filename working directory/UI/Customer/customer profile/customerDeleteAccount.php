@@ -33,7 +33,7 @@ session_start();
             <form action="./customerViewProfile.php">
                 <button class="navButton"> NO </button>
             </form>
-            <form action="../../../includes/deactivate-account.inc.php" method="post"> <!--just for now lets have this logout instead-->
+            <form action="../../../includes/deactivate-account.inc.php" method="post"> 
                 <input type="hidden" name="accountID"  value="<?php echo $_SESSION['id']; ?> ">
                 <button class="navButton delete" name="deactivate"> YES </button>
             </form>   
