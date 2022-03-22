@@ -180,4 +180,3 @@ function loginUser($conn, $email, $password){
 
 }
 
-/*DEACTIVATE CUSTOMER ACCOUNT*/
