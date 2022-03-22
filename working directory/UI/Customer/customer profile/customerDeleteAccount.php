@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -14,39 +20,26 @@
 
     <div class="row deleteWarning"> <!--do not use r2 cus it has been used for something else-->
         <div class="col-12">
-            <h2>DELETE USER ACCOUNT</h2>
+            <h2>DEACTIVATE USER ACCOUNT</h2>
             <br>
-            <p>Deleting your account is permanent and will remove all content including appointment details, vehicle service records, payment history and product reservations.</p>
+            <p>By deactivating your account, you will no longer be able to access any of the content under the current email address including: appointment details, vehicle service records, payment history and product reservations. </p>
             <br>
-            <p>Are you sure you want to <span style="color: #D72731">delete your account?</span></p>
+            <p>Your account can be reactivated by contacting DP MOTORS</p>
+            <br>
+            <p>Are you sure you want to <span style="color: #D72731">deactivate your account?</span></p>
             <br>
         </div>
         <div class="col-12 buttons-inline">  
             <form action="./customerViewProfile.php">
                 <button class="navButton"> NO </button>
             </form>
-            <form action="../../../includes/logout-inc.php"> <!--just for now lets have this logout instead-->
-                <button class="navButton delete"> YES </button>
+            <form action="../../../includes/deactivate-account.inc.php" method="post"> <!--just for now lets have this logout instead-->
+                <input type="hidden" name="accountID"  value="<?php echo $_SESSION['id']; ?> ">
+                <button class="navButton delete" name="deactivate"> YES </button>
             </form>   
         </div>
     </div>
-
-
-
     
-
-
-
- <!--   <footer>
-        <div class="row">
-            <div class="col-12">
-                <h4>CONTACT</h4><br>
-                <p>1088, 1 Battaramulla, Pannipitiya Rd, Battaramulla 10120 </p>
-                011 2XXXXXX | 07X XXXXXXX </p>
-                dpmotors@gmail.com</p>
-            </div>
-        </div>
-    </footer> -->
 
 </body>
 </html>

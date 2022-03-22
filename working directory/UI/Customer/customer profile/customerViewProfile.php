@@ -174,7 +174,7 @@ if(isset($_SESSION['id']))
                     <div class="col-6 profileform"></div>
                     <div class="col-4 buttons-inline"> 
                         <form action="./customerDeleteAccount.php">
-                            <button class="navButton delete"> Delete  </button> <!--or deactivate-->
+                            <button class="navButton delete"> Deactivate  </button> <!--or deactivate-->
                         </form>   
                     </div>
                 </div>

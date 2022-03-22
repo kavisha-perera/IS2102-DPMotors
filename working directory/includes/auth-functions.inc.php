@@ -136,6 +136,13 @@ function loginUser($conn, $email, $password){
         exit();
     }
 
+    //check to see if the account is in deactivated state. If yes, send error message.
+    $state  = $emailExists["state"];
+    if($state == deactivated){
+        header("location: ../UI/Auth-UI/login.php?error=account-deactivated");
+        exit();
+    }
+
     elseif ($checkPwd === true) {
         session_start();
         $_SESSION['id'] = $emailExists["id"];
@@ -172,3 +179,5 @@ function loginUser($conn, $email, $password){
     }
 
 }
+
+/*DEACTIVATE CUSTOMER ACCOUNT*/

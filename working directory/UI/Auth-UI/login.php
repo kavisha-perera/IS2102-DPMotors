@@ -101,6 +101,21 @@
                         <br/>";
                         exit();
                     }
+                    if (strpos ($fullUrl, "error=account-deactivated") == true) {
+                        echo "
+                        <br/>                  
+                        <p class='error'> Account Deactivated. </p>
+                        <p class='error' style='font-size:13px;'> Please Contact DP Motors to Reactivate Your Account.<br/>
+                        Thank You.
+                        </p>
+                        <br/>";
+                        exit();
+                    }
+                    if (strpos ($fullUrl, "error=account-deactivate-successful") == true) {
+                        echo "
+                        <script>alert('ACCOUNT DEACTIVATED SUCCESSFULLY!');</script>";
+                        exit();
+                    }
                 ?>
 
 
