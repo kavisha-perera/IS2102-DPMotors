@@ -10,6 +10,25 @@ if($_SESSION['type'] == "cashier")
 
     header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-cashierDashboard");
 }
+
+$sbill_list = '';
+
+$query= "SELECT * FROM servicebill ORDER BY id ASC";
+$sbill = mysqli_query($conn, $query);
+
+if ($sbill) {
+    while ($value = mysqli_fetch_assoc($sbill)){
+        $sbill_list .="<tr>";
+        $sbill_list.="<td>{$value['id']}</td>";
+        $sbill_list .="<td>{$value['description']}</td>";
+        $sbill_list .="<td>{$value['service_price']}</td>";
+        $sbill_list.="</tr>";
+
+    }
+}else{
+    echo "Database connection failed.";
+}
+
 ?>
 
 <!DOCTYPE HTML>
@@ -56,51 +75,52 @@ if($_SESSION['type'] == "cashier")
                     <p class="paddress">1088/1</p>
                     <p class="paddress">Pannipitiya road</p>
                     <p class="paddress">Battaramulla, Sri Lanka.</p><br>
-                    <form action="#">
-                        <label for="customer" class="th-user-label" >Customer</label>
-                        <input type="text" placeholder="Search..." name="search" class="searchbar"><br><br>
-                        <label for="servicetype" class="th-user-label" style="background-color: #021257; color: white;" >Service Type</label>
-                        <input type="text" name="servicetype" class="billtextbox">
+
+                    <form action="./createservicebill.php" method="POST">
+                    <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Bill No</label>
+                        <input type="text" name="sbill_no" class="searchbar">
+
+                        <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Customer Name</label>
+                        <input type="text" name="cus_name" class="searchbar"><br><br>
+
+                        <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Cashier Name</label>
+                        <input type="text" name="cashier_name" class="searchbar"><br><br>
+
+                        <label for="servicetype" class="th-user-label" style="background-color: #021257; color: white;" >Service Description</label>
+                        <select name="description" class="billtextbox">
+                            <option> - </option>
+                            <option>Car Wash</option> 
+                            <option>Oil Change</option>    
+                            <option>Interior Design</option>  
+                         </select>
+
                         <label for="servicecharge" class="th-user-label" style="background-color: #021257; color: white;" >Service Charge</label>
-                        <input type="text" name="servicecharge" class="billtextbox"><br><br>
-                        <label for="servicedescription" class="th-user-label" style="background-color: #021257; color: white;" >Description</label><br><br>
-                        <textarea name="servicedescription" cols="90" rows="10"></textarea><br><br>
-                        
+                        <input type="text" name="service_price" class="billtextbox"><br><br>
+
+                        <div class="th-add-new-button" style="margin-right:125px;margin-bottom:20px;">
+                        <button class="navButton" onclick="document.location='createservicebill.php'"><b> ADD</b></button>
+                        </div>
+ 
                         <table class="th-user-table">
                             <thead>
                             <tr>
-                              <th>Product ID</th> <!--table properties-->
-                              <th>Product Name</th>
-                              <th>Quantity</th> 
-                              <th>Unit Price</th>
-                              <th>Amount</th>
+                              <th>ID</th> <!--table properties-->
+                              <th>Service Description</th>
+                              <th>Service Price</th>
+                              <th>Remove Service</th>
                             </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td> <!--table values-->
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td> <!--table values-->
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                              </tbody>
+                            
+                            <?php echo $sbill_list;?>
+
                           </table><br><br>
-                          <label for="total" class="navButton" style="vertical-align: bottom;">Total</label>
+                          <label for="total" class="navButton" style="vertical-align: bottom;margin-top:15px;">Total</label>
                           <input type="number" class="th-user-label">
-                    </form><br>
                     </form><br>
                     
                 </div>
                 <div style="float:right;"> 
-                    <button class="navButton" onclick="document.location='CashierReadBills-Service.php'"> Print </button> 
+                    <button class="navButton" onclick="document.location='CashierReadBills-Service.php'" name="submit"> Print </button> 
                     <button class="navButton contact" type="reset"> Cancel </button>
                 </div>
         </div>

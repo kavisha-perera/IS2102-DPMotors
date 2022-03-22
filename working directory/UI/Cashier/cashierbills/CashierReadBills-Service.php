@@ -124,9 +124,8 @@ if($_SESSION['type'] == "cashier")
                         <table class="BillInfoTable1">
                                 <thead>
                                     <tr>
-                                        <th>Service record no.</th>
-                                        <th>Service type</th>
-                                        <th>Vehicle No</th>
+                                        <th>Service No.</th>
+                                        <th>Service Description</th>
                                         <th>Service Price</th>
                                     </tr>
                                 </thead>
@@ -135,19 +134,10 @@ if($_SESSION['type'] == "cashier")
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
-                                        <td></td>
                                     </tr>
                                 </tbody>
                         </table>
-                        <table class="BillInfoTable2">
-                            <tbody>
-                                <tr>
-                                    <th>Description</th>
-                                    <td></td> <!--add php & sql here-->
-                                </tr>
-                            </tbody>
-                    </table>
+
                     </div>
                 </div>
                     <!--row containing bill amount-->

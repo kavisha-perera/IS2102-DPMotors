@@ -11,6 +11,40 @@ if($_SESSION['type'] == "cashier")
     header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-cashierDashboard");
 }
 
+$bi_list= '';
+$search= '';
+
+//getting the list of customers  
+if(isset($_GET['search'])){
+
+    $search = mysqli_real_escape_string($conn,$_GET['search']);
+    $query="SELECT * FROM productbill WHERE (pbill_no LIKE '%{$search}%' OR cus_name LIKE '%{$search}%') ORDER BY id";
+} else{
+
+    $query="SELECT * FROM productbill ORDER BY id";
+}
+
+$bills = mysqli_query($conn, $query);
+
+if ($bills) {
+    while ($value = mysqli_fetch_assoc($bills)){
+        $bi_list .="<tr>";
+        $bi_list .="<td>{$value['id']}</td>";
+        $bi_list .="<td>{$value['product_id']}</td>";
+        $bi_list .="<td>{$value['pbill_no']}</td>";
+        $bi_list .="<td>{$value['cus_name']}</td>";
+        $bi_list .="<td>{$value['cus_contact']}</td>";
+        $bi_list .="<td>{$value['cashier_name']}</td>";
+        $bi_list .="<td>{$value['datetime']}</td>";
+        $bi_list .="<td>{$value['cus_address']}</td>";
+        $bi_list .="</tr>";
+
+    }
+}else{
+    echo "Database connection failed.";
+}
+
+
 ?>
 
 <!DOCTYPE HTML>
@@ -73,8 +107,8 @@ if($_SESSION['type'] == "cashier")
 
                      <!--search container start-->
                      <div class="col-4 search-container">
-                        <form action="./viewCustomers.php" method="POST">
-                            <input type="text" placeholder="Search.. " name="search" autofocus>
+                        <form action="./CashierViewProductBills.php" method="GET">
+                            <input type="text" placeholder="Search bill no or customer name" name="search" value="<?php echo $search;?>"autofocus>
                             <button type="submit" name="submit" style="background-color:white; border:0px solid black;"> <img src="../../../images/productCatalogue/s.png" style="max-width:20px;"></button>
                         </form>
                     </div>
@@ -85,35 +119,27 @@ if($_SESSION['type'] == "cashier")
                     <!--bill details table-->
                     
                     <div class="th-other-buttons">
-                        <button class="navButton" onclick="document.location='CashierViewAllBills.php'"><b>All bills</b></button>
+                        <button class="navButton" onclick="document.location='CashierViewPAllBills.php'"><b> All bills</b></button>
                         <button class="navButton" onclick="document.location='CashierViewProductBills.php'"><b> Product bills</b></button>
                         <button class="navButton" onclick="document.location='CashierViewServiceBills.php'"><b>Service bills</b></button>       
                     </div>
                 <table class="th-user-table">
                     <thead>
                     <tr>
+                      <th>ID</th>
                       <th>BILL NO</th> <!--table properties-->
-                      <th>FIRST NAME</th>
-                      <th>PID</th> 
-                      <th>PR.NAME</th>
-                      <th>PRICE</th>
+                      <th>PRODUCT ID</th>
+                      <th>CUSTOMER NAME</th> 
+                      <th>CUSTOMER CONTACT</th>
+                      <th>CASHIER NAME</th>
                       <th>DATE</th>
-                      <th colspan="3" style="text-align: center;">CONTROLS</th>
+                      <th>TOTAL</th>
+                      <th colspan="2" style="text-align: center;">CONTROLS</th>
                     </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><button class="th-button-icon" onclick="OnClickOpenCancelMessage()"><img src="../../../images/billhistory/cancel.png" class="th-svg-icons"></button></td>
-                            <td><button class="th-button-icon"> <a href="../CashierProductExchange/CashierProductRefund.php"><img src="../../../images/billhistory/refund.png" class="th-svg-icons"></a></button></td>
-                            <td><button class="th-button-icon"><a href="../CashierProductExchange/CashierProductExchange.php"><img src="../../../images/billhistory/exchange.png" class="th-svg-icons"></a></button></td>
-                        </tr>
-                      </tbody>
+                        <?php echo $bi_list; ?>
+                     </tbody>
                   </table>
                 </div>
                 </div>

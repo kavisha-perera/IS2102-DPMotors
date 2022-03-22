@@ -24,6 +24,7 @@ if(isset($_GET['search'])){
 
     $query="SELECT distinct vehicleNo, vehicleModel FROM vehicleservicerecords	 ORDER BY id ASC;";
 }
+
 ?>
 
 
@@ -36,9 +37,9 @@ if(isset($_GET['search'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
     <link rel="stylesheet" href="../../../css/searchbar.css">
-	<title>customer vehicle service records book</title>
+	<title>vehicle service records book</title>
     <style>
-        .Nav-ServiceRecs{
+        .Nav-service{
             /* to show the active link in navbar */
             background-color:#344CB4; 
         }
@@ -99,7 +100,7 @@ if(isset($_GET['search'])){
                
                 <div class="row r3-1">
                     <div class="col-12">
-                        <h2 class="title"><b>CUSTOMER VEHICLE SERVICE RECORD BOOKS</b></h2>
+                        <h2 class="title"><b>VEHICLE SERVICE RECORD BOOKS</b></h2>
                         <br>
                     </div>
                 </div>
@@ -131,7 +132,7 @@ if(isset($_GET['search'])){
                     ?>
                     
                     <div class="col-3">
-                        <form action='./cashierReadService.php' method="POST">
+                        <form action='./cashierReadService.php' method="GET">
                         <input type="hidden" name="vehicleModel" value="<?php echo $row['vehicleModel']; ?>">
                         <input type="hidden" name="vehicleNo" value="<?php echo $row['vehicleNo']; ?>">
                         <button type="submit" class='navButton recordBooks' name="view">
@@ -140,6 +141,9 @@ if(isset($_GET['search'])){
                             <?php echo $row['vehicleModel']; ?>
                         </button>
                     </form>
+                    <div class="th-add-new-button" style="margin-right:75px;">
+                        <button class="navButton" onclick="document.location='./cashierDeleteService.php'"  style="margin-top:30px;"><b> Delete</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
+                    </div>
                 </div>
                 <?php
                     } 

@@ -14,67 +14,70 @@ if($_SESSION['type'] == "cashier")
 ?>
 
 <?php
-// define variables and set to empty values
-$vehicleNoerr = $email_error="";
-$serviceNo=$dateOfService=$milage=$engineOil=$gearOil=$ACfilter=$oilFilter=$ATFoil=$coolant=$airFilter=$nextServiceDate="";
+$vehicleNo_error = $serviceNo_error = $email_err = "";
 
+//checking if required fields are empty.
 if(isset($_POST['submit'])){
-
-  if (empty($_POST["customerEmail"])) {
-    $email_error = "Email is required";
+  
+  if (empty($_POST["vehicleNo"])) {
+    $vehicleNo_error = "Vehicle No is required";
   } else {
-    $customerEmail = test_input($_POST["customerEmail"]);
-    // check if e-mail address is well-formed
-    if (!filter_var($customerEmail, FILTER_VALIDATE_EMAIL)) {
-        $email_error = "Invalid email format";
-    }
-}
-    
-  $vehicleNo=mysqli_real_escape_string($conn, $_POST["VehicleNo"]);
-  $query = mysqli_query($conn, "SELECT * FROM vehicleservicerecords	 WHERE VehicleNo = '".$_POST["VehicleNo"]."'");
+    $vehicleNo = test_input($_POST["vehicleNo"]);
+  }
+  // check if vehicle No is already exsist
+  $vehicleNo=mysqli_real_escape_string($conn, $_POST["vehicleNo"]);
+  $query = mysqli_query($conn, "SELECT * FROM vehicleservicerecords WHERE vehicleNo = '".$_POST["vehicleNo"]."'");
   if(mysqli_num_rows($query)>0) {
-    $vehicleNoerr =' <br>This Vehicle No already registered.';
+
+    $vehicleNo_error ='<br> This vehicle is already registerd.';
+  }
+    // check if service No is already exsist
+    $serviceNo=mysqli_real_escape_string($conn, $_POST["serviceNo"]);
+    $query = mysqli_query($conn, "SELECT * FROM vehicleservicerecords WHERE serviceNo = '".$_POST["serviceNo"]."'");
+    if(mysqli_num_rows($query)>0) {
+  
+      $serviceNo_error ='<br> This service No is already exsist.';
+    }
+
+// check if e-mail address is well-formed
+$customerEmail=mysqli_real_escape_string($conn, $_POST["customerEmail"]);
+if (!filter_var($customerEmail, FILTER_VALIDATE_EMAIL)) {
+  $email_err = "Invalid email format";
+}
+
+if(empty($vehicleNo_error)) {
+  $vehicleModel=mysqli_real_escape_string($conn, $_POST["vehicleModel"]);
+  $dateOfService=mysqli_real_escape_string($conn, $_POST["dateOfService"]);
+  $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
+  $engineOil=mysqli_real_escape_string($conn, $_POST["engineOil"]);
+  $gearOil=mysqli_real_escape_string($conn, $_POST["gearOil"]);
+  $ACfilter=mysqli_real_escape_string($conn, $_POST["ACfilter"]);
+  $oilFilter=mysqli_real_escape_string($conn, $_POST["oilFilter"]);
+  $ATFoil=mysqli_real_escape_string($conn, $_POST["ATFoil"]);
+  $coolant=mysqli_real_escape_string($conn, $_POST["coolant"]);
+  $airFilter=mysqli_real_escape_string($conn, $_POST["airFilter"]);
+  $nextServiceDate=mysqli_real_escape_string($conn, $_POST["nextServiceDate"]);
+  //add new records to the database
+  $query="INSERT INTO vehicleservicerecords (";
+  $query.="serviceNo,customerEmail,vehicleNo,vehicleModel,dateOfService,milage,engineOil,gearOil,ACfilter,oilFilter,ATFoil,coolant,airFilter,nextServiceDate";
+  $query.=") VALUES (";
+  $query.="'{$serviceNo}','{$customerEmail}','{$vehicleNo}','{$vehicleModel}','{$dateOfService}','{$milage}','{$engineOil}','{$gearOil}','{$ACfilter}','{$oilFilter}','{$ATFoil}','{$coolant}','{$airFilter}','{$nextServiceDate}'";
+  $query.=")";
+
+  $result = mysqli_query($conn, $query);
+
+  if($result){
+    //query successful redirect to vehicle records page
+      header("location: cashierViewService.php?vehicle_added=true");
+  }else{
+      echo"failed";
   }
 
-  if(empty($email_error) && empty($vehicleNoerr)) {
-    //sanitising variables *email & nic variables are already sanitized.
-    $serviceNo=mysqli_real_escape_string($conn, $_POST["serviceNo"]);
-    $vehicleModel=mysqli_real_escape_string($conn, $_POST["vehicleModel"]);
-    $dateOfService=mysqli_real_escape_string($conn, $_POST["dateOfService"]);
-    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
-    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
-    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
-    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
-    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
-    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
-    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
-    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
-    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
-    $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
-    $serviceDate=mysqli_real_escape_string($conn, $_POST["serviceDate"]);
-
-    //add new records to the database
-    $query="INSERT INTO users (";
-    $query.="serviceNo,vehicleModel,dateOfService,milage";
-    $query.=") VALUES (";
-    $query.="'{$serviceNo}','{$customerEmail}','{$vehicleNo}','{$vehicleModel}','{$dateOfService}','{$milage}','{$password}','{$password}','{$nic}','{$password}''{$nic}','{$password}''{$serviceDate}'";
-    $query.=")";
-
-    $result = mysqli_query($conn, $query);
-
-    if($result){
-        header("location: ViewCustomers.php?users_added=true");
-    }else{
-        $errors[]= "Failed to add new record.";
-    }
- }
-    
 }
-
+}
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
-  $data = htmlspecialchars($data);
   return $data;
 }
 ?>
@@ -85,8 +88,7 @@ function test_input($data) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
-    <script src="../../../javascript/empsup_pop-up.js"></script>
-	<title>Vehicle Service Records</title>
+	<title>Vehicle Records</title>
   <style>
         .Nav-service{
             /* to show the active link in navbar */
@@ -117,22 +119,26 @@ function test_input($data) {
         <div class="col-16 content">
             <!--main content here-->
             <div class="pr-form-container">
-                <form action="cashierAddRecord.php" method="post">
+                <form action="./cashierAddRecord.php" method="POST">
 
                   <div class="row1">
+                  <div class="th-add-new-button">
+                        <button class="navButton" onclick="document.location='./cashierAddRecord.php'"  style="margin-top:30px;"><b> REFRESH</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
+                     </div>
                     <div class="pr-form-title">
-                      <h2>ADD NEW SERVICE RECORDS</h2>
+                      <h2>Add New Vehicle Records</h2>
                     </div>
                   </div>
     
                   <br/><br/>
-
+      
                   <div class="row1">
                     <div class="pr-form-label">
                       <label for="serviceNo">Service No.</label>
                     </div>
                     <div class="pr-form-input">
                       <input type="text" name="serviceNo" class="pr-input-box" />
+                      <span class="error"><?php echo $serviceNo_error;?></span>
                     </div>
                   </div>
 
@@ -142,25 +148,24 @@ function test_input($data) {
                     </div>
                     <div class="pr-form-input">
                       <input type="text" name="customerEmail" class="pr-input-box" />
-                      <span class="error"><?php echo $email_error;?></span>
+                      <span class="error"><?php echo $email_err;?></span>
                     </div>
                   </div>
-      
 
                   <div class="row1">
                     <div class="pr-form-label">
                       <label for="nameth">Vehicle No.</label>
                     </div>
                     <div class="pr-form-input">
-                      <input type="text" name="VehicleNo" class="pr-input-box" />
-                      <span class="error"><?php echo $vehicleNoerr;?></span>
+                      <input type="text" name="vehicleNo" class="pr-input-box" />
+                      <span class="error"><?php echo $vehicleNo_error;?></span>
                     </div>
                   </div>
 
               
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="nameth">Vehicle Model</label>
+                      <label for="vehicleModel">Vehicle Model</label>
                     </div>
                     <div class="pr-form-input">
                     <select name="vehicleModel" class="th-emsu-input">
@@ -174,7 +179,7 @@ function test_input($data) {
 
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="dateOfService">Date of Service</label>
+                      <label for="nameth">Date of Service</label>
                     </div>
                     <div class="pr-form-input">
                       <input type="date" name="dateOfService" class="pr-input-box" min="2022-03-16" max="2042-01-01"/>
@@ -183,7 +188,7 @@ function test_input($data) {
       
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="milage">Milage</label>
+                      <label for="nameth">Milage</label>
                     </div>
                     <div class="pr-form-input">
                       <input type="text" name="milage" class="pr-input-box" />
@@ -192,10 +197,10 @@ function test_input($data) {
 
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="enginOil">Engine Oil</label>
+                      <label for="nameth">Engine Oil</label>
                     </div>
                     <div class="pr-form-input">
-                    <select name="oilType" class="th-emsu-input">
+                    <select name="engineOil" class="th-emsu-input">
                        <option> - </option>
                        <option>Top Up</option> 
                        <option>Refill</option>                               
@@ -205,10 +210,10 @@ function test_input($data) {
 
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="gearOil">Gear Oil</label>
+                      <label for="nameth">Gear Oil</label>
                     </div>
                     <div class="pr-form-input">
-                    <select name="oilType" class="th-emsu-input">
+                    <select name="gearOil" class="th-emsu-input">
                        <option> - </option>
                        <option>Top Up</option> 
                        <option>Refill</option>                               
@@ -218,10 +223,10 @@ function test_input($data) {
 
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="A/Cfilter">A/C Filter</label>
+                      <label for="nameth">A/C Filter</label>
                     </div>
                     <div class="pr-form-input">
-                    <select name="filterType" class="th-emsu-input">
+                    <select name="ACfilter" class="th-emsu-input">
                        <option> - </option>
                        <option>Clean</option> 
                        <option>Replace</option>                               
@@ -231,10 +236,10 @@ function test_input($data) {
 
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="oilFilter">Oil Filter</label>
+                      <label for="nameth">Oil Filter</label>
                     </div>
                     <div class="pr-form-input">
-                    <select name="filterType" class="th-emsu-input">
+                    <select name="oilFilter" class="th-emsu-input">
                        <option> - </option>
                        <option>Change</option>                                
                     </select> 
@@ -243,10 +248,10 @@ function test_input($data) {
 
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="ATFoil">ATF Oil</label>
+                      <label for="nameth">ATF Oil</label>
                     </div>
                     <div class="pr-form-input">
-                    <select name="oilType" class="th-emsu-input">
+                    <select name="ATFoil" class="th-emsu-input">
                        <option> - </option>
                        <option>Top Up</option> 
                        <option>Refill</option>                               
@@ -256,10 +261,10 @@ function test_input($data) {
 
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="coolant">Coolant</label>
+                      <label for="nameth">Coolant</label>
                     </div>
                     <div class="pr-form-input">
-                    <select name="coolantType" class="th-emsu-input">
+                    <select name="coolant" class="th-emsu-input">
                        <option> - </option>
                        <option>Top Up</option> 
                        <option>Refill</option>                               
@@ -269,10 +274,10 @@ function test_input($data) {
 
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="airFilter">Air filter</label>
+                      <label for="nameth">Air filter</label>
                     </div>
                     <div class="pr-form-input">
-                    <select name="filterType" class="th-emsu-input">
+                    <select name="airFilter" class="th-emsu-input">
                        <option> - </option>
                        <option>Clean</option> 
                        <option>Replace</option>                               
@@ -283,14 +288,15 @@ function test_input($data) {
                   
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="nextServiceDate">Next date of service</label>
+                      <label for="nameth">Next date of service</label>
                     </div>
                     <div class="pr-form-input">
-                      <input type="date" name="serviceDate" class="pr-input-box" min="2022-03-16" max="2042-01-01"/>
+                      <input type="date" name="nextServiceDate" class="pr-input-box" min="2022-03-21" max="2042-01-01"/>
                     </div>
                   </div>
          
                   <div class="pr-form-add" style="margin-top: 10px">
+                    <label for="">&nbsp;</label>
                     <button class="pr-form-add-button" name="submit">ADD</button>
                   </div>
                 </form>

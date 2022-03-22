@@ -77,7 +77,7 @@ if(isset($_POST['submit'])){
         $password=mysqli_real_escape_string($conn, $_POST["password"]);
 
         //password hashing
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $hashed_password = sha1($password);
 
         //add new records to the database
         $query="INSERT INTO users (";
@@ -91,7 +91,7 @@ if(isset($_POST['submit'])){
         if($result){
             header("location: ViewCustomers.php?users_added=true");
         }else{
-            $errors[]= "Failed to add new record.";
+            echo "Failed to add new record.";
         }
      }
 

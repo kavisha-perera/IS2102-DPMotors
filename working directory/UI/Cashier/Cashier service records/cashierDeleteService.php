@@ -52,9 +52,9 @@ if($_SESSION['type'] == "cashier")
       <div class="col-16 content">
         <!--main content here-->
         <div class="th-prdelete-container" style="margin:auto; text-align: center;width:900px">
-            <h2>Delete Service Record</h2>
-            <p style="margin-top: 70px;">Deleting a service record is permanent and will remove all vehicle and service related details from service records database entirely.<br>
-            Confirm Deletion of service record?</p>
+            <h2>Delete Vehicle Record</h2>
+            <p style="margin-top: 70px;">Deleting a vehicle record is permanent and will remove all vehicle and service related details from database entirely.<br>
+            Confirm Deletion of vehicle?</p>
             <div class="th-delete-prbtn" style="margin-top: 40px;">
                 <button class="navButton" type="button" onclick="OnclickOpenDeleteService()"><b>Yes</b></button>
                 <button class="navButton" style="background-color: red;"onclick="document.location='cashierViewService.php'"><b> No</b></button>  
