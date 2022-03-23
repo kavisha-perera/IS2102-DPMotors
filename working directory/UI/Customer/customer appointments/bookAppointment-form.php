@@ -193,7 +193,8 @@ if(isset($_SESSION['id']))
                     } //close if statement for date and time
                 ?>
 
-            <button type="submit" name="book" class="navButton">NEXT</button>
+            <br>
+            <button type="submit" name="book" class="navButton contact">BOOK</button>
 
             </form> <!--have closed the form before the button. look into this and fix when putting php-->    
 
