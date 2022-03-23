@@ -3,6 +3,28 @@
 require_once 'dbh.inc.php';
 
 
+
+
+if (isset($_POST["products"])){
+
+    $sql = "select stock_code , count(*) from products group by stock_code;";
+    $result = mysqli_query($conn, $sql);
+
+    $prodcutArray = array();
+
+    while($row = $result->fetch_assoc()) {
+
+        $productData = array('y' => $row["count(*)"] , 'label' => $row["stock_code"]);
+        array_push($prodcutArray ,$productData );
+    }
+
+    echo json_encode($prodcutArray, JSON_NUMERIC_CHECK);
+
+    
+}
+
+
+
 if (isset($_POST["fetchtables"])){
 
     $sql = "show tables;";

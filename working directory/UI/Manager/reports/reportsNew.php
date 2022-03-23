@@ -70,6 +70,9 @@ include_once("../managerNav.php");
 
 <div id="chart">
 
+<div id="productChart" style="height: 370px; width: 100%;"></div>
+
+
 </div>
 
 <hr>
@@ -103,6 +106,61 @@ include_once("../managerNav.php");
 
 
 </body>
+
+
+
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+<script>
+
+loadAllProducts();
+
+
+function loadAllProducts(){
+
+    var data = new FormData();
+    data.append("products" , "products");
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../../../includes/reports-func.php");
+
+
+    xhr.onload = function () {
+
+        console.log(this.response);
+
+
+
+
+        var chart = new CanvasJS.Chart("productChart", {
+            animationEnabled: true,
+            theme: "light2",
+            title:{
+                text: "Products"
+            },
+            axisY: {
+                title: "Count"
+            },
+            data: [{
+                type: "column",
+                dataPoints: JSON.parse(this.response)
+            }]
+        });
+        
+        chart.render();
+
+    };
+
+    xhr.send(data);
+    return false;
+
+}
+
+
+
+</script>
 
 
 
