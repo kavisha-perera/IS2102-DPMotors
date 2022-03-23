@@ -22,29 +22,12 @@ if($_SESSION['type'] == "admin")
 <body>
 
     <div class="row r1">
-        <div class="col-13">
-            <img src="../../../images/logo.png" class="navLogo">
-        </div>
-        <div class="col-nav">
-            <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
-        </div>
-        <div class="col-14 navbar"> 
-        <a href="../../landing page/index.php#home">Home</a> 
-            <a href="../../landing page/index.php#about">About</a>
-            <a href="../../landing page/index.php#services">Services</a>
-            <a href="../../customer gerneral/productsCatalogue.php">Products</a>
-            <form action="../../../includes/logout.inc.php">
-                <button class="navButton"> Log Out </button>
-            </form> 
-            <form action="../landing page/index.html#contact">
-                <button class="navButton contact"> Contact Us </button>
-            </form>
-        </div>
+        <?php include_once("../adminTopNav.php"); ?>
     </div>
 
     <!-- Start of Dropdown for screens with width less than 800px-->
                     <div class="row r2">
-                        <div class="col-2 sideNav-dropdown" >
+                       <!-- <div class="col-2 sideNav-dropdown" >
                                 <img src="../../../images/dropdown.svg" class="dropButton">
                                 <div class="dropdown-content">
                                     <a href="../adminDash.php"> Dashboard </a>  
@@ -58,7 +41,8 @@ if($_SESSION['type'] == "admin")
                         </div>
                         <div class="col-10 smallWel">
                             <p>Welcome  <?php echo  $email ?></p>
-                        </div>
+                        </div> -->
+                        <?php include_once("../adminSide-MiniNav.php") ?>
                     </div>
     <!--End of Dropdown for screens with width less than 800px-->
 

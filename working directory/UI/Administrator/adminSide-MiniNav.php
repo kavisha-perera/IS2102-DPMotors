@@ -1,5 +1,6 @@
 
 <!--customer side nav bar for screens smaller than 800px-->
+<link rel="stylesheet" href="../../../css/main.css">
 
 <div class="col-2 sideNav-dropdown" >
 
@@ -38,5 +39,5 @@
     </div>
 </div>
 <div class="col-10 smallWel">
-    <p> Welcome <?php echo $adminEmail;?> </p>
+    <p> Welcome <?php echo $email;?> </p>
 </div>
