@@ -9,15 +9,15 @@ function updateSlotState($conn, $slotId){
     $result = mysqli_query($conn, $updateSlotState);
 
     if (!$result) {
-        header("location: ../UI/Customer/customer appointments/bookAppointment-form.php?error=Booking-not-success");
+        header("location: ../UI/Customer/customer /bookAppointment-form.php?error=Booking-not-success");
         exit();
     }
 }
 
 //function to create appointment record
-function createAppointment($conn, $slotId, $appDate, $appTime, $serviceType, $vehicleNo, $vehicleModel, $fname, $lname, $contact, $email, $appointmentState){
+function createAppointment($conn, $slotId, $appDate, $appTime, $serviceType, $vehicleNo, $vehicleModel, $fname, $lname, $contact, $email, $tate){
 
-    $sql = "INSERT INTO appointments (scheduleId, date, timeslot, serviceType, vehicleNo, vehicleType, fname, lname, contact, email, state) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; 
+    $sql = "INSERT INTO  (scheduleId, date, timeslot, serviceType, vehicleNo, vehicleType, fname, lname, contact, email, state) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; 
     
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -25,7 +25,7 @@ function createAppointment($conn, $slotId, $appDate, $appTime, $serviceType, $ve
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "sssssssssss" , $slotId, $appDate, $appTime, $serviceType, $vehicleNo,    $vehicleModel, $fname, $lname, $contact, $email, $appointmentState);
+    mysqli_stmt_bind_param($stmt, "sssssssssss" , $slotId, $appDate, $appTime, $serviceType, $vehicleNo,    $vehicleModel, $fname, $lname, $contact, $email, $tate);
     mysqli_stmt_execute($stmt);
         
 }
@@ -34,11 +34,11 @@ function createAppointment($conn, $slotId, $appDate, $appTime, $serviceType, $ve
 /*function to update appointment table to have new slot*/
 function reschedule($conn, $slotId, $newTime, $newDate, $appId ){
 
-    $reschedule = "UPDATE appointments SET scheduleId = '$slotId', date = '$newDate' , timeslot = '$newTime' WHERE id = '$appId' ";
+    $reschedule = "UPDATE  SET scheduleId = '$slotId', date = '$newDate' , timeslot = '$newTime' WHERE id = '$appId' ";
     $result = mysqli_query($conn, $reschedule);
 
     if (!$result) {
-        header("location: ../UI/Customer/customer appointments/rescheduleAppointment.php?error=appointment error");
+        header("location: ../UI/Customer/customer /rescheduleAppointment.php?error=appointment error");
         exit();
     }
 }
@@ -50,7 +50,7 @@ function releaseSlotState($conn, $OLDslotID){
     $result = mysqli_query($conn, $releaseSlotState);
 
     if (!$result) {
-        header("location: ../UI/Customer/customer appointments/rescheduleAppointment.php?error=slot error");
+        header("location: ../UI/Customer/customer /rescheduleAppointment.php?error=slot error");
         exit();
     }
 }
@@ -58,11 +58,11 @@ function releaseSlotState($conn, $OLDslotID){
 /*function to delete appointment table to have new slot*/
 function cancel($conn, $appId ){
 
-    $cancel = "DELETE FROM appointments WHERE id='$appId' ";
+    $cancel = "DELETE FROM  WHERE id='$appId' ";
     $result = mysqli_query($conn, $cancel);
 
     if (!$result) {
-        header("location: ../UI/Customer/customer appointments/cancelAppointment.php?error=appointment error");
+        header("location: ../UI/Customer/customer /cancelAppointment.php?error=appointment error");
         exit();
     }
 }
@@ -74,7 +74,7 @@ function slotExits($conn, $appDate , $appTime) {
     $sql = "SELECT * FROM schedule WHERE date = ? AND timeslot = ?;"; 
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("location: ../UI/Manager/appointments/manageSlots.php.php?error=stmtfailed");
+        header("location: ../UI/Manager//manageSlots.php.php?error=stmtfailed");
         exit();
     }
 
@@ -96,16 +96,16 @@ function slotExits($conn, $appDate , $appTime) {
 
 
 //manager
-function createSlot($conn, $appDate , $appTime, $appointmentState){
+function createSlot($conn, $appDate , $appTime, $tate){
 
     $sql = "INSERT INTO schedule (date, timeslot, state) VALUES (?, ?, ?);"; 
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("location: ../UI/Manager/appointments/manageSlots.php?error=stmtfailed");
+        header("location: ../UI/Manager//manageSlots.php?error=stmtfailed");
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "sss" , $appDate , $appTime, $appointmentState);
+    mysqli_stmt_bind_param($stmt, "sss" , $appDate , $appTime, $tate);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);  
 
@@ -118,7 +118,7 @@ function deleteSlot($conn, $appDate , $appTime){
     $result = mysqli_query($conn, $deleteSlot);
 
     if (!$result) {
-        header("location: ../UI/Manager/appointments/manageSlots.php?error=appointment error");
+        header("location: ../UI/Manager//manageSlots.php?error=appointment error");
         exit();
     }
 }

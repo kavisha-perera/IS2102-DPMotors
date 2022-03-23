@@ -84,7 +84,7 @@ if($_SESSION['type'] == "admin")
                             <td><?php echo $row["lname"];?></td>
                             <td><?php echo $row["email"];?></td>
                             <td><?php echo $row["nic"];?></td>
-                            <td><a href="update.process.php?id=<?php echo $row["id"]; ?>"><button class="th-button-icon" onclick="OnClickOpenUpdateEmployee()"><img src='../../images/Employee & Supplier/edit.svg' class='th-svg-icons'></button></a></td>
+                            <td><button class="th-button-icon" onclick="Updateopen()"><img src='../../images/Employee & Supplier/edit.svg' class='th-svg-icons'></button></td>
                             <td><a href="delete.process.php?id=<?php echo $row["id"]; ?>"><button class="th-button-icon" onclick="OnClickOpenDeleteEmployee()"><img src='../../images/Employee & Supplier/delete.svg' class='th-svg-icons'></button></a></td>
                         </tr>
                         <?php
@@ -188,13 +188,13 @@ if($_SESSION['type'] == "admin")
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
 
 <!-----------------------------------------------------Employee Update form as a Pop-Up-------------------------------------------------------->
-            <div class="th-addemployee-conatiner" id="th-update-employee">
+            <div class="th-addemployee-conatiner" id="th-update">
                 <form action="update.process.php" method="post">
                     <div class="th-emp-row">
                         <div class="th-employee-form-title">
                             <h2 style="margin-bottom:20px;">Administrator</h2>
                         </div>
-                        <div class="th-emp-close" onclick="OnClickCloseUpdateEmployee()">
+                        <div class="th-emp-close" onclick="Updateclose()">
                              <span class="th-emp-close-button">X</span>
                         </div>
                     </div>
@@ -243,18 +243,9 @@ if($_SESSION['type'] == "admin")
                             <input type="text" name="email" class="th-emsu-input">
                         </div>
                     </div>
-
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="Employee ID" class="th-user-label">Employee ID</label class="th-emsu-input">
-                        </div>
-                        <div class="th-emp-form-input">
-                            <input type="text" name="employeeid" class="th-emsu-input">
-                        </div>
-                    </div>
             
                     <div class="th-emp-addb">
-                        <button class="navButton" name="submit" style="background-color: #2fd138; color:#000000">UPDATE</button>
+                        <button class="navButton" name="update">UPDATE</button>
                     </div>
                 </form>
             </div>
