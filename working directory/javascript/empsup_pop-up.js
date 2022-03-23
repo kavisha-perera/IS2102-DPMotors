@@ -36,7 +36,7 @@ function OnClickCloseAddEmployee() {
 
 /*Open and Close of employee update form*/
 function OnClickOpenUpdateEmployee(empno) {
-  //   document.getElementById("th-update-employee").style.display = "block";
+  document.getElementById("th-update-employee").style.display = "block";
 }
 
 function OnClickCloseUpdateEmployee() {
@@ -50,4 +50,12 @@ function OnClickOpenDeleteEmployee(empno) {
 
 function OnClickCloseDeleteEmployee() {
   document.getElementById("th-delete-employee").style.display = "none";
+}
+/* Update form popup */
+function Updateopen(id){
+  document.getElementById("th-update").style.display="block";
+}
+
+function Updateclose(){
+  document.getElementById("th-update").style.display="none";
 }
