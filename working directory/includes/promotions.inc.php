@@ -8,7 +8,6 @@ require_once 'dbh.inc.php';
 
 
 
-
 if (isset($_POST["create"])){
 
     $description= $_POST["description"];
@@ -66,10 +65,6 @@ if (isset($_POST["update"])){
     $discount= $_POST["discount"];
 
 
-
-
-
-
     $sql = "UPDATE promotions SET  description = ? , code = ? , validtill = ? , promoState = ? , image = ? , discount = ? WHERE promoNo = ?"; 
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -87,8 +82,6 @@ if (isset($_POST["update"])){
 
 
 if (isset($_POST["stateChange"])){
-
-
 
 
     $promoNo= $_POST["promoNo"];
