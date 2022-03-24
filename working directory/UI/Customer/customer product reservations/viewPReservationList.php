@@ -174,7 +174,25 @@ if(isset($_SESSION['id']))
                                <!-- <td></td> -->
                                 <td><?php echo $row['delivery_method']; ?></td>
                                 <td><?php echo $row['due_date']; ?></td>
-                                <td> </td>
+                                <td> 
+                                <!-- calculate the bill amount by getting the product unit price and quantity and then totally the values -->
+                                <?php 
+                                $amountQuery = "SELECT * FROM stock INNER JOIN reserved_products ON stock.stock_code = reserved_products.p_code WHERE reserved_products.reservation_no = '{$row['reservation_no']}'";
+
+                                $results = $conn->query($amountQuery);
+                                if(mysqli_num_rows($results) > 0){
+                                    $total=0;
+                                    while($product = mysqli_fetch_assoc($results)){
+                                        $total = $total + ($product['selling_price'] * $product['quantity']);
+                                    }
+
+                                    echo 'LKR '; //echo currency type
+                                    echo $total;
+                                }
+                                
+                                ?>
+
+                                </td>
                                 <td>
                                 <form action="./readPReservation.php" method="post">
                                     <button type="submit" name="view" value="<?php echo $row['res_sale_id']; ?>" style="background-color:#FFFAFA; border:none;">

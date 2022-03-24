@@ -178,22 +178,22 @@ if(isset($_SESSION['id']))
                                     $query = "SELECT * FROM stock INNER JOIN reserved_products ON stock.stock_code = reserved_products.p_code WHERE reserved_products.reservation_no = '{$row['reservation_no']}'";
                                     $results = mysqli_query($conn, $query);
                                     if (mysqli_num_rows($results) > 0) {
+                                        while ($products = mysqli_fetch_assoc($results)) {
 
-                                        $total=0;
-                                         while ($products = mysqli_fetch_assoc($results)) {
+                                            $sellingPrice = $products['selling_price'];
+                                            $quantity = $products['quantity']; 
 
-                                            $amount = $products['selling_price'] * $products['quantity'];
-                                            $total += $amount;
+                                            $amount = $sellingPrice* $quantity;
                                 ?>
                                 <tr>
                                     <td><?php echo $products['p_brand']; ?> <?php echo $products['p_name']; ?></td>
-                                    <td>LKR <?php echo $products['selling_price']; ?></td>
-                                    <td><?php echo $products['quantity']; ?></td>
+                                    <td>LKR <?php echo $sellingPrice ?></td>
+                                    <td><?php echo $quantity; ?></td>
                                     <td>LKR <?php echo $amount; ?></td>
                                 <tr>
                             <?php 
-                                } //close while loop to get reserved products data
-                                
+                                }
+                            }
                             ?>
                             </table>
                         </div>
@@ -204,13 +204,8 @@ if(isset($_SESSION['id']))
                         <label>BILL AMOUNT</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="resBillAmount" value="LKR <?php echo $total; ?>">
+                        <input type="text" class="serviceApp" name="resBillAmount" disabled>
                     </div>
-
-                    <?php 
-                        } //close if statement to get reserved products data
-                    ?>
-
                 </div>
                 <div class="row">
                     <div class="col-4 BookAppLabel">
@@ -223,14 +218,14 @@ if(isset($_SESSION['id']))
 
                 <?php
 
-                        } //close while loop to get reservation details
-                    } //close if statement to get reservation details
-                } //close if (isset($_POST["view"])){---everything is inside this----} 
+                        }
+                    }
+                }
                 ?>
 
 
 
-            </form>
+            </form><!--have closed the form before the button. look into this and fix when putting php-->
 
                 <div class="row formspacing">
                     <div class="col-12 buttons-inline">
@@ -254,6 +249,21 @@ if(isset($_SESSION['id']))
 
         </div>
     </div>
+
+    
+
+
+
+ <!--   <footer>
+        <div class="row">
+            <div class="col-12">
+                <h4>CONTACT</h4><br>
+                <p>1088, 1 Battaramulla, Pannipitiya Rd, Battaramulla 10120 </p>
+                011 2XXXXXX | 07X XXXXXXX </p>
+                dpmotors@gmail.com</p>
+            </div>
+        </div>
+    </footer> -->
 
 </body>
 </html>
