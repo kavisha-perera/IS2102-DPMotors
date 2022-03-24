@@ -171,8 +171,8 @@ if(isset($_GET['search'])){
                                         <td><?php echo $row['coolant']; ?></td>
                                         <td><?php echo $row['airFilter']; ?></td>
                                         <td><?php echo $row['nextServiceDate']; ?></td>
-                                        <td><a href="./cashierUpdateServive.php">Update</a></td>
-                                        <td><a href="./cashierDeleteRecord.php">Delete</a></td>
+                                        <td><a href="./cashierUpdateServive.php?vehicle_id={'$row['id'}">Update</a></td>
+                                        <td><a href="./cashierDeleteRecord.php?vehicle_id={'$row['id'}">Delete</a></td>
                                     </tr>
                                     <?php }
                                     }

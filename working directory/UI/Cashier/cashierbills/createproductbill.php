@@ -11,25 +11,25 @@ if($_SESSION['type'] == "cashier")
     header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-cashierDashboard");
 }
 
-$pbill_list = '';
+$bill_list="";
+$query="SELECT * FROM productbill";
+$result=mysqli_query($conn,$query);
 
-$query= "SELECT * FROM productbill ORDER BY id ASC";
-$pbill = mysqli_query($conn, $query);
-
-if ($pbill) {
-    while ($value = mysqli_fetch_assoc($pbill)){
-        $pbill_list .="<tr>";
-        $pbill_list.="<td>{$value['id']}</td>";
-        $pbill_list .="<td>{$value['p_name']}</td>";
-        $pbill_list .="<td>{$value['quantity']}</td>";
-        $pbill_list .="<td>{$value['unit_price']}</td>";
-        $pbill_list .="<td>{$value['total']}</td>";
-        $pbill_list.="</tr>";
-
+if($result){
+    while ($value=mysqli_fetch_assoc($result)){
+        $bill_list.="<tr>";
+        $bill_list.="<td>{$value['stock_code']}</td>";
+        $bill_list.="<td>{$value['p_name']}</td>";
+        $bill_list.="<td>{$value['quantity']}</td>";
+        $bill_list.="<td>{$value['unit_price']}</td>";
+        $bill_list.="<td>{$value['amount']}</td>";
+        $bill_list .="<td><a href=\"createproductbill.php?bill_id={$value['id']}\" >Remove</a></td>";
+        $bill_list.="</tr>";
     }
-}else{
-    echo "Database connection failed.";
-}
+    }else{
+        echo "Database connection failed.";
+    }
+
 ?>
 
 <!DOCTYPE HTML>
@@ -78,25 +78,31 @@ if ($pbill) {
                     <form action="./createproductbill.php">
 
                         <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Bill No</label>
-                        <input type="text" name="sbill_no" class="searchbar">
+                        <input type="text" name="bill_no" class="searchbar" placeholder="Example:PB100">
+
+                        <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Date</label>
+                        <input type="date"  name="date" class="searchbar" style="width:200px;" autofocus>
+
+                        <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Bill Type</label>
+                        <input type="text"  name="billtype" class="searchbar" autofocus><br><br>
 
                         <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Customer Name</label>
-                        <input type="text"  name="cus_name" class="searchbar" autofocus><br><br>
+                        <input type="text"  name="cus_name" class="searchbar" autofocus>
 
                         <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Cashier Name</label>
-                        <input type="text"  name="cashier_name" class="searchbar" autofocus>
+                        <input type="text"  name="cashier_name" class="searchbar" autofocus><br><br>
 
-                        <label for="product" class="th-user-label" style="background-color: #021257; color: white;">Product</label>
-                        <input type="text" placeholder="Search product name" name="search" class="searchbar" autofocus><br><br>
+                        <label for="product" class="th-user-label" style="background-color: #021257; color: white;">Product Name</label>
+                        <input type="text" placeholder="Search by Product Name" name="p_name" class="searchbar" autofocus><br><br>
 
                         <div class="th-add-new-button" style="margin-right:125px;margin-bottom:20px;">
-                        <button class="navButton" onclick="document.location='createproductbill.php'"><b> ADD</b></button>
+                        <button class="navButton" name="submit" onclick="document.location='./createproductbill.php'"><b> ADD</b></button>
                         </div>
 
                         <table class="th-user-table">
                             <thead>
                             <tr>
-                              <th>Product ID</th> <!--table properties-->
+                              <th>Stock code</th> <!--table properties-->
                               <th>Product Name</th>
                               <th>Quantity</th> 
                               <th>Unit Price</th>
@@ -104,12 +110,11 @@ if ($pbill) {
                               <th>Remove Item</th>
                             </tr>
                             </thead>
-
-                            <?php echo $pbill_list;?>
+                            <?php echo $bill_list;?>
 
                           </table><br><br>
                           <label for="total" class="navButton" style="vertical-align: bottom;">Total</label>
-                          <input type="number" class="th-user-label">
+                          <input type="number" name="total" class="th-user-label">
                     </form><br>
                     
                 </div>

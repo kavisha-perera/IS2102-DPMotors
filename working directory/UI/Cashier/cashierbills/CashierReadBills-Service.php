@@ -10,6 +10,50 @@ if($_SESSION['type'] == "cashier")
 
     header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-cashierDashboard");
 }
+
+
+?>
+
+<?php
+
+$sbill_list = '';
+
+$query= "SELECT * FROM servicebill ORDER BY id ASC";
+$sbill = mysqli_query($conn, $query);
+
+if ($sbill) { //View Service bill details
+    while ($value = mysqli_fetch_assoc($sbill)){
+        $sbill_list .="<tr>";
+        $sbill_list.="<td>{$value['id']}</td>";
+        $sbill_list .="<td>{$value['description']}</td>";
+        $sbill_list .="<td>{$value['service_price']}</td>";
+        $sbill_list .="</tr>"; 
+
+    }
+
+}else{
+    echo "Database connection failed.";
+}
+
+$sbill_no=$billtype=$cus_name=$cashier_name=$datetime=$description=$service_price ='';
+if (isset($_POST["print"])){
+
+    $query = "SELECT * FROM servicebill";
+    $result = mysqli_query($conn,$query);
+    if ($result) {
+        while ($value = mysqli_fetch_assoc($result)){
+
+            $sbill_no = $value["sbill_no"];
+            $billtype = $value["billtype"];
+            $cus_name = $value["cus_name"];
+            $cashier_name = $value["cashier_name"];
+            $datetime = $value["datetime"];
+            $description = $value["description"];
+            $service_price = $value["service_price"];
+    }
+ }
+}
+        
 ?>
 
 <!DOCTYPE HTML>
@@ -26,6 +70,12 @@ if($_SESSION['type'] == "cashier")
         }
         .hide-in-others{
             display:none;
+        }
+
+        .th-user-table  th,tr{
+            padding:10px;
+
+}
         }
 
     </style>
@@ -56,6 +106,7 @@ if($_SESSION['type'] == "cashier")
                     <img src="../../../images/tableIcons/printing.png" class="saveIcon">
                 </div>
             </div>
+            
             <div class="Bill"> <!--bill starts here-->
 
                          <!--row containing dp motors details inside the bill-->
@@ -74,28 +125,25 @@ if($_SESSION['type'] == "cashier")
                         <div class="billHeaderAlign"><h5> dpmotors@gmail.com</h5></div>
                     </div>
                 </div>
+
                         <!--row containing bill number-->
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="BillNo"><u>BILL NO #number</u><h2></h2>
+                        <h2 class="BillNo" style="margin-right:50px;" name="sbill_no"><u>BILL NO: <?php echo $sbill_no; ?></u><h2></h2>
                     </div>
                 </div>
                         <!--row containing general details of the bill-->
                 <div class="row">
                     <div class="col-1 BillNull"> <!--null columns to create space--> </div>
 
-                    <div class="col-4 billGeneral"> 
+                    <div class="col-4 billGeneral" style="margin-left:80px;margin-top:15px;"> 
                         <div class="billGeneralDetails">
-                            <h5>DATE & TIME:</h5>
-                            <input type="text" name="billDateTime" class="billGeneralForm">
+                            <h5>DATE: <?php echo $datetime; ?></h5>
+                            <input type="text" name="datetime" class="billGeneralForm">
                         </div>
                         <div class="billGeneralDetails">
-                            <h5>CUSTOMER NAME:</h5>
-                            <input type="text" name="billCusName" class="billGeneralForm">
-                        </div>
-                        <div class="billGeneralDetails">
-                            <h5>CUSTOMER NO:</h5>
-                            <input type="text" name="billCusNo" class="billGeneralForm">
+                            <h5>CUSTOMER NAME:<?php echo $cus_name; ?></h5>
+                            <input type="text" name="cus_name" class="billGeneralForm">
                         </div>
                     </div>
 
@@ -103,16 +151,12 @@ if($_SESSION['type'] == "cashier")
 
                     <div class="col-4 billGeneral"> 
                         <div class="billGeneralDetails">
-                            <h5>BILL TYPE:</h5>
-                            <input type="text" name="billType" class="billGeneralForm">
+                            <h5>BILL TYPE:<?php echo $billtype; ?></h5>
+                            <input type="text" name="billtype" class="billGeneralForm">
                         </div>
                         <div class="billGeneralDetails">
-                            <h5>SERVICE RECORD NO:</h5>
-                            <input type="text" name="billServiceRecNo" class="billGeneralForm">
-                        </div>
-                        <div class="billGeneralDetails">
-                            <h5>CASHIER NAME:</h5>
-                            <input type="text" name="billCashierName" class="billGeneralForm">
+                            <h5>CASHIER NAME:<?php echo $cashier_name; ?></h5>
+                            <input type="text" name="cashier_name" class="billGeneralForm">
                         </div>
                     </div>
 
@@ -124,29 +168,35 @@ if($_SESSION['type'] == "cashier")
                         <table class="BillInfoTable1">
                                 <thead>
                                     <tr>
-                                        <th>Service No.</th>
+                                        <th>Service ID</th>
                                         <th>Service Description</th>
                                         <th>Service Price</th>
                                     </tr>
                                 </thead>
-                                <tbody> <!--add php & sql here-->
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
+                                <?php echo $sbill_list;?>
+
                         </table>
 
                     </div>
                 </div>
                     <!--row containing bill amount-->
+                    <?php 
+                          $query="SELECT SUM(service_price) AS 'sumservice' FROM servicebill";
+                          $result=mysqli_query($conn,$query);
+                          $data=mysqli_fetch_assoc($result); 
+                          ?>
+
                     <div class="row">
                         <div class="col-9 BillNull"> <!--null columns to create space--></div>
                         <div class="col-3 BillTotal">
                             <h5 class="billTotalLabel">TOTAL:</h5>
-                            <input type="text" name="billTotal" class="billTotalForm">
+                            <input type="text" name="billTotal" class="billTotalForm" value="<?php echo $data['sumservice'];?>">
+
+                   
                         </div>
+                        <div style="float:left;">
+                            <h5 class="billTotalLabel" style="width:400px;border:none;margin-bottom:20px;">Customer's Signature:.....................................................</h5>
+                    </div>
                     </div>  
             </div> <!--bill ends here--><!DOCTYPE HTML>
 
