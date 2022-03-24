@@ -4,7 +4,7 @@
 if (isset($_POST["book"])){
 
     $slotId = $_POST["slotId"];
-    $tate = $_POST["tate"];
+    $appointmentState = $_POST["appointmentState"];
     $appDate = $_POST["appDate"];
     $appTime = $_POST["appTime"];
     $serviceType = $_POST["serviceType"];
@@ -20,10 +20,10 @@ if (isset($_POST["book"])){
 
     updateSlotState($conn, $slotId);
 
-    createAppointment($conn, $slotId, $appDate, $appTime, $serviceType, $vehicleNo, $vehicleModel, $fname, $lname, $contact, $email, $tate);
+    createAppointment($conn, $slotId, $appDate, $appTime, $serviceType, $vehicleNo, $vehicleModel, $fname, $lname, $contact, $email, $appointmentState);
 
     
-    header("location: ../UI/Customer/customer /view.php?error=BookingSuccess");
+    header("location: ../UI/Customer/customer appointments/viewAppointments.php?error=BookingSuccess");
 
 }
 
@@ -44,7 +44,7 @@ if (isset($_POST["reschedule"])){
 
     releaseSlotState($conn, $OLDslotID);
 
-    header("location: ../UI/Customer/customer /view.php?error=RescheduleSuccess");
+    header("location: ../UI/Customer/customer appointments/viewAppointments.php?error=RescheduleSuccess");
 
 }
 
@@ -62,7 +62,7 @@ if (isset($_POST["cancel"])){
 
     cancel($conn, $appId );
 
-    header("location: ../UI/Customer/customer /view.php?error=cancelSuccess");
+    header("location: ../UI/Customer/customer appointments/viewAppointments.php?error=cancelSuccess");
 
 }
 
@@ -83,7 +83,7 @@ if (isset($_POST["reschedule-M"])){
 
     releaseSlotState($conn, $OLDslotID);
 
-    header("location: ../UI/Manager//read-pending?error=RescheduleSuccess");
+    header("location: ../UI/Manager/appointments/readAppointments-pending?error=RescheduleSuccess");
 
 }
 
@@ -101,13 +101,13 @@ if (isset($_POST["cancel-M"])){
 
     cancel($conn, $appId );
 
-    header("location: ../UI/Manager//read-pending?error=cancelSuccess");
+    header("location: ../UI/Manager/appointments/readAppointments-pending?error=cancelSuccess");
 
 }
 
 if (isset($_POST["createSlot"])){
     
-    $tate = $_POST["state"];
+    $appointmentState = $_POST["state"];
     $appDate = $_POST["date"];
     $appTime = $_POST["timeslot"];
 
@@ -116,13 +116,13 @@ if (isset($_POST["createSlot"])){
     require_once 'appointment-func.php';
 
     if (slotExits($conn, $appDate , $appTime) !== false){
-        header("location: ../UI/Manager//schedule.php?error=slotExits");
+        header("location: ../UI/Manager/appointments/schedule.php?error=slotExits");
         exit();
     }
 
-    createSlot($conn, $appDate , $appTime, $tate);
+    createSlot($conn, $appDate , $appTime, $appointmentState);
 
-    header("location: ../UI/Manager//schedule.php?error=timeslotSuccess");
+    header("location: ../UI/Manager/appointments/schedule.php?error=timeslotSuccess");
 
 
 }
@@ -138,7 +138,7 @@ if (isset($_POST["deleteSlot"])){
 
     deleteSlot($conn, $appDate , $appTime);
 
-    header("location: ../UI/Manager//schedule.php?error=deleteSuccess");
+    header("location: ../UI/Manager/appointments/schedule.php?error=deleteSuccess");
 
 
 }
