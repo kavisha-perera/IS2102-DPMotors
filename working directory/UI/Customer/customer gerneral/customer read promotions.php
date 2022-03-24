@@ -24,6 +24,13 @@ if(isset($_SESSION['id']))
         .hide-in-others{
             display:none;
         }
+        .promotionBanner{
+        width: 100%;
+        height:200px;
+        }
+        .promoDeets{
+        height:350px;
+        }
     </style>
 </head>
 <body>

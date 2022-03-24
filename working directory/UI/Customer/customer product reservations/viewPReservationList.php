@@ -87,9 +87,7 @@ if(isset($_SESSION['id']))
 
                         $search = $_POST['search'];  // gets value sent over search form
 
-                        $sql = "SELECT * FROM reservedforsale 
-                        INNER JOIN users ON reservedforsale.cus_email = users.email 
-                        WHERE users.id = '{$_SESSION['id']}' AND (reservation_no LIKE '%$search%' OR delivery_method LIKE '%$search%' OR due_date LIKE '%$search%' OR cus_address LIKE '%$search%' OR remarks LIKE '%$search%')";
+                        $sql = "SELECT * FROM reservedforsale WHERE cus_email = '{$_SESSION['email']}' AND (reservation_no LIKE '%$search%' OR delivery_method LIKE '%$search%' OR due_date LIKE '%$search%' OR cus_address LIKE '%$search%' OR remarks LIKE '%$search%')";
 
                         $result = $conn->query($sql);
                         if (mysqli_num_rows($result) > 0){
@@ -150,7 +148,7 @@ if(isset($_SESSION['id']))
                 }
                 else{
                 ?>
-                        <?php  $sql = "SELECT * FROM reservedforsale INNER JOIN users ON reservedforsale.cus_email = users.email WHERE users.id = '{$_SESSION['id']}'";
+                    <?php  $sql = "SELECT * FROM reservedforsale WHERE cus_email = '{$_SESSION['email']}' ";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                         ?>
@@ -176,7 +174,25 @@ if(isset($_SESSION['id']))
                                <!-- <td></td> -->
                                 <td><?php echo $row['delivery_method']; ?></td>
                                 <td><?php echo $row['due_date']; ?></td>
-                                <td> </td>
+                                <td> 
+                                <!-- calculate the bill amount by getting the product unit price and quantity and then totally the values -->
+                                <?php 
+                                $amountQuery = "SELECT * FROM stock INNER JOIN reserved_products ON stock.stock_code = reserved_products.p_code WHERE reserved_products.reservation_no = '{$row['reservation_no']}'";
+
+                                $results = $conn->query($amountQuery);
+                                if(mysqli_num_rows($results) > 0){
+                                    $total=0;
+                                    while($product = mysqli_fetch_assoc($results)){
+                                        $total = $total + ($product['selling_price'] * $product['quantity']);
+                                    }
+
+                                    echo 'LKR '; //echo currency type
+                                    echo $total;
+                                }
+                                
+                                ?>
+
+                                </td>
                                 <td>
                                 <form action="./readPReservation.php" method="post">
                                     <button type="submit" name="view" value="<?php echo $row['res_sale_id']; ?>" style="background-color:#FFFAFA; border:none;">

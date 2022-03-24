@@ -27,12 +27,6 @@ h3{
    text-align: center;
 }
 
-hr{
-    height:2px;
-    border-width:10;
-    color:gray;
-    background-color:gray
-}
 #chart {
   width: 100;
   border: 5px solid blue;
@@ -54,114 +48,66 @@ include_once("../managerNav.php");
 ?>
 
 
-        <div class="col-16 content">
+<div class="col-16 content">
             <!--main content here-->
+
+
 <h3 >Appointment Report<h3>
 
 <div id="chart">
-  
 
+<div class="container">
 
+  <div class="row">
+    <div class="col-4">
+    <div class="col-3" id="appointmentChart1" style="height: 370px; width: 100%;"></div>
+    </div>
+    <div class="col-4">
+    <div id="appointmentChart2" style="height: 370px; width: 100%;"></div> 
+    </div>
+    <div class="col-4">
+    <div id="appointmentChart3" style="height: 370px; width: 100%;"></div> 
+    </div>
+  </div>
+</div>
 </div>
 
-<hr>
 
-<h3>Product Report<h3>
-
-<div id="chart">
-
-<div id="productChart" style="height: 370px; width: 100%;"></div>
-
-
-</div>
-
-<hr>
 
 <h3>Schedule Report<h3>
 
 <div id="chart">
   
-<label for="cars">Choose a month:</label>
-
+<div id="scheduleChart" style="height: 370px; width: 100%;"></div> 
 
 </div>
-<hr>
+
+
 
 <h3>Vehicle Service Records Report<h3>
 
 <div id="chart">
+
+<div id="serviceChart" style="height: 370px; width: 100%;"></div> 
   
 </div>
-<hr>
 
 
-<h3>New Registed Users Report<h3>
+
+<h3>New Registerd Users Report<h3>
 
 <div id="chart">
+
+<div id="usersChart" style="height: 370px; width: 100%;"></div>
   
 </div>
-<hr>
-
-
 
 
 </body>
 
 
-
-
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
-
-<script>
-
-loadAllProducts();
-
-
-function loadAllProducts(){
-
-    var data = new FormData();
-    data.append("products" , "products");
-
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "../../../includes/reports-func.php");
-
-
-    xhr.onload = function () {
-
-        console.log(this.response);
-
-
-
-
-        var chart = new CanvasJS.Chart("productChart", {
-            animationEnabled: true,
-            theme: "light2",
-            title:{
-                text: "Products"
-            },
-            axisY: {
-                title: "Count"
-            },
-            data: [{
-                type: "column",
-                dataPoints: JSON.parse(this.response)
-            }]
-        });
-        
-        chart.render();
-
-    };
-
-    xhr.send(data);
-    return false;
-
-}
-
-
-
-</script>
-
+<script type="text/javascript" src="../../../javascript/canvasjs.min.js"></script>
+<script type="text/javascript" src="../../../javascript/report.js"></script>
 
 
 </html>

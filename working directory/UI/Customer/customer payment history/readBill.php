@@ -170,18 +170,5 @@ if(isset($_SESSION['id']))
 
     
 
-
-
- <!--   <footer>
-        <div class="row">
-            <div class="col-12">
-                <h4>CONTACT</h4><br>
-                <p>1088, 1 Battaramulla, Pannipitiya Rd, Battaramulla 10120 </p>
-                011 2XXXXXX | 07X XXXXXXX </p>
-                dpmotors@gmail.com</p>
-            </div>
-        </div>
-    </footer> -->
-
 </body>
 </html>
