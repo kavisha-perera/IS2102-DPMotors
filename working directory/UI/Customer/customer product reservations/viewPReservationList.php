@@ -87,9 +87,7 @@ if(isset($_SESSION['id']))
 
                         $search = $_POST['search'];  // gets value sent over search form
 
-                        $sql = "SELECT * FROM reservedforsale 
-                        INNER JOIN users ON reservedforsale.cus_email = users.email 
-                        WHERE users.id = '{$_SESSION['id']}' AND (reservation_no LIKE '%$search%' OR delivery_method LIKE '%$search%' OR due_date LIKE '%$search%' OR cus_address LIKE '%$search%' OR remarks LIKE '%$search%')";
+                        $sql = "SELECT * FROM reservedforsale WHERE cus_email = '{$_SESSION['email']}' AND (reservation_no LIKE '%$search%' OR delivery_method LIKE '%$search%' OR due_date LIKE '%$search%' OR cus_address LIKE '%$search%' OR remarks LIKE '%$search%')";
 
                         $result = $conn->query($sql);
                         if (mysqli_num_rows($result) > 0){
@@ -150,7 +148,7 @@ if(isset($_SESSION['id']))
                 }
                 else{
                 ?>
-                        <?php  $sql = "SELECT * FROM reservedforsale INNER JOIN users ON reservedforsale.cus_email = users.email WHERE users.id = '{$_SESSION['id']}'";
+                    <?php  $sql = "SELECT * FROM reservedforsale WHERE cus_email = '{$_SESSION['email']}' ";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                         ?>

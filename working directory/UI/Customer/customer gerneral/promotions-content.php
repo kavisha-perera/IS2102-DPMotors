@@ -50,8 +50,8 @@ include '../../../includes/dbh.inc.php';
                     $no_of_results = mysqli_num_rows($result);
         ?>
 
-            <div class="col-6 promoDeets">
-                <img src="https://drive.google.com/uc?export=view&id=<?php echo $row['image']; ?>" class="promotionBanner">
+            <div class="col-3 promoDeets">
+                <img src="<?php echo $row['image']; ?>" class="promotionBanner">
                 <h5>PROMO CODE: <?php echo $row['code'];?></h5>
                 <h5><?php echo $row['description'];?></h5>
                 <h5>VALID TILL: <?php echo $row['validtill'];?></h5>

@@ -179,12 +179,17 @@ if(isset($_SESSION['id']))
                                     $results = mysqli_query($conn, $query);
                                     if (mysqli_num_rows($results) > 0) {
                                         while ($products = mysqli_fetch_assoc($results)) {
+
+                                            $sellingPrice = $products['selling_price'];
+                                            $quantity = $products['quantity']; 
+
+                                            $amount = $sellingPrice* $quantity;
                                 ?>
                                 <tr>
                                     <td><?php echo $products['p_brand']; ?> <?php echo $products['p_name']; ?></td>
-                                    <td>LKR <?php echo $products['selling_price']; ?></td>
-                                    <td><?php echo $products['quantity']; ?></td>
-                                    <td>LKR <?php echo $products['selling_price'] * $products['quantity'];  ?></td>
+                                    <td>LKR <?php echo $sellingPrice ?></td>
+                                    <td><?php echo $quantity; ?></td>
+                                    <td>LKR <?php echo $amount; ?></td>
                                 <tr>
                             <?php 
                                 }
