@@ -3,6 +3,7 @@
 require_once 'dbh.inc.php';
 
 
+//products chart 
 
 
 if (isset($_POST["products"])){
@@ -24,73 +25,91 @@ if (isset($_POST["products"])){
 }
 
 
+//users chart 
 
-if (isset($_POST["fetchtables"])){
 
-    $sql = "show tables;";
+if (isset($_POST["users"])){
+
+    $sql = "select type , count(*) from users group by type;";
     $result = mysqli_query($conn, $sql);
 
-
+    $userArray = array();
 
     while($row = $result->fetch_assoc()) {
 
-        echo $row["Tables_in_is2102"].",";
-
+        $userData = array('y' => $row["count(*)"] , 'label' => $row["type"]);
+        array_push($userArray ,$userData );
     }
+
+    echo json_encode($userArray, JSON_NUMERIC_CHECK);
+    
+}
+
+
+//schedule chart 
+
+
+if (isset($_POST["schedule"])){
+
+    $sql = "SELECT MONTHNAME(date),COUNT(state) FROM `schedule` WHERE state='booked' GROUP BY month(date);";
+    $result = mysqli_query($conn, $sql);
+
+    $scheduleArray = array();
+
+    while($row = $result->fetch_assoc()) {
+
+        $scheduleData = array('y' => $row["COUNT(state)"] , 'label' => $row["MONTHNAME(date)"]);
+        array_push($scheduleArray ,$scheduleData );
+    }
+
+    echo json_encode($scheduleArray, JSON_NUMERIC_CHECK);
 
     
 }
 
 
 
-if(isset($_POST["table"])){
+//vechicleservice chart 
 
-    $table = $_POST["table"];
 
-    $sql = "SHOW COLUMNS FROM $table" ;
+if (isset($_POST["service"])){
+
+    $sql = "SELECT MONTHNAME(`dateOfService`),COUNT(`dateOfService`) FROM `vehicleservicerecords`;";
     $result = mysqli_query($conn, $sql);
 
-
+    $serviceArray = array();
 
     while($row = $result->fetch_assoc()) {
 
-        echo $row["Field"].",";
-
+        $serviceData = array('y' => $row["COUNT(`dateOfService`)"] , 'label' => $row["MONTHNAME(`dateOfService`)"]);
+        array_push($serviceArray ,$serviceData );
     }
+
+    echo json_encode($serviceArray, JSON_NUMERIC_CHECK);
 
     
 }
 
+//Appointments chart 
 
 
-if(isset($_POST["xAxis"])){
+if (isset($_POST["appointments"])){
 
-    $xAxis = $_POST["xAxis"];
-    $yAxis = $_POST["yAxis"];
-    $tableName = $_POST["tableName"];
-    
-
-    $sql = "select $xAxis , $yAxis from $tableName;";
+    $sql = "SELECT MONTHNAME(date),state, COUNT(state) FROM `appointments` GROUP BY state,MONTHNAME(date);";
     $result = mysqli_query($conn, $sql);
 
-
-    $dataElement = array();
-
+    $appointmentsArray = array();
 
     while($row = $result->fetch_assoc()) {
-        $rowdata = array('y' => $row[$yAxis] , 'label' => $row[$xAxis]);
-        array_push($dataElement ,$rowdata );
+
+        $appointmentsData = array('y' => $row["COUNT(state)"] , 'label' => $row["MONTHNAME(date)"] , 'state' =>  $row["state"] );
+        array_push($appointmentsArray ,$appointmentsData );
     }
 
-
-    echo json_encode($dataElement, JSON_NUMERIC_CHECK);
-
+    echo json_encode($appointmentsArray, JSON_NUMERIC_CHECK);
 
     
 }
-
-
-
 
 
 
