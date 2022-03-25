@@ -27,7 +27,7 @@
         <div class="hide-in-dashboard">
             <a href="../../profiles/adminViewProfile.html" class="Nav-profile"> Profile </a>
             <a href="../manageAccounts/manage.php"> Accounts </a> 
-            <a href="../../manageInventory/manageinventory.html"> Inventory </a>
+            <a href="../manageInventory/manageinventory.php"> Inventory </a>
             <a href="../../managepromotions/managepromotions.php"> Promotions </a>  
             <a href="../../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> 
             <a href="../../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a>
@@ -36,7 +36,7 @@
         <div class="hide-in-others">
             <a href="../../profiles/adminViewProfile.html"> Profile </a>
             <a href="../manageAccounts/manage.php"> Accounts </a> 
-            <a href="../../manageInventory/manageinventory.html"> Inventory </a>
+            <a href="../manageInventory/manageinventory.php"> Inventory </a>
             <a href="../../managepromotions/managepromotions.php"> Promotions </a>  
             <a href="../../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> 
             <a href="../../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a>

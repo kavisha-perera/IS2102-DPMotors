@@ -97,7 +97,7 @@ if($_SESSION['type'] == "admin")
     <div class="hide-in-dashboard">
         <a href="../profiles/adminViewProfile.html"> Profile </a>
         <a href="manageAccounts/manage.php"> Accounts </a> 
-        <a href="../manageInventory/manageinventory.php"> Inventory </a>
+        <a href="manageInventory/manageinventory.php"> Inventory </a>
         <a href="../managepromotions/managepromotions.php"> Promotions </a>  
         <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> 
         <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a>
@@ -106,7 +106,7 @@ if($_SESSION['type'] == "admin")
     <div class="hide-in-others">
         <a href="../profiles/adminViewProfile.html"> Profile </a>
         <a href="manageAccounts/manage.php"> Accounts </a> 
-        <a href="../manageInventory/manageinventory.php"> Inventory </a>
+        <a href="manageInventory/manageinventory.php"> Inventory </a>
         <a href="../managepromotions/managepromotions.php"> Promotions </a>  
         <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> 
         <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a>
@@ -137,7 +137,7 @@ if($_SESSION['type'] == "admin")
 <div class="hide-in-dashboard">
     <a href="../profiles/adminViewProfile.html"> Profile </a> <hr>
     <a href="manageAccounts/manage.php"> Accounts </a> <hr>
-    <a href="../manageInventory/manageinventory.php"> Inventory </a> <hr>
+    <a href="manageInventory/manageinventory.php"> Inventory </a> <hr>
     <a href="../managepromotions/managepromotions.php"> Promotions </a> <hr>
     <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> <hr>
     <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a> <hr>
@@ -146,7 +146,7 @@ if($_SESSION['type'] == "admin")
 <div class="hide-in-others">
     <a href="../profiles/adminViewProfile.html"> Profile </a> <hr>
     <a href="manageAccounts/manage.php"> Accounts </a> <hr>
-    <a href="../manageInventory/manageinventory.php"> Inventory </a> <hr>
+    <a href="manageInventory/manageinventory.php"> Inventory </a> <hr>
     <a href="../managepromotions/managepromotions.php"> Promotions </a> <hr>
     <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> <hr>
     <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a> <hr> 
@@ -160,7 +160,7 @@ if($_SESSION['type'] == "admin")
                         <a href="manageAccounts/manage.php"><img src="../../images/admin/accoun.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../manageInventory/manageinventory.php"><img src="../../images/admin/inventory.png" class="dashboardIcon"></a>
+                        <a href="manageInventory/manageinventory.php"><img src="../../images/admin/inventory.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
                         <a href="../managepromotions/managepromotions.php"><img src="../../images/admin/promo.png" class="dashboardIcon"></a>

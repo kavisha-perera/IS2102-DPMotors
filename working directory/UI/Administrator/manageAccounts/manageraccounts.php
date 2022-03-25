@@ -38,7 +38,7 @@ include_once "../../../includes/dbh.inc.php";
 
     <div class="row r3">
         <div class="col-15 ">
-            <p> Welcome <?php echo  $email ?></p><br><br><br>
+            <p> User <?php echo  $email ?></p><br><br><br>
             <img src="../../../images/admin/manager.png" style="width: 250px;" alt=""><br><br><br><br><br>
             <button class="adminbutton1" onclick="OnClickOpenAddEmloyee()" >+ Add New</button>
             <br><br><br><br><br>

@@ -40,7 +40,7 @@ if(isset($_POST['update']))
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
         <link rel="stylesheet" href="../../../css/main.css">
         <script src="../../../javascript/empsup_pop-up.js"></script>
-        <title>Admin Account Update</title>
+        <title>Employee Account Update</title>
     </head>
     <body>
     <div class="row r1">
@@ -76,7 +76,7 @@ if(isset($_POST['update']))
                 ?>
                 <div class="row">
                         <div class="th-employee-form-title">
-                            <h2 style="margin-bottom:20px;">Employee <?php echo $row['id'];?></h2>
+                            <h2 style="margin-bottom:20px;">User ID <?php echo $row['id'];?></h2>
                         </div>
                         
                 </div>
