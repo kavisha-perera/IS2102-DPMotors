@@ -53,9 +53,9 @@ function OnClickCloseDeleteEmployee() {
 }
 /* Update form popup */
 function Updateopen(id){
-  document.getElementById("th-update").style.display="block";
+  document.getElementById("th-update").style.display= "block";
 }
 
 function Updateclose(){
-  document.getElementById("th-update").style.display="none";
+  document.getElementById("th-update").style.display= "none";
 }

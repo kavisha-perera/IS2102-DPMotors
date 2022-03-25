@@ -6,7 +6,7 @@ if($_SESSION['type'] == "admin")
     $email =  $_SESSION['email'];
 }else{
 
-    header("location: ../../Auth-UI/Login.php?error=unscuccessful-attempt-adminDashboard");
+    header("location: ../../Auth-UI/Login.php?error=unscuccessful-attempt-managerDashboard");
 }
 include_once "../../../includes/dbh.inc.php";
 ?>
@@ -18,7 +18,7 @@ include_once "../../../includes/dbh.inc.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
     <script src="../../../javascript/empsup_pop-up.js"></script>
-	<title>Admin Accounts</title>
+	<title>Manager Accounts</title>
 </head>
 <body>
 
@@ -30,7 +30,7 @@ include_once "../../../includes/dbh.inc.php";
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
         </div>
         <div class="col-14 navbar"> 
-        <form action="../../../includes/logout.inc.php">
+            <form action="../../../includes/logout.inc.php">
                 <button class="navButton"> Log Out </button>
             </form> 
         </div>
@@ -39,10 +39,10 @@ include_once "../../../includes/dbh.inc.php";
     <div class="row r3">
         <div class="col-15 ">
             <p> User <?php echo  $email ?></p><br><br><br>
-            <img src="../../../images/admin/admin.png" style="width: 250px;" alt=""><br><br><br><br><br>
+            <img src="../../../images/admin/manager.png" style="width: 250px;" alt=""><br><br><br><br><br>
             <button class="adminbutton1" onclick="OnClickOpenAddEmloyee()" >+ Add New</button>
             <br><br><br><br><br>
-            <p style="text-align: center;"> <a href="manage.php"> <button class="navButton">Back </button></a></p>
+            <p style="text-align: center;"> <button onclick="history.back()" class="navButton">Back </button></p>
             <br><br><br>
         </div>
 
@@ -53,11 +53,10 @@ include_once "../../../includes/dbh.inc.php";
                 <div class="th-table-container1">
                     
                     
-                    <h2 class="th-th2">Admin Accounts<h2><!--table name-->
+                    <h2 class="th-th2">Manager Accounts<h2><!--table name-->
                 <table class="th-user-table">
                     <thead>
-                    <tr>
-                      <th>AccountNo</th> <!--table properties-->
+                    <th>AccountNo</th> <!--table properties-->
                       <th>First name</th>
                       <th>Last name</th> 
                       <th>Email</th>
@@ -69,7 +68,8 @@ include_once "../../../includes/dbh.inc.php";
                     </thead>
                     <tbody>
                         <?php
-                            $sql = "SELECT id, fname, lname,email, nic, contact, address  FROM users where type='admin'";
+
+                            $sql = "SELECT id, fname, lname,email, nic, contact, address  FROM users where type='manager'";
                             $result = $conn->query($sql);
                             $i=0;
                             while($row = mysqli_fetch_array($result)) {
@@ -88,18 +88,18 @@ include_once "../../../includes/dbh.inc.php";
                         <?php
                             $i++;
                             }
-                            ?>
+                        ?>
+
                       </tbody>
                   </table>
             </div>
-            
 <!-----------------------------------------------------New Employee form as a Pop-Up---------------------------------------------------------->
 
             <div class="th-addemployee-conatiner" id="th-add-employee">
                 <form action="create.process.php" method="post">
                     <div class="th-emp-row">
                         <div class="th-employee-form-title">
-                            <h2 style="margin-bottom:20px;">New Administrator</h2>
+                            <h2 style="margin-bottom:20px;">New Manager</h2>
                         </div>
                         <div class="th-emp-close" onclick="OnClickCloseAddEmployee()">
                              <span class="th-emp-close-button">X</span>
@@ -132,7 +132,7 @@ include_once "../../../includes/dbh.inc.php";
                             <input type="text" name="nic" class="th-emsu-input" required>
                         </div>
                     </div>
-                   
+            
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
                             <label for="email" class="th-user-label">Email Address</label>
@@ -147,18 +147,19 @@ include_once "../../../includes/dbh.inc.php";
                             <label for="contact" class="th-user-label">Contact</label>
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="number" name="contact" class="th-emsu-input" required>
+                            <input type="text" name="contact" class="th-emsu-input" required>
                         </div>
                     </div>
 
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="contact" class="th-user-label">Address</label>
+                            <label for="address" class="th-user-label">Address</label>
                         </div>
                         <div class="th-emp-form-input">
                             <input type="text" name="address" class="th-emsu-input" required>
                         </div>
                     </div>
+
 
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
@@ -179,9 +180,8 @@ include_once "../../../includes/dbh.inc.php";
                     </div>
 
 
-                    <input type="hidden" name="type" class="th-emsu-input" value="admin">
+                    <input type="hidden" name="type" class="th-emsu-input" value="manager">
                     
-            
             
                     <div class="th-emp-addb">
                         <button class="navButton" name="add">ADD</button>
@@ -191,8 +191,7 @@ include_once "../../../includes/dbh.inc.php";
             
             </div>
 
-<!--------------------------------------------------------------------------------------------------------------------------------------------->           
-
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
            
         </div>
     </div>

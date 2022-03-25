@@ -23,6 +23,18 @@ if(isset($_SESSION['id']))
         .hide-in-others{
             display:none;
         }
+        .content{
+            text-align:center;
+        }
+        .bills{
+            width:80%;
+            height:120px;
+            border-radius:70px;
+            font-size:15px;
+            border: 3px solid #C4C4C4;
+            background-color:#FFFAFA;
+            cursor:pointer;
+        }
     </style>
 </head>
 <body>
@@ -46,64 +58,32 @@ if(isset($_SESSION['id']))
         <div class="col-16 content">
             <!--main content here-->
 
-            <!--div container for customer to hold customer profile details form-->
-            <div class="col-12 ProfileContainer">
-               
-                <div class="row r3-1">
+            <br><br><br>
+
+            <div class="row r3-1">
                     <div class="col-12">
                         <h2 class="title"><b>PAYMENT HISTORY</b></h2>
                         <br>
                     </div>
-                </div>
-                <div class="row r3-1">
-                    <div class="col-12" style="overflow-x: auto;">
-                        <table class="appList"> <!--add php later. basic html structure has been made-->
-                        <thead>
-                            <tr>
-                                <th>BILL NO</th>
-                                <th>BILL TYPE</th>
-                                <th>DATE</th>
-                                <th>DESCRIPTION</th>
-                                <th>BILL AMOUNT</th>
-                                <th>VIEW</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="appListItems">
-                                <td>BS-8893</td>
-                                <td>Service</td>
-                                <td>11-09-2021</td>
-                                <td>Full Service </td>
-                                <td>LKR 15750.00</td>
-                                <td><a href="./readBill.php"><img src="../../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
-                            </tr>
+            </div>
+            
+            <br>
 
+            <div class="col-6">
+                <form action="./serviceBillList">
+                    <button type="submit" name="serviceBills" class="bills">Service Bills</button>
+                </form>
+            </div>
 
-
-                        </tbody>
-                        </table>
-
-                    </div>
-                </div>
-
+            <div class="col-6">
+                <form action="./productBillList">
+                    <button type="submit" name="serviceBills" class="bills">Product Bills</button>
+                </form>
+            </div>
 
         </div>
     </div>
 
     
-
-
-
- <!--   <footer>
-        <div class="row">
-            <div class="col-12">
-                <h4>CONTACT</h4><br>
-                <p>1088, 1 Battaramulla, Pannipitiya Rd, Battaramulla 10120 </p>
-                011 2XXXXXX | 07X XXXXXXX </p>
-                dpmotors@gmail.com</p>
-            </div>
-        </div>
-    </footer> -->
-
 </body>
 </html>

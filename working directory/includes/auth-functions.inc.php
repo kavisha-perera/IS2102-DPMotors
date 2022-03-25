@@ -86,13 +86,13 @@ function createCustomer($conn, $fname, $lname,  $email, $nic, $password , $type)
 
     if($type == "admin")
     {
-        header("location: ../UI/manageAccounts/adminaccounts.php");
+        header("location: ../UI/Administrator/manageAccounts/adminaccounts.php");
     }elseif($type == "manager")
     {
-        header("location: ../UI/manageAccounts/manageraccounts.php");
+        header("location: ../UI/Administrator/manageAccounts/manageraccounts.php");
     }elseif($type == "cashier")
     {
-        header("location: ../UI/manageAccounts/cashieraccounts.php");
+        header("location: ../UI/Administrator/manageAccounts/cashieraccounts.php");
     }else{
         header("location: ../UI/Auth-UI/login.php?error=none-registration-sucess");
 

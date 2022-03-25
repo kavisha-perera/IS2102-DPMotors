@@ -83,7 +83,7 @@ if (isset($_POST["reschedule-M"])){
 
     releaseSlotState($conn, $OLDslotID);
 
-    header("location: ../UI/Manager/appointments/readAppointments-pending?error=RescheduleSuccess");
+    header("location: ../UI/Manager/appointments/readAppointments-pending.php?error=RescheduleSuccess");
 
 }
 
@@ -101,7 +101,7 @@ if (isset($_POST["cancel-M"])){
 
     cancel($conn, $appId );
 
-    header("location: ../UI/Manager/appointments/readAppointments-pending?error=cancelSuccess");
+    header("location: ../UI/Manager/appointments/readAppointments-pending.php?error=cancelSuccess");
 
 }
 

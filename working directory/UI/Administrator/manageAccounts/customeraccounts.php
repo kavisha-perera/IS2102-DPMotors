@@ -6,7 +6,7 @@ if($_SESSION['type'] == "admin")
     $email =  $_SESSION['email'];
 }else{
 
-    header("location: ../../Auth-UI/Login.php?error=unscuccessful-attempt-adminDashboard");
+    header("location: ../../Auth-UI/Login.php?error=unscuccessful-attempt-customerDashboard");
 }
 include_once "../../../includes/dbh.inc.php";
 ?>
@@ -18,7 +18,7 @@ include_once "../../../includes/dbh.inc.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
     <script src="../../../javascript/empsup_pop-up.js"></script>
-	<title>Admin Accounts</title>
+	<title>Customer Accounts</title>
 </head>
 <body>
 
@@ -36,13 +36,14 @@ include_once "../../../includes/dbh.inc.php";
         </div>
     </div>
 
+
     <div class="row r3">
         <div class="col-15 ">
             <p> User <?php echo  $email ?></p><br><br><br>
-            <img src="../../../images/admin/admin.png" style="width: 250px;" alt=""><br><br><br><br><br>
+            <img src="../../../images/admin/customer.png" style="width: 250px;" alt=""><br><br><br><br><br>
             <button class="adminbutton1" onclick="OnClickOpenAddEmloyee()" >+ Add New</button>
             <br><br><br><br><br>
-            <p style="text-align: center;"> <a href="manage.php"> <button class="navButton">Back </button></a></p>
+            <p style="text-align: center;"> <button onclick="history.back()" class="navButton">Back </button></p>
             <br><br><br>
         </div>
 
@@ -53,23 +54,23 @@ include_once "../../../includes/dbh.inc.php";
                 <div class="th-table-container1">
                     
                     
-                    <h2 class="th-th2">Admin Accounts<h2><!--table name-->
+                    <h2 class="th-th2">Customer Accounts<h2><!--table name-->
                 <table class="th-user-table">
                     <thead>
-                    <tr>
-                      <th>AccountNo</th> <!--table properties-->
+                    <th>AccountNo</th> <!--table properties-->
                       <th>First name</th>
                       <th>Last name</th> 
                       <th>Email</th>
                       <th>NIC</th>
                       <th>Contact</th>
                       <th>Address</th>
+                      <th>State</th>
                       <th colspan="2" style="text-align: center;">Controls</th>
                     </tr>
                     </thead>
                     <tbody>
                         <?php
-                            $sql = "SELECT id, fname, lname,email, nic, contact, address  FROM users where type='admin'";
+                            $sql = "SELECT id, fname, lname,email, nic, contact, address, state  FROM users where type='customer'";
                             $result = $conn->query($sql);
                             $i=0;
                             while($row = mysqli_fetch_array($result)) {
@@ -82,24 +83,24 @@ include_once "../../../includes/dbh.inc.php";
                             <td><?php echo $row["nic"];?></td>
                             <td><?php echo $row["contact"] ?></td>
                             <td><?php echo $row["address"] ?></td>
+                            <td><?php echo $row["state"] ?></td>
                             <td><a href="update.process.php?id=<?php echo $row["id"];?>"><button class="th-button-icon"><img src='../../../images/Employee & Supplier/edit.svg' class='th-svg-icons'></button></a></td>
                             <td><a href="delete.process.php?id=<?php echo $row["id"];?>"><button class="th-button-icon"><img src='../../../images/Employee & Supplier/delete.svg' class='th-svg-icons'></button></a></td>
                         </tr>
                         <?php
                             $i++;
                             }
-                            ?>
+                        ?>
                       </tbody>
                   </table>
             </div>
-            
 <!-----------------------------------------------------New Employee form as a Pop-Up---------------------------------------------------------->
 
             <div class="th-addemployee-conatiner" id="th-add-employee">
                 <form action="create.process.php" method="post">
                     <div class="th-emp-row">
                         <div class="th-employee-form-title">
-                            <h2 style="margin-bottom:20px;">New Administrator</h2>
+                            <h2 style="margin-bottom:20px;">New Customer</h2>
                         </div>
                         <div class="th-emp-close" onclick="OnClickCloseAddEmployee()">
                              <span class="th-emp-close-button">X</span>
@@ -179,10 +180,8 @@ include_once "../../../includes/dbh.inc.php";
                     </div>
 
 
-                    <input type="hidden" name="type" class="th-emsu-input" value="admin">
+                    <input type="hidden" name="type" class="th-emsu-input" value="customer">
                     
-            
-            
                     <div class="th-emp-addb">
                         <button class="navButton" name="add">ADD</button>
                     </div>
@@ -191,13 +190,10 @@ include_once "../../../includes/dbh.inc.php";
             
             </div>
 
-<!--------------------------------------------------------------------------------------------------------------------------------------------->           
-
-           
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
+   
         </div>
     </div>
-
-
 
 </body>
 </html>

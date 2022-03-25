@@ -1,7 +1,14 @@
 
 <!--customer side nav bar for screens smaller than 800px-->
-<link rel="stylesheet" href="../../../css/main.css">
-
+    <style>
+        .Nav-dashboard{
+            /* to show the active link in navbar */
+            background-color:#344CB4; 
+        }
+        .hide-in-dashboard{
+            display:none;
+        }
+    </style>
 <div class="col-2 sideNav-dropdown" >
 
     <img src="../../../images/dropdown.svg" class="dropButton hide-in-others">
@@ -18,9 +25,9 @@
         </div>
         
         <div class="hide-in-dashboard">
-            <a href="../../profiles/adminViewProfile.html"> Profile </a>
+            <a href="../../profiles/adminViewProfile.html" class="Nav-profile"> Profile </a>
             <a href="../manageAccounts/manage.php"> Accounts </a> 
-            <a href="../../manageInventory/manageinventory.html"> Inventory </a>
+            <a href="../manageInventory/manageinventory.php"> Inventory </a>
             <a href="../../managepromotions/managepromotions.php"> Promotions </a>  
             <a href="../../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> 
             <a href="../../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a>
@@ -29,7 +36,7 @@
         <div class="hide-in-others">
             <a href="../../profiles/adminViewProfile.html"> Profile </a>
             <a href="../manageAccounts/manage.php"> Accounts </a> 
-            <a href="../../manageInventory/manageinventory.html"> Inventory </a>
+            <a href="../manageInventory/manageinventory.php"> Inventory </a>
             <a href="../../managepromotions/managepromotions.php"> Promotions </a>  
             <a href="../../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> 
             <a href="../../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a>
