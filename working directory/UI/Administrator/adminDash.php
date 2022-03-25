@@ -78,8 +78,6 @@ if($_SESSION['type'] == "admin")
 
     <!-- Start of Dropdown for screens with width less than 800px-->
     <div class="row r2">
-        
-<!--customer side nav bar for screens smaller than 800px-->
 
 <div class="col-2 sideNav-dropdown" >
 

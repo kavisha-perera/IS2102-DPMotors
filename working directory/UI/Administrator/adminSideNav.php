@@ -1,7 +1,15 @@
 
 <!--customer side nav bar for screens larger than 800px-->
-
-<p> Welcome <?php echo $adminEmail;?> </p> <hr>
+    <style>
+        .Nav-dashboard{
+            /* to show the active link in navbar */
+            background-color:#344CB4; 
+        }
+        .hide-in-dashboard{
+            display:none;
+        }
+    </style>
+<p> Welcome <?php echo $email;?> </p> <hr>
 
 
 <div class="hide-in-others">
