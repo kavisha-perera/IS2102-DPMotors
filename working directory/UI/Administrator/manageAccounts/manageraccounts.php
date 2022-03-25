@@ -30,7 +30,7 @@ include_once "../../../includes/dbh.inc.php";
             <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
         </div>
         <div class="col-14 navbar"> 
-            <form action="../../includes/logout.inc.php">
+            <form action="../../../includes/logout.inc.php">
                 <button class="navButton"> Log Out </button>
             </form> 
         </div>
@@ -93,7 +93,6 @@ include_once "../../../includes/dbh.inc.php";
                       </tbody>
                   </table>
             </div>
-<!-------------------------ADD,UPDATE and DELETE related HTML are in the View Employee page becuz they all are pop-ups------------------------>
 <!-----------------------------------------------------New Employee form as a Pop-Up---------------------------------------------------------->
 
             <div class="th-addemployee-conatiner" id="th-add-employee">
@@ -167,7 +166,7 @@ include_once "../../../includes/dbh.inc.php";
                             <label for="password" class="th-user-label">Password</label class="th-emsu-input">
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="password" name="password" class="th-emsu-input">
+                            <input type="password" name="password" class="th-emsu-input" required>
                         </div>
                     </div>
 
@@ -176,7 +175,7 @@ include_once "../../../includes/dbh.inc.php";
                             <label for="confirm password" class="th-user-label">Confirm Password</label class="th-emsu-input">
                         </div>
                         <div class="th-emp-form-input">
-                            <input type="password" name="confirmpw" class="th-emsu-input">
+                            <input type="password" name="confirmpw" class="th-emsu-input" required>
                         </div>
                     </div>
 
@@ -193,110 +192,11 @@ include_once "../../../includes/dbh.inc.php";
             </div>
 
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
-
-<!-----------------------------------------------------Employee Update form as a Pop-Up-------------------------------------------------------->
-            <div class="th-addemployee-conatiner" id="th-update-employee">
-                <form action="../../../includes/signup-inc.php" method="post">
-                    <div class="th-emp-row">
-                        <div class="th-employee-form-title">
-                            <h2 style="margin-bottom:20px;">Manager</h2>
-                        </div>
-                        <div class="th-emp-close" onclick="OnClickCloseUpdateEmployee()">
-                             <span class="th-emp-close-button">X</span>
-                        </div>
-                    </div>
-                    <!---start of update supplier form-->
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="firstname" class="th-user-label">First Name</label>
-                        </div>
-                        <div class="th-emp-form-input">
-                            <input type="text" name="fname" class="th-emsu-input">
-                        </div>
-                    </div>
-            
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="lastname" class="th-user-label">Last Name</label>
-                        </div>
-                        <div class="th-emp-form-input">
-                            <input type="text" name="lname" class="th-emsu-input">
-                        </div>
-                    </div>
-            
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="nic"class="th-user-label">NIC</label class="th-emsu-input">
-                        </div>
-                        <div class="th-emp-form-input">
-                            <input type="text" name="nic" class="th-emsu-input">
-                        </div>
-                    </div>
-            
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="contact"class="th-user-label">Contact Number</label class="th-emsu-input">
-                        </div>
-                        <div class="th-emp-form-input">
-                            <input type="text" name="contact" class="th-emsu-input">
-                        </div>
-                    </div>
-            
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="address"class="th-user-label"> Email Address</label class="th-emsu-input">
-                        </div>
-                        <div class="th-emp-form-input">
-                            <input type="text" name="email" class="th-emsu-input">
-                        </div>
-                    </div>
-
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="Employee ID" class="th-user-label">Employee ID</label class="th-emsu-input">
-                        </div>
-                        <div class="th-emp-form-input">
-                            <input type="text" name="employeeid" class="th-emsu-input">
-                        </div>
-                    </div>
-            
-                    <div class="th-emp-addb">
-                        <button class="navButton" name="submit" style="background-color: #2fd138; color:#000000">UPDATE</button>
-                    </div>
-                </form>
-            </div>
-   
-<!--------------------------------------------------------------------------------------------------------------------------------------------->
-
-<!-----------------------------------------------------Delete Employee message as a Pop-Up----------------------------------------------------->
-            <div class="th-delete-record-container" id="th-delete-employee">
-                <div class="th-emp-close">
-                    <span class="th-emp-close-button" onclick="OnClickCloseDeleteEmployee()">X</span>
-               </div>
-
-                <h2 class="th-delete-message">Sucessfully Deleted!</h2>
-            
-            </div>
-
            
         </div>
     </div>
 
-<!--------------------------------------------------------------------------------------------------------------------------------------------->
-    
 
-
-
- <!--   <footer>
-        <div class="row">
-            <div class="col-12">
-                <h4>CONTACT</h4><br>
-                <p>1088, 1 Battaramulla, Pannipitiya Rd, Battaramulla 10120 </p>
-                011 2XXXXXX | 07X XXXXXXX </p>
-                dpmotors@gmail.com</p>
-            </div>
-        </div>
-    </footer> -->
 
 </body>
 </html>

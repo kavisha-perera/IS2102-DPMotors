@@ -59,9 +59,9 @@ if(isset($_POST['update']))
     <div class="row r3">
         <div class="col-15 ">
             <p> Welcome <?php echo  $email ?></p><br><br><br>
-            <img src="../../../images/admin/admin.png" style="width: 250px;" alt=""><br><br><br><br><br>
+            <img src="../../../images/admin/updateemployee.png" style="width: 250px;" alt=""><br><br><br><br><br>
             <br><br><br><br><br>
-            <p style="text-align: center;"> <a href="adminaccounts.php"> <button class="navButton">Back </button></a></p>
+            <p style="text-align: center;"> <button class="navButton" onclick="history.back()">Back </button></p>
             <br><br><br>
         </div>
 <!--------------------------------------------UPDATE FORM-------------------------------------------------------->
