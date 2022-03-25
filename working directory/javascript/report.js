@@ -234,7 +234,8 @@ function loadAllAppointments (){
             axisY: {
                 title: "Count",
                 valueFormatString: "#",
-                interval: 1
+                interval: 1,
+                minimum: 0
             },
             data: [{
                 type: "column",
@@ -251,7 +252,8 @@ function loadAllAppointments (){
             axisY: {
                 title: "Count",
                 valueFormatString: "#",
-                interval: 1
+                interval: 1,
+                minimum: 0
             },
             data: [{
                 type: "column",
@@ -268,7 +270,8 @@ function loadAllAppointments (){
             axisY: {
                 title: "Count",
                 valueFormatString: "#",
-                interval: 1
+                interval: 1,
+                minimum: 0
             },
             data: [{
                 type: "column",
