@@ -124,7 +124,7 @@ include_once("../../../includes/promotions.inc.php");
                     <input type="text" placeholder="Code" name="code" required>
                     </div>
                     <div class="raw">
-                    <input type="date" placeholder="Valid Till" name="validtill" id="date" min="2021-10-25" required>
+                    <input type="date" placeholder="Valid Till" name="validtill" id="date" min="2022-03-29" required>
                     </div>
                     <div class="raw">
                                         
@@ -183,7 +183,7 @@ include_once("../../../includes/promotions.inc.php");
                     <input type="text" placeholder="Code" name="code" required id="updatecode">
                     </div>
                     <div class="raw">
-                    <input type="date" placeholder="Valid Till" name="validtill" id="updatedate" required>
+                    <input type="date" placeholder="Valid Till" name="validtill" id="updatedate" min="2022-03-29" required>
                     </div>
        
                     <div class="raw">
@@ -236,7 +236,7 @@ include_once("../../../includes/promotions.inc.php");
         <form action="readPromotion.php" method="post">
             <h2>DELETE RECORD</h2>
             <br>
-            <p>This action will remove all details of this record from the system database and therefore will not be able to be retrieved again.</p>
+            <p>This action will remove all details of this record and therefore will not be able to be retrieved again.</p>
             <br>
             <p>Are you sure you want to <span style="color: #D72731">delete this promotion?</span></p>
             <br>

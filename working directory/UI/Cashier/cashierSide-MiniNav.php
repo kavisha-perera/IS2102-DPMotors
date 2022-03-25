@@ -27,7 +27,7 @@
 <div class="hide-in-others">
     <a href="../Cashier/cashierProfile/cashierViewProfile1.php" class="Nav-profile"> Profile </a><hr> 
     <a href="../Cashier/cashierbills/createbill.php" class="Nav-bill" > Create Bill </a><hr/>
-    <a href="../promotion/cashierReadPromotion.php"class="Nav-promo"> Promotions </a><hr/>
+    <a href="../Cashier/promotion/cashierReadPromotion.php"class="Nav-promo"> Promotions </a><hr/>
     <a href="../Cashier/Cashier View Bill History/CashierViewAllBills.php" class="Nav-viewbill"> Bill History </a><hr/> 
     <a href="../Cashier/Cashier service records/cashierViewService.php" class="Nav-service"> Vehicle Service Records </a><hr/> 
     <a href="../Cashier/Cashier product reservation/ViewProductResrvation.php"class="Nav-pr"> Product Reservations </a><hr/>

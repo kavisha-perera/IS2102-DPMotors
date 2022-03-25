@@ -266,7 +266,7 @@ function sendResetEmail($code ,  $email){
     
     // Mail body content 
     $bodyContent = '<h3>This is the email reset confirmation from DPMotors.lk site please click the following link to reset your email <h3></br>'; 
-    $bodyContent .= '<a href="http://localhost/IS2102-DPMotors/working%20directory/UI/Auth-UI/resetpassword.php?email='.$email.'&code='.$code.'">Reset Password</a>'; 
+    $bodyContent .= '<a href="http://localhost/IS2102/IS2102-DPMotors/working%20directory/UI/Auth-UI/resetpassword.php?email='.$email.'&code='.$code.'">Reset Password</a>'; 
     $mail->Body    = $bodyContent; 
     
     // Send email 

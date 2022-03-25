@@ -72,6 +72,7 @@ include_once("../managerNav.php");
 </div>
 </div>
 
+</br> </br> </br> </br>
 
 
 <h3>Schedule Report<h3>
@@ -83,6 +84,7 @@ include_once("../managerNav.php");
 </div>
 
 
+</br> </br> </br> </br>
 
 <h3>Vehicle Service Records Report<h3>
 
@@ -92,6 +94,8 @@ include_once("../managerNav.php");
   
 </div>
 
+
+</br> </br> </br> </br>
 
 
 <h3>New Registerd Users Report<h3>

@@ -126,7 +126,15 @@ include_once("../../../includes/employee.inc.php");
                     <input type="text" placeholder="Contact" name="contact" required>
                     </div>
                     <div class="raw">
-                    <input type="text" placeholder="Designation" name="designation" required>
+
+                    <select name="designation" id="designation" required>
+                    <option value="" disabled selected hidden>Designation</option>
+                    <option value="retailer">Retailer</option>
+                    <option value="mechanic">Mechanic</option>
+                    <option value="technician">Technician</option>
+                    <option value="electrician">Electrician</option>
+                    </select>
+
                     </div>
 
 
@@ -177,7 +185,13 @@ include_once("../../../includes/employee.inc.php");
                     <input type="text" placeholder="Contact" name="contact" required id="updatecontact">
                     </div>
                     <div class="raw">
-                    <input type="text" placeholder="Designation" name="designation" required id="updatedesignation">
+                    <select name="designation" id="updatedesignation" required>
+                    <option value="" disabled selected hidden>Designation</option>
+                    <option value="retailer">Retailer</option>
+                    <option value="mechanic">Mechanic</option>
+                    <option value="technician">Technician</option>
+                    <option value="electrician">Electrician</option>
+                    </select>
                     </div>
 
 
@@ -206,7 +220,7 @@ include_once("../../../includes/employee.inc.php");
         <form action="employeeRecords.php" method="post">
             <h2>DELETE RECORD</h2>
             <br>
-            <p>This action will remove all details of this record from the system database and therefore will not be able to be retrieved again.</p>
+            <p>This action will remove all details of this record and therefore will not be able to be retrieved again.</p>
             <br>
             <p>Are you sure you want to <span style="color: #D72731">delete this record?</span></p>
             <br>

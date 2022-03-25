@@ -67,7 +67,7 @@
                 <div class="raw">
                 <button type="submit" name="submit" class="loginButton" >Login</button>
                 
-                <h6 style="margin-left: 35%;"><a href="" >Forgot your password</a></h6>
+                <h6 style="margin-left: 35%;"><a href="frogotpassword.php" >Forgot your password</a></h6>
                 </div>    
                 
                 <?php
