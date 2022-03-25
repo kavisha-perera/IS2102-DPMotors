@@ -88,7 +88,7 @@ include_once "../../../includes/dbh.inc.php";
                         <?php
                             $i++;
                             }
-                            ?>
+                        ?>
                       </tbody>
                   </table>
             </div>
