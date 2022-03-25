@@ -101,6 +101,20 @@
                         <br/>";
                         exit();
                     }
+                    if (strpos ($fullUrl, "success=password-email") == true) {
+                        echo "
+                        <br/>                  
+                        <p class='error'>Password reset email sent successfully. please check your email<br/></p>
+                        <br/>";
+                        exit();
+                    }
+                    if (strpos ($fullUrl, "success=password-success") == true) {
+                        echo "
+                        <br/>                  
+                        <p class='error'>Password changed successfuly please use the new credintials to login<br/></p>
+                        <br/>";
+                        exit();
+                    }
                     if (strpos ($fullUrl, "error=account-deactivated") == true) {
                         echo "
                         <br/>                  

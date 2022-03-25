@@ -1,5 +1,17 @@
 <?php
 
+
+    // Import PHPMailer classes into the global namespace 
+    use PHPMailer\PHPMailer\PHPMailer; 
+    use PHPMailer\PHPMailer\Exception; 
+
+
+    require './PHPMailer/Exception.php';
+    require './PHPMailer/PHPMailer.php';
+    require './PHPMailer/SMTP.php';
+
+
+
 //***********************signup functions*********************
 
 function emptyInputSignup($fname, $lname,  $email, $nic, $password, $confirmpw , $type) {
@@ -179,4 +191,141 @@ function loginUser($conn, $email, $password){
     }
 
 }
+
+
+
+//***********************frogot password functions *********************
+
+
+
+function addCodeAndSendEmail($conn ,$email){
+
+
+    $randomCode = generateRandomCode();
+
+    $sql = "UPDATE  users SET code = ? WHERE email = ? ";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../UI/Auth-UI/signUp.php?error=stmtfailed");
+        exit();
+    }
+
+
+    mysqli_stmt_bind_param($stmt, "ss" , $randomCode, $email);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    sendResetEmail($randomCode , $email);
+
+    return true;
+
+
+}
+
+
+function generateRandomCode() {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < 10; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+
+
+function sendResetEmail($code ,  $email){
+
+
+    $mail = new PHPMailer; 
+ 
+    $mail->isSMTP();                      // Set mailer to use SMTP 
+    $mail->Host = 'smtp.gmail.com';       // Specify main and backup SMTP servers 
+    $mail->SMTPAuth = true;               // Enable SMTP authentication 
+    $mail->Username = 'project1.group03@gmail.com';   // SMTP username 
+    $mail->Password = 'project@2102';   // SMTP password 
+    $mail->SMTPSecure = 'tls';            // Enable TLS encryption, `ssl` also accepted 
+    $mail->Port = 587;                    // TCP port to connect to 
+    
+    // Sender info 
+    $mail->setFrom('admin@dpmortors.lk', 'dpmortors'); 
+    $mail->addReplyTo('reply@dpmortors.lk', 'dpmortors'); 
+    
+    // Add a recipient 
+    $mail->addAddress($email); 
+    
+    //$mail->addCC('cc@example.com'); 
+    //$mail->addBCC('bcc@example.com'); 
+    
+    // Set email format to HTML 
+    $mail->isHTML(true); 
+    
+    // Mail subject 
+    $mail->Subject = 'Password Reset Email From DP Motors'; 
+    
+    // Mail body content 
+    $bodyContent = '<h3>This is the email reset confirmation from DPMotors.lk site please click the following link to reset your email <h3></br>'; 
+    $bodyContent .= '<a href="http://localhost/IS2102-DPMotors/working%20directory/UI/Auth-UI/resetpassword.php?email='.$email.'&code='.$code.'">Reset Password</a>'; 
+    $mail->Body    = $bodyContent; 
+    
+    // Send email 
+    if(!$mail->send()) { 
+        echo 'Message could not be sent. Mailer Error: '.$mail->ErrorInfo; 
+    } else { 
+        echo 'Message has been sent.'; 
+    } 
+
+
+}
+
+
+
+function checkCodeAndRestPassword($conn , $code , $email , $password ){
+
+
+    // check if the email is valid
+
+    $emailExists = emailTaken($conn, $email , $email); 
+
+    if ($emailExists === false) {
+        header("location: ../UI/Auth-UI/login.php?error=wronglogin-email");
+        exit();
+    }
+
+    // check the validity of the code
+
+    $DBcode = $emailExists['code'];
+
+
+    if($DBcode != $code){
+        header("location: ../UI/Auth-UI/login.php?error=code-mismatch");
+        exit();
+    }
+
+
+    $hashedPwd = password_hash($password , PASSWORD_DEFAULT);
+
+    $sql = "UPDATE  users SET password = ? WHERE email = ? ";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../UI/Auth-UI/signUp.php?error=stmtfailed");
+        exit();
+    }
+
+
+    mysqli_stmt_bind_param($stmt, "ss" , $hashedPwd, $email);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+
+
+
+
+}
+
+
+
+
 
