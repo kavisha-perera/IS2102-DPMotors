@@ -84,7 +84,7 @@ include_once "../../../includes/dbh.inc.php";
                             <td><?php echo $row["nic"];?></td>
                             <td><?php echo $row["contact"] ?></td>
                             <td><?php echo $row["address"] ?></td>
-                            <td><a href="update.process.php?id=<?php echo $row["id"];?>"><button class="th-button-icon" onclick="Updateopen()"><img src='../../../images/Employee & Supplier/edit.svg' class='th-svg-icons'></button></a></td>
+                            <td><a href="update.process.php?id=<?php echo $row["id"];?>"><button class="th-button-icon"><img src='../../../images/Employee & Supplier/edit.svg' class='th-svg-icons'></button></a></td>
                             <td><a href="delete.process.php?id=<?php echo $row["id"];?>"><button class="th-button-icon"><img src='../../../images/Employee & Supplier/delete.svg' class='th-svg-icons'></button></a></td>
                         </tr>
                         <?php
@@ -134,7 +134,6 @@ include_once "../../../includes/dbh.inc.php";
                             <input type="text" name="nic" class="th-emsu-input" required>
                         </div>
                     </div>
-            
                    
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
@@ -147,20 +146,22 @@ include_once "../../../includes/dbh.inc.php";
 
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="contact" class="th-user-label">Contact</label class="th-emsu-input">
+                            <label for="contact" class="th-user-label">Contact</label>
                         </div>
                         <div class="th-emp-form-input">
                             <input type="number" name="contact" class="th-emsu-input" required>
                         </div>
                     </div>
+
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
-                            <label for="contact" class="th-user-label">Address</label class="th-emsu-input">
+                            <label for="contact" class="th-user-label">Address</label>
                         </div>
                         <div class="th-emp-form-input">
                             <input type="text" name="address" class="th-emsu-input" required>
                         </div>
                     </div>
+                    
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
                             <label for="password" class="th-user-label">Password</label class="th-emsu-input">

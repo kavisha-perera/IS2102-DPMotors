@@ -9,20 +9,29 @@ if($_SESSION['type'] == "admin")
 
     header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-adminDashboard");
 }
-$sql = "SELECT id, fname, lname, email, nic, type, contact, address, state FROM users WHERE id = '" . $_GET['id'] . "'";
-$result=mysqli_query($conn,$sql);
-$row=mysqli_fetch_array($result);
-
 if(isset($_POST['update']))
 {
-    $sql1 = "UPDATE users SET fname = '" . $_POST['fname'] . "', lname= '" . $_POST['lname'] . "', email=  '" . $_POST['email'] . "', nic= '" . $_POST['nic'] . "', type= '" . $_POST['type'] . "', contact= '" . $_POST['contact'] . "', address= '" . $_POST['address'] . "', state= '" . $_POST['state'] . "' WHERE id='updateid'";
+    
+    $id = $_POST["updateid"];
+    $fname = $_POST["fname"];
+    $lname = $_POST["lname"];
+    $email = $_POST["email"];
+    $nic = $_POST["nic"];
+    $type = $_POST["type"];
+    $contact = $_POST["contact"];
+    $address = $_POST["address"];
+    $state = $_POST["state"];
+
+    $sql1 = "UPDATE users SET fname = '$fname', lname= '$lname', email= '$email', nic= '$nic', type= '$type', contact= '$contact', address= '$address', state= '$state' WHERE id='$id'";
     if(mysqli_query($conn,$sql1))
     {
-        echo '<script>alert"Record Updated Succefully"</script>';
+        echo '<script>alert("Record Updated succesfully");history.go(-2);</script>';
     }else{
-        echo '<script>alert"Error!"</script>';
+        echo '<script>alert("Error Updating Record");history.go(-1);</script>';
     }
+    exit();
 }
+
 
 ?>
 <html>
@@ -57,7 +66,14 @@ if(isset($_POST['update']))
         </div>
 <!--------------------------------------------UPDATE FORM-------------------------------------------------------->
         <div class="col-16 content">           
-            <form action="" method="post">
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                <?php
+                    $showid = $_GET["id"];
+                    $sql = "SELECT id, fname, lname, email, nic, type, contact, address, state FROM users WHERE id = '$showid'";
+                    $result=mysqli_query($conn,$sql);
+                    $row=mysqli_fetch_array($result);
+                
+                ?>
                 <div class="row">
                         <div class="th-employee-form-title">
                             <h2 style="margin-bottom:20px;">Employee <?php echo $row['id'];?></h2>
@@ -123,10 +139,15 @@ if(isset($_POST['update']))
                 </div>
                 <div class="row">
                     <div class="col-4 BookAppLabel">
-                        <label>State</label>
+                        <label for="state">State</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="state" value="<?php echo $row['state'];?>">
+                        <select name="state" class="serviceApp">
+                            <option value=""selected></option>
+                            <option value="activated">Activated</option>
+                            <option value="deactivated">Deactivated</option>
+                        </select>
+                        <!--<input type="radio" class="serviceApp" name="state" value="<?php echo $row['state'];?>">-->
                     </div>
                 </div>
                 <div class="th-emp-addb">
