@@ -38,5 +38,5 @@
     </div>
 </div>
 <div class="col-10 smallWel">
-    <p> Welcome <?php echo $email;?> </p>
+    <p> Cashier <?php echo $email;?> </p>
 </div>
