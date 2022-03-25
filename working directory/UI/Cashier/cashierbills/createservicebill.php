@@ -32,6 +32,20 @@ if ($sbill) { //View Service bill details
     echo "Database connection failed.";
 }
 
+
+$date_time_form = isset($_POST['datetime']) ? $_POST['datetime'] :  "";
+$cus_name_form = isset($_POST['cus_name']) ? $_POST['cus_name'] :  "";
+$cashier_name_form = isset($_POST['cashier_name']) ? $_POST['cashier_name'] :  "";
+$description_form = isset($_POST['description']) ? $_POST['description'] :  "";
+$service_price_form = isset($_POST['service_price']) ? $_POST['service_price'] :  "";
+$sbill_form = isset($_POST['sbill_no']) ? $_POST['sbill_no'] :  "";
+$billtype_form=isset($_POST['billtype']) ? $_POST['billtype'] :  "";
+
+
+
+
+
+
 //Check if bill No already exsist
 
 if(isset($_POST['submit'])){
@@ -59,10 +73,9 @@ if(isset($_POST['submit'])){
 
         $result = mysqli_query($conn, $query);
 
-        if($result){
-            header("location: createservicebill.php?users_added=true");
-        }else{
+        if(!$result){
             header("Location: createservicebill.php?msg=Failed to add new record.");
+        }else{
         }  
     }
 }
@@ -132,33 +145,27 @@ if (isset($_GET['user_id'])){
 
                     <form action="./createservicebill.php" method="POST">
 
-                        <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Customer email</label>
-                        <input type="text" name="email" class="searchbar">
-
-                        <div class="th-add-new-button" style="margin-left:200px;margin-bottom:25px;">
-                        <button class="navButton" name="submit"  onclick="document.location='createservicebill.php''"><b> OK</b></button>
-                        </div><br><br>
-
-                        <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Customer Name</label>
-                        <input type="text" name="cus_name" class="searchbar"><br><br>
-
+                        
                         <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Bill No</label>
-                        <input type="text" placeholder="Example:SB100 "name="sbill_no" class="searchbar"><span> <span class="error"><?php echo $bill_error;?></span>
+                        <input type="text" placeholder="Example:SB100 "name="sbill_no" class="searchbar" value="<?php echo $sbill_form; ?>"><span> <span class="error"><?php echo $bill_error;?></span>
                         
                         <label for="servicetype" class="th-user-label" style="background-color: #021257; color: white;" >Bill Type</label>
-                        <select name="billtype" class="billtextbox">
+                        <select name="billtype" class="billtextbox" value="<?php echo $billtype_form;?>">
                             <option>Service</option> 
                             <option>Product</option>       
                          </select>
                          
                         <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Date</label>
-                        <input type="date" name="datetime" class="searchbar" style="width:200px;" min="2022-03-24" max="2042-01-01"><br><br>
+                        <input type="date" name="datetime" class="searchbar" style="width:200px;" min="2022-03-25" max="2042-01-01" value="<?php echo $date_time_form; ?>"><br><br>
+
+                        <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Customer Name</label>
+                        <input type="text" name="cus_name" class="searchbar" value="<?php echo $cus_name_form; ?>"> 
 
                         <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Cashier Name</label>
-                        <input type="text" name="cashier_name" class="searchbar">
+                        <input type="text" name="cashier_name" class="searchbar" value="<?php echo $cashier_name_form; ?>"><br><br>
 
                         <label for="servicetype" class="th-user-label" style="background-color: #021257; color: white;" >Service Description</label>
-                        <select name="description" class="billtextbox">
+                        <select name="description" class="billtextbox" value="<?php echo $description_form; ?>">
                             <option> - </option>
                             <option>Car Wash</option> 
                             <option>Oil Change</option>   
@@ -166,14 +173,14 @@ if (isset($_GET['user_id'])){
                             <option>Exterior design</option>
                             <option>Package 1:Car wash & oil change</option> 
                             <option>Package 2:Exterior Design & interior design</option>   
-                         </select><br><br>
+                         </select>
 
                         <label for="servicecharge" class="th-user-label" style="background-color: #021257; color: white;" >Service Charge</label>
                         <input type="text" name="service_price" class="billtextbox"><br><br>
 
                         <div class="th-add-new-button" style="margin-left:200px;margin-bottom:25px;">
-                        <button class="navButton" name="submit"  onclick="document.location='createservicebill.php''"><b> ADD</b></button>
-                        </div>
+                        <button class="navButton" name="submit"  value="<?php echo $service_price_form;?>" onclick="document.location='createservicebill.php''"><b> ADD</b></button>
+                        </div><br><br>
  
                         <table class="th-user-table">
                             <thead>
