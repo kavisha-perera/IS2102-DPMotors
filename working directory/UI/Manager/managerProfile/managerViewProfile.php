@@ -13,7 +13,7 @@ if(isset($_SESSION['id']))
 
 ?>
 
-<!DOCTYPE HTML>j
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
     <meta charset="utf-8">
