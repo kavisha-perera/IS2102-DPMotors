@@ -246,7 +246,7 @@
             if(password.length < 8){
 
                 var entry = document.createElement('li');
-                entry.innerHTML = "Password at least should contain 8 charactors";
+                entry.innerHTML = "Password must be atleast 8 characters including one special character";
                 label.appendChild(entry);
                 valid = false;
 
