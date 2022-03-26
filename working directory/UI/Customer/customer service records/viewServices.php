@@ -87,7 +87,7 @@ if(isset($_SESSION['id']))
 
                         $search = $_POST['search'];  // gets value sent over search form
 
-                        $sql = "SELECT distinct vehicleNo, vehicleModel FROM vehicleservicerecords WHERE customerEmail = '{$_SESSION['email']}' AND (vehicleNo LIKE '%$search%')";
+                        $sql = "SELECT distinct vehicleNo, vehicleModel FROM vehicleservicerecords WHERE customerEmail = '{$_SESSION['id']}' AND (vehicleNo LIKE '%$search%')";
 
                         $result = $conn->query($sql);
                         if (mysqli_num_rows($result) > 0){
