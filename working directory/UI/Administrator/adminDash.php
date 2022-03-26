@@ -138,7 +138,7 @@ if($_SESSION['type'] == "admin")
     <a href="../profiles/adminViewProfile.html"> Profile </a> <hr>
     <a href="manageAccounts/manage.php"> Accounts </a> <hr>
     <a href="manageInventory/manageinventory.php"> Inventory </a> <hr>
-    <a href="../managepromotions/managepromotions.php"> Promotions </a> <hr>
+    <a href="../../Manager/promotions/readPromotion.php"> Promotions </a> <hr>
     <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> <hr>
     <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a> <hr>
 </div>

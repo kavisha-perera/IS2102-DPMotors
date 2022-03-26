@@ -113,7 +113,7 @@ include_once "../../../includes/dbh.inc.php";
                              <span class="th-emp-close-button">X</span>
                         </div>
                     </div>
-                    <!---start of new employee form-->
+                    <!---start of new employee form
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
                             <label for="stock_id" class="th-user-label">stock_id</label>
@@ -121,7 +121,7 @@ include_once "../../../includes/dbh.inc.php";
                         <div class="th-emp-form-input">
                             <input type="text" name="code" class="th-emsu-input">
                         </div>
-                    </div>
+                    </div>-->
             
                     <div class="th-emp-row">
                         <div class="th-emp-form-label">
