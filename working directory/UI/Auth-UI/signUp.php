@@ -68,58 +68,7 @@
 
 
 
-          <?php
-            $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-            if (strpos ($fullUrl, "error=stmtfailed") == true) {
-                echo "<p class='error'> Something went wrong! <br/></p>
-                <br/>
-                <br/>
-                <form action='../Auth-UI/signUp.php' class='error'>
-                <button class='navButton' style='background-color:#8d161c;'> Try Again</button>
-                </form> ";
-
-                exit();
-            }
-            elseif (strpos ($fullUrl, "error=emptyinput") == true) {
-                echo "<p class='error'>You left out a field!</p>
-                <br/>
-                <br/>
-                <form action='../Auth-UI/signUp.php' class='error'>
-                <button class='navButton' style='background-color:#8d161c;'> Try Again</button>
-                </form> ";
-                
-                exit();
-            }
-            elseif (strpos ($fullUrl, "error=invalidEmail") == true) {
-                echo "<p class='error'>You seem to have entered an invalid email<br/></p>
-                <br/>
-                <br/>
-                <form action='../Auth-UI/signUp.php' class='error'>
-                <button class='navButton' style='background-color:#8d161c;'> Try Again</button>
-                </form> ";
-                exit();
-            }
-            elseif (strpos ($fullUrl, "error=passwordsdontmatch") == true) {
-                echo "<p class='error'>Your Passwords Don't Match. <br/></p>
-                <br/>
-                <br/>
-                <form action='../Auth-UI/signUp.php' class='error'>
-                <button class='navButton' style='background-color:#8d161c;'> Try Again</button>
-                </form> ";
-                exit();
-            }
-            elseif (strpos ($fullUrl, "error=emailexists") == true) {
-                echo "<p class='error'>Your Email or NIC is already registered with us <br/></p>
-                <br/>
-                <br/>
-                <form action='../Auth-UI/signUp.php' class='error'>
-                <button class='navButton' style='background-color:#8d161c;'> Try Again</button>
-                </form> ";
-                exit();
-            }
-        
-        ?>
 
 
 
@@ -149,7 +98,7 @@
                     
                 
 
-                        <ul id="validatinError" style="margin-left:10%;color:red;">
+                       <ul id="validatinError" style="margin-left:10%;color:green;">
 
                         </ul>
 
@@ -168,6 +117,34 @@
                 <button type="submit" name="submit" class="loginButton" >Sign Up</button>
                 
                 </div>     
+
+            <?php
+
+            $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+            if (strpos ($fullUrl, "error=stmtfailed") == true) {
+                echo '<script>alert("Something Went Wrong");history.go(-1)</script>';
+                exit();
+
+                exit();
+            }
+            elseif (strpos ($fullUrl, "error=emptyinput") == true) {
+                echo '<script>alert("Empty Input.");history.go(-1)</script>';
+                exit();
+                
+                exit();
+            }
+            elseif (strpos ($fullUrl, "error=invalidEmail") == true) {
+                echo '<script>alert("You Seem To Have Entered An Invalid Email");history.go(-1)</script>';
+                exit();
+            }
+            elseif (strpos ($fullUrl, "error=emailexists") == true) {
+                echo '<script>alert("This Email Already Exists");history.go(-1)</script>';
+                exit();
+            }
+        
+        ?>
+
   
             </form>
 
@@ -193,7 +170,7 @@
 
             var valid  = true;
 
-            // validate Email
+            /* validate Email
 
             var email = document.signUpForm.email.value;
             var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -205,7 +182,7 @@
                 label.appendChild(entry);
                 valid = false;
 
-            }
+            } */
 
             // validate NIC
 
