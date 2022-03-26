@@ -32,7 +32,7 @@ if(isset($_POST["frogotemail"])){
         addCodeAndSendEmail($conn ,$frogotemail);
     }
 
-    header("location: ../UI/Auth-UI/login.php?success=password-email");
+    header("location: ../UI/Auth-UI/login.php?success=passwordemail");
 
 }
 

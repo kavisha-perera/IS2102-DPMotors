@@ -107,7 +107,7 @@ include_once("../../../includes/employee.inc.php");
 
 <h2 style="color:#021257;" align="center">ADD EMPLOYEE</h2>
     <div class="raw">     
-                <form action="employeeRecords.php" method="post">
+                <form action="employeeRecords.php" method="post" name="employeeForm" onsubmit="return(validate());">
             
 
                     <div class="raw">
@@ -129,15 +129,27 @@ include_once("../../../includes/employee.inc.php");
 
                     <select name="designation" id="designation" required>
                     <option value="" disabled selected hidden>Designation</option>
-                    <option value="retailer">Retailer</option>
-                    <option value="mechanic">Mechanic</option>
-                    <option value="technician">Technician</option>
-                    <option value="electrician">Electrician</option>
+                    <option value="Retailer">Retailer</option>
+                    <option value="Mechanic">Mechanic</option>
+                    <option value="Technician">Technician</option>
+                    <option value="Electrician">Electrician</option>
                     </select>
 
                     </div>
 
+                    
+                <br/>
 
+                <div class="raw">
+
+                    <ul id="validatingError" style="margin-left:10%;color:green;">
+
+                    </ul>
+
+                </div>
+
+                </br>
+                 
                     <div class="raw">
                     <button type="submit" name="create" class="loginButton" >ADD EMPLOYEE</button>
                     </div>     
@@ -193,7 +205,6 @@ include_once("../../../includes/employee.inc.php");
                     <option value="electrician">Electrician</option>
                     </select>
                     </div>
-
 
                     <div class="raw">
                     <button type="submit" name="update" class="loginButton" >UPDATE EMPLOYEE</button>

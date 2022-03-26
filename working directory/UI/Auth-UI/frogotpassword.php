@@ -59,10 +59,10 @@
 
             <form action="../../includes/login.inc.php" method="post">      
 
-                <h2 align ="center">Frogot Password</h2>
+                <h2 align ="center">Forgot Password</h2>
 
                 <div class="flex-container">
-                    <label>Enter the email address of your account , we will send the rest link if the email is valid</label>
+                    <label>Enter the email address of your account , We will send the reset link if the email is valid.</label>
                     <input type="text" placeholder="Email Address" name="frogotemail" required>
                 </div>
 

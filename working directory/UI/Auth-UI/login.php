@@ -101,7 +101,7 @@
                         <br/>";
                         exit();
                     }
-                    if (strpos ($fullUrl, "success=password-email") == true) {
+                    if (strpos ($fullUrl, "success=passwordemail") == true) {
                         echo "
                         <br/>                  
                         <p class='error'>Password reset email sent successfully. please check your email<br/></p>

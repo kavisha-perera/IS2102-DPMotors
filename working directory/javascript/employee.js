@@ -76,3 +76,50 @@ document.getElementById('backgroundfader').classList.remove("active");
 }
 
 
+
+var label = document.getElementById("validatingError");
+                
+function validate() {
+
+
+    label.innerHTML = "";
+
+
+    var valid  = true;
+
+    //validate Email
+
+    var email = document.employeeForm.email.value;
+    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+
+    if(!email.match(validRegex)){
+        var entry = document.createElement('li');
+        entry.innerHTML = "Email is not valid";
+        label.appendChild(entry);
+        valid = false;
+
+    } 
+
+    // validate NIC
+
+
+    var nic = document.employeeForm.nic.value;
+    var cnic_no_regex = new RegExp('^[0-9+]{9}[vV|xX]$');
+    var new_cnic_no_regex = new RegExp('^[0-9+]{12}$');
+
+    if (nic.length == 10 && cnic_no_regex.test(nic)) {
+       // do nothing regex is validated
+    } else if (nic.length == 12 && new_cnic_no_regex.test(nic)) {
+       // do nothing regex is validated
+    } else {
+        
+        var entry = document.createElement('li');
+        entry.innerHTML = "NIC is not valid";
+        label.appendChild(entry);
+        valid = false;
+    }
+    return( valid );
+
+}
+  

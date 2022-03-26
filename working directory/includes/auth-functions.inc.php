@@ -249,8 +249,8 @@ function sendResetEmail($code ,  $email){
     $mail->Port = 587;                    // TCP port to connect to 
     
     // Sender info 
-    $mail->setFrom('admin@dpmortors.lk', 'dpmortors'); 
-    $mail->addReplyTo('reply@dpmortors.lk', 'dpmortors'); 
+    $mail->setFrom('admin@dpmotors.lk', 'dpmotors'); 
+    $mail->addReplyTo('reply@dpmotors.lk', 'dpmotors'); 
     
     // Add a recipient 
     $mail->addAddress($email); 
