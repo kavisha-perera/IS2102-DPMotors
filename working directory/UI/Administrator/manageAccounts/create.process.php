@@ -13,7 +13,6 @@ if (isset($_POST["add"])){
     $address = $_POST["address"];
 
     require_once '../../../includes/dbh.inc.php';
-    require_once '../../../includes/auth-functions.inc.php';
 
     if (invalidEmail($email) !== false){
         echo'<script>alert("Invalid email!");history.go(-1);</script>';

@@ -6,7 +6,7 @@ if($_SESSION['type'] == "admin")
     $adminEmail =  $_SESSION['email'];
 }else{
 
-    header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-adminDashboard");
+    header("location: ../Auth-UI/Login.php?error=unscuccessful-attempt-adminDashboard");
 }
 
 ?>
@@ -95,20 +95,20 @@ if($_SESSION['type'] == "admin")
     </div>
     
     <div class="hide-in-dashboard">
-        <a href="../profiles/adminViewProfile.html"> Profile </a>
+        <a href="Administrator profile/customerViewProfile"> Profile </a>
         <a href="manageAccounts/manage.php"> Accounts </a> 
         <a href="manageInventory/manageinventory.php"> Inventory </a>
         <a href="../managepromotions/managepromotions.php"> Promotions </a>  
-        <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> 
+        <a href="manageSupplier/Supplier.php"> Supplier </a> 
         <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a>
     </div>
 
     <div class="hide-in-others">
-        <a href="../profiles/adminViewProfile.html"> Profile </a>
+        <a href="Administrator profile/customerViewProfile"> Profile </a>
         <a href="manageAccounts/manage.php"> Accounts </a> 
         <a href="manageInventory/manageinventory.php"> Inventory </a>
         <a href="../managepromotions/managepromotions.php"> Promotions </a>  
-        <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> 
+        <a href="manageSupplier/Supplier.php"> Supplier </a> 
         <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a>
     </div>
 
@@ -135,20 +135,20 @@ if($_SESSION['type'] == "admin")
 </div>
 
 <div class="hide-in-dashboard">
-    <a href="../profiles/adminViewProfile.html"> Profile </a> <hr>
+    <a href="Administrator profile/customerViewProfile"> Profile </a> <hr>
     <a href="manageAccounts/manage.php"> Accounts </a> <hr>
     <a href="manageInventory/manageinventory.php"> Inventory </a> <hr>
     <a href="../../Manager/promotions/readPromotion.php"> Promotions </a> <hr>
-    <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> <hr>
+    <a href="manageSupplier/Supplier.php"> Supplier </a> 
     <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a> <hr>
 </div>
 
 <div class="hide-in-others">
-    <a href="../profiles/adminViewProfile.html"> Profile </a> <hr>
+    <a href="Administrator profile/customerViewProfile"> Profile </a> <hr>
     <a href="manageAccounts/manage.php"> Accounts </a> <hr>
     <a href="manageInventory/manageinventory.php"> Inventory </a> <hr>
     <a href="../managepromotions/managepromotions.php"> Promotions </a> <hr>
-    <a href="../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> <hr>
+    <a href="manageSupplier/Supplier.php"> Supplier </a> 
     <a href="../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a> <hr> 
 </div>
         </div>
@@ -166,7 +166,7 @@ if($_SESSION['type'] == "admin")
                         <a href="../managepromotions/managepromotions.php"><img src="../../images/admin/promo.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../Admin-Employee & Supplier records/ViewSupplier.php"><img src="../../images/admin/supplier.png" class="dashboardIcon"></a>
+                        <a href="manageSupplier/Supplier.php"><img src="../../images/admin/supplier.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
                         <a href="#"><img src="../../images/admin/backup.png" class="dashboardIcon"></a>

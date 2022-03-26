@@ -25,7 +25,7 @@
     <a href="../manageaccounts/manage.php"> Accounts </a> <hr>
     <a href="../manageInventory/manageinventory.php"> Inventory </a> <hr>
     <a href="../../managepromotions/managepromotions.php"> Promotions </a> <hr>
-    <a href="../../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> <hr>
+    <a href="../manageSupplier/Supplier.php"> Supplier </a> 
     <a href="../../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a> <hr>
 </div>
 
@@ -34,6 +34,6 @@
     <a href="../manageAccounts/manage.php"> Accounts </a> <hr>
     <a href="../manageInventory/manageinventory.php"> Inventory </a> <hr>
     <a href="../../managepromotions/managepromotions.php"> Promotions </a> <hr>
-    <a href="../../Admin-Employee & Supplier records/ViewSupplier.php"> Supplier </a> <hr>
+    <a href="../manageSupplier/Supplier.php"> Supplier </a> 
     <a href="../../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a> <hr> 
 </div>

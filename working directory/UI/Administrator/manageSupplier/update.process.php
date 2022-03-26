@@ -17,12 +17,10 @@ if(isset($_POST['update']))
     $lname = $_POST["lname"];
     $email = $_POST["email"];
     $nic = $_POST["nic"];
-    $type = $_POST["type"];
     $contact = $_POST["contact"];
     $address = $_POST["address"];
-    $state = $_POST["state"];
 
-    $sql1 = "UPDATE users SET fname = '$fname', lname= '$lname', email= '$email', nic= '$nic', type= '$type', contact= '$contact', address= '$address', state= '$state' WHERE id='$id'";
+    $sql1 = "UPDATE supplier SET fname = '$fname', lname= '$lname', email= '$email', nic= '$nic',  contact= '$contact', address= '$address' WHERE id='$id'";
     if(mysqli_query($conn,$sql1))
     {
         echo '<script>alert("Record Updated succesfully");history.go(-2);</script>';
@@ -40,7 +38,7 @@ if(isset($_POST['update']))
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
         <link rel="stylesheet" href="../../../css/main.css">
         <script src="../../../javascript/empsup_pop-up.js"></script>
-        <title>Employee Account Update</title>
+        <title>Supplier Record Update</title>
     </head>
     <body>
     <div class="row r1">
@@ -59,7 +57,7 @@ if(isset($_POST['update']))
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <?php
                     $showid = $_GET["id"];
-                    $sql = "SELECT id, fname, lname, email, nic, type, contact, address, state FROM users WHERE id = '$showid'";
+                    $sql = "SELECT id, fname, lname, email, nic, contact, address FROM supplier WHERE id = '$showid'";
                     $result=mysqli_query($conn,$sql);
                     $row=mysqli_fetch_array($result);
                 
@@ -105,14 +103,6 @@ if(isset($_POST['update']))
                 </div>
                 <div class="row">
                     <div class="col-4 BookAppLabel">
-                        <label>Type</label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="type" value="<?php echo $row['type'];?>" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
                         <label>Contact</label>
                     </div>
                     <div class="col-8 BookAppForm">
@@ -125,18 +115,6 @@ if(isset($_POST['update']))
                     </div>
                     <div class="col-8 BookAppForm">
                         <input type="text" class="serviceApp" name="address" value="<?php echo $row['address'];?>" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label for="state">State</label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <select name="state" class="serviceApp">
-                            <option value=""selected></option>
-                            <option value="activated">Activated</option>
-                            <option value="deactivated">Deactivated</option>
-                        </select>
                     </div>
                 </div>
                 <div class="th-emp-addb">
