@@ -15,7 +15,7 @@ if (isset($_POST["profile-submit"])){
 
 }
 
-/*statement to update nic number */
+/*statement to update nic number
 if (isset($_POST["nic-submit"])){
 
     $nic = $_POST["nic"];
@@ -32,10 +32,10 @@ if (isset($_POST["nic-submit"])){
 
    updateNIC($conn, $nic, $password); 
 
-}
+} 
 
 
-/*statement to update email address */
+statement to update email address 
 if (isset($_POST["email-submit"])){
 
     $nic = $_POST["nic"];
@@ -56,7 +56,7 @@ if (isset($_POST["email-submit"])){
 
    updateEMAIL($conn, $email, $password); 
 
-}
+} */
 
 
 /*statement to change/reset the password */

@@ -32,6 +32,9 @@ if(isset($_SESSION['id']))
         input[type=text], input[type=password] {
             padding: 12px 20px;
         }
+        .button{
+            width:150px;
+        }
     </style>
 </head>
 <body>
@@ -101,7 +104,7 @@ if(isset($_SESSION['id']))
                     </div>
                     <div class="col-4 buttons-inline"> 
                         <form action="./customerUpdateProfile.php">
-                            <button class="navButton"> Edit Profile </button>
+                            <button class="navButton button"> Edit Profile </button>
                         </form>
                     </div>
                 </div>
@@ -136,9 +139,9 @@ if(isset($_SESSION['id']))
                         <input type="text" class="profileV" name="email" value="<?php echo $row['email']; ?>" readonly>
                     </div>
                     <div class="col-4 buttons-inline"> 
-                        <form action="./customerChangeEmail.php">
+                     <!--   <form action="./customerChangeEmail.php">
                             <button class="navButton"> Change </button>
-                        </form>
+                        </form> -->
                     </div>
                 </div>
                 
@@ -151,7 +154,7 @@ if(isset($_SESSION['id']))
                     </div>
                     <div class="col-4 buttons-inline"> 
                         <form action="./customerChangePassword.php">
-                            <button class="navButton"> Change</button>
+                            <button class="navButton button"> Change Password</button>
                         </form>
                     </div>
                 </div>
@@ -174,7 +177,7 @@ if(isset($_SESSION['id']))
                     <div class="col-6 profileform"></div>
                     <div class="col-4 buttons-inline"> 
                         <form action="./customerDeleteAccount.php">
-                            <button class="navButton delete"> Deactivate  </button> <!--or deactivate-->
+                            <button class="navButton delete button"> Deactivate  </button> <!--or deactivate-->
                         </form>   
                     </div>
                 </div>
@@ -195,11 +198,6 @@ if(isset($_SESSION['id']))
                     if (strpos ($fullUrl, "error=ProfileupdateSucess") == true) {
                         echo "
                         <script>alert('PROFILE UPDATED SUCCESSFULLY!');</script>";
-                        exit();
-                    }
-                    if (strpos ($fullUrl, "NICupdateSucess") == true) {
-                        echo "
-                        <script>alert('NIC UPDATED SUCCESSFULLY!');</script>";
                         exit();
                     }
             ?>
