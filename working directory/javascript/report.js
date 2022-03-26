@@ -23,7 +23,9 @@ function loadAllProducts(){
                 text: "Products"
             },
             axisY: {
-                title: "Count"
+                title: "Count",
+                minimum: 0
+
             },
             data: [{
                 type: "column",
@@ -68,7 +70,8 @@ function loadAllUsers(){
                 text: "Users"
             },
             axisY: {
-                title: "Count"
+                title: "Count",
+                minimum: 0
             },
             data: [{
                 type: "column",
@@ -112,7 +115,9 @@ function loadAllschedule(){
                 text: "Booked Appointments"
             },
             axisY: {
-                title: "Count"
+                title: "Count",
+                minimum: 0
+
             },
             data: [{
                 type: "column",
@@ -159,7 +164,9 @@ function loadAllservice(){
             axisY: {
                 title: "Count",
                 valueFormatString: "#",
-                interval: 1
+                interval: 1,
+                minimum: 0
+
             },
             data: [{
                 type: "column",
@@ -234,7 +241,8 @@ function loadAllAppointments (){
             axisY: {
                 title: "Count",
                 valueFormatString: "#",
-                interval: 1
+                interval: 1,
+                minimum: 0
             },
             data: [{
                 type: "column",
@@ -251,7 +259,8 @@ function loadAllAppointments (){
             axisY: {
                 title: "Count",
                 valueFormatString: "#",
-                interval: 1
+                interval: 1,
+                minimum: 0
             },
             data: [{
                 type: "column",
@@ -268,7 +277,8 @@ function loadAllAppointments (){
             axisY: {
                 title: "Count",
                 valueFormatString: "#",
-                interval: 1
+                interval: 1,
+                minimum: 0
             },
             data: [{
                 type: "column",

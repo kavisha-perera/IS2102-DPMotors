@@ -1,12 +1,15 @@
 <?php
 
+
+require_once 'dbh.inc.php';
+require_once 'auth-functions.inc.php';
+
 if (isset($_POST["submit"])){
 
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    require_once 'dbh.inc.php';
-    require_once 'auth-functions.inc.php';
+
 
     if (emptyInputLogin($email, $password) !== false){
         header("location: ../UI/Auth-UI/login.php?error=emptyinput");
@@ -16,6 +19,42 @@ if (isset($_POST["submit"])){
    loginUser($conn, $email, $password); 
 
 }
+
+
+if(isset($_POST["frogotemail"])){
+
+    $frogotemail = $_POST["frogotemail"] ;
+    $nic = "";
+    $exists =  emailTaken($conn ,  $frogotemail , $nic);
+
+
+    if($exists){
+        addCodeAndSendEmail($conn ,$frogotemail);
+    }
+
+    header("location: ../UI/Auth-UI/login.php?success=password-email");
+
+}
+
+
+
+if(isset($_POST["passwordreset"])){
+
+
+    $code  = $_POST["code"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+
+
+    checkCodeAndRestPassword($conn , $code , $email , $password);
+
+
+    header("location: ../UI/Auth-UI/login.php?success=password-success");
+
+
+}
+
 
 else{
     header("location: ../UI/Auth-UI/login.php");

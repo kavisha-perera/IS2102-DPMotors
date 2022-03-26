@@ -11,24 +11,83 @@ if($_SESSION['type'] == "cashier")
     header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-cashierDashboard");
 }
 
-$bill_list="";
-$query="SELECT * FROM productbill";
-$result=mysqli_query($conn,$query);
+$bill_error='';
+$bill_list = '';
 
-if($result){
-    while ($value=mysqli_fetch_assoc($result)){
-        $bill_list.="<tr>";
+$query= "SELECT * FROM productbill ORDER BY id ASC";
+$bill = mysqli_query($conn, $query);
+
+if ($bill) { //View Service bill details
+    while ($value = mysqli_fetch_assoc($bill)){
+
+        $price = $value['quantity']*$value['unit_price'];
+
+        $bill_list .="<tr>";
         $bill_list.="<td>{$value['stock_code']}</td>";
-        $bill_list.="<td>{$value['p_name']}</td>";
-        $bill_list.="<td>{$value['quantity']}</td>";
-        $bill_list.="<td>{$value['unit_price']}</td>";
-        $bill_list.="<td>{$value['amount']}</td>";
-        $bill_list .="<td><a href=\"createproductbill.php?bill_id={$value['id']}\" >Remove</a></td>";
-        $bill_list.="</tr>";
+        $bill_list .="<td>{$value['p_name']}</td>";
+        $bill_list .="<td>{$value['quantity']}</td>";
+        $bill_list .="<td>{$value['unit_price']}</td>";
+        $bill_list .="<td>{$price}</td>";
+        $bill_list .="<td><a href=\"createproductbill.php?bill_id={$value['id']}\" onclick=\"return confirm('Are you sure?');\" >Remove</a></td>";
+        $bill_list .="</tr>"; 
+
     }
-    }else{
-        echo "Database connection failed.";
-    }
+
+}else{
+    echo "Database connection failed.";
+}
+
+echo "ABC";
+
+if(isset($_POST['submit'])){
+
+        $bill_no=mysqli_real_escape_string($conn,$_POST['bill_no']);
+
+        $id=mysqli_real_escape_string($conn,$_POST['id']);
+        $date=mysqli_real_escape_string($conn,$_POST['date']);
+        $billtype=mysqli_real_escape_string($conn,$_POST['billtype']);
+        $cus_name=mysqli_real_escape_string($conn,$_POST['cus_name']);
+        $email=mysqli_real_escape_string($conn,$_POST['email']);
+        $cus_contact=mysqli_real_escape_string($conn,$_POST['cus_contact']);
+        $cus_address=mysqli_real_escape_string($conn,$_POST['cus_address']);
+        $cashier_name=mysqli_real_escape_string($conn,$_POST['cashier_name']);
+        $stock_code=mysqli_real_escape_string($conn,$_POST['stock_code']);
+        $p_name=mysqli_real_escape_string($conn,$_POST['p_name']);
+        $quantity=mysqli_real_escape_string($conn,$_POST['quantity']);
+        $unit_price=mysqli_real_escape_string($conn,$_POST['unit_price']);
+
+        $query="INSERT INTO productbill (";
+        $query.="bill_no,stock_code,date,billtype,cus_name,email,cus_address,cus_contact,cashier_name,p_name,quantity,unit_price";
+        $query.=") VALUES (";
+        $query.="'{$bill_no}','{$stock_code}','{$date}','{$billtype}','{$cus_name}','{$email}','{$cus_address}','{$cus_contact}','{$cashier_name}','{$p_name}','{$quantitY}','{$unit_price}'";
+        $query.=")";
+        
+        $result = mysqli_query($conn, $query);
+
+        if($result){
+            header('Location:createproductbill.php?user_added=true');
+        }else{
+            header('Location:createproductbill.php?Failed_to_add_new_record');
+        }
+
+    } 
+    
+    if (isset($_GET['bill_id'])){
+
+        $bill_id=mysqli_real_escape_string($conn,$_GET['bill_id']);
+       //deleting product record
+       $query="DELETE FROM productbill WHERE id= {$bill_id}";
+       $result = mysqli_query($conn, $query);
+     
+       if($result){
+           //product deleted
+           header("Location: createproductbill.php?msg=product deleted");
+       }else{
+         header("Location: createproductill.php?msg=Deletion Failed");
+       }
+     
+     }
+
 
 ?>
 
@@ -75,28 +134,49 @@ if($result){
                     <p class="paddress">1088/1</p>
                     <p class="paddress">Pannipitiya road</p>
                     <p class="paddress">Battaramulla, Sri Lanka.</p><br>
-                    <form action="./createproductbill.php">
+                    <form action="./createproductbill.php" method="POST">
 
                         <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Bill No</label>
                         <input type="text" name="bill_no" class="searchbar" placeholder="Example:PB100">
 
                         <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Date</label>
-                        <input type="date"  name="date" class="searchbar" style="width:200px;" autofocus>
+                        <input type="date"  name="date" class="searchbar" style="width:200px;"  min="2022-03-25" max="2042-01-01" autofocus>
 
                         <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Bill Type</label>
-                        <input type="text"  name="billtype" class="searchbar" autofocus><br><br>
+                        <select name="billtype" class="billtextbox">
+                            <option>Service</option> 
+                            <option>Product</option>       
+                         </select><br><br>
 
                         <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Customer Name</label>
                         <input type="text"  name="cus_name" class="searchbar" autofocus>
 
+                        <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Email</label>
+                        <input type="text"  name="email" class="searchbar" autofocus><br><br>
+
+                        <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Customer Contact</label>
+                        <input type="text"  name="cus_contact" class="searchbar" autofocus>
+
+                        <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Customer Address</label>
+                        <input type="text"  name="cus_address" class="searchbar" autofocus><br><br>
+
                         <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Cashier Name</label>
-                        <input type="text"  name="cashier_name" class="searchbar" autofocus><br><br>
+                        <input type="text"  name="cashier_name" class="searchbar" autofocus>
+
+                        <label for="product" class="th-user-label" style="background-color: #021257; color: white;">Stock Code</label>
+                        <input type="text" name="stock_code" class="searchbar" autofocus><br><br>
 
                         <label for="product" class="th-user-label" style="background-color: #021257; color: white;">Product Name</label>
-                        <input type="text" placeholder="Search by Product Name" name="p_name" class="searchbar" autofocus><br><br>
+                        <input type="text" placeholder="Search by Product Name" name="p_name" class="searchbar" autofocus>
+
+                        <label for="product" class="th-user-label" style="background-color: #021257; color: white;">Unit Price</label>
+                        <input type="text"  name="unit_price" class="searchbar" autofocus><br><br>
+
+                        <label for="product" class="th-user-label" style="background-color: #021257; color: white;">Quantity</label>
+                        <input type="number"  name="quantity" class="searchbar" value="1"autofocus>
 
                         <div class="th-add-new-button" style="margin-right:125px;margin-bottom:20px;">
-                        <button class="navButton" name="submit" onclick="document.location='./createproductbill.php'"><b> ADD</b></button>
+                        <button class="navButton" name="submit" onclick="document.location='createproductbill.php'"><b> ADD</b></button>
                         </div>
 
                         <table class="th-user-table">
@@ -110,7 +190,9 @@ if($result){
                               <th>Remove Item</th>
                             </tr>
                             </thead>
-                            <?php echo $bill_list;?>
+
+                            <?php echo $bill_list?>
+                            
 
                           </table><br><br>
                           <label for="total" class="navButton" style="vertical-align: bottom;">Total</label>

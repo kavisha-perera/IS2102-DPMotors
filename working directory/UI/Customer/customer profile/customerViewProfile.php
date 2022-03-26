@@ -77,7 +77,7 @@ if(isset($_SESSION['id']))
                         <label>FULL NAME </label>
                     </div>
                     <div class="col-6 profileform">
-                        <input type="text" class="profileV" name="name" value="<?php echo $row['fname']; ?> <?php echo $row['lname']; ?>">
+                        <input type="text" class="profileV" name="name" value="<?php echo $row['fname']; ?> <?php echo $row['lname']; ?>" readonly>
                     </div>
                     <div class="col-4 hide-in-small"> </div>
                 </div>
@@ -87,7 +87,7 @@ if(isset($_SESSION['id']))
                         <label>CONTACT NO</label>
                     </div>
                     <div class="col-6 profileform">
-                        <input type="text" class="profileV" name="contact" placeholder="07XXXXXXXX" value="<?php echo $row['contact']; ?>">
+                        <input type="text" class="profileV" name="contact" placeholder="07XXXXXXXX" value="<?php echo $row['contact']; ?>" readonly>
                     </div>
                     <div class="col-4 hide-in-small"> </div>
                 </div>
@@ -97,7 +97,7 @@ if(isset($_SESSION['id']))
                         <label>ADDRESS </label>
                     </div>
                     <div class="col-6 profileform">
-                        <input type="text" class="profileV" name="address" placeholder="your address" value="<?php echo $row['address']; ?>">
+                        <input type="text" class="profileV" name="address" placeholder="your address" value="<?php echo $row['address']; ?>" readonly>
                     </div>
                     <div class="col-4 buttons-inline"> 
                         <form action="./customerUpdateProfile.php">
@@ -119,12 +119,12 @@ if(isset($_SESSION['id']))
                         <label>NIC </label>
                     </div>
                     <div class="col-6 profileform">
-                        <input type="text" class="profileV" name="nic" value="<?php echo $row['nic']; ?>">
+                        <input type="text" class="profileV" name="nic" value="<?php echo $row['nic']; ?>" readonly>
                     </div>
                     <div class="col-4 buttons-inline"> 
-                        <form action="./customerChangeNIC.php">
+                    <!--    <form action="./customerChangeNIC.php">
                             <button class="navButton"> Change </button>
-                        </form>
+                        </form> -->
                     </div>
                 </div> 
 
@@ -133,7 +133,7 @@ if(isset($_SESSION['id']))
                         <label>EMAIL ADDRESS </label>
                     </div>
                     <div class="col-6 profileform">
-                        <input type="text" class="profileV" name="email" value="<?php echo $row['email']; ?>">
+                        <input type="text" class="profileV" name="email" value="<?php echo $row['email']; ?>" readonly>
                     </div>
                     <div class="col-4 buttons-inline"> 
                         <form action="./customerChangeEmail.php">
@@ -147,7 +147,7 @@ if(isset($_SESSION['id']))
                         <label>PASSWORD</label>
                     </div>
                     <div class="col-6 profileform">
-                        <input type="password" class="profileV" name="password" value="**********">
+                        <input type="password" class="profileV" name="password" value="**********" readonly>
                     </div>
                     <div class="col-4 buttons-inline"> 
                         <form action="./customerChangePassword.php">

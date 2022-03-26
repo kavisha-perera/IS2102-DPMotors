@@ -67,7 +67,7 @@
                 <div class="raw">
                 <button type="submit" name="submit" class="loginButton" >Login</button>
                 
-                <h6 style="margin-left: 35%;"><a href="" >Forgot your password</a></h6>
+                <h6 style="margin-left: 35%;"><a href="frogotpassword.php" >Forgot your password</a></h6>
                 </div>    
                 
                 <?php
@@ -98,6 +98,20 @@
                         echo "
                         <br/>                  
                         <p class='error'> The Password You Entered is Incorrect<br/></p>
+                        <br/>";
+                        exit();
+                    }
+                    if (strpos ($fullUrl, "success=password-email") == true) {
+                        echo "
+                        <br/>                  
+                        <p class='error'>Password reset email sent successfully. please check your email<br/></p>
+                        <br/>";
+                        exit();
+                    }
+                    if (strpos ($fullUrl, "success=password-success") == true) {
+                        echo "
+                        <br/>                  
+                        <p class='error'>Password changed successfuly please use the new credintials to login<br/></p>
                         <br/>";
                         exit();
                     }

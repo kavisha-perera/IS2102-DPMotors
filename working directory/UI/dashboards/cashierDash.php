@@ -87,7 +87,7 @@ if($_SESSION['type'] == "cashier")
                         <a href="../Cashier/CashierReadInventory.php"><img src="../../images/cashier/inventory.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../Cashier/cashierReadPromotion.php"><img src="../../images/cashier/promo.png" class="dashboardIcon"></a>
+                        <a href="../Cashier/promotion/cashierReadPromotion.php"><img src="../../images/cashier/promo.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
                         <a href="../Cashier/Cashier View Bill History/CashierViewAllBills.php"><img src="../../images/cashier/billhis.png" class="dashboardIcon"></a><!--*-->

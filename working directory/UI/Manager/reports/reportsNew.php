@@ -59,19 +59,20 @@ include_once("../managerNav.php");
 <div class="container">
 
   <div class="row">
-    <div class="col-4">
-    <div class="col-3" id="appointmentChart1" style="height: 370px; width: 100%;"></div>
+    <div class="col-4" style="border:solid">
+    <div id="appointmentChart1" style="height: 370px; width: 100%;"></div>
     </div>
-    <div class="col-4">
+    <div class="col-4" style="border:solid" >
     <div id="appointmentChart2" style="height: 370px; width: 100%;"></div> 
     </div>
-    <div class="col-4">
+    <div class="col-4" style="border:solid">
     <div id="appointmentChart3" style="height: 370px; width: 100%;"></div> 
     </div>
   </div>
 </div>
 </div>
 
+</br> </br> </br> </br>
 
 
 <h3>Schedule Report<h3>
@@ -83,6 +84,7 @@ include_once("../managerNav.php");
 </div>
 
 
+</br> </br> </br> </br>
 
 <h3>Vehicle Service Records Report<h3>
 
@@ -92,6 +94,8 @@ include_once("../managerNav.php");
   
 </div>
 
+
+</br> </br> </br> </br>
 
 
 <h3>New Registerd Users Report<h3>
