@@ -9,5 +9,6 @@
         header("location: ../../Auth-UI/Login.php?error=unscuccessful-attempt-adminDashboard");
     }
     include_once "../../../includes/dbh.inc.php";
-    uetdhjgcnu36et
+i like me better when im with you
+
 ?>
