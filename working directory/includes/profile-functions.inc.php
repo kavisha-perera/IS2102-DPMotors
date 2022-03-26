@@ -14,7 +14,7 @@ function updateProfile($conn, $fname, $lname, $contact, $address){
     }
 }
 
-/*function to check if "new" the NIC or email is already taken*/
+/*function to check if "new" the NIC or email is already taken
 function emailNICTaken($conn, $email , $nic) {
 
     $sql = "SELECT * FROM users WHERE email = ? OR nic = ? ;"; 
@@ -38,9 +38,11 @@ function emailNICTaken($conn, $email , $nic) {
     }
 
     mysqli_stmt_close($stmt);
-}
+}*/
 
-/*function to check if "new" email is valid*/
+
+
+/*function to check if "new" email is valid
 function invalidEmail($email) {
     $result;
 
@@ -53,9 +55,9 @@ function invalidEmail($email) {
     }
 
     return $result;
-}
+} */
 
-/*function to update the new NIC after verifying the password*/
+/*function to update the new NIC after verifying the password
 function updateNIC($conn, $nic, $password){
 
     $sql = "SELECT password FROM users WHERE id='{$_SESSION['id']}'";
@@ -82,9 +84,10 @@ function updateNIC($conn, $nic, $password){
             }
         }
     }   
-}
+} 
 
-/*function to update the new EMAIL after verifying the password*/
+//function to update the new EMAIL after verifying the password
+
 function updateEMAIL($conn, $email, $password){
 
     $sql = "SELECT password FROM users WHERE id='{$_SESSION['id']}'";
@@ -111,7 +114,7 @@ function updateEMAIL($conn, $email, $password){
             }
         }
     }   
-}
+} */
 
 /*function to check if the passwords match in update-password*/
 function pwdMatch($newpassword, $confirmpwd) {
@@ -128,7 +131,9 @@ function pwdMatch($newpassword, $confirmpwd) {
     return $result;
 }
 
-/*function to update the new EMAIL after verifying the password*/
+// function to update the new EMAIL after verifying the password
+
+
 function updatePASSWORD($conn, $oldpassword, $newpassword, $confirmpwd){
 
     $sql = "SELECT password FROM users WHERE id='{$_SESSION['id']}'";
@@ -158,4 +163,5 @@ function updatePASSWORD($conn, $oldpassword, $newpassword, $confirmpwd){
             }
         }
     }   
-}
+} 
+
