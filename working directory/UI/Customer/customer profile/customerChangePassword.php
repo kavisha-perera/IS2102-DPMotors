@@ -66,7 +66,7 @@ if(isset($_SESSION['id']))
                 </div>
 
                 <!--start of form to get details-->
-                <form action="../../../includes/profile.inc.php" method="POST">
+                <form action="../../../includes/profile.inc.php" method="POST" name="changePwd" onsubmit="return(validate());">
             
                 <div class="row r3-3">
                     <div class="col-4 profileLabel updateCPL">
@@ -129,19 +129,39 @@ if(isset($_SESSION['id']))
     </div>
 
     
+    <script>
 
 
 
- <!--   <footer>
-        <div class="row">
-            <div class="col-12">
-                <h4>CONTACT</h4><br>
-                <p>1088, 1 Battaramulla, Pannipitiya Rd, Battaramulla 10120 </p>
-                011 2XXXXXX | 07X XXXXXXX </p>
-                dpmotors@gmail.com</p>
-            </div>
-        </div>
-    </footer> -->
+var label = document.getElementById("validatinError");
+
+
+function validate() {
+
+
+    label.innerHTML = "";
+
+
+    var valid  = true;
+
+    // password validation
+
+
+    var newpassword =  document.changePwd.newpassword.value;
+
+    if(newpassword.length < 8){
+
+        var entry = document.createElement('li');
+        entry.innerHTML = "Password must be atleast 8 characters including one special character";
+        label.appendChild(entry);
+        valid = false;
+    }
+
+    return( valid );
+
+}
+
+</script>
 
 </body>
 </html>
