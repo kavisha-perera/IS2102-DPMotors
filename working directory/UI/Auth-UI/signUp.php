@@ -63,16 +63,6 @@
 
           <div id="rcorners">
 
-
-          <!--displaying errors & success-->
-
-
-
-
-
-
-
-
         <form action="../../includes/signup.inc.php" method="post" name="signUpForm" onsubmit="return(validate());" >
         
                 <h2 align ="center">SIGN UP</h2>
@@ -111,12 +101,11 @@
                 terms and conditions</a>.
                 </h5>
 
-
-
-
                 <button type="submit" name="submit" class="loginButton" >Sign Up</button>
                 
                 </div>     
+
+            <!--displaying errors & success-->
 
             <?php
 
@@ -156,8 +145,6 @@
 
 
         <script>
-
-
 
         var label = document.getElementById("validatinError");
         
