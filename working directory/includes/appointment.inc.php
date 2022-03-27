@@ -20,6 +20,8 @@ if (isset($_POST["book"])){
 
     updateSlotState($conn, $slotId);
 
+    closeSlot($conn, $slotId);
+
     createAppointment($conn, $slotId, $appDate, $appTime, $serviceType, $vehicleNo, $vehicleModel, $fname, $lname, $contact, $email, $appointmentState);
 
     

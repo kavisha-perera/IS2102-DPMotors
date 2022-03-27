@@ -14,7 +14,7 @@ if (isset($_POST["add"])){
 
     require_once '../../../includes/dbh.inc.php';
 
-    if (invalidEmail($email) !== false){
+ /*   if (invalidEmail($email) !== false){
         echo'<script>alert("Invalid email!");history.go(-1);</script>';
         exit();
     }
@@ -25,7 +25,7 @@ if (isset($_POST["add"])){
     if (emailTaken($conn, $email, $nic) !== false){
         echo'<script>alert("Entered email/NIC already exists!");history.go(-1);</script>';
         exit();
-    }
+    }*/
 
     $sql="INSERT INTO users(fname, lname, email, nic, password, type, contact, address) VALUES ('$fname', '$lname', '$email', '$nic', '$password', '$type', '$contact', '$address')";   
 
