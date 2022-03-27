@@ -93,7 +93,7 @@ if(isset($_SESSION['id']))
                             <tr class="appListItems">
                                 <td><?php echo $row['id'];?></td>
                                 <td><?php echo $row['date'];?> </td>
-                                <td><?php echo $row['timeslot'];?>:00</td>
+                                <td><?php echo $row['timeslot'];?></td>
                                 <td><?php echo $row['vehicleNo'];?></td>
                                 <td><?php echo $row['serviceType'];?></td>
                                 <td> <!--read the appointment record in detail-->

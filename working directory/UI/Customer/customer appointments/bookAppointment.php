@@ -53,8 +53,8 @@ if(isset($_SESSION['id']))
                     <h2 style="text-align:center;">BOOKING SCHEDULE</h2>
                 </div>
                 <div class="col-12 instructions">
-                    <h5>The following schedule shows the appointment timeslots available for the next 14 days in the 24HR format.</h5>
-                    <h5> To book an appointment, please click the BOOK TIMESLOT button</h5>
+                    <h5>Appointment timeslots are available for the next 14 days in the 24HR format.</h5>
+                    <h5> Click BOOK TIMESLOT to book an appointment</h5>
                 </div>
                 <div class="col-12">
                 </div>
@@ -151,7 +151,7 @@ if(isset($_SESSION['id']))
                     <hr style="height:5px;">
                         <!--retrieve all the timeslots from the database under the retrieved date-->
                         <?php
-                            $sql2 = "SELECT * FROM dp_schedule WHERE state='open' AND carddate='{$row['carddate']}' order by timeslot";
+                            $sql2 = "SELECT * FROM dp_schedule WHERE carddate='{$row['carddate']}' order by timeslot";
                             $result2 = $conn->query($sql2); 
                             if (mysqli_num_rows($result2) > 0){
                                 while ($row2 = mysqli_fetch_assoc($result2)) {
