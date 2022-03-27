@@ -62,6 +62,8 @@ if (isset($_POST["cancel"])){
 
     releaseSlotState($conn, $OLDslotID);
 
+    openSlot($conn, $OLDslotID);
+
     cancel($conn, $appId );
 
     header("location: ../UI/Customer/customer appointments/viewAppointments.php?error=cancelSuccess");
