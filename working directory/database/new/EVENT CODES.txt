@@ -1,0 +1,44 @@
+//WORKING CODE FOR deleteslot (older than 7 days from curr. date)
+
+CREATE EVENT deleteslot
+ON SCHEDULE
+	EVERY 1 MINUTE
+DO
+	DELETE FROM SCHEDULE WHERE date<CURRENT_DATE-7
+
+
+
+
+
+// WORKING CODE to createslot EVERY 2 MINUTES with an interval of 2 minutes
+CREATE EVENT createslot
+ON SCHEDULE
+	EVERY 2 MINUTE
+    STARTS (TIMESTAMP(CURRENT_TIME)+INTERVAL 2 MINUTE)
+DO
+	INSERT INTO `schedule`(`date`, `timeslot`, `state`) VALUES (CURRENT_DATE+1,'08:00:00',' open'), (CURRENT_DATE+1,'11:00:00','open'), (CURRENT_DATE+1,'14:00:00','open'), (CURRENT_DATE+1,'17:00:00','open');
+
+//1 day THING
+CREATE EVENT createslot
+ON SCHEDULE
+	EVERY 1 DAY
+    STARTS (TIMESTAMP(CURRENT_TIME)+INTERVAL 1 DAY)
+DO
+	INSERT INTO `schedule`(`date`, `timeslot`, `state`) VALUES (CURRENT_DATE+1,'08:00:00',' open'), (CURRENT_DATE+1,'11:00:00','open'), (CURRENT_DATE+1,'14:00:00','open'), (CURRENT_DATE+1,'17:00:00','open');
+
+
+
+//WORKING CODE FOR UPDATE EVERY 2 MINUTES if current time is greater than timeslot+5mins
+
+CREATE EVENT updateslot
+ON SCHEDULE
+	EVERY 2 MINUTE
+DO
+	UPDATE schedule SET state='closed' WHERE date=CURRENT_DATE AND timeslot<CURRENT_TIME + INTERVAL 5 MINUTE
+
+// FINAL UPDATE
+CREATE EVENT updateslot
+ON SCHEDULE
+	EVERY 5 MINUTE
+DO
+	UPDATE schedule SET state='closed' WHERE date=CURRENT_DATE AND CURRENT_TIME<timeslot + INTERVAL 5 MINUTE

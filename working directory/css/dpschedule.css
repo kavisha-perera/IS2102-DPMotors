@@ -1,6 +1,12 @@
+.instructions{
+    background-color:#efeff5;
+    border: 2px solid silver; 
+    color:#041b64;
+}
+
 .dateCard{
     padding:10px;
-    width:200px;
+    width:250px;
     height:170px;
     background-color:#FFFAFA;
     border: 2px solid silver;
@@ -17,21 +23,28 @@
     height: 30px;
 }
 .bookButton{
-    border-color:#cb1403;
-    color:white;
-    width:90px;
+    border-color:#63bb63;
+    color:rgb(40, 5, 97);
+    width:180px;
     text-align:center;
     border-radius:5px;
-    background-color:green;
+    background-color:#62cf62;
 }
 
+.closed{
+    border-color:#ff471a;
+    color:rgb(40, 5, 97);
+    width:180px;
+    text-align:center;
+    border-radius:5px;
+    background-color:#ff471a;
+    cursor:text;
+}
 
 .timeslotsListed{
     margin-left: auto;
     margin-right: auto;
 }
 .timeslotsListed td{
-    padding:2px;
-    width:50px;
     text-align:center;
 }

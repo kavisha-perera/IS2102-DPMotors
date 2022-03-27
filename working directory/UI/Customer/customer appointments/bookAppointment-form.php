@@ -66,24 +66,16 @@ if(isset($_SESSION['id']))
 
                 $slot_id = $_POST["slotId"];
 
-                $sql = "SELECT * FROM schedule WHERE id = ? ;"; 
-                $stmt = mysqli_stmt_init($conn);
-                if(!mysqli_stmt_prepare($stmt, $sql)){
-                    header("location: ./bookAppointment.php?error=stmtfailed");
-                    exit();
-                }
+                $sql = "SELECT * FROM dp_schedule WHERE slotid = $slot_id ;"; 
 
-                mysqli_stmt_bind_param($stmt, "s" , $slot_id);
-                mysqli_stmt_execute($stmt);
-
-                $resultData = mysqli_stmt_get_result($stmt);
+                $resultData=$conn->query($sql);
 
                 if (mysqli_num_rows($resultData) > 0) {
                     while ($row = mysqli_fetch_assoc($resultData)) { 
 
                 ?>
 
-                <input type="hidden" name="slotId" value="<?php echo $row['id'];?>"> 
+                <input type="hidden" name="slotId" value="<?php echo $row['slotid'];?>"> 
                 <!--pass slot id as a hidden input-->
 
                 <input type="hidden" name="appointmentState" value="pending"> 
@@ -94,7 +86,7 @@ if(isset($_SESSION['id']))
                         <label>APPOINTMENT DATE</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="appDate" value="<?php echo $row['date'];?>" readonly>
+                        <input type="text" class="serviceApp" name="appDate" value="<?php echo $row['carddate'];?>" readonly>
                     </div>
                 </div> 
                 <div class="row">
