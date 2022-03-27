@@ -198,11 +198,11 @@ include_once("../../../includes/employee.inc.php");
                     </div>
                     <div class="raw">
                     <select name="designation" id="updatedesignation" required>
-                    <option value="" disabled selected hidden>Designation</option>
-                    <option value="retailer">Retailer</option>
-                    <option value="mechanic">Mechanic</option>
-                    <option value="technician">Technician</option>
-                    <option value="electrician">Electrician</option>
+     
+                    <option value="Retailer">Retailer</option>
+                    <option value="Mechanic">Mechanic</option>
+                    <option value="Technician">Technician</option>
+                    <option value="Electrician">Electrician</option>
                     </select>
                     </div>
 

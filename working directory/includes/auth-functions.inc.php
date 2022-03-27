@@ -218,6 +218,7 @@ function addCodeAndSendEmail($conn ,$email){
 
     sendResetEmail($randomCode , $email);
 
+
     return true;
 
 
