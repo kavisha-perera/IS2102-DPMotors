@@ -49,7 +49,7 @@ include_once("../../../includes/promotions.inc.php");
                       <th>Code</th> 
                       <th>Valid Till</th>
                       <th>State</th>
-                      <th>Discount</th>
+                      <th>Discount(%)</th>
                       <th>Update</th>
                       <th>Delete</th>
                     </tr>
@@ -135,7 +135,7 @@ include_once("../../../includes/promotions.inc.php");
                     </div>
 
                     <div class="raw">
-                    <input type="number" placeholder="discount" name="discount" required>
+                    <input type="number" placeholder="discount" name="discount" min="0" max="100" required>
                     </div>
                     
                     <div class="raw">
@@ -195,7 +195,7 @@ include_once("../../../includes/promotions.inc.php");
                     </div>
 
                     <div class="raw">
-                    <input type="number" placeholder="discount" name="discount" required id="updatediscount">
+                    <input type="number" placeholder="discount" name="discount" min="0" max="100" required id="updatediscount">
                     </div>
                     
 
