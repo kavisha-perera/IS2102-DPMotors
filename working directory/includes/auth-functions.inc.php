@@ -81,9 +81,9 @@ function emailTaken($conn, $email , $nic) {
     mysqli_stmt_close($stmt);
 }
 
-function createCustomer($conn, $fname, $lname,  $email, $nic, $password , $type){
+function createCustomer($conn, $fname, $lname,  $email, $nic, $password , $type, $contact){
 
-    $sql = "INSERT INTO users (fname, lname, email, nic, password , type) VALUES (?, ?, ?, ?, ?, ?);"; 
+    $sql = "INSERT INTO users (fname, lname, email, nic, password , type, contact) VALUES (?, ?, ?, ?, ?, ?, ?);"; 
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
         header("location: ../UI/Auth-UI/signUp.php?error=stmtfailed");
@@ -92,7 +92,7 @@ function createCustomer($conn, $fname, $lname,  $email, $nic, $password , $type)
 
     $hashedPwd = password_hash($password , PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "ssssss" , $fname, $lname,  $email, $nic, $hashedPwd , $type);
+    mysqli_stmt_bind_param($stmt, "sssssss" , $fname, $lname,  $email, $nic, $hashedPwd , $type, $contact);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
