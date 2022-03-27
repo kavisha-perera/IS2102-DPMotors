@@ -14,12 +14,6 @@ function updateSlotState($conn, $slotId){
         $sql3="UPDATE dp_schedule SET bookingcount=$count where slotid=$slotId ";
         $updatecount=mysqli_query($conn,$sql3);
 
-
- /*   if (!$result) {
-        echo "Error: " . $sql . "
-        " . mysqli_error($conn);
-                exit();
-    }*/
 }
 
 function closeSlot($conn, $slotId){
@@ -70,13 +64,32 @@ function reschedule($conn, $slotId, $newTime, $newDate, $appId ){
 
 /*release slot after rescheduling / cancelling */
 function releaseSlotState($conn, $OLDslotID){
+    $sql1="SELECT * FROM dp_schedule WHERE slotid=$OLDslotID ";
+    $counting=mysqli_query($conn,$sql1);
+    $currentcount=mysqli_fetch_assoc($counting);
 
-    $releaseSlotState = "UPDATE schedule SET state ='open' WHERE id='$OLDslotID' ";
-    $result = mysqli_query($conn, $releaseSlotState);
+    $count=$currentcount['bookingcount'];
+    --$count;
 
-    if (!$result) {
-        header("location: ../UI/Customer/customer appointments/rescheduleAppointment.php?error=slot error");
-        exit();
+    $sql3="UPDATE dp_schedule SET bookingcount=$count where slotid=$OLDslotID ";
+    $updatecount=mysqli_query($conn,$sql3);
+
+}
+
+function openSlot($conn, $OLDslotID){
+
+    $sql4="SELECT * FROM dp_schedule WHERE slotid=$OLDslotID ";
+    $getcount=mysqli_query($conn,$sql4);
+    $getcurrentcount=mysqli_fetch_assoc($getcount);
+
+    $sql2="SELECT * FROM schedule_allowed_count";
+    $allowedcount=mysqli_query($conn,$sql2);
+    $getallowedcount=mysqli_fetch_assoc($allowedcount);
+
+
+    if($getcurrentcount['bookingcount'] < $getallowedcount['noOfBookingsAllowed']){
+        $sql="UPDATE dp_schedule SET state='open' WHERE slotid=$OLDslotID ";
+        $update=mysqli_query($conn,$sql);
     }
 }
 

@@ -40,11 +40,11 @@ if (isset($_POST["reschedule"])){
     require_once 'dbh.inc.php';
     require_once 'appointment-func.php';
 
-    updateSlotState($conn, $slotId);
-
     reschedule($conn, $slotId, $newTime, $newDate, $appId );
 
     releaseSlotState($conn, $OLDslotID);
+
+    openSlot($conn, $OLDslotID);
 
     header("location: ../UI/Customer/customer appointments/viewAppointments.php?error=RescheduleSuccess");
 
@@ -79,7 +79,7 @@ if (isset($_POST["reschedule-M"])){
     require_once 'dbh.inc.php';
     require_once 'appointment-func.php';
 
-    updateSlotState($conn, $slotId);
+    reschupdateSlotState($conn, $slotId);
 
     reschedule($conn, $slotId, $newTime, $newDate, $appId );
 
