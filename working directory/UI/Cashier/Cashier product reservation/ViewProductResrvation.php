@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+include '../../../includes/dbh.inc.php';
 
 if($_SESSION['type'] == "cashier")
 {
@@ -10,7 +11,42 @@ if($_SESSION['type'] == "cashier")
     header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-cashierDashboard");
 }
 
+$pr_list= '';
+$search= '';
+
+//getting the list of all bills 
+if(isset($_GET['search'])){
+
+    $search = mysqli_real_escape_string($conn,$_GET['search']);
+    $query="SELECT * FROM reservedforsale WHERE (reservation_no LIKE '%{$search}%' OR cus_name LIKE '%{$search}%' OR cus_email LIKE '%{$search}%' OR due_date LIKE '%{$search}%') ORDER BY res_sale_id";
+} else{
+
+    $query="SELECT * FROM reservedforsale ORDER BY res_sale_id";
+}
+
+$preserv = mysqli_query($conn, $query);
+
+if ($preserv) {
+    while ($value = mysqli_fetch_assoc($preserv)){
+        $pr_list .="<tr>";
+        $pr_list .="<td>{$value['reservation_no']}</td>";
+        $pr_list .="<td>{$value['delivery_method']}</td>";
+        $pr_list .="<td>{$value['cus_name']}</td>";
+        $pr_list .="<td>{$value['cus_contact']}</td>";
+        $pr_list .="<td>{$value['cus_email']}</td>";
+        $pr_list .="<td>{$value['cus_address']}</td>";
+        $pr_list .="<td>{$value['due_date']}</td>";
+        $pr_list .="<td><a href=\"UpadteProductReserv.php?reserve_id={$value['res_sale_id']}\">Edit</a></td>";
+        $pr_list .="<td><a href=\"ViewProductReservation.php?reserve_id={$value['res_sale_id']}\" onclick=\"return confirm('Are you sure?');\" >Delete</a></td>"; 
+        $pr_list .="</tr>";
+
+    }
+}else{
+    echo "Database connection failed.";
+}
+
 ?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -73,7 +109,7 @@ if($_SESSION['type'] == "cashier")
 
                     <!--search container start-->
                     <div class="col-4 search-container">
-                        <form action="./viewCustomers.php" method="POST">
+                        <form action="./viewPreserv.php" method="POST">
                             <input type="text" placeholder="Search.. " name="search" autofocus>
                             <button type="submit" name="submit" style="background-color:white; border:0px solid black;"> <img src="../../../images/productCatalogue/s.png" style="max-width:20px;"></button>
                         </form>
@@ -95,8 +131,6 @@ if($_SESSION['type'] == "cashier")
                     <thead>
                     <tr>
                       <th>P.RESERVATION NO</th> <!--table properties-->
-                      <th>FIRST NAME</th>
-                      <th>LAST NAME</th> 
                       <th>CONTACT NUMBER</th>
                       <th>DELIVERY ADDRESS</th>
                       <th>PRODUCT ID</th>
@@ -109,22 +143,7 @@ if($_SESSION['type'] == "cashier")
                     </thead>
                     <tbody>
 
-
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td> 
-                        <td></td>                  
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td> 
-                        <td></td>                  
-                        <td></td>
-                        <td><button class='th-button-icon' onclick = "document.location='UpdateProductReserv.php'" ><img src='../../../images/Employee & Supplier/edit.svg' class='th-svg-icons'></button></td>  
-                        <td><button class='th-button-icon' onclick = "document.location= 'DeleteProductReserve.php'"><img src='../../../images/Employee & Supplier/delete.svg' class='th-svg-icons'></button></td>
-                    </tr>
-            
+                    <?php echo $pr_list; ?>
 
                       </tbody>
                   </table>

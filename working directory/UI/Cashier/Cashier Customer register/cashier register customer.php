@@ -126,7 +126,8 @@ function test_input($data) {
             margin-top:10px;
         }
     </style>
-    
+
+ <!--show password-->
     <script>
       function showPassword() {
         var a = document.getElementById("password");
@@ -137,6 +138,7 @@ function test_input($data) {
         }
       }
     </script>
+    
 </head>
 <body>
 

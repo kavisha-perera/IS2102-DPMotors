@@ -20,6 +20,25 @@ if(isset($_GET['search'])){
     $search = null;
 }
 
+if (isset($_GET['service_id']) && isset($_GET['req_type']) && $_GET['req_type'] == 'delete'){
+
+   $service_id=mysqli_real_escape_string($conn,$_GET['service_id']);
+   //deleting service record
+   $query="DELETE FROM vehicleservicerecords WHERE id= {$service_id}";
+   $result = mysqli_query($conn, $query);
+ 
+   if($result){
+       //user deleted
+       header("Location: cashierReadService.php?vehicleModel=&vehicleNo={$_GET['vehicleNo']}&view=msg=service deleted");
+
+       
+       echo "user deleted";
+   }else{
+     //header("Location: cashierReadService.php?msg=Deletion Failed");
+     echo "nope!";
+   }
+ 
+ }
 ?>
 
 <!DOCTYPE HTML>
@@ -171,8 +190,8 @@ if(isset($_GET['search'])){
                                         <td><?php echo $row['coolant']; ?></td>
                                         <td><?php echo $row['airFilter']; ?></td>
                                         <td><?php echo $row['nextServiceDate']; ?></td>
-                                        <td><a href="./cashierUpdateServive.php?vehicle_id={'$row['id'}">Update</a></td>
-                                        <td><a href="./cashierDeleteRecord.php?vehicle_id={'$row['id'}">Delete</a></td>
+                                        <td><a href="./cashierUpdateServive.php?service_id=<?php echo $row['id'];?>">Update</td>
+                                        <td><a href="./cashierReadService.php?req_type=delete&service_id=<?php echo $row['id'];?>&vehicleNo=<?php echo $row['vehicleNo'];?>" onclick="return confirm('Are you sure?')" >Delete</a></td>
                                     </tr>
                                     <?php }
                                     }

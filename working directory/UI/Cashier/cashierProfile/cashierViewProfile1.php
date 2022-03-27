@@ -19,7 +19,7 @@ if($_SESSION['type'] == "cashier")
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
-	<title>customer update profile page</title>
+	<title>cahier update profile page</title>
     <style>
         .Nav-profile{
             /* to show the active link in navbar */
@@ -114,19 +114,6 @@ if($_SESSION['type'] == "cashier")
                     </div>
                 </div>
 
-                <div class="row r3-5">
-                    <div class="col-2 profileLabel">
-                        <label>NIC </label>
-                    </div>
-                    <div class="col-6 profileform">
-                        <input type="text" class="profileV" name="nic" value="<?php echo $row['nic']; ?>">
-                    </div>
-                    <div class="col-4 buttons-inline"> 
-                        <form action="./cashierChangeNIC.php">
-                            <button class="navButton"> Change </button>
-                        </form>
-                    </div>
-                </div> 
 
                 <div class="row r3-6">
                     <div class="col-2 profileLabel">
@@ -162,22 +149,6 @@ if($_SESSION['type'] == "cashier")
 
             ?>
 
-                <div class="row r3-1">
-                    <div class="col-12">
-                        <br>
-                        <h3 class="title"><b> USER ACCOUNT<hr></b><h3></h2>
-                    </div>
-                </div>
-
-                <div class="row r3-9">
-                    <div class="col-2 profileLabel"> </div>
-                    <div class="col-6 profileform"></div>
-                    <div class="col-4 buttons-inline"> 
-                        <form action="./cashierDeleteAccount.php">
-                            <button class="navButton delete"> Delete  </button> <!--or deactivate-->
-                        </form>   
-                    </div>
-                </div>
  
         </div>
     </div>

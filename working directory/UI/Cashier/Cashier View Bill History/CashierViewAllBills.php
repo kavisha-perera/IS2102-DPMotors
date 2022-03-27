@@ -11,7 +11,56 @@ if($_SESSION['type'] == "cashier")
     header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-cashierDashboard");
 }
 
+$bill_list = '';
+$search= '';
+
+//getting the list of all bills 
+if(isset($_GET['search'])){
+
+    $search = mysqli_real_escape_string($conn,$_GET['search']);
+    $query="SELECT * FROM allbills WHERE (bill_no LIKE '%{$search}%' OR due_date LIKE '%{$search}%') ORDER BY id";
+} else{
+
+    $query="SELECT * FROM allbills ORDER BY id";
+}
+
+$bill = mysqli_query($conn, $query);
+
+if ($bill) {
+    while ($value = mysqli_fetch_assoc($bill)){
+        $bill_list  .="<tr>";
+        $bill_list  .="<td>{$value['id']}</td>";
+        $bill_list  .="<td>{$value['type']}</td>";
+        $bill_list  .="<td>{$value['date']}</td>";
+        $bill_list  .="<td>{$value['total']}</td>";
+        $bill_list  .="<td>{$value['bill_no']}</td>";
+        $bill_list  .="<td><a href=\"CashierViewAllBills.php?bill_id={$value['id']}\" onclick=\"return confirm('Are you sure?');\" >Remove</a></td>";
+        $bill_list  .="</tr>";
+
+    }
+}else{
+    echo "Database connection failed.";
+}
+
+if (isset($_GET['bill_id'])){
+
+    $bill_id=mysqli_real_escape_string($conn,$_GET['bill_id']);
+   //deleting bill
+   $query="DELETE FROM allbills WHERE id= {$bill_id}";
+   $result = mysqli_query($conn, $query);
+ 
+   if($result){
+       //deleting bill
+       header("Location:CashierViewAllBills.php?msg=bill deleted");
+   }else{
+     header("Location:CashierViewAllBills.php?msg=bill Failed");
+   }
+ 
+ }
+ 
+
 ?>
+
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -19,7 +68,6 @@ if($_SESSION['type'] == "cashier")
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
-    <script src="../../../javascript/preserve.js"></script>
 	<title>All Bills</title>
     <style>
         .Nav-viewbill{
@@ -73,8 +121,8 @@ if($_SESSION['type'] == "cashier")
 
                      <!--search container start-->
                      <div class="col-4 search-container">
-                        <form action="./viewCustomers.php" method="POST">
-                            <input type="text" placeholder="Search.. " name="search" autofocus>
+                        <form action="./CashierViewAllBills.php" method="POST">
+                            <input type="text" placeholder="Search by bill no or" value="<?php echo $search;?>" name="search" autofocus>
                             <button type="submit" name="submit" style="background-color:white; border:0px solid black;"> <img src="../../../images/productCatalogue/s.png" style="max-width:20px;"></button>
                         </form>
                     </div>
@@ -93,37 +141,20 @@ if($_SESSION['type'] == "cashier")
                     <thead>
                     <tr>
                       <th>BILL NO</th> <!--table properties-->
-                      <th>BILL TYPE</th>
-                      <th>FIRST NAME</th> 
-                      <th>DATE </th>
-                      <th>DELIVERY ADDRESS</th>
-                      <th colspan="3" style="text-align: center;">CONTROLS</th>
+                      <th>BILL TYPE</th> 
+                      <th>DATE</th>
+                      <th>TOTAL</th>
+                      <th>REMOVE</th>
                     </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td> <!--table values-->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><button class="th-button-icon" onclick="OnClickOpenCancelMessage()"><img src="../../../images/billhistory/cancel.png" class="th-svg-icons"></button></td>
-                            <td><button class="th-button-icon"> <a href="../CashierProductExchange/CashierProductRefund.php"><img src="../../../images/billhistory/refund.png" class="th-svg-icons"></a></button></td>
-                            <td><button class="th-button-icon"><a href="../CashierProductExchange/CashierProductExchange.php"><img src="../../../images/billhistory/exchange.png" class="th-svg-icons"></a></button></td>
-                        </tr>
+
+                    <?php echo $bill_list ; ?>
                         
                       </tbody>
                   </table>
             </div>
         </div>
-            <div class="th-delete-record-container" id="th-cancel-bill">
-                <div class="th-emp-close" onclick="OnClickCloseCancelMessage()">
-                    <span class="th-emp-close-button">X</span>
-               </div>
-
-                <h2 class="th-delete-message">BILL SUCCESSFULLY CANCELLED!</h2>
-            
-            </div>
    
         </div>
     </div>

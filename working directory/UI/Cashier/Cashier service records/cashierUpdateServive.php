@@ -9,22 +9,12 @@ if($_SESSION['type'] == "cashier")
 }else{
 
     header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-cashierDashboard");
+  
 }
 
 ?>
 
 <?php
-
-if(isser($_GET['vehicle_id'])){
-
-  //getting vehicle information
-  $vehicle_id=mysqli_real_escape_string($conn, $_POST["vehicle_id"]);
-  $query = "SELECT * FROM vehicleservicerecords WHERE id={'$vehicle_id'}";
-  $result=mysqli_query($conn,$query);
-  
-}
-
-if(isset($_GET['']))
 $vehicleNo_error = $serviceNo_error = $email_err = "";
 
 //checking if required fields are empty.
@@ -57,8 +47,8 @@ if (!filter_var($customerEmail, FILTER_VALIDATE_EMAIL)) {
 }
 
 if(empty($vehicleNo_error)) {
-  $vehicleModel=mysqli_real_escape_string($conn, $_POST["vehicleModel"]);
-  $dateOfService=mysqli_real_escape_string($conn, $_POST["dateOfService"]);
+  $vehicleModel = mysqli_real_escape_string($conn, $_POST["vehicleModel"]);
+  $dateOfService = mysqli_real_escape_string($conn, $_POST["dateOfService"]);
   $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
   $engineOil=mysqli_real_escape_string($conn, $_POST["engineOil"]);
   $gearOil=mysqli_real_escape_string($conn, $_POST["gearOil"]);
@@ -77,11 +67,9 @@ if(empty($vehicleNo_error)) {
 
   $result = mysqli_query($conn, $query);
 
-  if($result){
+  if(!$result){
     //query successful redirect to vehicle records page
-      header("location: cashierViewService.php?vehicle_added=true");
-  }else{
-      echo"failed";
+      header("location: cashierViewService.php?servicefailed");
   }
 
 }
@@ -90,6 +78,46 @@ function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
   return $data;
+}
+
+//edit page
+if(isset($_GET['service_id'])){
+  $service_id=mysqli_real_escape_string($conn, $_GET['service_id']);
+  $query="SELECT * FROM vehicleservicerecords where id={$service_id}";
+  $result = mysqli_query($conn, $query);
+
+  
+  if($result){
+    //service found
+    if(mysqli_num_rows($result)>0){
+      
+      $results=mysqli_fetch_assoc($result);
+      var_dump($results);
+      
+        $customerEmail=$results['customerEmail'];
+        $serviceNo=$results['serviceNo'];
+        $vehicleNo=$results['vehicleNo'];
+        $vehicleModel=$results['vehicleModel'];
+        $dateOfService=$results['dateOfService'];
+        $milage=$results['milage'];
+        $engineOil=$results['engineOil'];
+        $gearOil=$results['gearOil'];
+        $ACfilter=$results['ACfilter'];
+        $oilFilter=$results['oilFilter'];
+        $ATFoil=$results['ATFoil'];
+        $coolant=$results['coolant'];
+        $airFilter=$results['airFilter'];
+        $nextServiceDate=$results['nextServiceDate'];
+
+      }else{
+        //service not found
+        header('location:cashierUpdateServive.php?err=user_not_found');
+      }
+  }else{
+    // header('location:cashierUpdateServive.php?err=query_failed');
+    printf("Error message: %s\n", $conn->error);
+
+  }
 }
 ?>
 
@@ -130,14 +158,14 @@ function test_input($data) {
         <div class="col-16 content">
             <!--main content here-->
             <div class="pr-form-container">
-                <form action="./cashierAddRecord.php" method="POST">
+                <form action="./cashierUpdateService.php" method="POST">
 
                   <div class="row1">
                   <div class="th-add-new-button">
-                        <button class="navButton" onclick="document.location='./cashierAddRecord.php'"  style="margin-top:30px;"><b> REFRESH</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
+                        <button class="navButton" onclick="document.location='./cashierUpdateServiveRecord.php'"  style="margin-top:30px;"><b> REFRESH</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
                      </div>
                     <div class="pr-form-title">
-                      <h2>Update Vehicle Records</h2>
+                      <h2>Edit Vehicle service records</h2>
                     </div>
                   </div>
     
@@ -148,7 +176,7 @@ function test_input($data) {
                       <label for="serviceNo">Service No.</label>
                     </div>
                     <div class="pr-form-input">
-                      <input type="text" name="serviceNo" class="pr-input-box" />
+                      <input type="text" name="serviceNo" class="pr-input-box"  value= "<?php echo $serviceNo ?>"/>
                       <span class="error"><?php echo $serviceNo_error;?></span>
                     </div>
                   </div>
@@ -176,7 +204,7 @@ function test_input($data) {
               
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="vehicleModel">Vehicle Model</label>
+                      <label for="vehicleModel">Vehicle Type</label>
                     </div>
                     <div class="pr-form-input">
                     <select name="vehicleModel" class="th-emsu-input">
@@ -308,7 +336,7 @@ function test_input($data) {
          
                   <div class="pr-form-add" style="margin-top: 10px">
                     <label for="">&nbsp;</label>
-                    <button class="pr-form-add-button" name="submit">ADD</button>
+                    <button class="pr-form-add-button" name="submit">EDIT</button>
                   </div>
                 </form>
               </div>

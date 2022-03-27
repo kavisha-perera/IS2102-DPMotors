@@ -24,13 +24,7 @@ if(isset($_POST['submit'])){
   } else {
     $vehicleNo = test_input($_POST["vehicleNo"]);
   }
-  // check if vehicle No is already exsist
-  $vehicleNo=mysqli_real_escape_string($conn, $_POST["vehicleNo"]);
-  $query = mysqli_query($conn, "SELECT * FROM vehicleservicerecords WHERE vehicleNo = '".$_POST["vehicleNo"]."'");
-  if(mysqli_num_rows($query)>0) {
 
-    $vehicleNo_error ='<br> This vehicle is already registerd.';
-  }
     // check if service No is already exsist
     $serviceNo=mysqli_real_escape_string($conn, $_POST["serviceNo"]);
     $query = mysqli_query($conn, "SELECT * FROM vehicleservicerecords WHERE serviceNo = '".$_POST["serviceNo"]."'");
@@ -46,6 +40,7 @@ if (!filter_var($customerEmail, FILTER_VALIDATE_EMAIL)) {
 }
 
 if(empty($vehicleNo_error)) {
+  $vehicleNo=mysqli_real_escape_string($conn, $_POST["vehicleNo"]);
   $vehicleModel=mysqli_real_escape_string($conn, $_POST["vehicleModel"]);
   $dateOfService=mysqli_real_escape_string($conn, $_POST["dateOfService"]);
   $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
@@ -165,7 +160,7 @@ function test_input($data) {
               
                   <div class="row1">
                     <div class="pr-form-label">
-                      <label for="vehicleModel">Vehicle Model</label>
+                      <label for="vehicleModel">Vehicle Type</label>
                     </div>
                     <div class="pr-form-input">
                     <select name="vehicleModel" class="th-emsu-input">

@@ -141,10 +141,6 @@ if(isset($_GET['search'])){
                             <?php echo $row['vehicleModel']; ?>
                         </button>
                     </form>
-                    <div class="th-add-new-button" style="margin-right:75px;">
-                        <button class="navButton" onclick="document.location='./cashierDeleteService.php'"  style="margin-top:30px;"><b> Delete</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
-                    </div>
-                </div>
                 <?php
                     } 
 

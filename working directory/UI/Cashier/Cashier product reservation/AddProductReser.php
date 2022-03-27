@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+include '../../../includes/dbh.inc.php';
+
 if($_SESSION['type'] == "cashier")
 {
     $email =  $_SESSION['email'];
@@ -8,6 +10,99 @@ if($_SESSION['type'] == "cashier")
 
     header("location: ../UI/Auth-UI/Login.php?error=unscuccessful-attempt-cashierDashboard");
 }
+
+?>
+
+<?php
+
+$fname_error=$lname_error=$email_error=$nic_error=$password_error ="";
+
+//checking if required fields are empty.
+if(isset($_POST['submit'])){
+
+    if (empty($_POST["fname"])) {
+        $fname_error = "First name is required";
+      } else {
+        $fname = test_input($_POST["fname"]);
+        // check if name only contains letters and whitespace
+        if (!preg_match("/^[a-zA-Z-' ]*$/",$fname)) {
+            $fname_error[0] = "Only letters and white space allowed";
+        }
+      }
+
+      if (empty($_POST["lname"])) {
+        $lname_error = "Last name is required";
+      } else {
+        $lname = test_input($_POST["lname"]);
+        // check if name only contains letters and whitespace
+        if (!preg_match("/^[a-zA-Z-' ]*$/",$lname)) {
+            $lname_error = "Only letters and white space allowed";
+        }
+      }
+      
+      if (empty($_POST["email"])) {
+        $email_error = "Email is required";
+      } else {
+        $email = test_input($_POST["email"]);
+        // check if e-mail address is well-formed
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $email_error = "Invalid email format";
+        }
+    }
+
+    if (empty($_POST["password"])) {
+        $password_error = "Password is required";
+      } else {
+        $password= test_input($_POST["password"]);
+      }
+
+      // check if e-mail address is already exsist
+      $email=mysqli_real_escape_string($conn, $_POST["email"]);
+      $query = mysqli_query($conn, "SELECT * FROM users WHERE email = '".$_POST["email"]."'");
+      if(mysqli_num_rows($query)>0) {
+        $email_error ='This email address is already taken!';
+      }
+      
+      // check if NIC alraedy exsist.
+      $nic=mysqli_real_escape_string($conn, $_POST["nic"]);
+      $query = mysqli_query($conn, "SELECT * FROM users WHERE nic = '".$_POST["nic"]."'");
+      if(mysqli_num_rows($query)>0) {
+        $nic_error ='This NIC already exsist!';
+      }
+
+      if(empty($fname_error) && empty($lname_error) && empty($email_error)&& empty($nic_error)&& empty($password_error)) {
+        //sanitising variables *email & nic variables are already sanitized.
+        $fname=mysqli_real_escape_string($conn, $_POST["fname"]);
+        $lname=mysqli_real_escape_string($conn, $_POST["lname"]);
+        $password=mysqli_real_escape_string($conn, $_POST["password"]);
+
+        //password hashing
+        $hashed_password = sha1($password);
+
+        //add new records to the database
+        $query="INSERT INTO users (";
+        $query.="fname,lname,email,nic,password";
+        $query.=") VALUES (";
+        $query.="'{$fname}','{$lname}','{$email}','{$nic}','{$hashed_password}'";
+        $query.=")";
+
+        $result = mysqli_query($conn, $query);
+
+        if($result){
+            header("location: ViewCustomers.php?users_added=true");
+        }else{
+            echo "Failed to add new record.";
+        }
+     }
+
+
+}
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    return $data;
+  }
 
 ?>
 
@@ -50,7 +145,7 @@ if($_SESSION['type'] == "cashier")
       <div class="col-16 content">
         <!--main content here-->
         <div class="pr-form-container">
-          <form action="../../includes/AddProductReserve-inc.php" method="post">
+          <form action="./AddProductReser.php" method="POST">
             <div class="row1">
               <div class="pr-form-title">
                 <h2>ADD NEW PRODUCT RESERVATION</h2>
@@ -59,19 +154,22 @@ if($_SESSION['type'] == "cashier")
 
             <div class="row1">
               <div class="pr-form-label">
-                <label for="firstname">FIRST NAME</label>
+                <label for="">DELIVERY METHOD</label>
               </div>
               <div class="pr-form-input">
-                <input type="text" name="fname" class="pr-input-box" />
+              <select name="deliverymethod" class="th-emsu-input">
+                  <option>Courier</option>
+                  <option>Pick Up</option>                                
+              </select> 
               </div>
             </div>
 
             <div class="row1">
               <div class="pr-form-label">
-                <label for="lastname">LAST NAME</label>
+                <label for="firstname">CUSTOMER ADDRESS</label>
               </div>
               <div class="pr-form-input">
-                <input type="text" name="lname" class="pr-input-box" />
+                <input type="text" name="fname" class="pr-input-box" />
               </div>
             </div>
 
@@ -86,7 +184,16 @@ if($_SESSION['type'] == "cashier")
 
             <div class="row1">
               <div class="pr-form-label">
-                <label for="">DELIVERY ADDRESS</label>
+                <label for="">EMAIL</label>
+              </div>
+              <div class="pr-form-input">
+                <input type="email" name="address" class="pr-input-box" />
+              </div>
+            </div>
+
+            <div class="row1">
+              <div class="pr-form-label">
+                <label for="">ADDRESS</label>
               </div>
               <div class="pr-form-input">
                 <input type="text" name="address" class="pr-input-box" />
@@ -95,55 +202,19 @@ if($_SESSION['type'] == "cashier")
 
             <div class="row1">
               <div class="pr-form-label">
-                <label for="">PRODUCT ID</label>
+                <label for="">PRODUCT CODE</label>
               </div>
               <div class="pr-form-input">
-                <input type="text" name="pid" class="pr-input-box" />
+                <input type="text" name="p_code" class="pr-input-box" />
               </div>
             </div>
 
             <div class="row1">
               <div class="pr-form-label">
-                <label for="">PRODUCT NAME</label>
-              </div>
-              <div class="pr-form-label">
-                <input type="text" name="prname" class="pr-input-box" />
-              </div>
-            </div>
-
-            <div class="row1">
-              <div class="pr-form-label">
-                <label for="">QUANTITY</label>
+                <label for="firstname">DATE</label>
               </div>
               <div class="pr-form-input">
-                <input type="text" name="quantity" class="pr-input-box" min="1" max="100" steps="1" value="1"/>
-              </div>
-            </div>
-
-            <div class="row1">
-              <div class="pr-form-label">
-                <label for="">DELIVERY DATE</label>
-              </div>
-              <div class="pr-form-input">
-                <input
-                  type="date"
-                  name="deliverydatetime"
-                  class="pr-input-box"
-                  min="2021-10-25"
-                  max="2041-01-01"
-                />
-              </div>
-            </div>
-
-            <div class="row1">
-              <div class="pr-form-label">
-                <label for="">DELIVERY METHOD</label>
-              </div>
-              <div class="pr-form-input">
-              <select name="deliverymethod" class="th-emsu-input">
-                  <option>Courier</option>
-                  <option>Pick Up</option>                                
-              </select> 
+                <input type="text" name="due_date" class="pr-input-box" />
               </div>
             </div>
 

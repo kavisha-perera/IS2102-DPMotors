@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+include '../../../includes/dbh.inc.php';
+
 if($_SESSION['type'] == "cashier")
 {
     $email =  $_SESSION['email'];
@@ -11,6 +13,100 @@ if($_SESSION['type'] == "cashier")
 
 ?>
 
+<?php
+
+$fname_error=$lname_error=$email_error=$nic_error=$password_error ="";
+
+//checking if required fields are empty.
+if(isset($_POST['submit'])){
+
+    if (empty($_POST["fname"])) {
+        $fname_error = "First name is required";
+      } else {
+        $fname = test_input($_POST["fname"]);
+        // check if name only contains letters and whitespace
+        if (!preg_match("/^[a-zA-Z-' ]*$/",$fname)) {
+            $fname_error[0] = "Only letters and white space allowed";
+        }
+      }
+
+      if (empty($_POST["lname"])) {
+        $lname_error = "Last name is required";
+      } else {
+        $lname = test_input($_POST["lname"]);
+        // check if name only contains letters and whitespace
+        if (!preg_match("/^[a-zA-Z-' ]*$/",$lname)) {
+            $lname_error = "Only letters and white space allowed";
+        }
+      }
+      
+      if (empty($_POST["email"])) {
+        $email_error = "Email is required";
+      } else {
+        $email = test_input($_POST["email"]);
+        // check if e-mail address is well-formed
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $email_error = "Invalid email format";
+        }
+    }
+
+    if (empty($_POST["password"])) {
+        $password_error = "Password is required";
+      } else {
+        $password= test_input($_POST["password"]);
+      }
+
+      // check if e-mail address is already exsist
+      $email=mysqli_real_escape_string($conn, $_POST["email"]);
+      $query = mysqli_query($conn, "SELECT * FROM users WHERE email = '".$_POST["email"]."'");
+      if(mysqli_num_rows($query)>0) {
+        $email_error ='This email address is already taken!';
+      }
+      
+      // check if NIC alraedy exsist.
+      $nic=mysqli_real_escape_string($conn, $_POST["nic"]);
+      $query = mysqli_query($conn, "SELECT * FROM users WHERE nic = '".$_POST["nic"]."'");
+      if(mysqli_num_rows($query)>0) {
+        $nic_error ='This NIC already exsist!';
+      }
+
+      if(empty($fname_error) && empty($lname_error) && empty($email_error)&& empty($nic_error)&& empty($password_error)) {
+        //sanitising variables *email & nic variables are already sanitized.
+        $fname=mysqli_real_escape_string($conn, $_POST["fname"]);
+        $lname=mysqli_real_escape_string($conn, $_POST["lname"]);
+        $password=mysqli_real_escape_string($conn, $_POST["password"]);
+
+        //password hashing
+        $hashed_password = sha1($password);
+
+        //add new records to the database
+        $query="INSERT INTO users (";
+        $query.="fname,lname,email,nic,password";
+        $query.=") VALUES (";
+        $query.="'{$fname}','{$lname}','{$email}','{$nic}','{$hashed_password}'";
+        $query.=")";
+
+        $result = mysqli_query($conn, $query);
+
+        if($result){
+            header("location: ViewCustomers.php?users_added=true");
+        }else{
+            echo "Failed to add new record.";
+        }
+     }
+
+
+}
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    return $data;
+  }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,8 +114,7 @@ if($_SESSION['type'] == "cashier")
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css" />
-    <script src="../../../javascript/preserve.js"></script>
-    <title>Update Product Reservation</title>
+    <title>Update product Reservation</title>
     <style>
         .Nav-pr{
             /* to show the active link in navbar */
@@ -32,7 +127,7 @@ if($_SESSION['type'] == "cashier")
   </head>
   <body>
 
-  <div class="row r1">
+<div class="row r1">
 <?php include_once("../cashierTopNav.php") ?>
 </div>
     </div>
@@ -50,91 +145,10 @@ if($_SESSION['type'] == "cashier")
       <div class="col-16 content">
         <!--main content here-->
         <div class="pr-form-container">
-          <form action="#" method="post">
+          <form action="../../includes/AddProductReserve-inc.php" method="post">
             <div class="row1">
               <div class="pr-form-title">
-                <h2>PRODUCT RESERVATION</h2>
-              </div>
-            </div>
-
-            <div class="row1">
-                <div class="pr-form-label">
-                  <label for="cusno">CUSTOMER NO</label>
-                </div>
-                <div class="pr-form-input">
-                  <input type="text" name="cusno" class="pr-input-box" />
-                </div>
-              </div>
-
-            <div class="row1">
-              <div class="pr-form-label">
-                <label for="firstname">FIRST NAME</label>
-              </div>
-              <div class="pr-form-input">
-                <input type="text" name="fname" class="pr-input-box" />
-              </div>
-            </div>
-
-            <div class="row1">
-              <div class="pr-form-label">
-                <label for="lastname">LAST NAME</label>
-              </div>
-              <div class="pr-form-input">
-                <input type="text" name="lname" class="pr-input-box" />
-              </div>
-            </div>
-
-            <div class="row1">
-              <div class="pr-form-label">
-                <label for="contact">CONTACT NUMBER</label>
-              </div>
-              <div class="pr-form-input">
-                <input type="tel" name="contact" class="pr-input-box" />
-              </div>
-            </div>
-
-            <div class="row1">
-              <div class="pr-form-label">
-                <label for="">DELIVERY ADDRESS</label>
-              </div>
-              <div class="pr-form-input">
-                <input type="text" name="address" class="pr-input-box" />
-              </div>
-            </div>
-
-            <div class="row1">
-              <div class="pr-form-label">
-                <label for="pid">PRODUCT ID</label>
-              </div>
-              <div class="pr-form-input">
-                <input type="text" name="pid" class="pr-input-box" />
-              </div>
-            </div>
-
-            <div class="row1">
-              <div class="pr-form-label">
-                <label for="">PRODUCT NAME</label>
-              </div>
-              <div class="pr-form-label">
-                <input type="text" name="prname" class="pr-input-box" />
-              </div>
-            </div>
-
-            <div class="row1">
-              <div class="pr-form-label">
-                <label for="">QUANTITY</label>
-              </div>
-              <div class="pr-form-input">
-                <input type="number" name="quantity" min="1" max="100" step="1" value="1"class="pr-input-box" />
-              </div>
-            </div>
-
-            <div class="row1">
-              <div class="pr-form-label">
-                <label for="">DELIVERY DATE</label>
-              </div>
-              <div class="pr-form-input">
-                <input type="date" name="deliverydatetime" class="pr-input-box" min="2021-01-01" max="2041-01-01"/>
+                <h2>UPDATE PRODUCT RESERVATION</h2>
               </div>
             </div>
 
@@ -150,29 +164,67 @@ if($_SESSION['type'] == "cashier")
               </div>
             </div>
 
+            <div class="row1">
+              <div class="pr-form-label">
+                <label for="firstname">CUSTOMER NAME</label>
+              </div>
+              <div class="pr-form-input">
+                <input type="text" name="fname" class="pr-input-box" />
+              </div>
+            </div>
+
+            <div class="row1">
+              <div class="pr-form-label">
+                <label for="">CONTACT NUMBER</label>
+              </div>
+              <div class="pr-form-input">
+                <input type="tel" name="contact" class="pr-input-box" />
+              </div>
+            </div>
+
+            <div class="row1">
+              <div class="pr-form-label">
+                <label for="">EMAIL</label>
+              </div>
+              <div class="pr-form-input">
+                <input type="email" name="address" class="pr-input-box" />
+              </div>
+            </div>
+
+            <div class="row1">
+              <div class="pr-form-label">
+                <label for="">ADDRESS</label>
+              </div>
+              <div class="pr-form-input">
+                <input type="text" name="address" class="pr-input-box" />
+              </div>
+            </div>
+
+            <div class="row1">
+              <div class="pr-form-label">
+                <label for="">PRODUCT CODE</label>
+              </div>
+              <div class="pr-form-input">
+                <input type="text" name="p_code" class="pr-input-box" />
+              </div>
+            </div>
+
+            <div class="row1">
+              <div class="pr-form-label">
+                <label for="">DATE</label>
+              </div>
+              <div class="pr-form-input">
+                <input type="date" name="due_date" class="pr-input-box" />
+              </div>
+            </div>
+
+            
+
             <div class="pr-form-add" style="margin-top: 10px">
-              <button class="pr-form-add-button" name="submit" type="button" onclick="OnClickOpenUpdatePR()" >UPDATE</button>
+              <button class="pr-form-add-button" name="submit">ADD</button>
             </div>
           </form>
         </div>
-          
-<!-----------------------------------------------------Update Product reservation message as a Pop-Up----------------------------------------------------->
-        <div class="th-delete-record-container" id="th-update-pr">
-            <div class="th-emp-close">
-                <span class="th-emp-close-button" onclick="OnclickCloseDeleteUpdatePR()">X</span>
-           </div>
-
-            <h2 class="th-delete-message" Style="text-align: center;">PRODUCT RESERVATION UPDATED SUCCESSFULLY!</h2>
-        
-        </div>
-
-       
-    </div>
-</div>
-
-<!--------------------------------------------------------------------------------------------------------------------------------------------->
-
-
       </div>
     </div>
 

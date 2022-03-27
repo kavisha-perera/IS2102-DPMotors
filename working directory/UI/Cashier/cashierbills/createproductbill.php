@@ -14,61 +14,97 @@ if($_SESSION['type'] == "cashier")
 $bill_error='';
 $bill_list = '';
 
-$query= "SELECT * FROM productbill ORDER BY id ASC";
-$bill = mysqli_query($conn, $query);
+// $query= "SELECT * FROM productbill ORDER BY id ASC";
+// $bill = mysqli_query($conn, $query);
+
+
+$sql = "SELECT * FROM productbill ORDER BY bid DESC LIMIT 1";
+$result = mysqli_query($conn, $sql);
+
+$bill = $result->fetch_assoc();
+
 
 if ($bill) { //View Service bill details
-    while ($value = mysqli_fetch_assoc($bill)){
+//     while ($value = mysqli_fetch_assoc($bill)){
 
-        $price = $value['quantity']*$value['unit_price'];
+        $price = $bill['quantity']*$bill['selling_price'];
 
         $bill_list .="<tr>";
-        $bill_list.="<td>{$value['stock_code']}</td>";
-        $bill_list .="<td>{$value['p_name']}</td>";
-        $bill_list .="<td>{$value['quantity']}</td>";
-        $bill_list .="<td>{$value['unit_price']}</td>";
+        $bill_list.="<td>{$bill['stockcode']}</td>";
+        $bill_list .="<td>{$bill['quantity']}</td>";
+        $bill_list .="<td>{$bill['selling_price']}</td>";
+        $bill_list .="<td>{$bill['bid']}</td>";
         $bill_list .="<td>{$price}</td>";
-        $bill_list .="<td><a href=\"createproductbill.php?bill_id={$value['id']}\" onclick=\"return confirm('Are you sure?');\" >Remove</a></td>";
+        $bill_list .="<td><a href=\"createproductbill.php?bill_id={$bill['id']}\" onclick=\"return confirm('Are you sure?');\" >Remove</a></td>";
         $bill_list .="</tr>"; 
 
-    }
+    // }
 
 }else{
     echo "Database connection failed.";
 }
 
-echo "ABC";
+
 
 if(isset($_POST['submit'])){
 
-        $bill_no=mysqli_real_escape_string($conn,$_POST['bill_no']);
-
-        $id=mysqli_real_escape_string($conn,$_POST['id']);
-        $date=mysqli_real_escape_string($conn,$_POST['date']);
-        $billtype=mysqli_real_escape_string($conn,$_POST['billtype']);
-        $cus_name=mysqli_real_escape_string($conn,$_POST['cus_name']);
         $email=mysqli_real_escape_string($conn,$_POST['email']);
-        $cus_contact=mysqli_real_escape_string($conn,$_POST['cus_contact']);
-        $cus_address=mysqli_real_escape_string($conn,$_POST['cus_address']);
-        $cashier_name=mysqli_real_escape_string($conn,$_POST['cashier_name']);
-        $stock_code=mysqli_real_escape_string($conn,$_POST['stock_code']);
-        $p_name=mysqli_real_escape_string($conn,$_POST['p_name']);
-        $quantity=mysqli_real_escape_string($conn,$_POST['quantity']);
-        $unit_price=mysqli_real_escape_string($conn,$_POST['unit_price']);
+        $bill_no=mysqli_real_escape_string($conn,$_POST['bill_no']);
+        $date=mysqli_real_escape_string($conn,$_POST['date']);      
+        $billtype=mysqli_real_escape_string($conn,$_POST['billtype']);
+        //validate emil
+       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "Invalid email format";     
+            echo "<p style='color:red; text-align:center;'>" . $emailErr . "</p>";
 
-        $query="INSERT INTO productbill (";
-        $query.="bill_no,stock_code,date,billtype,cus_name,email,cus_address,cus_contact,cashier_name,p_name,quantity,unit_price";
-        $query.=") VALUES (";
-        $query.="'{$bill_no}','{$stock_code}','{$date}','{$billtype}','{$cus_name}','{$email}','{$cus_address}','{$cus_contact}','{$cashier_name}','{$p_name}','{$quantitY}','{$unit_price}'";
-        $query.=")";
-        
-        $result = mysqli_query($conn, $query);
-
-        if($result){
-            header('Location:createproductbill.php?user_added=true');
-        }else{
-            header('Location:createproductbill.php?Failed_to_add_new_record');
+        } elseif(filter_var($email, FILTER_VALIDATE_EMAIL)){
+         
+    
+            $query="INSERT INTO allbills (";
+            $query.="bill_no,date,email,billtype";
+            $query.=") VALUES (";
+            $query.="'{$bill_no}','{$date}','{$email}','{$billtype}'";
+            $query.=")";
+    
+            $result = mysqli_query($conn, $query);
+    
+            if(!$result){
+                header("Location: createproductbill.php?msg=Failed to add new record.");
+            }else{
+   
+   
+          
+   
+           $sql = "SELECT * FROM allbills ORDER BY bid DESC LIMIT 1";
+           $result = mysqli_query($conn, $sql);
+   
+           $billId = $result->fetch_assoc();
+   
+               // $description=mysqli_real_escape_string($conn,$_POST['description']);
+              $stockcode=mysqli_real_escape_string($conn,$_POST['stock_code']);
+              // $vehicleNo=mysqli_real_escape_string($conn,$_POST['vehicleNo']);
+              $quantity=mysqli_real_escape_string($conn,$_POST['quantity']);
+              $selling_price=mysqli_real_escape_string($conn,$_POST['selling_price']);
+              $bid=$billId['bid'];
+       
+               $query="INSERT INTO productbill (";
+               $query.="stockcode,quantity,selling_price,bid";
+               $query.=") VALUES (";
+               $query.="'{$stockcode}','{$quantity}','{$selling_price}','{$bid}'";
+               $query.=")";
+   
+               $result = mysqli_query($conn, $query);
+    
+               if(!$result){
+                   header("Location: createproductbill.php?msg=Failed to add new record.");
+               }else{
+                header("Location: createproductbill.php?msg=Success");
+               }
+   
+   
+            }
         }
+          
 
     } 
     
@@ -87,6 +123,34 @@ if(isset($_POST['submit'])){
        }
      
      }
+
+    //  function fetchAllBills(mysqli $conn){
+    
+    //     $sql = "select * from allbills;";
+    //     $result = mysqli_query($conn, $sql);
+    //     while($row = mysqli_fetch_array($result))
+    //     {
+    //         $rows[] = $row;
+    //         // echo 'alert(\'' + $row[2] + '\');';
+    //     }
+    //     if ( $result != false && $result->num_rows > 0) {
+    //         // output data of each row
+    //         while($row = $result->fetch_assoc()) {
+    
+    //             echo $row['id']
+    //         }
+
+    //     }
+       
+    //     return $result;
+    // }
+
+
+    // $result = fetchAllBills($conn) ;
+
+
+    // fetchAllBills($conn)
+
 
 
 ?>
@@ -110,6 +174,25 @@ if(isset($_POST['submit'])){
     </style>
 </head>
 <body>
+<script>
+
+function myFunction() {
+  // Get the value of the input field with id="numb"
+  let x = document.getElementById("numb").value;
+  // If x is Not a Number or less than one or greater than 10
+  let text;
+  if (isNaN(x) || x < 1 || x > 10) {
+    text = "Input not valid";
+  } else {
+    text = "Input OK";
+  }
+  document.getElementById("demo").innerHTML = text;
+}
+
+return false;
+</script>
+
+
 
 <div class="row r1">
 <?php include_once("../cashierTopNav.php") ?>
@@ -121,6 +204,22 @@ if(isset($_POST['submit'])){
     </div>
 <!--End of Dropdown for screens with width less than 800px-->
 
+<script>
+
+function checkEmail() {
+
+var email = document.getElementById('email');
+var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+if (!filter.test(email.value)) {
+    alert('Please provide a valid email address');
+    email.focus;
+    return false;
+}
+}
+
+
+</script>
 <div class="row r3">
         <div class="col-15 sideNav">
             <?php include_once("../cashierSideNav.php") ?> 
@@ -140,34 +239,45 @@ if(isset($_POST['submit'])){
                         <input type="text" name="bill_no" class="searchbar" placeholder="Example:PB100">
 
                         <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Date</label>
-                        <input type="date"  name="date" class="searchbar" style="width:200px;"  min="2022-03-25" max="2042-01-01" autofocus>
+                        <input type="date"  name="date" class="searchbar" style="width:200px;"  min="2022-03-29" max="2042-01-01" autofocus>
 
                         <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Bill Type</label>
                         <select name="billtype" class="billtextbox">
                             <option>Service</option> 
                             <option>Product</option>       
                          </select><br><br>
-
-                        <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Customer Name</label>
-                        <input type="text"  name="cus_name" class="searchbar" autofocus>
-
                         <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Email</label>
-                        <input type="text"  name="email" class="searchbar" autofocus><br><br>
+                        <input type="email"  name="email" class="searchbar" autofocus id = 'email'>
 
-                        <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Customer Contact</label>
-                        <input type="text"  name="cus_contact" class="searchbar" autofocus>
+                        
+                        
 
-                        <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Customer Address</label>
-                        <input type="text"  name="cus_address" class="searchbar" autofocus><br><br>
+                        <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Selling_price</label>
+                      
+                        
+                        <?php 
+                        if (isset($_GET['bill_id'])){
 
-                        <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Cashier Name</label>
-                        <input type="text"  name="cashier_name" class="searchbar" autofocus>
+                            $sql = "SELECT * FROM stock WHERE stock_code = 'EOU-42' ";        
+                          
+                            $result = mysqli_query($conn, $sql);
+                  
+                            $price = $result->fetch_assoc();
+ 
+   
+                        }
+                           
+  
+                        ?>   
 
-                        <label for="product" class="th-user-label" style="background-color: #021257; color: white;">Stock Code</label>
+
+                        <!-- <input type="text" class="th-user-label" value="<?php echo $price['selling_price'];?>"> -->
+
+
+                        <input type="text"  name="selling_price" class="searchbar" autofocus value="<?php echo $price['selling_price'];?>" > <br><br>
+
+                        <label for="product" id ='stock' class="th-user-label" style="background-color: #021257; color: white;">Stock Code</label>
                         <input type="text" name="stock_code" class="searchbar" autofocus><br><br>
-
-                        <label for="product" class="th-user-label" style="background-color: #021257; color: white;">Product Name</label>
-                        <input type="text" placeholder="Search by Product Name" name="p_name" class="searchbar" autofocus>
 
                         <label for="product" class="th-user-label" style="background-color: #021257; color: white;">Unit Price</label>
                         <input type="text"  name="unit_price" class="searchbar" autofocus><br><br>
@@ -195,8 +305,20 @@ if(isset($_POST['submit'])){
                             
 
                           </table><br><br>
-                          <label for="total" class="navButton" style="vertical-align: bottom;">Total</label>
-                          <input type="number" name="total" class="th-user-label">
+                          <!-- <label for="total" class="navButton" style="vertical-align: bottom;">Total</label>
+                          <input type="number" name="total" class="th-user-label"> -->
+                          
+                          <?php 
+                          $query="SELECT * FROM productbill ORDER BY bid DESC LIMIT 1";
+                          $result=mysqli_query($conn,$query);
+                          $data=mysqli_fetch_assoc($result); 
+                          $tot = $data['selling_price'] * $data['quantity']
+                          
+                          ?>
+
+                          <label for="total" class="navButton" style="vertical-align: bottom;margin-top:15px;">Total</label>
+                          <input type="text" class="th-user-label" value="<?php echo $tot;?>">
+
                     </form><br>
                     
                 </div>
@@ -207,7 +329,9 @@ if(isset($_POST['submit'])){
         </div>
     </div>
 
-    
+  
+
+
 
 
 
