@@ -18,7 +18,7 @@ if (isset($_POST["add"])){
     if ($conn->query($sql) === TRUE) {
         echo'<script>alert("New supplier added succesfully!");history.go(-1);</script>';
       } else {
-        echo "Error" 
+        echo "Error" ;
       }
 }
 
