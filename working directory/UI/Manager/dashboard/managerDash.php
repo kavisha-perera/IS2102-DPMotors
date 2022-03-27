@@ -46,7 +46,7 @@ if($_SESSION['type'] == "manager")
                         <a href="../dashboards/managerDash.php"><img src="../../../images/manager/salesreports.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../Cashier service records/managerViewServiceRecords.php"><img src="../../../images/manager/servicerecord.png" class="dashboardIcon"></a>
+                        <a href="../view/viewService.php"><img src="../../../images/manager/servicerecord.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
                         <a href="../../manageInventory/manageinventory.php"><img src="../../../images/manager/inventory.png" class="dashboardIcon"></a>
