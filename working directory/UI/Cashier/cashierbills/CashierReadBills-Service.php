@@ -43,7 +43,7 @@ if (isset($_POST["print"])){
     if ($result) {
         while ($value = mysqli_fetch_assoc($result)){
 
-            $bill_no = $value["bill_no"];
+            $bid = $value["bid"];
             $billtype = $value["billtype"];
             $email = $value["email"];
             $vehicleNo = $value["vehicleNo"];
@@ -158,7 +158,7 @@ if (isset($_POST["print"])){
                             <input type="text" name="billtype" class="billGeneralForm">
                         </div>
                         <div class="billGeneralDetails">
-                            <h5>CASHIER NAME:<?php echo $vehicleNo; ?></h5>
+                            <h5>VEHICLE NO:<?php echo $vehicleNo; ?></h5>
                             <input type="text" name="vehicleNo" class="billGeneralForm">
                         </div>
                     </div>
