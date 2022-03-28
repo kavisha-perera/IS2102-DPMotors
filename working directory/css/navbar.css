@@ -1,0 +1,7 @@
+.sideNav a, .sideNav p{
+	padding: 20px;
+	text-decoration: none;
+	font-size:15px;
+	color: #F2F2F2;
+	display: block;
+}

@@ -28,13 +28,13 @@ if($_SESSION['type'] == "manager")
             <!--main content here-->
                 <div class="row r3-1">
                     <div class="col-4 d-icon">
-                        <a href="../../Manager/reports/reportsNew.php"><img src="../../../images/manager/reports.png" class="dashboardIcon"></a>
+                        <a href="../../Manager/reports/readReports.php"><img src="../../../images/manager/reports.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../Cashier product reservation/managerViewProductResrvation.php"><img src="../../../images/manager/product.png" class="dashboardIcon"></a>
+                        <a href="../view/viewProductResrvation.php"><img src="../../../images/manager/product.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../managerInventory&Supplier/managerViewSupplier.php"><img src="../../../images/manager/supplier.png" class="dashboardIcon"></a>
+                        <a href="../supplier/supplier.php"><img src="../../../images/manager/supplier.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
                         <a href="../appointments/readAppointments.php"><img src="../../../images/manager/appointment.png" class="dashboardIcon"></a>
@@ -43,13 +43,10 @@ if($_SESSION['type'] == "manager")
                         <a href="../promotion/readPromotion.php"><img src="../../../images/manager/promo.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../dashboards/managerDash.php"><img src="../../../images/manager/salesreports.png" class="dashboardIcon"></a>
-                    </div>
-                    <div class="col-4 d-icon">
                         <a href="../view/viewService.php"><img src="../../../images/manager/servicerecord.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../../manageInventory/manageinventory.php"><img src="../../../images/manager/inventory.png" class="dashboardIcon"></a>
+                        <a href="../view/viewAllBills.php"><img src="../../../images/manager/salesreports.png" class="dashboardIcon"></a>
                     </div>
  <!--                   <div class="col-4 d-icon">
                         <a href="../dashboards/managerDash.php"><img src="../../../images/manager/other.png" class="dashboardIcon"></a>

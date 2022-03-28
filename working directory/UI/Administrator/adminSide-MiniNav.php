@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="../../../css/main.css">
 <!--customer side nav bar for screens smaller than 800px-->
     <style>
         .Nav-dashboard{
@@ -25,7 +25,7 @@
         </div>
         
         <div class="hide-in-dashboard">
-            <a href="../../profiles/adminViewProfile.html" class="Nav-profile"> Profile </a>
+            <a href="../Administrator profile/adminViewProfile.php" > Profile </a>
             <a href="../manageAccounts/manage.php"> Accounts </a> 
             <a href="../manageInventory/manageinventory.php"> Inventory </a>
             <a href="../../managepromotions/managepromotions.php"> Promotions </a>  
@@ -34,7 +34,7 @@
         </div>
 
         <div class="hide-in-others">
-            <a href="../../profiles/adminViewProfile.html"> Profile </a>
+            <a href="../Administrator profile/adminViewProfile.php"> Profile </a>
             <a href="../manageAccounts/manage.php"> Accounts </a> 
             <a href="../manageInventory/manageinventory.php"> Inventory </a>
             <a href="../../managepromotions/managepromotions.php"> Promotions </a>  

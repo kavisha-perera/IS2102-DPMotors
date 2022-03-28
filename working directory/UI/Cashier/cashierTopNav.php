@@ -6,7 +6,10 @@
     <h4 class="navSlogan">Dealers in all kinds of motor vehicle spare parts & accessories</h4>
 </div>
 <div class="col-14 navbar"> 
-        <?php 
+
+<a href="../../Customer/customer gerneral/productsCatalogue.php">Products</a>
+       
+       <?php 
             if (isset($_SESSION['id'])){
                 echo "
                 <form action='../../../includes/logout.inc.php'>

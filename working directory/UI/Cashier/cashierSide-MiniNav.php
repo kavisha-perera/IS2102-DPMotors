@@ -1,3 +1,6 @@
+
+<link rel="stylesheet" href="../../../css/navbar.css">
+
 <div class="col-2 sideNav-dropdown" >
 
     <img src="../../../images/dropdown.svg" class="dropButton hide-in-others">

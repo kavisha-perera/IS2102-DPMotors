@@ -1,3 +1,7 @@
+
+<link rel="stylesheet" href="../../../css/navbar.css">
+
+
 <div class="row r1">
         <div class="col-13">
         <img src="../../../images/logo.png" class="navLogo">
@@ -23,8 +27,8 @@
                                     <a href="../appointments/readAppointments.php"  > Appointments </a> 
                                     <a href="../employeeRecords/employeeRecords.php" > Employee Records </a> 
                                     <a href="../view/viewService.php"> Vehicle Service Records </a>
-                                    <a href="../Cashier product reservation/managerViewProductResrvation.php"> Product Reservations </a> 
-                                    <a href="../Cashier View Bill History/ManagerViewAllBills.php"> Payment History </a> 
+                                    <a href="../view/viewProductResrvation.php"> Product Reservations </a> 
+                                    <a href="../view/viewAllBills.php"> Payment History </a> 
                                 </div>
                         </div>
                         <div class="col-10 smallWel">
@@ -42,6 +46,6 @@
                                     <a href="../appointments/readAppointments.php" > Appointments </a> 
                                     <a href="../employeeRecords/employeeRecords.php" > Employee Records </a> 
                                     <a href="../view/viewService.php"> Vehicle Service Records </a>
-                                    <a href="../Cashier product reservation/managerViewProductResrvation.php"> Product Reservations </a> 
-                                    <a href="../Cashier View Bill History/ManagerViewAllBills.php"> Payment History </a>                                 
+                                    <a href="../view/viewProductResrvation.php"> Product Reservations </a> 
+                                    <a href="../view/viewAllBills.php"> Payment History </a>                                 
         </div>

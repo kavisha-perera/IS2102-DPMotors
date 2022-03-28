@@ -7,7 +7,7 @@ session_start();
 
 if(isset($_SESSION['id']))
 {
-    $customerEmail =  $_SESSION['email'];
+    $email =  $_SESSION['email'];
 }
 
 
@@ -19,8 +19,7 @@ if(isset($_SESSION['id']))
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
-    <link rel="stylesheet" href="../../css/navbar.css">
-	<title>customer update profile page</title>
+	<title>Administrator update profile page</title>
     <style>
         .Nav-profile{
             /* to show the active link in navbar */
@@ -36,24 +35,25 @@ if(isset($_SESSION['id']))
         .button{
             width:150px;
         }
+        
     </style>
 </head>
 <body>
 
     <div class="row r1">
-        <?php include_once("../customerTopNav.php");?>
+        <?php include_once("../adminTopNav.php");?>
     </div>
 
     <!-- Start of Dropdown for screens with width less than 800px-->
                     <div class="row r2">
-                        <?php include_once("../customerSide-MiniNav.php");?>
+                        <?php include_once("../adminSide-MiniNav.php") ?>
                     </div>
     <!--End of Dropdown for screens with width less than 800px-->
 
     <div class="row r3">
 
         <div class="col-15 sideNav">
-            <?php include_once("../customerSideNav.php");?>
+            <?php include_once("../adminSideNav.php");?>
         </div>
 
         <div class="col-16 content">
@@ -104,7 +104,7 @@ if(isset($_SESSION['id']))
                         <input type="text" class="profileV" name="address" placeholder="your address" value="<?php echo $row['address']; ?>" readonly>
                     </div>
                     <div class="col-4 buttons-inline"> 
-                        <form action="./customerUpdateProfile.php">
+                        <form action="./adminUpdateProfile.php">
                             <button class="navButton button"> Edit Profile </button>
                         </form>
                     </div>
@@ -154,7 +154,7 @@ if(isset($_SESSION['id']))
                         <input type="password" class="profileV" name="password" value="**********" readonly>
                     </div>
                     <div class="col-4 buttons-inline"> 
-                        <form action="./customerChangePassword.php">
+                        <form action="./adminChangePassword.php">
                             <button class="navButton button"> Change Password</button>
                         </form>
                     </div>
@@ -177,7 +177,7 @@ if(isset($_SESSION['id']))
                     <div class="col-2 profileLabel"> </div>
                     <div class="col-6 profileform"></div>
                     <div class="col-4 buttons-inline"> 
-                        <form action="./customerDeleteAccount.php">
+                        <form action="./adminDeleteAccount.php">
                             <button class="navButton delete button"> Deactivate  </button> <!--or deactivate-->
                         </form>   
                     </div>

@@ -1,4 +1,6 @@
 
+<link rel="stylesheet" href="../../../css/navbar.css">
+
 <!--customer side nav bar for screens smaller than 800px-->
 
 <div class="col-2 sideNav-dropdown" >

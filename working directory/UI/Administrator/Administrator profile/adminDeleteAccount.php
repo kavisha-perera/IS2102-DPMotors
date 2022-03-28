@@ -10,13 +10,12 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
-    <link rel="stylesheet" href="../../css/navbar.css">
-	<title>customer profile page</title>
+	<title>Administrator profile page</title>
 </head>
 <body>
 
     <div class="row r1">
-        <?php include_once("../customerTopNav.php");?>
+        <?php include_once("../adminTopNav.php");?>
     </div>
 
     <div class="row deleteWarning"> <!--do not use r2 cus it has been used for something else-->

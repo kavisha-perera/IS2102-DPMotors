@@ -22,6 +22,7 @@ function loadAllProducts(){
             title:{
                 text: "Products"
             },
+            exportEnabled: true,
             axisY: {
                 title: "Count",
                 minimum: 0
@@ -69,6 +70,7 @@ function loadAllUsers(){
             title:{
                 text: "Users"
             },
+            exportEnabled: true,
             axisY: {
                 title: "Count",
                 minimum: 0
@@ -114,6 +116,7 @@ function loadAllschedule(){
             title:{
                 text: "Booked Appointments"
             },
+            exportEnabled: true,
             axisY: {
                 title: "Count",
                 minimum: 0
@@ -161,6 +164,7 @@ function loadAllservice(){
             title:{
                 text: "Vechicle Services"
             },
+            exportEnabled: true,
             axisY: {
                 title: "Count",
                 valueFormatString: "#",
@@ -238,6 +242,7 @@ function loadAllAppointments (){
             title:{
                 text: "Completed"
             },
+            exportEnabled: true,
             axisY: {
                 title: "Count",
                 valueFormatString: "#",
@@ -256,6 +261,7 @@ function loadAllAppointments (){
             title:{
                 text: "Pending"
             },
+            exportEnabled: true,
             axisY: {
                 title: "Count",
                 valueFormatString: "#",
@@ -274,6 +280,7 @@ function loadAllAppointments (){
             title:{
                 text: "Missed"
             },
+            exportEnabled: true,
             axisY: {
                 title: "Count",
                 valueFormatString: "#",
@@ -289,9 +296,9 @@ function loadAllAppointments (){
 
 
 
-chart1.render();
-chart2.render();
-chart3.render();
+        chart1.render();
+        chart2.render();
+        chart3.render();
 
 
 

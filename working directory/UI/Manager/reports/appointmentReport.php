@@ -18,8 +18,7 @@ if($_SESSION['type'] == "manager")
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
-   
-	<title>Reports</title>
+    <title>Reports</title>
 
 <style>
 
@@ -50,10 +49,13 @@ include_once("../managerNav.php");
 
 <div class="col-16 content">
             <!--main content here-->
+            
+<p style="text-align: left;"> <button class="navButton" onclick="history.back()">Back </button></p>         
+
 
 
 <h3 >Appointment Report<h3>
-
+  
 <div id="chart">
 
 <div class="container">
@@ -71,41 +73,6 @@ include_once("../managerNav.php");
   </div>
 </div>
 </div>
-
-</br> </br> </br> </br>
-
-
-<h3>Schedule Report<h3>
-
-<div id="chart">
-  
-<div id="scheduleChart" style="height: 370px; width: 100%;"></div> 
-
-</div>
-
-
-</br> </br> </br> </br>
-
-<h3>Vehicle Service Records Report<h3>
-
-<div id="chart">
-
-<div id="serviceChart" style="height: 370px; width: 100%;"></div> 
-  
-</div>
-
-
-</br> </br> </br> </br>
-
-
-<h3>New Registerd Users Report<h3>
-
-<div id="chart">
-
-<div id="usersChart" style="height: 370px; width: 100%;"></div>
-  
-</div>
-
 
 </body>
 
