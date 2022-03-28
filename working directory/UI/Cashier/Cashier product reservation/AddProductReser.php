@@ -88,7 +88,7 @@ if($_SESSION['type'] == "cashier")
             while($row=mysqli_fetch_assoc($result)){
 
           ?>    
-
+          
               <hr>
 
               <form action="./addProducts.php" method="post"><!--open main form to make product reservation-->

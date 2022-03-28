@@ -99,6 +99,11 @@ function test_input($data) {
         .hide-in-others{
             display:none;
         }
+        .select{
+          width:400px;
+          height:30px;
+          border:1px solid #C4C4C4;
+        }
     </style>
 </head>
 <body>
@@ -122,14 +127,28 @@ function test_input($data) {
             <!--main content here-->
             <div class="pr-form-container">
 
+            <div class="row">
+                  <div class="col-3 th-add-new-button">
+                      <button class="navButton" onclick="document.location='./cashierAddRecord.php'"><b> REFRESH</b>
+                      </button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
+                  </div>
+                     
+                  <div class="col-9">
+                      <h2>Add New Vehicle Records</h2>
+                  </div>
+            </div>
+
             <!--checking if the customer exits in the system-->
             <div class='col-12'>
               <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="getCusData">
-                <label >Get customer data for existing customers:</label>
-                <input type="text" name="cusEmail" placeholder="Enter Customer Email">
-                <input type="submit" name="cusData" value="GET DATA">
+                <label >Customer Email:</label>
+                <input type="text" name="cusEmail" placeholder="Enter Customer Email" required>
+                <input type="submit" name="cusData" value="CHECK">
               </form>
             </div>
+
+            <hr><hr>
+            <br><br>
 
             <!--checking if the cusData button is clicked and taking actions accordingly-->
             <?php
@@ -144,197 +163,52 @@ function test_input($data) {
 
               if(mysqli_num_rows($result) > 0){ //check if rows with the email exists in the database
                 
-                while($row=mysqli_fetch_assoc($result)){
+                while($cusEmail=mysqli_fetch_assoc($result)){
+                ?>
 
-              ?>    
 
+              <table>
+              <form action="./cashierAddRecord.php" method="POST"> <!--close form to create record-->
             
-                <form action="./cashierAddRecord.php" method="POST"> <!--close form to create record-->
+                <tr>
+                    <td>  <label for="customerEmail">Customer email</label> </td>
+                    <td>  <input type="text" name="customerEmail" class="pr-input-box" value="<?php echo $cusEmail['email']; ?>" readonly /> </td>
+                </tr>
 
-                  <div class="row1">
-                  <div class="th-add-new-button">
-                        <button class="navButton" onclick="document.location='./cashierAddRecord.php'"  style="margin-top:30px;"><b> REFRESH</b></button><!--Here onclick is an event handler(in JS) it occurs when someone click an element for example form buttons,check box,etc.-->
-                     </div>
-                    <div class="pr-form-title">
-                      <h2>Add New Vehicle Records</h2>
-                    </div>
-                  </div>
-    
-                  <br/><br/>
+              <?php include_once("./addservicerecord-form.php"); ?>
+
+              </form> 
+
+              </table>
+
+                <?php
+                    
+                }
+              }
+              else{
+                echo "This Email Is Not Registered";
+              }
+            }
+            else{    
+
+            ?>
+
+
+              <table>
+              <form action="./cashierAddRecord.php" method="POST"> <!--close form to create record-->
+
+              <?php include_once("./addservicerecord-form.php"); ?>
+
+              </form>
+
+              </table>
+
+              <?php
       
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="serviceNo">Service No.</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="text" name="serviceNo" class="pr-input-box" />
-                    </div>
-                  </div>
-
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="customerEmail">Customer email</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="text" name="customerEmail" class="pr-input-box" />
-                      <span class="error"><?php echo $email_err;?></span>
-                    </div>
-                  </div>
-
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="nameth">Vehicle No.</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="text" name="vehicleNo" class="pr-input-box" />
-                      <span class="error"><?php echo $vehicleNo_error;?></span>
-                    </div>
-                  </div>
-
-              
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="vehicleModel">Vehicle Type</label>
-                    </div>
-                    <div class="pr-form-input">
-                    <select name="vehicleModel" class="th-emsu-input">
-                       <option> - </option>
-                       <option>Toyota Axio</option> 
-                       <option>Toyota Corolla</option>    
-                       <option>Suzuki Maruti</option>  
-                    </select>
-                    </div>
-                  </div>
-
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="nameth">Date of Service</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="date" name="dateOfService" class="pr-input-box" min="2022-03-16" max="2042-01-01"/>
-                      <span class="error"><?php echo $dateOfService_error;?></span>
-                    </div>
-                  </div>
-      
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="nameth">Milage</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="text" name="milage" class="pr-input-box" />
-                    </div>
-                  </div>
-
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="nameth">Engine Oil</label>
-                    </div>
-                    <div class="pr-form-input">
-                    <select name="engineOil" class="th-emsu-input">
-                       <option> - </option>
-                       <option>Top Up</option> 
-                       <option>Refill</option>                               
-                    </select> 
-                    </div>
-                  </div>
-
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="nameth">Gear Oil</label>
-                    </div>
-                    <div class="pr-form-input">
-                    <select name="gearOil" class="th-emsu-input">
-                       <option> - </option>
-                       <option>Top Up</option> 
-                       <option>Refill</option>                               
-                    </select> 
-                    </div>
-                  </div>
-
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="nameth">A/C Filter</label>
-                    </div>
-                    <div class="pr-form-input">
-                    <select name="ACfilter" class="th-emsu-input">
-                       <option> - </option>
-                       <option>Clean</option> 
-                       <option>Replace</option>                               
-                    </select> 
-                    </div>
-                  </div>
-
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="nameth">Oil Filter</label>
-                    </div>
-                    <div class="pr-form-input">
-                    <select name="oilFilter" class="th-emsu-input">
-                       <option> - </option>
-                       <option>Change</option>                                
-                    </select> 
-                    </div>
-                  </div>
-
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="nameth">ATF Oil</label>
-                    </div>
-                    <div class="pr-form-input">
-                    <select name="ATFoil" class="th-emsu-input">
-                       <option> - </option>
-                       <option>Top Up</option> 
-                       <option>Refill</option>                               
-                    </select> 
-                    </div>
-                  </div>
-
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="nameth">Coolant</label>
-                    </div>
-                    <div class="pr-form-input">
-                    <select name="coolant" class="th-emsu-input">
-                       <option> - </option>
-                       <option>Top Up</option> 
-                       <option>Refill</option>                               
-                    </select> 
-                    </div>
-                  </div>
-
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="nameth">Air filter</label>
-                    </div>
-                    <div class="pr-form-input">
-                    <select name="airFilter" class="th-emsu-input">
-                       <option> - </option>
-                       <option>Clean</option> 
-                       <option>Replace</option>                               
-                    </select> 
-                    </div>
-                  </div>
-
-                  
-                  <div class="row1">
-                    <div class="pr-form-label">
-                      <label for="nameth">Next date of service</label>
-                    </div>
-                    <div class="pr-form-input">
-                      <input type="date" name="nextServiceDate" class="pr-input-box" min="2022-03-21" max="2042-01-01"/>
-                      <span class="error">
-                    </div>
-                  </div>
-         
-                  <div class="pr-form-add" style="margin-top: 10px">
-                    <label for="">&nbsp;</label>
-                    <button class="pr-form-add-button" name="submit">ADD</button>
-                  </div>
-                </form> <!--close form to create record-->
-
-
-              </div>
-
+               } 
+              ?>        
+            
+            </div>
            
         </div>
     </div>
