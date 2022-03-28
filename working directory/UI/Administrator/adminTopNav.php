@@ -1,5 +1,5 @@
 <!--customer topnav bar -->
-<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../../css/main.css">
 
 <div class="col-13">
     <img src="../../../images/logo.png" class="navLogo">

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../../../css/main.css">
 
 <!--customer side nav bar for screens larger than 800px-->
     <style>
@@ -21,7 +22,7 @@
 </div>
 
 <div class="hide-in-dashboard">
-    <a href="../../profiles/adminViewProfile.html"> Profile </a> <hr>
+    <a href="../Administrator profile/adminViewProfile.php"> Profile </a> <hr>
     <a href="../manageaccounts/manage.php"> Accounts </a> <hr>
     <a href="../manageInventory/manageinventory.php"> Inventory </a> <hr>
     <a href="../../managepromotions/managepromotions.php"> Promotions </a> <hr>
@@ -30,7 +31,7 @@
 </div>
 
 <div class="hide-in-others">
-    <a href="../../profiles/adminViewProfile.html"> Profile </a> <hr>
+    <a href="../Administrator profile/adminViewProfile.php"> Profile </a> <hr>
     <a href="../manageAccounts/manage.php"> Accounts </a> <hr>
     <a href="../manageInventory/manageinventory.php"> Inventory </a> <hr>
     <a href="../../managepromotions/managepromotions.php"> Promotions </a> <hr>
