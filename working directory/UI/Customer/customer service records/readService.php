@@ -108,7 +108,6 @@ if(isset($_SESSION['id']))
                         <table class="ServiceRecordTable">
                                 <thead>
                                     <tr>
-                                    <th>No</th>
                                     <th>Service Date</th>
                                     <th>Mileage</th>
                                     <th>Engine Oil</th> 
@@ -124,7 +123,6 @@ if(isset($_SESSION['id']))
                                 <tbody> <!--add php & sql here-->
                                 <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                                     <tr>
-                                        <td><?php echo $row['serviceNo']; ?></td>
                                         <td><?php echo $row['dateOfService']; ?></td>
                                         <td><?php echo $row['milage']; ?></td>
                                         <td><?php echo $row['engineOil']; ?></td>
