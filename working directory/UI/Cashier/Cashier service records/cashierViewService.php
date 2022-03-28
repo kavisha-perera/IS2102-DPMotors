@@ -123,7 +123,7 @@ if(isset($_GET['search'])){
                     </div>
                 
                 <div class="row r3-1">
-                    <div class="col-12" style="overflow-x: auto;">
+                    <div class="col-12">
                     <?php
                         $result = mysqli_query($conn,$query);
                         if (mysqli_num_rows($result) > 0){
@@ -141,6 +141,7 @@ if(isset($_GET['search'])){
                             <?php echo $row['vehicleModel']; ?>
                         </button>
                     </form>
+                    </div>
                 <?php
                     } 
 
