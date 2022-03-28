@@ -34,8 +34,17 @@ if($_SESSION['type'] == "cashier")
         .content{
           text-align:center;
         }
-        .date{
-
+        table{
+          margin-left: auto;
+          margin-right: auto;
+          width:500px;
+          text-align:start;
+        }
+        .form{
+          width:300px;
+        }
+        .navButton{
+          width:150px;
         }
       </style>
   </head>
@@ -67,7 +76,7 @@ if($_SESSION['type'] == "cashier")
         <div class='col-12'>
           <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="getCusData">
             <label >Get customer data for existing customers:</label>
-            <input type="text" name="cusEmail" placeholder="Enter Customer Email">
+            <input type="text" name="cusEmail" placeholder="Enter Customer Email" required>
             <input type="submit" name="cusData" value="GET DATA">
           </form>
         </div>
@@ -91,54 +100,60 @@ if($_SESSION['type'] == "cashier")
           
               <hr>
 
+              <table>
+
               <form action="./addProducts.php" method="post"><!--open main form to make product reservation-->
 
 
               <input type="hidden" name="cusEmail" value="<?php echo $row['email']; ?>">
 
-              <label >Customer Name:</label>
-              <input type="text" name="cusName" value="<?php echo $row['fname']; ?> <?php echo $row['lname']; ?>" >
+              <tr>
+              <td><label >Customer Name:</label></td>
+              <td><input type="text" name="cusName" value="<?php echo $row['fname']; ?> <?php echo $row['lname']; ?>" class='form'></td>
+              </tr>
 
-              <br>
+              <tr>
+              <td><label >Customer Contact:</label></td>
+              <td><input type="text" name="cusContact" value="<?php echo $row['contact']; ?>" class='form'></td>
+              </tr>
 
-              <label >Customer Contact:</label>
-              <input type="text" name="cusContact" value="<?php echo $row['contact']; ?>" >
-
-              <br>
-
-              <label >Delivery Method:</label>
-              <select name="delivery_method">
+              <tr>
+              <td><label >Delivery Method:</label></td>
+              <td><select name="delivery_method" class='form'>
                   <option>Courier</option>
                   <option>Pick Up</option>                                
-              </select> 
+              </select></td> 
+              </tr>
 
-              <br>
+              <tr>
+              <td><label >Customer Address:</label></td>
+              <td><input type="text" name="cusAddress" value="<?php echo $row['address']; ?>" class='form'></td>
+              </tr>
 
-              <label >Customer Address:</label>
-              <input type="text" name="cusAddress" value="<?php echo $row['address']; ?>" >
+              <tr>
+              <td><label >Product Reservation No:</label></td>
+              <td><input type="text" name="resNo" value=" " class='form'></td>
+              </tr>
 
-              <br>
+              <tr>
+              <td><label >Due Date:</label></td>
+              <td><input type="date" name="dueDate" value=" " class='form'></td>
+              </tr>
 
-              
-              <label >Product Reservation No:</label>
-              <input type="text" name="resNo" value=" ">
+              <tr>
+              <td><label >Remarks:</label></td>
+              <td><input type="text" name="remarks" value=" " class='form'></td>
+              </tr>
 
-              <br>
-
-              <label >Due Date:</label>
-              <input type="date" name="dueDate" value=" ">
-
-              <br>
-
-              <label >Remarks:</label>
-              <input type="text" name="remarks" value=" ">
-
-              <br>
-
-              <input type="submit" name="createPReservationRecord" value="Next">
-
+              <tr>
+              <td colspan='2' style="text-align:center;">
+                <br>
+                <input type="submit" name="createPReservationRecord" value="ADD PRODUCTS" class="navButton">
+              </td>
+              </tr>
              </form> <!--close main form to make product reservation-->
 
+            </table>
              <br>
 
             <hr>
@@ -162,54 +177,61 @@ if($_SESSION['type'] == "cashier")
 
         <hr>
 
+        <table>
 
-        <form action="./addProducts.php" method="post"><!--open main form to make product reservation manaually-->
-
-
-        <input type="hidden" name="cusEmail" value="">
-
-        <label >Customer Name:</label>
-        <input type="text" name="cusName" value="" >
-
-        <br>
-
-        <label >Customer Contact:</label>
-        <input type="text" name="cusContact" value="" >
-
-        <br>
-
-        <label >Delivery Method:</label>
-        <select name="delivery_method">
-            <option>Courier</option>
-            <option>Pick Up</option>                                
-        </select> 
-
-        <br>
-
-        <label >Customer Address:</label>
-        <input type="text" name="cusAddress" value="" >
-
-        <br>
+          <form action="./addProducts.php" method="post"><!--open main form to make product reservation-->
 
 
-        <label >Product Reservation No:</label>
-        <input type="text" name="resNo" value=" ">
+          <input type="hidden" name="cusEmail" value="" class='form'>
 
-        <br>
+          <tr>
+          <td><label >Customer Name:</label></td>
+          <td><input type="text" name="cusName" value="" class='form'></td>
+          </tr>
 
-        <label >Due Date:</label>
-        <input type="date" name="dueDate" value=" ">
+          <tr>
+          <td><label >Customer Contact:</label></td>
+          <td><input type="text" name="cusContact" value="" class='form' ></td>
+          </tr>
 
-        <br>
+          <tr>
+          <td><label >Delivery Method:</label></td>
+          <td><select name="delivery_method" class='form'>
+              <option>Courier</option>
+              <option>Pick Up</option>                                
+          </select></td> 
+          </tr>
 
-        <label >Remarks:</label>
-        <input type="text" name="remarks" value=" ">
+          <tr>
+          <td><label >Customer Address:</label></td>
+          <td><input type="text" name="cusAddress" value="" class='form'></td>
+          </tr>
 
-        <br>
+          <tr>
+          <td><label >Product Reservation No:</label></td>
+          <td><input type="text" name="resNo" value=" " class='form'></td>
+          </tr>
 
-        <input type="submit" name="createPReservationRecord" value="Next">
+          <tr>
+          <td><label >Due Date:</label></td>
+          <td><input type="date" name="dueDate" value=" " class='form'></td>
+          </tr>
 
-        </form> <!--close main form to make product reservation-->
+          <tr>
+          <td><label >Remarks:</label></td>
+          <td><input type="text" name="remarks" value=" " class='form'></td>
+          </tr>
+
+          <tr>
+              <td colspan='2' style="text-align:center;">
+                <br>
+                <input type="submit" name="createPReservationRecord" value="ADD PRODUCTS" class="navButton">
+              </td>
+          </tr>
+
+          </form> <!--close main form to make product reservation-->
+
+          </table>
 
         <br>
 

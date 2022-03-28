@@ -31,11 +31,15 @@ if($_SESSION['type'] == "cashier")
         .hide-in-others{
             display:none;
         }
-        .content{
+        .content, .goback-button{
           text-align:center;
         }
-        .date{
-
+        div.extra-form{
+          visibility:hidden;
+        }
+        .table{
+          margin-left: auto;
+          margin-right: auto;
         }
       </style>
   </head>
@@ -62,6 +66,8 @@ if($_SESSION['type'] == "cashier")
 
         <?php 
 
+        $resNo;
+
         if(isset($_POST['createPReservationRecord'])){
 
           $email = $_POST['cusEmail'];
@@ -87,7 +93,8 @@ if($_SESSION['type'] == "cashier")
         
 
           if (mysqli_stmt_execute($stmt) === TRUE) {
-            echo "New record created successfully";
+            echo "Enter Products To Reservation";
+            echo "<br>";
           } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
           }
@@ -96,33 +103,54 @@ if($_SESSION['type'] == "cashier")
 
          //close if statement
 
-        }   
+         $sql2 = "SELECT * FROM reservedforsale WHERE reservation_no='$reservationNo' ";
+         $result2 = mysqli_query($conn, $sql2);
+
+         if(mysqli_num_rows($result2)){
+           while($data = mysqli_fetch_assoc($result2)){
+            $resNo = $data['reservation_no'];
+           }
+         }
+
+ 
 
 ?>
 
+<?php 
 
-          <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
-            <label >Reservation No:</label>
-            <input type="text" name="reservationNo" value="<?php echo $reservationNo?> ">
 
-            <br>
+?>
 
-            <label >ADD STOCK CODE:</label>
-            <input type="text" name="stockcode">
+<div class="extra-form"> <!--hide this form in the UI. but this form is important to keep adding products under one reservation id-->
 
-            <br>
+           <table class="table">
 
-            <label >ADD QUANTITY:</label>
-            <input type="text" name="quantity">
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
-            <br>
+                <tr>
+                  <td><label >Reservation No:</label></td>
+                  <td><input type="text" name="reservationNo" value="<?php echo $resNo?> "></td>
+                </tr>
+                <tr>
+                  <td><label >ADD STOCK CODE:</label></td>
+                  <td><input type="text" name="stockcode"></td>
+                </tr>
+                <tr>
+                  <td><label >ADD QUANTITY:</label></td>
+                  <td><input type="number" min=1 name="quantity"></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><input type="submit" name="addProducts" value="Next"></td>
+                </tr>
 
-            <input type="submit" name="addProducts" value="Next">
-
-          </form>
+            </form>   
+            </table>
+</div>
+       
 
         <?php 
+        }
 
         if(isset($_POST['addProducts'])){
 
@@ -140,11 +168,11 @@ if($_SESSION['type'] == "cashier")
               exit();
           }
 
-          mysqli_stmt_bind_param($stmt2, "sss" , $resNo, $quantity, $stockcode);       
+          mysqli_stmt_bind_param($stmt2, "sss" , $resNo, $stockcode, $quantity);       
         
 
           if (mysqli_stmt_execute($stmt2) === TRUE) {
-            echo "New record created successfully";
+            echo "Product Added";
           } else {
             echo "Error: " . $sql3 . "<br>" . $conn->error;
           }
@@ -152,10 +180,40 @@ if($_SESSION['type'] == "cashier")
           mysqli_stmt_close($stmt2);
 
         }
+
+
         ?>
 
 
+      <table class="table">
+
+          <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+
+              <tr>
+                <td><label >Reservation No:</label></td>
+                <td><input type="text" name="reservationNo" value="<?php echo $resNo?> "></td>
+              </tr>
+              <tr>
+                <td><label >ADD STOCK CODE:</label></td>
+                <td><input type="text" name="stockcode"></td>
+              </tr>
+              <tr>
+                <td><label >ADD QUANTITY:</label></td>
+                <td><input type="number" min=1 name="quantity"></td>
+              </tr>
+              <tr>
+                <td colspan="2"><input type="submit" name="addProducts" value="Next"></td>
+              </tr>
+
+          </form>   
         
+      </table>
+
+        
+      </div>
+
+      <div class="goback-button">
+      <button class="navButton" onclick="document.location='AddProductReser.php'"  style="margin-top:30px;width:250px;"><b> COMPLETE RESERVATION</b></button>
       </div>
 </div>
 
