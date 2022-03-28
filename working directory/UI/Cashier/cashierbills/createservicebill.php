@@ -143,27 +143,28 @@ if (isset($_GET['user_id'])){
                     <form action="./createservicebill.php" method="POST">
 
                         
-                        <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Bill No</label>
-                        <input type="text" placeholder="Example:SB100 "name="bill_no" class="searchbar" value="<?php echo $bill_form; ?>"><span> <span class="error"></span>
-                        
                         <label for="servicetype" class="th-user-label" style="background-color: #021257; color: white;" >Bill Type</label>
-                        <select name="billtype" class="billtextbox" value="<?php echo $billtype_form;?>">
+                        <select name="billtype" class="billtextbox" value="<?php echo $billtype_form;?>" required>
                             <option>Service</option> 
                             <option>Product</option>       
                          </select>
                          
                         <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Date</label>
-                        <input type="date" name="date" class="searchbar" style="width:200px;" min="2022-03-25" max="2042-01-01" value="<?php echo $date_time_form; ?>"><br><br>
+                        <input type="date" name="date" class="searchbar" style="width:200px;" min="2022-03-29" max="2042-01-01" value="<?php echo $date_time_form; ?>" required><br><br>
 
                         <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Vehicle No</label>
-                        <input type="text" name="vehicleNo" class="searchbar" style="width:200px;" value="<?php echo $cashier_name_form; ?>">
+                        <input type="text" name="vehicleNo" class="searchbar" style="width:200px;" value="<?php echo $cashier_name_form; ?>" required>
 
                         <label for="customer" class="th-user-label" style="background-color: #021257; color: white;">Customer Email</label>
-                        <input type="text" name="email" class="searchbar" value="<?php echo $cus_name_form; ?>"><br><br> 
+                        <input type="text" name="email" class="searchbar" value="<?php echo $cus_name_form; ?>" required><br><br> 
 
-                        <label for="servicetype" class="th-user-label" style="background-color: #021257; color: white;" >Service Description</label><select name="description" class="billtextbox" value="<?php echo $billtype_form;?>">
-                            <option>Service</option> 
-                            <option>Product</option>       
+                        <label for="servicetype" class="th-user-label" style="background-color: #021257; color: white;" required>Service Description</label><select name="description" class="billtextbox">
+                            <option>Oil Change</option> 
+                            <option>Car wash</option>
+                            <option>Wheel Alignment</option>
+                            <option>Interior designing</option> 
+                            <option>Exterior designing</option>
+                            <option>Custom Package</option>        
                          </select>
 
                         <label for="servicecharge" class="th-user-label" style="background-color: #021257; color: white;" >Service Charge</label>

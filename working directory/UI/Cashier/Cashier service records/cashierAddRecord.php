@@ -14,7 +14,7 @@ if($_SESSION['type'] == "cashier")
 ?>
 
 <?php
-$vehicleNo_error = $dateOfService_error = $email_err = $nextServiceDate_error "";
+$vehicleNo_error = $dateOfService_error = $email_err = $nextServiceDate_error = "";
 
 //checking if required fields are empty.
 if(isset($_POST['submit'])){
@@ -121,7 +121,35 @@ function test_input($data) {
         <div class="col-16 content">
             <!--main content here-->
             <div class="pr-form-container">
-                <form action="./cashierAddRecord.php" method="POST">
+
+            <!--checking if the customer exits in the system-->
+            <div class='col-12'>
+              <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="getCusData">
+                <label >Get customer data for existing customers:</label>
+                <input type="text" name="cusEmail" placeholder="Enter Customer Email">
+                <input type="submit" name="cusData" value="GET DATA">
+              </form>
+            </div>
+
+            <!--checking if the cusData button is clicked and taking actions accordingly-->
+            <?php
+
+            if(isset($_POST['cusData'])){
+              
+              $cusEmail = $_POST['cusEmail']; //assigning the value from the getCusData form to variable
+
+              $sql = "SELECT * FROM users WHERE email= '$cusEmail' "; //sql query to get customer data according to the email
+
+              $result=mysqli_query($conn, $sql);
+
+              if(mysqli_num_rows($result) > 0){ //check if rows with the email exists in the database
+                
+                while($row=mysqli_fetch_assoc($result)){
+
+              ?>    
+
+            
+                <form action="./cashierAddRecord.php" method="POST"> <!--close form to create record-->
 
                   <div class="row1">
                   <div class="th-add-new-button">
@@ -294,7 +322,7 @@ function test_input($data) {
                     </div>
                     <div class="pr-form-input">
                       <input type="date" name="nextServiceDate" class="pr-input-box" min="2022-03-21" max="2042-01-01"/>
-                      <span class="error"><?php echo $nextServiceDate_err;?></span>
+                      <span class="error">
                     </div>
                   </div>
          
@@ -302,7 +330,9 @@ function test_input($data) {
                     <label for="">&nbsp;</label>
                     <button class="pr-form-add-button" name="submit">ADD</button>
                   </div>
-                </form>
+                </form> <!--close form to create record-->
+
+
               </div>
 
            

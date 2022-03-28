@@ -18,6 +18,7 @@ if($_SESSION['type'] == "cashier")
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
+    <script type="text/javascript" src="../../../javascript/print.js"></script>
 	<title>cashier read bill-product</title>
     <style>
         .Nav-bill{
@@ -49,14 +50,16 @@ if($_SESSION['type'] == "cashier")
         
         <div class="col-16 content">
             <!--main content here-->
-            <div class="row">
-                <div class="col-9 saveIcon-null"><!--blank column with 75%width--></div>
-                <div class="col-3 saveIcon-main saveBill">
-                    <img src="../../../images/tableIcons/download.png" class="saveIcon">
+            <div class="row r3-1">
+                    <div class="col-9 saveIcon-null"><!--blank column with 75%width--></div>
+                    <div class="col-3 saveIcon-main">
+                    <!--<img src="../../../images/tableIcons/download.png" class="saveIcon">-->
+                    <a onclick="printSection('print-content')">
                     <img src="../../../images/tableIcons/printing.png" class="saveIcon">
+                    </a>
+                    </div>
                 </div>
-            </div>
-            <div class="Bill"> <!--bill starts here-->
+            <div class="Bill" id="print-content"> <!--bill starts here-->
 
                          <!--row containing dp motors details inside the bill-->
                 <div class="row">

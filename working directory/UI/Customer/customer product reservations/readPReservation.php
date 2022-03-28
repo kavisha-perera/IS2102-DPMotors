@@ -96,7 +96,7 @@ if(isset($_SESSION['id']))
                 
                 <div class="row r3-1">
                     <div class="col-12">
-                        <h2 class="title"><b>PRODUCT RESERVATION NO: <?php echo $row['reservation_no']; ?></b><h2></h2>
+                        <h2 class="title"><b>PRODUCT RESERVATION NO: <?php echo $row['reservation_no']; ?></b></h2>
                     </div>
                 </div>
 
@@ -109,7 +109,7 @@ if(isset($_SESSION['id']))
                         <label>P.RESERVATION NUMBER </label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="productResNo" value=" <?php echo $row['reservation_no']; ?>">
+                        <input type="text" class="serviceApp" name="productResNo" value=" <?php echo $row['reservation_no']; ?>" readonly>
                     </div>
                 </div>
                 <div class="row">
@@ -117,7 +117,7 @@ if(isset($_SESSION['id']))
                         <label>DELIVERY DATE</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="deliveryDateTime" value=" <?php echo $row['due_date']; ?>">
+                        <input type="text" class="serviceApp" name="deliveryDateTime" value=" <?php echo $row['due_date']; ?>" readonly>
                     </div>
                 </div> 
                 <div class="row">
@@ -125,7 +125,7 @@ if(isset($_SESSION['id']))
                         <label>DELIVERY METHOD</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="deliveryMethod" value=" <?php echo $row['delivery_method']; ?>">
+                        <input type="text" class="serviceApp" name="deliveryMethod" value=" <?php echo $row['delivery_method']; ?>" readonly>
                     </div>
                 </div> 
                 <div class="row">
@@ -133,7 +133,7 @@ if(isset($_SESSION['id']))
                         <label>DELIVERY ADDRESS</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="deliveryAddress" value=" <?php echo $row['cus_address']; ?>">
+                        <input type="text" class="serviceApp" name="deliveryAddress" value=" <?php echo $row['cus_address']; ?>" readonly>
                     </div>
                 </div>
                 <div class="row">
@@ -141,7 +141,7 @@ if(isset($_SESSION['id']))
                         <label>CUSTOMER NAME</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="resCusName" value=" <?php echo $row['cus_name']; ?>">
+                        <input type="text" class="serviceApp" name="resCusName" value=" <?php echo $row['cus_name']; ?>" readonly>
                     </div>
                 </div>
                 <div class="row">
@@ -149,7 +149,7 @@ if(isset($_SESSION['id']))
                         <label>CONTACT NUMBER</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="resContactNo" value=" <?php echo $row['cus_contact']; ?>">
+                        <input type="text" class="serviceApp" name="resContactNo" value=" <?php echo $row['cus_contact']; ?>" readonly>
                     </div>
                 </div>
                 <div class="row">
@@ -204,7 +204,7 @@ if(isset($_SESSION['id']))
                         <label>BILL AMOUNT</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="resBillAmount" value="LKR <?php echo $total; ?>">
+                        <input type="text" class="serviceApp" name="resBillAmount" value="LKR <?php echo $total; ?>" readonly>
                     </div>
 
                     <?php 
@@ -217,7 +217,7 @@ if(isset($_SESSION['id']))
                         <label>SPECIAL NOTES</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="resBillAmount" value=" <?php echo $row['remarks']; ?>">
+                        <input type="text" class="serviceApp" name="resBillAmount" value=" <?php echo $row['remarks']; ?>" readonly>
                     </div>
                 </div>
 

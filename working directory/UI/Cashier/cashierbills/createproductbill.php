@@ -80,9 +80,7 @@ if(isset($_POST['submit'])){
    
            $billId = $result->fetch_assoc();
    
-               // $description=mysqli_real_escape_string($conn,$_POST['description']);
               $stockcode=mysqli_real_escape_string($conn,$_POST['stock_code']);
-              // $vehicleNo=mysqli_real_escape_string($conn,$_POST['vehicleNo']);
               $quantity=mysqli_real_escape_string($conn,$_POST['quantity']);
               $selling_price=mysqli_real_escape_string($conn,$_POST['selling_price']);
               $bid=$billId['bid'];

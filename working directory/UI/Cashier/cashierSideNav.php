@@ -18,7 +18,6 @@
     <a href="../Cashier View Bill History/CashierViewAllBills.php" class="Nav-viewbill"> Bill History </a><hr/>
     <a href="../Cashier service records/cashierViewService.php"class="Nav-service"> Vehicle Service Records </a><hr/> 
     <a href="../Cashier product reservation/ViewProductResrvation.php" class="Nav-pr"> Product Reservations </a><hr/>
-    <a href="../appointments/cashierReadsAppointments.php" class="Nav-appointment"> Appointments </a><hr/>
     <a href="../Cashier Customer register/cashier register customer.php"class="Nav-customer"> Customer </a><hr/>
 </div>
 
@@ -29,6 +28,5 @@
     <a href="../Cashier/Cashier View Bill History/CashierViewAllBills.php" class="Nav-viewbill"> Bill History </a><hr/> 
     <a href="../Cashier/Cashier service records/cashierViewService.php" class="Nav-service"> Vehicle Service Records </a><hr/> 
     <a href="../Cashier/Cashier product reservation/ViewProductResrvation.php"class="Nav-pr"> Product Reservations </a><hr/>
-    <a href="../appointments/cashierReadsAppointments.php"class="Nav-apppointment"> Appointments </a><hr/>
     <a href="../Cashier/Cashier Customer register/cashier register customer.php"class="Nav-customer"> Customer </a><hr/>
 </div>
