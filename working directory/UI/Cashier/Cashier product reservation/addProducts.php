@@ -59,6 +59,7 @@ if($_SESSION['type'] == "cashier")
       <div class="col-16 content">
         <!--main content here-->
 
+
         <?php 
 
         if(isset($_POST['createPReservationRecord'])){
@@ -73,11 +74,32 @@ if($_SESSION['type'] == "cashier")
           $remarks = $_POST['remarks'];  
 
 
-          $sql="INSERT INTO  `reservedforsale`(`reservation_no`, `delivery_method`, `cus_name`, `cus_contact`, `cus_email`, `cus_address`, `due_date`, `remarks`) VALUES ($reservationNo, $delivery_method, $cusName , $cusContact, $email, $cusAddress , $dueDate, $remarks)";
+          $sql="INSERT INTO reservedforsale (reservation_no, delivery_method, cus_name, cus_contact, cus_email, cus_address, due_date,remarks) VALUES (?,?,?,?,?,?,?,?); ";
 
-          $result=mysqli_query($conn,$sql);
 
-          ?>
+          $stmt = mysqli_stmt_init($conn);
+          if(!mysqli_stmt_prepare($stmt, $sql)){
+              header("location: ../UI/Auth-UI/signUp.php?error=stmtfailed");
+              exit();
+          }
+          
+          mysqli_stmt_bind_param($stmt, "ssssssss" , $reservationNo, $delivery_method, $cusName, $cusContact, $email, $cusAddress, $dueDate, $remarks);       
+        
+
+          if (mysqli_stmt_execute($stmt) === TRUE) {
+            echo "New record created successfully";
+          } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+          }
+
+          mysqli_stmt_close($stmt);
+
+         //close if statement
+
+        }   
+
+?>
+
 
           <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
@@ -109,27 +131,30 @@ if($_SESSION['type'] == "cashier")
           $stockcode = $_POST['stockcode'];
 
 
-          $sql3 = "INSERT INTO `reserved_products`(`reservation_no`, `p_code`, `quantity`) VALUES ('$resNo','$stockcode','$quantity')";
+          $sql3 = "INSERT INTO reserved_products(reservation_no, p_code, quantity) VALUES (?, ?, ?)";
 
-          $result3 = mysqli_query($conn, $sql3);
+          $stmt2 = mysqli_stmt_init($conn);
+
+          if(!mysqli_stmt_prepare($stmt2, $sql3)){
+              header("location: ../UI/Auth-UI/signUp.php?error=stmtfailed");
+              exit();
+          }
+
+          mysqli_stmt_bind_param($stmt2, "sss" , $resNo, $quantity, $stockcode);       
+        
+
+          if (mysqli_stmt_execute($stmt2) === TRUE) {
+            echo "New record created successfully";
+          } else {
+            echo "Error: " . $sql3 . "<br>" . $conn->error;
+          }
+
+          mysqli_stmt_close($stmt2);
 
         }
-
-
         ?>
 
 
-
-        
-
-
-<?php
-            }
-
-        
-        
-        
-        ?>
         
       </div>
 </div>
