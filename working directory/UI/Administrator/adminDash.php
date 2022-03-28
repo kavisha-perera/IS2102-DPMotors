@@ -95,7 +95,7 @@ if($_SESSION['type'] == "admin")
     </div>
     
     <div class="hide-in-dashboard">
-        <a href="Administrator profile/customerViewProfile"> Profile </a>
+        <a href="Administrator profile/adminViewProfile.php"> Profile </a>
         <a href="manageAccounts/manage.php"> Accounts </a> 
         <a href="manageInventory/manageinventory.php"> Inventory </a>
         <a href="../managepromotions/managepromotions.php"> Promotions </a>  
@@ -104,7 +104,7 @@ if($_SESSION['type'] == "admin")
     </div>
 
     <div class="hide-in-others">
-        <a href="Administrator profile/customerViewProfile"> Profile </a>
+        <a href="Administrator profile/adminViewProfile.php"> Profile </a>
         <a href="manageAccounts/manage.php"> Accounts </a> 
         <a href="manageInventory/manageinventory.php"> Inventory </a>
         <a href="../managepromotions/managepromotions.php"> Promotions </a>  
@@ -135,7 +135,7 @@ if($_SESSION['type'] == "admin")
 </div>
 
 <div class="hide-in-dashboard">
-    <a href="Administrator profile/customerViewProfile"> Profile </a> <hr>
+    <a href="Administrator profile/adminViewProfile.php"> Profile </a> <hr>
     <a href="manageAccounts/manage.php"> Accounts </a> <hr>
     <a href="manageInventory/manageinventory.php"> Inventory </a> <hr>
     <a href="../../Manager/promotions/readPromotion.php"> Promotions </a> <hr>
@@ -144,7 +144,7 @@ if($_SESSION['type'] == "admin")
 </div>
 
 <div class="hide-in-others">
-    <a href="Administrator profile/customerViewProfile"> Profile </a> <hr>
+    <a href="Administrator profile/adminViewProfile.php"> Profile </a> <hr>
     <a href="manageAccounts/manage.php"> Accounts </a> <hr>
     <a href="manageInventory/manageinventory.php"> Inventory </a> <hr>
     <a href="../managepromotions/managepromotions.php"> Promotions </a> <hr>
@@ -172,7 +172,7 @@ if($_SESSION['type'] == "admin")
                         <a href="#"><img src="../../images/admin/backup.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="#"><img src="../../images/admin/session.png" class="dashboardIcon"></a>
+                        <a href="manageSupplier\session.php"><img src="../../images/admin/session.png" class="dashboardIcon"></a>
                     </div>
                 </div>
         </div>
