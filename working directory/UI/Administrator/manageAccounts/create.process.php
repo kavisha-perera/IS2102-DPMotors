@@ -1,19 +1,38 @@
 <?php
+/*
+require '../../../includes/PHPMailer/Exception.php';
+require '../../../includes/PHPMailer/PHPMailer.php';
+require '../../../includes/PHPMailer/SMTP.php';
+*/
+require_once '../../../includes/auth-functions.inc.php';
+
 
 if (isset($_POST["add"])){
 
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
-    $email = $_POST["email"];
+    $useremail = $_POST["email"];
     $nic = $_POST["nic"];
-    $password = $_POST["password"];
-    $confirmpw = $_POST["confirmpw"];
     $type = $_POST["type"];
     $contact = $_POST["contact"];
     $address = $_POST["address"];
 
+    function randomPassword() {
 
-    function createCustomer($conn, $fname, $lname,  $email, $nic, $password , $type, $contact, $address){
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $randompassword = array(); //remember to declare $password as an array
+        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        for ($i = 0; $i < 8; $i++) {
+            $n = rand(0, $alphaLength);
+            $randompassword[] = $alphabet[$n];
+        }
+        return implode($randompassword); //turn the array into a string
+    }
+    
+    
+
+
+    function admincreateCustomer($conn, $fname, $lname,  $useremail, $nic, $password , $type, $contact, $address){
 
         $sql = "INSERT INTO users (fname, lname, email, nic, password , type, contact, address) VALUES (?, ?, ?, ?, ?, ?, ?, ?);"; 
         $stmt = mysqli_stmt_init($conn);
@@ -24,26 +43,21 @@ if (isset($_POST["add"])){
     
         $hashedPwd = password_hash($password , PASSWORD_DEFAULT);
     
-        mysqli_stmt_bind_param($stmt, "ssssssss" , $fname, $lname,  $email, $nic, $hashedPwd , $type, $contact, $address);
+        mysqli_stmt_bind_param($stmt, "ssssssss" , $fname, $lname,  $useremail, $nic, $hashedPwd , $type, $contact, $address);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
         echo'<script>alert("New Account added succesfully!");history.go(-1);</script>';
-        exit();   
+  
     
     }
 
 
     require_once '../../../includes/dbh.inc.php';
-    createCustomer($conn, $fname, $lname, $email, $nic, $password, $type, $contact, $address);
+    $password=randomPassword();
+    admincreateCustomer($conn, $fname, $lname, $useremail, $nic, $password, $type, $contact, $address);
+    sendPassword($password,$useremail);
 
-    
- /*   $sql="INSERT INTO users(fname, lname, email, nic, password, type, contact, address) VALUES ('$fname', '$lname', '$email', '$nic', '$password', '$type', '$contact', '$address')";   
-
-    if ($conn->query($sql) === TRUE) {
-        echo'<script>alert("New user added succesfully!");history.go(-1);</script>';
-      } else {
-        echo "Error";
-      }*/
+  
 }
 
 else {
