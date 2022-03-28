@@ -74,7 +74,7 @@ session_start();
 
                     $search = $_POST['search'];  // gets value sent over search form
 
-                    $sql = "SELECT * FROM stock WHERE p_keywords LIKE '%$search%' OR p_desc LIKE '%$search%'";
+                    $sql = "SELECT * FROM stock WHERE p_keywords LIKE '%$search%' OR p_desc LIKE '%$search%' OR p_name LIKE '%$search%'";
 
                     $result = $conn->query($sql);
                     
@@ -128,16 +128,6 @@ session_start();
                         <div class='row'>
                             <div class='col-3'>
                                 <h3></h3>
-                            </div>
-                            <div class='col-6'>
-                                <!----------------------search container------------------------>
-                                <div class='search-container' style='border: 0px solid black'>
-                                    <form action='./productsCatalogue-search.php' method='POST'>
-                                    <input type='text' placeholder='what are you looking for?' name='search' required>
-                                    <button type='submit' name='submit' style='background-color:white; border:0px solid black;'> <img src='../../../images/productCatalogue/s.png' style='max-width:27px;'></button>
-                                    </form>
-                                </div>
-                                <!----------------------close search container------------------------> 
                             </div>
                         <div class='col-3'></div>
                     </div>
