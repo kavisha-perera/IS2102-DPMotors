@@ -132,7 +132,7 @@ if(isset($_SESSION['id']))
                         <label>VEHICLE MODEL</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                    <select id ="serviceApp" name="vehicleModel" style="height:41px;">
+                        <select id ="serviceApp" name="vehicleModel" style="height:41px;">
                             <option value ="Motor Cycle">Motor Cycle</option>
                             <option value ="Motor Tricycle">Motor Tricycle</option>
                             <option value ="Motor Car">Motor Car</option>

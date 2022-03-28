@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="../../../css/main.css">
+<link rel="stylesheet" href="../../../css/navbar.css">
+
 <!--customer side nav bar for screens smaller than 800px-->
     <style>
         .Nav-dashboard{

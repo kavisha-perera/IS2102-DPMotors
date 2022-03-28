@@ -54,7 +54,7 @@ if(isset($_SESSION['id']))
                
                 <div class="row r3-1">
                     <div class="col-12">
-                        <h2 class="title"><b>PAYMENT HISTORY - SERVICES</b></h2>
+                        <h2 class="title"><b>PAYMENT HISTORY - PRODUCT PURCHASES</b></h2>
                         <br>
                     </div>
                 </div>
@@ -64,7 +64,7 @@ if(isset($_SESSION['id']))
 
                         <?php
 
-                        $sql = "SELECT * FROM allbills WHERE email='$customerEmail' ";
+                        $sql = "SELECT * FROM productbills WHERE email='$customerEmail' ";
                         $result=$conn->query($sql);
 
                         if(mysqli_num_rows($result)>0){   
