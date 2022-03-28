@@ -18,8 +18,8 @@ if($_SESSION['type'] == "manager")
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
-   
-	<title>Reports</title>
+    <script type="text/javascript" src="../../../javascript/print.js"></script>
+    <title>Reports</title>
 
 <style>
 
@@ -51,40 +51,7 @@ include_once("../managerNav.php");
 <div class="col-16 content">
             <!--main content here-->
 
-
-<h3 >Appointment Report<h3>
-
-<div id="chart">
-
-<div class="container">
-
-  <div class="row">
-    <div class="col-4" style="border:solid">
-    <div id="appointmentChart1" style="height: 370px; width: 100%;"></div>
-    </div>
-    <div class="col-4" style="border:solid" >
-    <div id="appointmentChart2" style="height: 370px; width: 100%;"></div> 
-    </div>
-    <div class="col-4" style="border:solid">
-    <div id="appointmentChart3" style="height: 370px; width: 100%;"></div> 
-    </div>
-  </div>
-</div>
-</div>
-
-</br> </br> </br> </br>
-
-
-<h3>Schedule Report<h3>
-
-<div id="chart">
-  
-<div id="scheduleChart" style="height: 370px; width: 100%;"></div> 
-
-</div>
-
-
-</br> </br> </br> </br>
+<p style="text-align: left;"> <button class="navButton" onclick="history.back()">Back </button></p>         
 
 <h3>Vehicle Service Records Report<h3>
 
@@ -94,17 +61,6 @@ include_once("../managerNav.php");
   
 </div>
 
-
-</br> </br> </br> </br>
-
-
-<h3>New Registerd Users Report<h3>
-
-<div id="chart">
-
-<div id="usersChart" style="height: 370px; width: 100%;"></div>
-  
-</div>
 
 
 </body>

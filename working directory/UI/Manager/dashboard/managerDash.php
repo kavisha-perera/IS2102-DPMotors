@@ -28,7 +28,7 @@ if($_SESSION['type'] == "manager")
             <!--main content here-->
                 <div class="row r3-1">
                     <div class="col-4 d-icon">
-                        <a href="../../Manager/reports/reportsNew.php"><img src="../../../images/manager/reports.png" class="dashboardIcon"></a>
+                        <a href="../../Manager/reports/readReports.php"><img src="../../../images/manager/reports.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
                         <a href="../Cashier product reservation/managerViewProductResrvation.php"><img src="../../../images/manager/product.png" class="dashboardIcon"></a>
