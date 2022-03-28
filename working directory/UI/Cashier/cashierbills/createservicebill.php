@@ -33,7 +33,7 @@ if ($sbill) { //View Service bill details
    // }
 
 }else{
-    echo "Database connection failed.";
+   
 }
 
 
@@ -42,7 +42,7 @@ $cus_name_form = isset($_POST['email']) ? $_POST['email'] :  "";
 $cashier_name_form = isset($_POST['vehicleNo']) ? $_POST['vehicleNo'] :  "";
 $description_form = isset($_POST['description']) ? $_POST['description'] :  "";
 $service_price_form = isset($_POST['price']) ? $_POST['price'] :  "";
-$bill_form = isset($_POST['bill_no']) ? $_POST['bill_no'] :  "";
+//$bill_form = isset($_POST['bill_no']) ? $_POST['bill_no'] :  "";
 $billtype_form=isset($_POST['billtype']) ? $_POST['billtype'] :  "";
 
 
@@ -54,7 +54,7 @@ $billtype_form=isset($_POST['billtype']) ? $_POST['billtype'] :  "";
 
 if(isset($_POST['submit'])){
 
-       $bill_no=mysqli_real_escape_string($conn,$_POST['bill_no']);
+      // $bill_no=mysqli_real_escape_string($conn,$_POST['bill_no']);
        $description=mysqli_real_escape_string($conn,$_POST['description']);
        $date=mysqli_real_escape_string($conn,$_POST['date']);
        $vehicleNo=mysqli_real_escape_string($conn,$_POST['vehicleNo']);
@@ -63,9 +63,9 @@ if(isset($_POST['submit'])){
        $price=mysqli_real_escape_string($conn,$_POST['price']);
 
         $query="INSERT INTO allbills (";
-        $query.="bill_no,description,date,vehicleNo,email,billtype,price";
+        $query.="description,date,vehicleNo,email,billtype,price";
         $query.=") VALUES (";
-        $query.="'{$bill_no}','{$description}','{$date}','{$vehicleNo}','{$email}','{$billtype}','{$price}'";
+        $query.="'{$description}','{$date}','{$vehicleNo}','{$email}','{$billtype}','{$price}'";
         $query.=")";
 
         $result = mysqli_query($conn, $query);

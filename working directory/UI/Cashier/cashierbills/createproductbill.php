@@ -272,7 +272,7 @@ if (!filter.test(email.value)) {
                         <!-- <input type="text" class="th-user-label" value="<?php echo $price['selling_price'];?>"> -->
 
 
-                        <input type="text"  name="selling_price" class="searchbar" autofocus value="<?php echo $price['selling_price'];?>" > <br><br>
+                        <input type="text"  name="selling_price" class="searchbar" autofocus value="" > <br><br>
 
                         <label for="product" id ='stock' class="th-user-label" style="background-color: #021257; color: white;">Stock Code</label>
                         <input type="text" name="stock_code" class="searchbar" autofocus><br><br>

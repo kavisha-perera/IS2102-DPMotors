@@ -73,7 +73,7 @@ if($_SESSION['type'] == "cashier")
           $remarks = $_POST['remarks'];  
 
 
-          $sql="INSERT INTO  `reservedforsale`(`reservation_no`, `delivery_method`, `cus_name`, `cus_contact`, `cus_email`, `cus_address`, `due_date`, `remarks`) VALUES ('$reservationNo', '$delivery_method', '$cusName' , '$cusContact', '$email', '$cusAddress' , '$dueDate', '$remarks')";
+          $sql="INSERT INTO  `reservedforsale`(`reservation_no`, `delivery_method`, `cus_name`, `cus_contact`, `cus_email`, `cus_address`, `due_date`, `remarks`) VALUES ($reservationNo, $delivery_method, $cusName , $cusContact, $email, $cusAddress , $dueDate, $remarks)";
 
           $result=mysqli_query($conn,$sql);
 
@@ -87,12 +87,12 @@ if($_SESSION['type'] == "cashier")
             <br>
 
             <label >ADD STOCK CODE:</label>
-            <input type="text" name="stockcode" value=" ">
+            <input type="text" name="stockcode">
 
             <br>
 
             <label >ADD QUANTITY:</label>
-            <input type="text" name="quantity" value=" ">
+            <input type="text" name="quantity">
 
             <br>
 
