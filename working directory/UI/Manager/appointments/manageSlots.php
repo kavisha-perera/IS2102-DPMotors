@@ -1,4 +1,7 @@
 <?php
+
+include '../../../includes/dbh.inc.php';
+
 session_start();
 
 if(isset($_SESSION['id']))
@@ -14,38 +17,41 @@ if(isset($_SESSION['id']))
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/dpschedule.css">
 	<title>Read Appointments</title>
 
     <style>
         .appointmentButton{
-            width:400px;
-            height:100px;
+            width:100px;
+            height:;
             cursor: pointer;
-            font-size:18px;
+            font-size:12px;
         }
-        .tableGrid{
+        .slotsList{
             /*center align table */
             margin-left: auto;
             margin-right: auto;
 
-            border-spacing: 30px 15px;
+            border-spacing: 30px 0px;
         }
         .tableIcon{
             width:30px;
         }
-        .Forms{
-            margin-left: auto;
-            margin-right: auto;
+        .bookButton{
+            cursor:text;
         }
-        .Forms td{
-            border: 1px solid black; 
+        .managebutton{
+            width:150px;
+            height: 30px;
+            background-color:#021257;
+            color:white;
+            cursor:pointer;
         }
-        .input .date{
-            width:400px; height:30px; background-color:white; border:1px solid black;        border-radius:2px;
+        .updateimg{
+            width:90%;
         }
-        .selectList{
-            width:200px; 
-            height:30px;
+        .update{
+            width:16%;
         }
     </style>
 
@@ -56,166 +62,239 @@ if(isset($_SESSION['id']))
 <?php include_once("../managerNav.php");?>
 
 
-        <div class="col-16 content">
-            <!--main content here-->
-            <div class = "row" style="overflow-x:auto; text-align:center;">
-                
-                <div class="col-12" style="text-align:center;">
-                    <table class="tableGrid"><tr> 
-                        <td> <h1>MANAGE TIMESLOTS</h1> </td>
-                        <td>
-                            <form action="./schedule.php">
-                                <button type="submit" name="createSlot" style="width:150px; height:30px;" > 
-                                    SEE SCHEDULE
-                                </button>
-                            </form>
-                        </td>
-                    </tr></table>
+<?php 
+    if (isset($_POST["update"])){
+        $slotid= $_POST["slotid"];
+        $state=  $_POST["state"];
+        $sql="UPDATE dp_schedule SET state='$state' WHERE slotid='$slotid'";
+        $result=mysqli_query($conn,$sql);
+    }
+
+?>
+
+
+<div class="col-16 content">
+            <div class="row">
+                <div class="col-12">
+                    <h2 style="text-align:center;">BOOKING SCHEDULE</h2>
+                </div>
+                <div class="col-12 instructions">
+                    <h5>Appointment timeslots are available for the next 14 days in the 24HR format.</h5>
+                    <br>
                 </div>
                 <div class="col-12">
-
-
-                <table class="Forms"> 
-                    <tr>
-                        <!--CREATE TIMESLOT FORM STARTS HERE-->
-                        <td>
-                <form action="../../../includes/appointment.inc.php" method="POST">
-
-                <br>
-                <h4>CREATE TIMESLOT</h4>
-                <br>
-                <hr>
-
-
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label>SELECT DATE</label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <input type="date" name="date" min="<?= date('Y-m-d'); ?>" value="" class="date" 
-                        style="width:200px; height:30px; background-color:white; border:1px solid black;     border-radius:2px;" required>
-                    </div>
-                </div> 
-
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label>SELECT TIMESLOT</label>
-                    </div>
-                    <div class="col-8 BookAppForm" style="">
-                        <select name="timeslot" class="selectList" required>
-                            <option value="8.00">8:00</option>
-                            <option value="11.00">11:00</option>
-                            <option value="13.00">13:00</option>
-                            <option value="15.00">15:00</option>
-                        </select>
-                    </div>
-                </div> 
-
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label>SET STATE</label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <select name="state" class="selectList" required>
-                            <option value="open">OPEN</option>
-                            <option value="booked">BOOKED</option>
-                            <option value="closed">CLOSED</option>
-                        </select>
-                    </div>
-                </div> 
-
-                <button type="submit" name="createSlot" style="width:150px; height:30px;" > CREATE SLOT</button> 
-
-          <!--displaying error messages-->
-          <?php
+                </div>
                 
-                $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                <!--start displaying date cards-->
 
-                if (strpos ($fullUrl, "error=stmtfailed") == true) {
-                        echo "
-                        <script>alert('SOMETHING WENT WRONG.');</script>";
-                        exit();
+                <?php
+                //getting all the distinct dates starting from the current date
+                    $sql = "SELECT DISTINCT carddate FROM dp_schedule WHERE carddate >=CURDATE() ORDER BY carddate LIMIT 14";
+                    $result = $conn->query($sql); 
+                    
+                    if (mysqli_num_rows($result) > 0){
+                        while ($row = mysqli_fetch_assoc($result)) {
+
+                            date_default_timezone_set("Asia/Kolkata"); //set default timezone
+                            $today = date("Y-m-d"); //assign the current date to variable $today
+
+                            //display two slightly different datecards after checking if the date retrieved from the database is today
+                            if ($row['carddate'] == $today){
+                   
+                ?>
+                <!-- if ($row['date'] == $today) -->
+
+                
+                <div class="col-3 dateCard today">
+                    <h4  class="availDate">TODAY: <?php echo $row['carddate'];?></h4>
+                    <hr style="height:5px;">
+                        <!--retrieve all the timeslots from the database under the retrieved date-->
+                        <?php
+                            $sql2 = "SELECT * FROM dp_schedule WHERE carddate='{$row['carddate']}' order by timeslot ";
+                            $result2 = $conn->query($sql2); 
+                            if (mysqli_num_rows($result2) > 0){
+                                while ($row2 = mysqli_fetch_assoc($result2)) {
+
+                                    if($row2['state']=='open'){ //if statement for timeslots that are open
+                        ?>
+
+                        <!--A table that shows all the available timeslots with BOOK buttons-->
+                        <table class="timeslotsListed">
+                            <tr>
+                                <td><h5><?php echo $row2['timeslot'];?></h5></td>
+                                <td>
+                                    <form action="./manageslots.php" method="post">
+                                        <input type="hidden" name=slotid  value="<?php echo $row2['slotid'];?>">
+                                        <select name="state" id="state">
+                                            <option selected="selected" value="open">Available</option>
+                                            <option value="closed">Not Available</option>
+                                        </select>
+                                        <button name="update" class="update">
+                                            <img class="updateimg" src="../../../images/customer/check.png">
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <?php 
+                            } //close if statement for timeslots that are open
+
+                        elseif($row2['state']=='closed') { //elseif statement for timeslots that are closed
+                            
+                        ?>
+                        <!--A table that shows timeslots that are not available-->
+                        <table class="timeslotsListed">
+                            <tr>
+                                <td><h5><?php echo $row2['timeslot'];?></h5></td>
+                                <td>
+                                    <form action="./manageslots.php" method="post">
+                                        <input type="hidden" name=slotid name=slotid value="<?php echo $row2['slotid'];?>"> 
+                                        <select name="state" id="state">
+                                            <option selected="selected" value="closed">Not Available</option>
+                                            <option value="open">Available</option>
+                                        </select>
+                                        <button name="update" class="update">
+                                            <img class="updateimg" src="../../../images/customer/check.png">
+                                        </button>
+
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+                        <?php 
+                            } //close elseif statement for timeslots that are closed
+                          
+                        ?>
+
+                        <?php
+                            } //close timeslot while loop
+                        } //close timeslot if statement
+                        ?>       
+
+                </div> <!--close datecard that shows todays timeslots-->
+
+                <?php
+                //if the date retrieved from the database is not today
                     }
+                else{
+                ?>
+
+                 <!-- else of {if ($row['date'] == $today)} -->
+                <div class="col-3 dateCard">
+                    <h4  class="availDate">DATE: <?php echo $row['carddate'];?></h4>
+                    <hr style="height:5px;">
+                        <!--retrieve all the timeslots from the database under the retrieved date-->
+                        <?php
+                            $sql2 = "SELECT * FROM dp_schedule WHERE carddate='{$row['carddate']}' order by timeslot";
+                            $result2 = $conn->query($sql2); 
+                            if (mysqli_num_rows($result2) > 0){
+                                while ($row2 = mysqli_fetch_assoc($result2)) {
+                                    
+                                    if($row2['state']=='open'){ //if statement for timeslots that are open
+                                 
+                                   
+                        ?>
+
+                        <!--A table that shows all the available timeslots with BOOK buttons-->
+                        <table class="timeslotsListed">
+                            <tr>
+                                <td><h5><?php echo $row2['timeslot'];?></h5></td>
+                                <td>
+                                    <form action="./manageslots.php" method="post">
+                                        <input type="hidden" name=slotid value="<?php echo $row2['slotid'];?>">
+                                        <select name="state" id="state">
+                                            <option selected="selected" value="open">Available</option>
+                                            <option value="closed">Not Available</option>
+                                        </select>
+                                        <button name="update" class="update">
+                                            <img class="updateimg" src="../../../images/customer/check.png">
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+                        <?php 
+                            } //close if statement for timeslots that are open
+
+                        elseif($row2['state']=='closed') { //elseif statement for timeslots that are closed
+                            
+                        ?>
+
+                        <!--A table that shows timeslots that are not available-->
+                        <table class="timeslotsListed">
+                            <tr>
+                                <td><h5><?php echo $row2['timeslot'];?></h5></td>
+                                <td>
+                                    <form action="./manageslots.php" method="post">
+                                        <input type="hidden" name=slotid value="<?php echo $row2['slotid'];?>">
+                                        <select name="state" id="state">
+                                            <option selected="selected" value="closed">Not Available</option>
+                                            <option value="open">Available</option>
+                                        </select>
+                                        <button name="update" class="update">
+                                            <img class="updateimg" src="../../../images/customer/check.png">
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+                        <?php 
+                            } //close elseif statement for timeslots that are closed
+                          
+                        ?>
+
+                        <?php
+                            } //close timeslot while loop
+                        } //close timeslot if statement
+                        ?>       
+
+                </div> <!--close datecard-->
+
+                <?php
+                }    //close else of {if ($row['date'] == $today)}
+                ?>  
+
+
+            <?php
+                } //close while loop that retrieves dates from the database
+            } //close if statement that retrieves dates from the database
             ?>
 
-        <!--*************************************-->  
+                  </div>
+              </div>
 
-                </form>
-                <br>
-                </td>
-
-                <!--CREATE TIMESLOT FORM ENDS HERE-->
-
-                <!--DELETE TIMESLOT FORM STARTS HERE-->
-
-                <td>
-                <form action="../../../includes/appointment.inc.php" method="POST">
-
-                <h4>DELETE TIMESLOT</h4>
-                <br>
-                <hr>
-
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label>SELECT DATE</label>
-                    </div>
-                    <div class="col-8 BookAppForm">
-                        <input type="date" name="date" min="<?= date('Y-m-d'); ?>" value=""  class="date" style="width:200px; height:30px; background-color:white; border:1px solid black;     border-radius:2px;"required>
-                    </div>
-                </div> 
-
-                <div class="row">
-                    <div class="col-4 BookAppLabel">
-                        <label>SELECT TIMESLOT</label>
-                    </div>
-                    <div class="col-8 BookAppForm" style="">
-                        <select name="timeslot" class="selectList" required>
-                            <option value="8.00">8:00</option>
-                            <option value="11.00">11:00</option>
-                            <option value="13.00">13:00</option>
-                            <option value="15.00">15:00</option>
-                        </select>
-                    </div>
-                </div> 
-
-               <button type="submit" name="deleteSlot" style="width:150px; height:30px;" > DELETE SLOT</button>
-
-          <!--displaying error messages-->
-          <?php
-                
-                $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
-                if (strpos ($fullUrl, "error=stmtfailed") == true) {
-                        echo "
-                        <script>alert('SOMETHING WENT WRONG.');</script>";
-                        exit();
-                    }
-
-            ?>
-
-        <!--*************************************-->  
-
-                </form>
-                <br>
-                </td>
-
-                <!--DELETE TIMESLOT FORM ENDS HERE-->
-                
-                
-                </table>
-
-                <br>
-
-
-
-
-
-               </div>
-
-
-
-            </div>
         </div>
+
+        <!--displaying error messages-->
+                  <?php
+                
+                $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+
+                    if (strpos ($fullUrl, "error=timeslotSuccess") == true) {
+                        echo "
+                        <script>alert('TIMESLOT SUCCESSFULLY CREATED!');</script>";
+                        exit();
+                    }
+                    if (strpos ($fullUrl, "error=slotExits") == true) {
+                        echo "
+                        <script>alert('THE TIMESLOT ALREADY EXISTS!');</script>";
+                        exit();
+                    }
+                    if (strpos ($fullUrl, "error=deleteSuccess") == true) {
+                        echo "
+                        <script>alert('TIMESLOT SUCCESSFULLY DELETED!');</script>";
+                        exit();
+                    }
+                    if (strpos ($fullUrl, "error=slotDoesntExits") == true) {
+                        echo "
+                        <script>alert('TIMESLOT SUCCESSFULLY DELETED!');</script>";
+                        exit();
+                    }
+            ?>
+
+        <!--*************************************-->  
 
 </body>
 </html>

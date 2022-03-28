@@ -80,12 +80,7 @@ if($_SESSION['type'] == "cashier")
         <div class="col-16 content">
             <!--main content here-->
                 <div class="row r3-1">
-                <div class="col-4 d-icon">
-                        <a href="../Cashier/cashierbills/createbill.php"><img src="../../images/cashier/bill.png" class="dashboardIcon"></a>
-                    </div>
-                    <div class="col-4 d-icon">
-                        <a href="../Cashier/CashierReadInventory.php"><img src="../../images/cashier/inventory.png" class="dashboardIcon"></a>
-                    </div>
+                    
                     <div class="col-4 d-icon">
                         <a href="../Cashier/promotion/cashierReadPromotion.php"><img src="../../images/cashier/promo.png" class="dashboardIcon"></a>
                     </div>
@@ -99,10 +94,10 @@ if($_SESSION['type'] == "cashier")
                         <a href="../Cashier/Cashier product reservation/ViewProductResrvation.php"><img src="../../images/cashier/product.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../Cashier/cashierReadsAppointments.php"><img src="../../images/cashier/appointment.png" class="dashboardIcon"></a>
+                        <a href="../Cashier/Cashier Customer register/cashier register customer.php"><img src="../../images/cashier/customer.png" class="dashboardIcon"></a>
                     </div>
                     <div class="col-4 d-icon">
-                        <a href="../Cashier/Cashier Customer register/cashier register customer.php"><img src="../../images/cashier/customer.png" class="dashboardIcon"></a>
+                        <a href="../Cashier/cashierbills/createbill.php"><img src="../../images/cashier/newbill.png" class="dashboardIcon"></a>
                     </div>
                     
                 </div>

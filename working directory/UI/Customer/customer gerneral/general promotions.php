@@ -11,7 +11,7 @@ session_start();
     <link rel="stylesheet" href="../../../css/main.css">
     <link rel="stylesheet" href="../../css/navbar.css">
     <link rel="stylesheet" href="../../../css/promotions-customer.css">
-	<title>promotions</title>
+	<title>DP MOTORS</title>
     <style>
     .promotionBanner{
     width: 300px;

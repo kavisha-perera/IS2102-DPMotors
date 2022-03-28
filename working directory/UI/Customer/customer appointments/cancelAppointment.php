@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+
+if(isset($_SESSION['id']))
+{
+    $customerEmail =  $_SESSION['email'];
+}
+
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -5,7 +16,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
     <link rel="stylesheet" href="../../css/navbar.css">
-	<title>customer terminate booking progress</title>
+	<title>DP MOTORS</title>
+    <style>
+        .Nav-Appointments{
+            /* to show the active link in navbar */
+            background-color:#344CB4; 
+        }
+        .hide-in-others{
+            display:none;
+        }
+        .content{
+            text-align:center;
+        }
+    </style>
 </head>
 <body>
 
@@ -13,15 +36,33 @@
         <?php include_once("../customerTopNav.php");?>
     </div>
 
-    <div class="row deleteWarning"> <!--do not use r2 cus it has been used for something else-->
-        <div class="col-12">
+    <!-- Start of Dropdown for screens with width less than 800px-->
+        <div class="row r2">
+            <?php include_once("../customerSide-MiniNav.php");?>
+        </div>
+    <!--End of Dropdown for screens with width less than 800px-->
+
+
+    <div class="row">
+
+    <div class="col-15 sideNav">
+        <?php include_once("../customerSideNav.php");?>
+    </div>
+
+    <!--do not use r2 cus it has been used for something else-->
+
+        <div class="col-16 content">
+
+        <br><br><br><br><br><br>
+
             <h2>CANCEL APPOINTMENT</h2>
             <br>
-            <p>Reminder: all cancellations should be made 24hrs prior to the appointment time, and the reservation fee of any cancellations after this deadline will not be refunded. For more details, please refer our terms & conditions.</p>
             <br>
             <p>Are you sure you want to <span style="color: #D72731">cancel this appointment?</span></p>
-        </div>
-        <div class="col-12 buttons-inline">  
+        
+
+            <br><br>
+            <div class="col-12 buttons-inline">  
             <form action="./viewAppointments.php">
                 <button class="navButton"> NO </button>
             </form>
@@ -57,6 +98,8 @@
         <div class="col-12">
             <a href="../../Auth-UI/terms.html" class="termsConditions" target="_blank"><p>terms & conditions</p></a>
         </div>
+    </div>
+
     </div>
 
 

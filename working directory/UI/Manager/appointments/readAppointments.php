@@ -54,9 +54,9 @@ if(isset($_SESSION['id']))
                 <table class="buttonGrid">
                     <tr>
                         <td rowspan="4">
-                            <form action="./schedule.php">
+                            <form action="./manageslots.php">
                                 <button type="submit" class="appointmentButton"> 
-                                SCHEDULE <br>
+                                MANAGE SCHEDULE <br>
                                 <img src="../../../images/tableIcons/reschedule.png" class="tableIcon">
                                 </button>
                             </form>

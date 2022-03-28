@@ -17,7 +17,7 @@ if(isset($_SESSION['id']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
     <link rel="stylesheet" href="../../css/navbar.css">
-	<title>customer view bill history list</title>
+	<title>DP MOTORS</title>
     <style>
         .Nav-PayHistory{
             /* to show the active link in navbar */
@@ -64,10 +64,11 @@ if(isset($_SESSION['id']))
 
                         <?php
 
-                        $sql = "SELECT * FROM servicebill WHERE cus_email='$customerEmail' ";
+                        $sql = "SELECT * FROM allbills WHERE email='$customerEmail' ";
                         $result=$conn->query($sql);
 
-                        if(mysqli_num_rows($result)>0){               
+                        if(mysqli_num_rows($result)>0){   
+                                   
 
                         ?>
 
@@ -95,10 +96,17 @@ if(isset($_SESSION['id']))
                                 <td><a href="./readBill.php"><img src="../../../images/tableIcons/zoomIn.png" class="tableIcon"></a></td>
                             </tr>
 
-                        <?php 
+                            <?php
                             }
+
                         }
-                        ?>
+                        else{
+                            echo "<h6>- no current product reservations -  </h6>
+                            <br>
+                            <img src='../../../images/customer/no-results.png' style='max-width:250px;'>";
+                        }
+
+                            ?>
 
                         </tbody>
                         </table>

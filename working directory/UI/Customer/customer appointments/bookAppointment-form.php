@@ -16,7 +16,7 @@ if(isset($_SESSION['id']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
     <link rel="stylesheet" href="../../css/navbar.css">
-	<title>customer book appointment</title>
+	<title>DP MOTORS</title>
     <style>
         .Nav-Appointments{
             /* to show the active link in navbar */
@@ -132,7 +132,7 @@ if(isset($_SESSION['id']))
                         <label>VEHICLE MODEL</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                    <select id ="serviceApp" name="vehicleModel" style="height:41px;">
+                        <select id ="serviceApp" name="vehicleModel" style="height:41px;">
                             <option value ="Motor Cycle">Motor Cycle</option>
                             <option value ="Motor Tricycle">Motor Tricycle</option>
                             <option value ="Motor Car">Motor Car</option>

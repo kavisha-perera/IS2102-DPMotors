@@ -17,7 +17,7 @@ if(isset($_SESSION['id']))
     <link rel="stylesheet" href="../../../css/main.css">
     <link rel="stylesheet" href="../../css/navbar.css">
     <script type="text/javascript" src="../../../javascript/print.js"></script>
-	<title>customer book appointment</title>
+	<title>DP MOTORS</title>
     <style>
         .Nav-Appointments{
             /* to show the active link in navbar */
