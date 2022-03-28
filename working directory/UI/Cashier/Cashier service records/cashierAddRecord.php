@@ -14,7 +14,7 @@ if($_SESSION['type'] == "cashier")
 ?>
 
 <?php
-$vehicleNo_error = $serviceNo_error = $email_err = "";
+$vehicleNo_error = $dateOfService_error = $email_err = $nextServiceDate_error "";
 
 //checking if required fields are empty.
 if(isset($_POST['submit'])){
@@ -25,13 +25,19 @@ if(isset($_POST['submit'])){
     $vehicleNo = test_input($_POST["vehicleNo"]);
   }
 
-    // check if service No is already exsist
-    $serviceNo=mysqli_real_escape_string($conn, $_POST["serviceNo"]);
-    $query = mysqli_query($conn, "SELECT * FROM vehicleservicerecords WHERE serviceNo = '".$_POST["serviceNo"]."'");
-    if(mysqli_num_rows($query)>0) {
-  
-      $serviceNo_error ='<br> This service No is already exsist.';
-    }
+
+  if (empty($_POST["dateOfService"])) {
+    $dateOfService_error = "dateOfService is required";
+  } else {
+    $dateOfService= test_input($_POST["dateOfService"]);
+  }
+
+  if (empty($_POST["nextServiceDate"])) {
+    $nextServiceDate_error = "nextServiceDate is required";
+  } else {
+    $nextServiceDate= test_input($_POST["nextServiceDate"]);
+  }
+
 
 // check if e-mail address is well-formed
 $customerEmail=mysqli_real_escape_string($conn, $_POST["customerEmail"]);
@@ -40,6 +46,7 @@ if (!filter_var($customerEmail, FILTER_VALIDATE_EMAIL)) {
 }
 
 if(empty($vehicleNo_error)) {
+  $serviceNo=mysqli_real_escape_string($conn, $_POST["serviceNo"]);
   $vehicleNo=mysqli_real_escape_string($conn, $_POST["vehicleNo"]);
   $vehicleModel=mysqli_real_escape_string($conn, $_POST["vehicleModel"]);
   $dateOfService=mysqli_real_escape_string($conn, $_POST["dateOfService"]);
@@ -133,7 +140,6 @@ function test_input($data) {
                     </div>
                     <div class="pr-form-input">
                       <input type="text" name="serviceNo" class="pr-input-box" />
-                      <span class="error"><?php echo $serviceNo_error;?></span>
                     </div>
                   </div>
 
@@ -178,6 +184,7 @@ function test_input($data) {
                     </div>
                     <div class="pr-form-input">
                       <input type="date" name="dateOfService" class="pr-input-box" min="2022-03-16" max="2042-01-01"/>
+                      <span class="error"><?php echo $dateOfService_error;?></span>
                     </div>
                   </div>
       
@@ -287,6 +294,7 @@ function test_input($data) {
                     </div>
                     <div class="pr-form-input">
                       <input type="date" name="nextServiceDate" class="pr-input-box" min="2022-03-21" max="2042-01-01"/>
+                      <span class="error"><?php echo $nextServiceDate_err;?></span>
                     </div>
                   </div>
          

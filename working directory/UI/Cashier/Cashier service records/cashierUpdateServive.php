@@ -15,7 +15,7 @@ if($_SESSION['type'] == "cashier")
 ?>
 
 <?php
-$vehicleNo_error = $serviceNo_error = $email_err = "";
+$vehicleNo_error =  $dateOfService_error = $email_err = $nextServiceDate_error = "";
 
 //checking if required fields are empty.
 if(isset($_POST['submit'])){
@@ -25,20 +25,21 @@ if(isset($_POST['submit'])){
   } else {
     $vehicleNo = test_input($_POST["vehicleNo"]);
   }
-  // check if vehicle No is already exsist
-  $vehicleNo=mysqli_real_escape_string($conn, $_POST["vehicleNo"]);
-  $query = mysqli_query($conn, "SELECT * FROM vehicleservicerecords WHERE vehicleNo = '".$_POST["vehicleNo"]."'");
-  if(mysqli_num_rows($query)>0) {
 
-    $vehicleNo_error ='<br> This vehicle is already registerd.';
+  if (empty($_POST["dateOfService"])) {
+    $dateOfService_error = "dateOfService is required";
+  } else {
+    $dateOfService= test_input($_POST["dateOfService"]);
   }
+
+  if (empty($_POST["nextServiceDate"])) {
+    $nextServiceDate_error = "nextServiceDate is required";
+  } else {
+    $nextServiceDate= test_input($_POST["nextServiceDate"]);
+  }
+
     // check if service No is already exsist
     $serviceNo=mysqli_real_escape_string($conn, $_POST["serviceNo"]);
-    $query = mysqli_query($conn, "SELECT * FROM vehicleservicerecords WHERE serviceNo = '".$_POST["serviceNo"]."'");
-    if(mysqli_num_rows($query)>0) {
-  
-      $serviceNo_error ='<br> This service No is already exsist.';
-    }
 
 // check if e-mail address is well-formed
 $customerEmail=mysqli_real_escape_string($conn, $_POST["customerEmail"]);
@@ -46,7 +47,9 @@ if (!filter_var($customerEmail, FILTER_VALIDATE_EMAIL)) {
   $email_err = "Invalid email format";
 }
 
-if(empty($vehicleNo_error)) {
+if(empty($vehicleNo_error && $email_err)) {
+  $serviceNo=mysqli_real_escape_string($conn, $_POST["serviceNo"]);
+  $vehicleNo=mysqli_real_escape_string($conn, $_POST["vehicleNo"]);
   $vehicleModel = mysqli_real_escape_string($conn, $_POST["vehicleModel"]);
   $dateOfService = mysqli_real_escape_string($conn, $_POST["dateOfService"]);
   $milage=mysqli_real_escape_string($conn, $_POST["milage"]);
@@ -58,18 +61,30 @@ if(empty($vehicleNo_error)) {
   $coolant=mysqli_real_escape_string($conn, $_POST["coolant"]);
   $airFilter=mysqli_real_escape_string($conn, $_POST["airFilter"]);
   $nextServiceDate=mysqli_real_escape_string($conn, $_POST["nextServiceDate"]);
-  //add new records to the database
-  $query="INSERT INTO vehicleservicerecords (";
-  $query.="serviceNo,customerEmail,vehicleNo,vehicleModel,dateOfService,milage,engineOil,gearOil,ACfilter,oilFilter,ATFoil,coolant,airFilter,nextServiceDate";
-  $query.=") VALUES (";
-  $query.="'{$serviceNo}','{$customerEmail}','{$vehicleNo}','{$vehicleModel}','{$dateOfService}','{$milage}','{$engineOil}','{$gearOil}','{$ACfilter}','{$oilFilter}','{$ATFoil}','{$coolant}','{$airFilter}','{$nextServiceDate}'";
-  $query.=")";
+
+  //edit records to the database
+
+  $query="UPDATE vehicleservicerecords SET";
+  $query.="serviceNo ='{$serviceNo}',";
+  $query.="vehicleNo ='{$vehicleNo}',";
+  $query.="vehicleModel ='{$vehicleModel}',";
+  $query.="dateOfService ='{$dateOfService}',";
+  $query.="milage='{$milage}',";
+  $query.="engineOil='{$engineOil}',";
+  $query.="gearOil='{$gearOil}',";
+  $query.="ACfilter='{$ACfilter}',";
+  $query.="oilFilter='{$oilFilter}',";
+  $query.="ATFoil='{$ATFoil}',";
+  $query.="coolant='{$coolant}',";
+  $query.="airFilter='{$airFilter}',";
+  $query.="nextServiceDater='{$nextServiceDate}',";
+  $query.="WHERE id = {$service_id} LIMIT 1";
 
   $result = mysqli_query($conn, $query);
 
   if(!$result){
     //query successful redirect to vehicle records page
-      header("location: cashierViewService.php?servicefailed");
+      header("location: cashierReadService.php?failed to add new record.");
   }
 
 }
@@ -92,7 +107,6 @@ if(isset($_GET['service_id'])){
     if(mysqli_num_rows($result)>0){
       
       $results=mysqli_fetch_assoc($result);
-      var_dump($results);
       
         $customerEmail=$results['customerEmail'];
         $serviceNo=$results['serviceNo'];
@@ -158,7 +172,7 @@ if(isset($_GET['service_id'])){
         <div class="col-16 content">
             <!--main content here-->
             <div class="pr-form-container">
-                <form action="./cashierUpdateService.php" method="POST">
+                <form action="./cashierUpdateServive.php" method="POST">
 
                   <div class="row1">
                   <div class="th-add-new-button">
@@ -170,6 +184,8 @@ if(isset($_GET['service_id'])){
                   </div>
     
                   <br/><br/>
+
+                  <input type="hidden" name="service_id"   value= "<?php echo $service_id ?>"/>
       
                   <div class="row1">
                     <div class="pr-form-label">
@@ -177,7 +193,7 @@ if(isset($_GET['service_id'])){
                     </div>
                     <div class="pr-form-input">
                       <input type="text" name="serviceNo" class="pr-input-box"  value= "<?php echo $serviceNo ?>"/>
-                      <span class="error"><?php echo $serviceNo_error;?></span>
+                      <span class="error"></span>
                     </div>
                   </div>
 
@@ -186,7 +202,7 @@ if(isset($_GET['service_id'])){
                       <label for="customerEmail">Customer email</label>
                     </div>
                     <div class="pr-form-input">
-                      <input type="text" name="customerEmail" class="pr-input-box" />
+                      <input type="text" name="customerEmail" class="pr-input-box"  value= "<?php echo $customerEmail ?>"/>
                       <span class="error"><?php echo $email_err;?></span>
                     </div>
                   </div>
@@ -196,7 +212,7 @@ if(isset($_GET['service_id'])){
                       <label for="nameth">Vehicle No.</label>
                     </div>
                     <div class="pr-form-input">
-                      <input type="text" name="vehicleNo" class="pr-input-box" />
+                      <input type="text" name="vehicleNo" class="pr-input-box"  value= "<?php echo $vehicleNo?>"/>
                       <span class="error"><?php echo $vehicleNo_error;?></span>
                     </div>
                   </div>
@@ -207,7 +223,7 @@ if(isset($_GET['service_id'])){
                       <label for="vehicleModel">Vehicle Type</label>
                     </div>
                     <div class="pr-form-input">
-                    <select name="vehicleModel" class="th-emsu-input">
+                    <select name="vehicleModel" class="th-emsu-input"  value= "<?php echo $vehicleModel ?>">
                        <option> - </option>
                        <option>Toyota Axio</option> 
                        <option>Toyota Corolla</option>    
@@ -221,7 +237,8 @@ if(isset($_GET['service_id'])){
                       <label for="nameth">Date of Service</label>
                     </div>
                     <div class="pr-form-input">
-                      <input type="date" name="dateOfService" class="pr-input-box" min="2022-03-16" max="2042-01-01"/>
+                      <input type="date" name="dateOfService" class="pr-input-box" min="2022-03-16" max="2042-01-01"  value= "<?php echo $dateOfService ?>" />
+                      <span class="error"><?php echo $dateOfService_error;?></span>
                     </div>
                   </div>
       
@@ -230,7 +247,7 @@ if(isset($_GET['service_id'])){
                       <label for="nameth">Milage</label>
                     </div>
                     <div class="pr-form-input">
-                      <input type="text" name="milage" class="pr-input-box" />
+                      <input type="text" name="milage" class="pr-input-box"  value= "<?php echo $milage?>"/>
                     </div>
                   </div>
 
@@ -239,7 +256,7 @@ if(isset($_GET['service_id'])){
                       <label for="nameth">Engine Oil</label>
                     </div>
                     <div class="pr-form-input">
-                    <select name="engineOil" class="th-emsu-input">
+                    <select name="engineOil" class="th-emsu-input"  value= "<?php echo $engineOil ?>">
                        <option> - </option>
                        <option>Top Up</option> 
                        <option>Refill</option>                               
@@ -252,7 +269,7 @@ if(isset($_GET['service_id'])){
                       <label for="nameth">Gear Oil</label>
                     </div>
                     <div class="pr-form-input">
-                    <select name="gearOil" class="th-emsu-input">
+                    <select name="gearOil" class="th-emsu-input"  value= "<?php echo $gearOil ?>">
                        <option> - </option>
                        <option>Top Up</option> 
                        <option>Refill</option>                               
@@ -265,7 +282,7 @@ if(isset($_GET['service_id'])){
                       <label for="nameth">A/C Filter</label>
                     </div>
                     <div class="pr-form-input">
-                    <select name="ACfilter" class="th-emsu-input">
+                    <select name="ACfilter" class="th-emsu-input"  value= "<?php echo $ACfilter?>">
                        <option> - </option>
                        <option>Clean</option> 
                        <option>Replace</option>                               
@@ -278,7 +295,7 @@ if(isset($_GET['service_id'])){
                       <label for="nameth">Oil Filter</label>
                     </div>
                     <div class="pr-form-input">
-                    <select name="oilFilter" class="th-emsu-input">
+                    <select name="oilFilter" class="th-emsu-input"  value= "<?php echo $oilFilter ?>">
                        <option> - </option>
                        <option>Change</option>                                
                     </select> 
@@ -290,7 +307,7 @@ if(isset($_GET['service_id'])){
                       <label for="nameth">ATF Oil</label>
                     </div>
                     <div class="pr-form-input">
-                    <select name="ATFoil" class="th-emsu-input">
+                    <select name="ATFoil" class="th-emsu-input"  value= "<?php echo $ATFoil ?>">
                        <option> - </option>
                        <option>Top Up</option> 
                        <option>Refill</option>                               
@@ -303,7 +320,7 @@ if(isset($_GET['service_id'])){
                       <label for="nameth">Coolant</label>
                     </div>
                     <div class="pr-form-input">
-                    <select name="coolant" class="th-emsu-input">
+                    <select name="coolant" class="th-emsu-input"  value= "<?php echo $coolant ?>">
                        <option> - </option>
                        <option>Top Up</option> 
                        <option>Refill</option>                               
@@ -316,7 +333,7 @@ if(isset($_GET['service_id'])){
                       <label for="nameth">Air filter</label>
                     </div>
                     <div class="pr-form-input">
-                    <select name="airFilter" class="th-emsu-input">
+                    <select name="airFilter" class="th-emsu-input"  value= "<?php echo $airFilter ?>">
                        <option> - </option>
                        <option>Clean</option> 
                        <option>Replace</option>                               
@@ -330,7 +347,7 @@ if(isset($_GET['service_id'])){
                       <label for="nameth">Next date of service</label>
                     </div>
                     <div class="pr-form-input">
-                      <input type="date" name="nextServiceDate" class="pr-input-box" min="2022-03-21" max="2042-01-01"/>
+                      <input type="date" name="nextServiceDate" class="pr-input-box" min="2022-03-21" max="2042-01-01"  value= "<?php echo $nextServiceDate?>"/><span class="error"><?php echo $vehicleNo_error;?></span>
                     </div>
                   </div>
          

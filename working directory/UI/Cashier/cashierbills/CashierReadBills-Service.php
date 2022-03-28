@@ -18,15 +18,15 @@ if($_SESSION['type'] == "cashier")
 
 $sbill_list = '';
 
-$query= "SELECT * FROM servicebill ORDER BY id ASC";
+$query= "SELECT * FROM allbills ORDER BY bid ASC";
 $sbill = mysqli_query($conn, $query);
 
 if ($sbill) { //View Service bill details
     while ($value = mysqli_fetch_assoc($sbill)){
         $sbill_list .="<tr>";
-        $sbill_list.="<td>{$value['id']}</td>";
+        $sbill_list.="<td>{$value['bid']}</td>";
         $sbill_list .="<td>{$value['description']}</td>";
-        $sbill_list .="<td>{$value['service_price']}</td>";
+        $sbill_list .="<td>{$value['price']}</td>";
         $sbill_list .="</tr>"; 
 
     }
@@ -35,21 +35,21 @@ if ($sbill) { //View Service bill details
     echo "Database connection failed.";
 }
 
-$sbill_no=$billtype=$cus_name=$cashier_name=$datetime=$description=$service_price ='';
+$bill_no=$billtype=$cus_name=$cashier_name=$datetime=$description=$service_price ='';
 if (isset($_POST["print"])){
 
-    $query = "SELECT * FROM servicebill";
+    $query = "SELECT * FROM allbills";
     $result = mysqli_query($conn,$query);
     if ($result) {
         while ($value = mysqli_fetch_assoc($result)){
 
-            $sbill_no = $value["sbill_no"];
+            $bill_no = $value["bill_no"];
             $billtype = $value["billtype"];
-            $cus_name = $value["cus_name"];
-            $cashier_name = $value["cashier_name"];
-            $datetime = $value["datetime"];
+            $email = $value["email"];
+            $vehicleNo = $value["vehicleNo"];
+            $date = $value["date"];
             $description = $value["description"];
-            $service_price = $value["service_price"];
+            $price = $value["price"];
     }
  }
 }
@@ -129,7 +129,7 @@ if (isset($_POST["print"])){
                         <!--row containing bill number-->
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="BillNo" style="margin-right:50px;" name="sbill_no"><u>BILL NO: <?php echo $sbill_no; ?></u><h2></h2>
+                        <h2 class="BillNo" style="margin-right:50px;" name="sbill_no"><u>BILL NO: <?php echo $bill_no; ?></u><h2></h2>
                     </div>
                 </div>
                         <!--row containing general details of the bill-->
@@ -138,12 +138,12 @@ if (isset($_POST["print"])){
 
                     <div class="col-4 billGeneral" style="margin-left:80px;margin-top:15px;"> 
                         <div class="billGeneralDetails">
-                            <h5>DATE: <?php echo $datetime; ?></h5>
+                            <h5>DATE: <?php echo $date; ?></h5>
                             <input type="text" name="datetime" class="billGeneralForm">
                         </div>
                         <div class="billGeneralDetails">
-                            <h5>CUSTOMER NAME:<?php echo $cus_name; ?></h5>
-                            <input type="text" name="cus_name" class="billGeneralForm">
+                            <h5>CUSTOMER EMAIL:<?php echo $email; ?></h5>
+                            <input type="text" name="email" class="billGeneralForm">
                         </div>
                     </div>
 
@@ -155,8 +155,8 @@ if (isset($_POST["print"])){
                             <input type="text" name="billtype" class="billGeneralForm">
                         </div>
                         <div class="billGeneralDetails">
-                            <h5>CASHIER NAME:<?php echo $cashier_name; ?></h5>
-                            <input type="text" name="cashier_name" class="billGeneralForm">
+                            <h5>CASHIER NAME:<?php echo $vehicleNo; ?></h5>
+                            <input type="text" name="vehicleNo" class="billGeneralForm">
                         </div>
                     </div>
 
@@ -181,7 +181,7 @@ if (isset($_POST["print"])){
                 </div>
                     <!--row containing bill amount-->
                     <?php 
-                          $query="SELECT SUM(service_price) AS 'sumservice' FROM servicebill";
+                          $query="SELECT SUM(price) AS 'sumservice' FROM allbills";
                           $result=mysqli_query($conn,$query);
                           $data=mysqli_fetch_assoc($result); 
                           ?>

@@ -15,13 +15,13 @@ $bill_list = '';
 $search= '';
 
 //getting the list of all bills 
-if(isset($_GET['search'])){
+if(isset($_POST['search'])){
 
-    $search = mysqli_real_escape_string($conn,$_GET['search']);
-    $query="SELECT * FROM allbills WHERE (bill_no LIKE '%{$search}%' OR due_date LIKE '%{$search}%') ORDER BY id";
+    $search = mysqli_real_escape_string($conn,$_POST['search']);
+    $query="SELECT * FROM allbills WHERE (bill_no LIKE '%{$search}%' OR vehicleNo LIKE '%{$search}%' OR email LIKE '%{$search}%') ORDER BY bid";
 } else{
 
-    $query="SELECT * FROM allbills ORDER BY id";
+    $query="SELECT * FROM allbills ORDER BY bid";
 }
 
 $bill = mysqli_query($conn, $query);
@@ -29,12 +29,14 @@ $bill = mysqli_query($conn, $query);
 if ($bill) {
     while ($value = mysqli_fetch_assoc($bill)){
         $bill_list  .="<tr>";
-        $bill_list  .="<td>{$value['id']}</td>";
-        $bill_list  .="<td>{$value['type']}</td>";
-        $bill_list  .="<td>{$value['date']}</td>";
-        $bill_list  .="<td>{$value['total']}</td>";
+        $bill_list  .="<td>{$value['bid']}</td>";
         $bill_list  .="<td>{$value['bill_no']}</td>";
-        $bill_list  .="<td><a href=\"CashierViewAllBills.php?bill_id={$value['id']}\" onclick=\"return confirm('Are you sure?');\" >Remove</a></td>";
+        $bill_list  .="<td>{$value['description']}</td>";
+        $bill_list  .="<td>{$value['date']}</td>";
+        $bill_list  .="<td>{$value['vehicleNo']}</td>";
+        $bill_list  .="<td>{$value['email']}</td>";
+        $bill_list  .="<td>{$value['billtype']}</td>";
+        $bill_list  .="<td><a href=\"CashierViewAllBills.php?bill_id={$value['bid']}\" onclick=\"return confirm('Are you sure?');\" >Remove</a></td>";
         $bill_list  .="</tr>";
 
     }
@@ -46,7 +48,7 @@ if (isset($_GET['bill_id'])){
 
     $bill_id=mysqli_real_escape_string($conn,$_GET['bill_id']);
    //deleting bill
-   $query="DELETE FROM allbills WHERE id= {$bill_id}";
+   $query="DELETE FROM allbills WHERE bid= {$bill_id}";
    $result = mysqli_query($conn, $query);
  
    if($result){
@@ -122,7 +124,7 @@ if (isset($_GET['bill_id'])){
                      <!--search container start-->
                      <div class="col-4 search-container">
                         <form action="./CashierViewAllBills.php" method="POST">
-                            <input type="text" placeholder="Search by bill no or" value="<?php echo $search;?>" name="search" autofocus>
+                            <input type="text" placeholder="Search by bill no or email or vehicleNo" value="<?php echo $search;?>" name="search" autofocus>
                             <button type="submit" name="submit" style="background-color:white; border:0px solid black;"> <img src="../../../images/productCatalogue/s.png" style="max-width:20px;"></button>
                         </form>
                     </div>
@@ -133,17 +135,18 @@ if (isset($_GET['bill_id'])){
                     <!--bill details table-->
                     
                     <div class="th-other-buttons">
-                        <button class="navButton" onclick="document.location='CashierViewAllBills.php'"><b>All bills</b></button>
-                        <button class="navButton" onclick="document.location='CashierViewProductBills.php'"><b> Product bills</b></button>
-                        <button class="navButton" onclick="document.location='CashierViewServiceBills.php'"><b>Service bills</b></button>    
+                        <button class="navButton" onclick="document.location='CashierViewAllBills.php'"><b>All bills</b></button>    
                     </div>
                 <table class="th-user-table">
                     <thead>
                     <tr>
-                      <th>BILL NO</th> <!--table properties-->
-                      <th>BILL TYPE</th> 
+                      <th>ID</th> <!--table properties-->
+                      <th>BILL NO</th> 
+                      <th>DESCRIPTION</th>
                       <th>DATE</th>
-                      <th>TOTAL</th>
+                      <th>VEHICLE NO</th>
+                      <th>EMAIL</th>
+                      <th>BILL TYPE</th>
                       <th>REMOVE</th>
                     </tr>
                     </thead>
