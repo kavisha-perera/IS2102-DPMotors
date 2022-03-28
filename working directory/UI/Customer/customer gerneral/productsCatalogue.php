@@ -28,6 +28,10 @@ session_start();
         cursor: pointer;
         }
 
+        .catelogueItems{
+            min-height: 400px;
+        }
+
 
         
 
@@ -62,7 +66,7 @@ session_start();
                         <div class="catalogueMenue">
                             <img src="../../../images/productCatalogue/category.png" style="width: 17px; height: 17px;">
                             &nbsp;&nbsp; <!--keeping horizontal space-->
-                            <p><a href="#category1">CATEGORY 1</a> </p>
+                            <p><a href="#category1">Oils and Fluids</a> </p>
                         </div>
 
                         <br>
@@ -70,16 +74,10 @@ session_start();
                         <div class="catalogueMenue">
                             <img src="../../../images/productCatalogue/category.png" style="width: 17px; height: 17px;">
                             &nbsp;&nbsp; <!--keeping horizontal space-->
-                            <p><a href="#category2">CATEGORY 2</a> </p>
+                            <p><a href="#category2">Motor Parts and Spares</a> </p>
                         </div>
 
                         <br>
-
-                        <div class="catalogueMenue">
-                            <img src="../../../images/productCatalogue/category.png" style="width: 17px; height: 17px;">
-                            &nbsp;&nbsp; <!--keeping horizontal space-->
-                            <p><a href="#category3">CATEGORY 3</a> </p>
-                        </div>
 
                         <br>
                     <!----------------------search container------------------------>
@@ -106,10 +104,10 @@ session_start();
 
                     <br><br>
                     
-                    <h3> &nbsp;&nbsp;  CATEGORY 1</h3>
+                    <h3> &nbsp;&nbsp;  Oils and Fluids</h3>
                     <br><br>
                     <!--start getting details according to the category-->
-                        <?php  $sql = "SELECT * FROM stock WHERE catergory='EO' ";
+                        <?php  $sql = "SELECT * FROM stock WHERE catergory='Oils and F' ";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
@@ -141,6 +139,54 @@ session_start();
                      <?php
                          }
                     } ?>
+
+                </div>
+
+
+                <br><br><br>
+                <!----------------------end of one product category------------------------->
+
+                <!----------------------start of one product category------------------------->
+
+                <div class="row catelogueAlt-1"><a id="category2"></a>
+
+                <br><br>
+
+                <h3> &nbsp;&nbsp; Motor Parts and Spares</h3>
+                <br><br>
+                <!--start getting details according to the category-->
+                    <?php  $sql = "SELECT * FROM stock WHERE catergory='Motor Part' ";
+                        $result = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+
+                <!--item container-->
+                <div class="col-3 catelogueItems">
+                    <img src="https://drive.google.com/uc?export=view&id=<?php echo $row['p_image']; ?>" class="promotionBanner">
+                    <h4><?php echo $row['p_brand']; ?> <?php echo $row['p_name']; ?></h4>
+                    <h5>LKR <?php echo $row['selling_price']; ?>/-</h5>
+                    <h6><?php echo $row['p_desc']; ?></h6>
+                    
+                    <?php $avail_sql = "SELECT COUNT(*) AS stock_count FROM products WHERE stock_code='{$row['stock_code']}'";
+                        $availability = mysqli_query($conn, $avail_sql);
+                        $data=mysqli_fetch_assoc($availability);
+                        if($data['stock_count'] > 0){    
+
+                    ?>
+                    <h6 style="color:green">Available Qty: <?php echo $data['stock_count']; ?></h6>
+                    <?php
+                        }
+                        else{
+                            echo " <h6 style='color:red'>Out of Stock</h6>";
+                        }
+                    ?>
+                    
+                </div>
+
+                <?php
+                    }
+                } ?>
 
                 </div>
 

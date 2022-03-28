@@ -27,6 +27,10 @@ session_start();
         border: none;
         cursor: pointer;
         }
+
+        .catelogueItems{
+            min-height: 400px;
+        }
     </style>
 </head>
 <body>
@@ -46,22 +50,7 @@ session_start();
             </div>
         </div>
 
-        <?php 
 
-                if (isset($_POST["submit"])){
-
-                $search = $_POST['search'];  // gets value sent over search form
-
-                    $sql = "SELECT * FROM stock WHERE p_keywords LIKE '%$search%' OR p_desc LIKE '%$search%'";
-
-                    $result = $conn->query($sql);
-                    
-                    if (mysqli_num_rows($result) > 0){
-                        while($row = $result->fetch_assoc() ){
-
-                            $no_of_results = mysqli_num_rows($result);
-
-                        ?>
 
                             <div class='row'>
                                 <div class='col-3'></div>
@@ -77,10 +66,33 @@ session_start();
                                 </div>
                             <div class='col-3'></div>
                         </div>
+
+                        
+                        <?php 
+
+                    if (isset($_POST["submit"])){
+
+                    $search = $_POST['search'];  // gets value sent over search form
+
+                    $sql = "SELECT * FROM stock WHERE p_keywords LIKE '%$search%' OR p_desc LIKE '%$search%'";
+
+                    $result = $conn->query($sql);
+                    
+                    if (mysqli_num_rows($result) > 0){
+                        $no_of_results = mysqli_num_rows($result);
+
+                    ?>
+
                         <div class='row'>
                             <div class='col-12'> <h6 align='center'> <?php echo "$no_of_results Results Found"; ?> </h6> </div>
                         </div>
-                        
+
+                    <?php
+                        while($row = $result->fetch_assoc() ){                          
+
+                    ?>
+
+
 
                         <!--item container start-->
                             <div class="col-3 catelogueItems">
