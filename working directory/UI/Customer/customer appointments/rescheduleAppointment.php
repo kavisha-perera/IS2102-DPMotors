@@ -15,7 +15,7 @@ if(isset($_SESSION['id']))
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
-    <link rel="stylesheet" href="../../../css/schedule.css">
+    <link rel="stylesheet" href="../../../css/dpschedule.css">
 	<title>customer book appointment</title>
     <style>
         .Nav-Appointments{
@@ -72,7 +72,7 @@ if(isset($_SESSION['id']))
 
                 <?php
                 //getting all the distinct dates starting from the current date
-                    $sql = "SELECT DISTINCT date FROM schedule WHERE date >=CURDATE() ORDER BY date LIMIT 14";
+                    $sql = "SELECT DISTINCT carddate FROM dp_schedule WHERE carddate >=CURDATE() ORDER BY carddate LIMIT 14";
                     $result = $conn->query($sql); 
                     
                     if (mysqli_num_rows($result) > 0){
@@ -82,27 +82,29 @@ if(isset($_SESSION['id']))
                             $today = date("Y-m-d"); //assign the current date to variable $today
 
                             //display two slightly different datecards after checking if the date retrieved from the database is today
-                            if ($row['date'] == $today){
+                            if ($row['carddate'] == $today){
                    
                 ?>
-                <!-- if ($row['date'] == $today) -->
+                <!-- if ($row['carddate'] == $today) -->
 
                 
                 <div class="col-3 dateCard today">
-                    <h4  class="availDate">TODAY: <?php echo $row['date'];?></h4>
+                    <h4  class="availDate">TODAY: <?php echo $row['carddate'];?></h4>
                     <hr style="height:5px;">
                         <!--retrieve all the timeslots from the database under the retrieved date-->
                         <?php
-                            $sql2 = "SELECT DISTINCT timeslot, id FROM schedule WHERE state='open' AND date='{$row['date']}' order by timeslot ";
+                            $sql2 = "SELECT * FROM dp_schedule WHERE carddate='{$row['carddate']}' order by timeslot ";
                             $result2 = $conn->query($sql2); 
                             if (mysqli_num_rows($result2) > 0){
                                 while ($row2 = mysqli_fetch_assoc($result2)) {
+
+                                    if($row2['state']=='open'){ //if statement for timeslots that are open
                         ?>
 
                         <!--A table that shows all the available timeslots with BOOK buttons-->
                         <table class="timeslotsListed">
                             <tr>
-                                <td><h5><?php echo $row2['timeslot'];?>:00</h5></td>
+                                <td><h5><?php echo $row2['timeslot'];?></h5></td>
                                 <td>
                                 <form action="../../../includes/appointment.inc.php" method="post">
                                 <?php
@@ -123,25 +125,45 @@ if(isset($_SESSION['id']))
                                         <input type="hidden" name="appId" value="<?php echo $row3['id'];?>">
 
                                     <?php } } }?>
-                                        <input type="hidden" name="newDate" value="<?php echo $row['date'];?>">
+                                        <input type="hidden" name="newDate" value="<?php echo $row['carddate'];?>">
                                         <input type="hidden" name="newTime" value="<?php echo $row2['timeslot'];?>">
-                                        <input type="hidden" name="slotId" value="<?php echo $row2['id'];?>">
+                                        <input type="hidden" name="slotId" value="<?php echo $row2['slotid'];?>">
                                         <button type="submit" name="reschedule" class="bookButton">
-                                            BOOK
+                                        Book Timeslot
                                         </button>
                                     </form>
                                 </td>
                             </tr>
                         </table>
 
+                        <?php 
+                            } //close if statement for timeslots that are open
+
+                        elseif($row2['state']=='closed') { //elseif statement for timeslots that are closed
+                            
+                        ?>
+                        <!--A table that shows timeslots that are not available-->
+                        <table class="timeslotsListed">
+                            <tr>
+                                <td><h5><?php echo $row2['timeslot'];?></h5></td>
+                                <td>
+                                    <form action="./bookAppointment-form.php" method="post">
+                                        <input type="hidden" name="slotId" value="<?php echo $row2['slotid'];?>">
+                                        <button class="bookButton closed" disabled>
+                                            Not Available
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+                        <?php 
+                            } //close elseif statement for timeslots that are closed
+                          
+                        ?>
+
                         <?php
                             } //close timeslot while loop
                         } //close timeslot if statement
-                        else{
-                            //no timeslots under date concerned
-                            echo "<br>";
-                            echo "<h5 style='text-align:center;'>NO TIMESLOTS AVAILABLE</h5>";
-                        }
                         ?>       
 
                 </div> <!--close datecard that shows todays timeslots-->
@@ -151,23 +173,24 @@ if(isset($_SESSION['id']))
                     }
                 else{
                 ?>
-
-                 <!-- else of {if ($row['date'] == $today)} -->
+                
                 <div class="col-3 dateCard">
-                    <h4  class="availDate">DATE: <?php echo $row['date'];?></h4>
+                    <h4  class="availDate">DATE: <?php echo $row['carddate'];?></h4>
                     <hr style="height:5px;">
                         <!--retrieve all the timeslots from the database under the retrieved date-->
                         <?php
-                            $sql2 = "SELECT DISTINCT timeslot, id FROM schedule WHERE state='open' AND date='{$row['date']}' order by timeslot ";
+                            $sql2 = "SELECT * FROM dp_schedule WHERE carddate='{$row['carddate']}' order by timeslot ";
                             $result2 = $conn->query($sql2); 
                             if (mysqli_num_rows($result2) > 0){
                                 while ($row2 = mysqli_fetch_assoc($result2)) {
+
+                                    if($row2['state']=='open'){ //if statement for timeslots that are open
                         ?>
 
                         <!--A table that shows all the available timeslots with BOOK buttons-->
                         <table class="timeslotsListed">
                             <tr>
-                                <td><h5><?php echo $row2['timeslot'];?>:00</h5></td>
+                                <td><h5><?php echo $row2['timeslot'];?></h5></td>
                                 <td>
                                 <form action="../../../includes/appointment.inc.php" method="post">
                                 <?php
@@ -188,37 +211,53 @@ if(isset($_SESSION['id']))
                                         <input type="hidden" name="appId" value="<?php echo $row3['id'];?>">
 
                                     <?php } } }?>
-                                        <input type="hidden" name="newDate" value="<?php echo $row['date'];?>">
+                                        <input type="hidden" name="newDate" value="<?php echo $row['carddate'];?>">
                                         <input type="hidden" name="newTime" value="<?php echo $row2['timeslot'];?>">
-                                        <input type="hidden" name="slotId" value="<?php echo $row2['id'];?>">
+                                        <input type="hidden" name="slotId" value="<?php echo $row2['slotid'];?>">
                                         <button type="submit" name="reschedule" class="bookButton">
-                                            BOOK
+                                        Book Timeslot
                                         </button>
                                     </form>
                                 </td>
                             </tr>
                         </table>
 
+                        <?php 
+                            } //close if statement for timeslots that are open
 
+                        elseif($row2['state']=='closed') { //elseif statement for timeslots that are closed
+                            
+                        ?>
+                        <!--A table that shows timeslots that are not available-->
+                        <table class="timeslotsListed">
+                            <tr>
+                                <td><h5><?php echo $row2['timeslot'];?></h5></td>
+                                <td>
+                                    <form action="./bookAppointment-form.php" method="post">
+                                        <input type="hidden" name="slotId" value="<?php echo $row2['slotid'];?>">
+                                        <button class="bookButton closed" disabled>
+                                            Not Available
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+                        <?php 
+                            } //close elseif statement for timeslots that are closed
+                        
+                        ?>
 
                         <?php
                             } //close timeslot while loop
                         } //close timeslot if statement
-                        else{
-                            //no timeslots under date concerned
-                            echo "<br>";
-                            echo "<h5 style='text-align:center;'>NO TIMESLOTS AVAILABLE</h5>";
-                        }
+                    
                         ?>       
 
-                </div> <!--close datecard-->
-
-                <?php
-                }    //close else of {if ($row['date'] == $today)}
-                ?>  
+                </div>
 
 
             <?php
+                }
                 } //close while loop that retrieves dates from the database
             } //close if statement that retrieves dates from the database
             ?>

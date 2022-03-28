@@ -22,7 +22,7 @@
                                     <a href="../promotion/readPromotion.php"> Promotions </a> 
                                     <a href="../appointments/readAppointments.php"  > Appointments </a> 
                                     <a href="../employeeRecords/employeeRecords.php" > Employee Records </a> 
-                                    <a href="../Cashier service records/managerViewServiceRecords.php"> Vehicle Service Records </a>
+                                    <a href="../view/viewService.php"> Vehicle Service Records </a>
                                     <a href="../Cashier product reservation/managerViewProductResrvation.php"> Product Reservations </a> 
                                     <a href="../Cashier View Bill History/ManagerViewAllBills.php"> Payment History </a> 
                                 </div>
@@ -41,7 +41,7 @@
                                     <a href="../promotion/readPromotion.php"> Promotions </a> 
                                     <a href="../appointments/readAppointments.php" > Appointments </a> 
                                     <a href="../employeeRecords/employeeRecords.php" > Employee Records </a> 
-                                    <a href="../Cashier service records/managerViewServiceRecords.php"> Vehicle Service Records </a>
+                                    <a href="../view/viewService.php"> Vehicle Service Records </a>
                                     <a href="../Cashier product reservation/managerViewProductResrvation.php"> Product Reservations </a> 
                                     <a href="../Cashier View Bill History/ManagerViewAllBills.php"> Payment History </a>                                 
         </div>

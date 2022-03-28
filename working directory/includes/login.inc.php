@@ -23,16 +23,25 @@ if (isset($_POST["submit"])){
 
 if(isset($_POST["frogotemail"])){
 
+
+
     $frogotemail = $_POST["frogotemail"] ;
     $nic = "";
     $exists =  emailTaken($conn ,  $frogotemail , $nic);
 
 
     if($exists){
-        addCodeAndSendEmail($conn ,$frogotemail);
-    }
+    addCodeAndSendEmail($conn ,$frogotemail);
+        
+    header("Location: ../UI/Auth-UI/checkEmailNotify.php?success=sent");
+    exit();
 
-    header("location: ../UI/Auth-UI/login.php?success=passwordemail");
+
+    }else{
+
+    header("Location: ../UI/Auth-UI/frogotpassword.php?success=sent");
+    exit();    
+    }
 
 }
 

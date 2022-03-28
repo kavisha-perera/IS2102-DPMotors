@@ -40,7 +40,19 @@ function openUpdateEmployee(element){
     document.getElementById("updateemail").value = email;
     document.getElementById("updatenic").value = nic;
     document.getElementById("updatecontact").value = contact;
-    document.getElementById("updatedesignation").value = designation;
+  //  document.getElementById("updatedesignation").value = designation;
+
+    var selectele = document.getElementById("updatedesignation");
+
+
+    for(var i = 0; i < selectele.options.length ; i++ ){
+        var ele = selectele.options[i];
+
+        if(ele.value == designation.trim()){
+            ele.selected = true;
+        }
+    }
+
 
 
 

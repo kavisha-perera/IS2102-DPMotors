@@ -56,16 +56,12 @@
 
           <div id="rcorners">
 
-            <form action="../../includes/login.inc.php" method="post">      
+            <form>      
 
-                <h2 align ="center">Forgot Password</h2>
+                <h2 align ="center">Email Sent</h2>
 
                 <div class="flex-container">
-                    <label>Enter the email address of your account , You will be notified if the email is valid.</label>
-                    <input type="text" placeholder="Email Address" name="frogotemail" required>
-                </div>
-
-                <button type="submit" name="frogotButton" class="loginButton" >Send Reset Email</button>
+                    <label>Please Check Your Email. We have sent you the reset link.</label>
                 
                 </div>    
 

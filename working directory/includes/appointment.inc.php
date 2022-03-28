@@ -20,6 +20,8 @@ if (isset($_POST["book"])){
 
     updateSlotState($conn, $slotId);
 
+    closeSlot($conn, $slotId);
+
     createAppointment($conn, $slotId, $appDate, $appTime, $serviceType, $vehicleNo, $vehicleModel, $fname, $lname, $contact, $email, $appointmentState);
 
     
@@ -38,11 +40,11 @@ if (isset($_POST["reschedule"])){
     require_once 'dbh.inc.php';
     require_once 'appointment-func.php';
 
-    updateSlotState($conn, $slotId);
-
     reschedule($conn, $slotId, $newTime, $newDate, $appId );
 
     releaseSlotState($conn, $OLDslotID);
+
+    openSlot($conn, $OLDslotID);
 
     header("location: ../UI/Customer/customer appointments/viewAppointments.php?error=RescheduleSuccess");
 
@@ -59,6 +61,8 @@ if (isset($_POST["cancel"])){
     require_once 'appointment-func.php';
 
     releaseSlotState($conn, $OLDslotID);
+
+    openSlot($conn, $OLDslotID);
 
     cancel($conn, $appId );
 
@@ -77,7 +81,7 @@ if (isset($_POST["reschedule-M"])){
     require_once 'dbh.inc.php';
     require_once 'appointment-func.php';
 
-    updateSlotState($conn, $slotId);
+    reschupdateSlotState($conn, $slotId);
 
     reschedule($conn, $slotId, $newTime, $newDate, $appId );
 
