@@ -57,7 +57,7 @@ include_once("../managerNav.php");
 <div class="col-9 saveIcon-null"><!--blank column with 75%width--></div>
 <div class="col-3 saveIcon-main">
 <!--<img src="../../../images/tableIcons/download.png" class="saveIcon">-->
-<a onclick="printSection('print-content')">
+<a id="printChart">
 <img src="../../../images/tableIcons/printing.png" class="saveIcon">
 </a>
 </div>

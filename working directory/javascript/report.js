@@ -238,6 +238,7 @@ function loadAllAppointments (){
             title:{
                 text: "Completed"
             },
+            exportEnabled: true,
             axisY: {
                 title: "Count",
                 valueFormatString: "#",
@@ -256,6 +257,7 @@ function loadAllAppointments (){
             title:{
                 text: "Pending"
             },
+            exportEnabled: true,
             axisY: {
                 title: "Count",
                 valueFormatString: "#",
@@ -274,6 +276,7 @@ function loadAllAppointments (){
             title:{
                 text: "Missed"
             },
+            exportEnabled: true,
             axisY: {
                 title: "Count",
                 valueFormatString: "#",
@@ -289,9 +292,9 @@ function loadAllAppointments (){
 
 
 
-chart1.render();
-chart2.render();
-chart3.render();
+        chart1.render();
+        chart2.render();
+        chart3.render();
 
 
 
