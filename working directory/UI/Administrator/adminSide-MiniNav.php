@@ -30,18 +30,18 @@
             <a href="../Administrator profile/adminViewProfile.php" > Profile </a>
             <a href="../manageAccounts/manage.php"> Accounts </a> 
             <a href="../manageInventory/manageinventory.php"> Inventory </a>
-            <a href="../../managepromotions/managepromotions.php"> Promotions </a>  
+            <a href="../managePromotion/readPromotion.php"> Promotions </a>  
             <a href="../manageSupplier/Supplier.php"> Supplier </a> 
-            <a href="../../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a>
+            <a href="../manageEmployee/Employee.php"> Employee </a>
         </div>
 
         <div class="hide-in-others">
             <a href="../Administrator profile/adminViewProfile.php"> Profile </a>
             <a href="../manageAccounts/manage.php"> Accounts </a> 
             <a href="../manageInventory/manageinventory.php"> Inventory </a>
-            <a href="../../managepromotions/managepromotions.php"> Promotions </a>  
+            <a href="../managePromotion/readPromotion.php"> Promotions </a>  
             <a href="../manageSupplier/Supplier.php"> Supplier </a> 
-            <a href="../../Admin-Employee & Supplier records/ViewEmployee.php"> Employee </a>
+            <a href="../manageEmployee/Employee.php"> Employee </a>
         </div>
 
 

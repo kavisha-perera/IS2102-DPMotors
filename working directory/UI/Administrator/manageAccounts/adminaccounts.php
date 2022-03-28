@@ -106,56 +106,56 @@ include_once "../../../includes/dbh.inc.php";
                         </div>
                     </div>
                     <!---start of new employee form-->
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="firstname" class="th-user-label">First Name</label>
+                    <div class="row">
+                        <div class="col-4 BookAppLabel">
+                            <label>First Name</label>
                         </div>
-                        <div class="th-emp-form-input">
+                        <div class="col-8 BookAppForm">
                             <input type="text" name="fname" class="th-emsu-input" required>
                         </div>
                     </div>
             
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="lastname" class="th-user-label">Last Name</label>
+                    <div class="row">
+                        <div class="col-4 BookAppLabel">
+                            <label>Last Name</label>
                         </div>
-                        <div class="th-emp-form-input">
+                        <div class="col-8 BookAppForm">
                             <input type="text" name="lname" class="th-emsu-input" required>
                         </div>
                     </div>
             
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="nic" class="th-user-label">NIC</label>
+                    <div class="row">
+                        <div class="col-4 BookAppLabel">
+                            <label>NIC</label>
                         </div>
-                        <div class="th-emp-form-input">
+                        <div class="col-8 BookAppForm">
                             <input type="text" name="nic" class="th-emsu-input" required>
                         </div>
                     </div>
                    
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="email" class="th-user-label">Email Address</label>
+                    <div class="row">
+                        <div class="col-4 BookAppLabel">
+                            <label>Email</label>
                         </div>
-                        <div class="th-emp-form-input">
+                        <div class="col-8 BookAppForm">
                             <input type="text" name="email" class="th-emsu-input" required>
                         </div>
                     </div>
 
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="contact" class="th-user-label">Contact</label>
+                    <div class="row">
+                        <div class="col-4 BookAppLabel">
+                            <label>Contact</label>
                         </div>
-                        <div class="th-emp-form-input">
+                        <div class="col-8 BookAppForm">
                             <input type="number" name="contact" class="th-emsu-input" required>
                         </div>
                     </div>
 
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="contact" class="th-user-label">Address</label>
+                    <div class="row">
+                        <div class="col-4 BookAppLabel">
+                            <label>Address</label>
                         </div>
-                        <div class="th-emp-form-input">
+                        <div class="col-8 BookAppForm">
                             <input type="text" name="address" class="th-emsu-input" required>
                         </div>
                     </div>

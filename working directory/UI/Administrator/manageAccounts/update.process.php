@@ -66,7 +66,7 @@ if(isset($_POST['update']))
                 ?>
                 <div class="row">
                         <div class="th-employee-form-title">
-                            <h2 style="margin-bottom:20px;">User ID <?php echo $row['id'];?></h2>
+                            <p style="margin-bottom:20px;">Employee ID <?php echo $row['id'];?></p>
                         </div>
                         
                 </div>

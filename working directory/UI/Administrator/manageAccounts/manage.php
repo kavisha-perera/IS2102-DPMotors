@@ -48,9 +48,6 @@ if($_SESSION['type'] == "admin")
                 <div class="col-3 d-icon">
                     <a href="cashieraccounts.php"><img src="../../../images/admin/cashier.png" class="dashboardIcon"></a>
                 </div>
-                <div class="col-3 d-icon">
-                    <a href="customeraccounts.php"><img src="../../../images/admin/customer.png" class="dashboardIcon"></a>
-                </div>
             
             </div>
         </div>
