@@ -17,11 +17,13 @@
 <tr>
 
 <td><label for="vehicleModel">Vehicle Type</label></td>
-<td><select name="vehicleModel" class="select">
-     <option> - </option>
-     <option>Toyota Axio</option> 
-     <option>Toyota Corolla</option>    
-     <option>Suzuki Maruti</option>  
+<td>
+<select  name="vehicleModel" class="select">
+    <option value ="Motor Cycle">Motor Cycle</option>
+    <option value ="Motor Tricycle">Motor Tricycle</option>
+    <option value ="Motor Car">Motor Car</option>
+    <option value ="Motor Lorry">Light Motor Lorry</option>
+    <option value ="Motor Coach">Motor Coach</option>
 </select> </td>
 </tr>
 

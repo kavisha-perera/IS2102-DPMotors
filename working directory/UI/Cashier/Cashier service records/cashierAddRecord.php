@@ -189,6 +189,7 @@ function test_input($data) {
                 echo "This Email Is Not Registered";
               }
             }
+            
             else{    
 
             ?>

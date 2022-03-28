@@ -170,7 +170,7 @@ if (isset($_GET['service_id']) && isset($_GET['req_type']) && $_GET['req_type'] 
                                     <th>Coolant</th> 
                                     <th>Air Filter</th> 
                                     <th>Next Service Date</th>
-                                    <th colspan="2" style="text-align: center;">CONTROLS</th>    
+                                    <th style="text-align: center;">CONTROLS</th>    
                                     </tr>
                                 </thead>
                                 <tbody> <!--add php & sql here-->
@@ -190,8 +190,7 @@ if (isset($_GET['service_id']) && isset($_GET['req_type']) && $_GET['req_type'] 
                                         <td><?php echo $row['coolant']; ?></td>
                                         <td><?php echo $row['airFilter']; ?></td>
                                         <td><?php echo $row['nextServiceDate']; ?></td>
-                                        <td><a href="./cashierUpdateServive.php?service_id=<?php echo $row['id'];?>">Update</td>
-                                        <td><a href="./cashierReadService.php?req_type=delete&service_id=<?php echo $row['id'];?>&vehicleNo=<?php echo $row['vehicleNo'];?>" onclick="return confirm('Are you sure?')" >Delete</a></td>
+                                        <td style="text-align: center;"><a href="./cashierReadService.php?req_type=delete&service_id=<?php echo $row['id'];?>&vehicleNo=<?php echo $row['vehicleNo'];?>" onclick="return confirm('Are you sure?')" >Delete</a></td>
                                     </tr>
                                     <?php }
                                     }
