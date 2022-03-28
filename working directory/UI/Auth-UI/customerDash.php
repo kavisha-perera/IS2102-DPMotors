@@ -13,6 +13,7 @@ if (isset($_SESSION['id'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
 	<title>customer dashboard</title>
 
     <style>
@@ -93,6 +94,11 @@ if (isset($_SESSION['id'])) {
                         </a>
                     </div>
                     <div class="col-4 d-icon">
+                        <a href="../Customer/customer appointments/bookAppointment.php">
+                            <img src="../../images/customer/book.png" class="dashboardIcon">
+                        </a>
+                    </div>
+                    <div class="col-4 d-icon">
                         <a href="../Customer/customer service records/viewServices.php">
                             <img src="../../images/customer/record.png" class="dashboardIcon">
                         </a>
@@ -110,11 +116,6 @@ if (isset($_SESSION['id'])) {
                     <div class="col-4 d-icon">
                         <a href="../Customer/customer gerneral/customer read promotions.php">
                             <img src="../../images/customer/promo.png" class="dashboardIcon">
-                        </a>
-                    </div>
-                    <div class="col-4 d-icon">
-                        <a href="../Customer/customer appointments/bookAppointment.php">
-                            <img src="../../images/customer/book.png" class="dashboardIcon">
                         </a>
                     </div>
                 </div>
