@@ -20,7 +20,7 @@ if(isset($_SESSION['id']))
     <link rel="stylesheet" href="../../../css/main.css">
     <link rel="stylesheet" href="../../../css/dpschedule.css">
     <link rel="stylesheet" href="../../css/navbar.css">
-	<title>customer book appointment</title>
+	<title>DP MOTORS</title>
     <style>
         .Nav-Appointments{
             /* to show the active link in navbar */
