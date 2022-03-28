@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="../../../css/navbar.css">
+
+
 <!--cashier side nav bar for screens larger than 800px-->
 
 <p>Cashier <?php echo $email;?> </p> <hr>
