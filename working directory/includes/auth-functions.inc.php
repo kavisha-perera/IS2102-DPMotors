@@ -6,9 +6,9 @@
     use PHPMailer\PHPMailer\Exception; 
 
 
-    require './PHPMailer/Exception.php';
-    require './PHPMailer/PHPMailer.php';
-    require './PHPMailer/SMTP.php';
+    require  __DIR__.'/PHPMailer/Exception.php';
+    require  __DIR__.'/PHPMailer/PHPMailer.php';
+    require  __DIR__.'/PHPMailer/SMTP.php';
 
 
 
@@ -327,6 +327,46 @@ function checkCodeAndRestPassword($conn , $code , $email , $password ){
 }
 
 
+function sendPassword($password,$useremail){
+
+
+    $mail = new PHPMailer; 
+ 
+    $mail->isSMTP();                      // Set mailer to use SMTP 
+    $mail->Host = 'smtp.gmail.com';       // Specify main and backup SMTP servers 
+    $mail->SMTPAuth = true;               // Enable SMTP authentication 
+    $mail->Username = 'project1.group03@gmail.com';   // SMTP username 
+    $mail->Password = 'project@2102';   // SMTP password 
+    $mail->SMTPSecure = 'tls';            // Enable TLS encryption, `ssl` also accepted 
+    $mail->Port = 587;                    // TCP port to connect to 
+    
+    // Sender info 
+    $mail->setFrom('admin@dpmotors.lk', 'dpmotors'); 
+    $mail->addReplyTo('reply@dpmotors.lk', 'dpmotors'); 
+    
+    // Add a recipient 
+    $mail->addAddress($useremail); 
+    
+    //$mail->addCC('cc@example.com'); 
+    //$mail->addBCC('bcc@example.com'); 
+    
+    // Set email format to HTML 
+    $mail->isHTML(true); 
+    
+    // Mail subject 
+    $mail->Subject = 'Password to log in to DP Motors website'; 
+    
+    // Mail body content 
+    $bodyContent = '<h3>This is your password to log into the DPMotors site <br><br>'.$password.' <h3></br>'; 
+    $mail->Body    = $bodyContent; 
+    
+    // Send email 
+    if(!$mail->send()) { 
+        echo 'Message could not be sent. Mailer Error: '.$mail->ErrorInfo; 
+    }
+
+
+}
 
 
 

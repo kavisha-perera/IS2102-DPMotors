@@ -159,24 +159,6 @@ include_once "../../../includes/dbh.inc.php";
                         </div>
                     </div>
 
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="password" class="th-user-label">Password</label class="th-emsu-input">
-                        </div>
-                        <div class="th-emp-form-input">
-                            <input type="password" name="password" class="th-emsu-input" required>
-                        </div>
-                    </div>
-
-                    <div class="th-emp-row">
-                        <div class="th-emp-form-label">
-                            <label for="conform password" class="th-user-label">Confirm Password</label class="th-emsu-input">
-                        </div>
-                        <div class="th-emp-form-input">
-                            <input type="password" name="confirmpw" class="th-emsu-input" required>
-                        </div>
-                    </div>
-
                     <input type="hidden" name="type" class="th-emsu-input" value="cashier">
                     
             
