@@ -22,6 +22,7 @@ function loadAllProducts(){
             title:{
                 text: "Products"
             },
+            exportEnabled: true,
             axisY: {
                 title: "Count",
                 minimum: 0
@@ -69,6 +70,7 @@ function loadAllUsers(){
             title:{
                 text: "Users"
             },
+            exportEnabled: true,
             axisY: {
                 title: "Count",
                 minimum: 0
@@ -114,6 +116,7 @@ function loadAllschedule(){
             title:{
                 text: "Booked Appointments"
             },
+            exportEnabled: true,
             axisY: {
                 title: "Count",
                 minimum: 0
@@ -161,6 +164,7 @@ function loadAllservice(){
             title:{
                 text: "Vechicle Services"
             },
+            exportEnabled: true,
             axisY: {
                 title: "Count",
                 valueFormatString: "#",

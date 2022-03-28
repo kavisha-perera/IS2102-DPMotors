@@ -1,3 +1,7 @@
+
+<link rel="stylesheet" href="../../../css/navbar.css">
+
+
 <div class="row r1">
         <div class="col-13">
         <img src="../../../images/logo.png" class="navLogo">

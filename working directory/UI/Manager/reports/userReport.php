@@ -18,7 +18,6 @@ if($_SESSION['type'] == "manager")
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <link rel="stylesheet" href="../../../css/main.css">
-    <script type="text/javascript" src="../../../javascript/print.js"></script>
     <title>Reports</title>
 
 <style>
@@ -57,7 +56,6 @@ include_once("../managerNav.php");
 <h3>New Registerd Users Report<h3>
 
 <div id="chart">
-
 
 <div id="usersChart" style="height: 370px; width: 100%;"></div>
   
