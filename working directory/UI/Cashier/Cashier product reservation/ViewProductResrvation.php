@@ -36,7 +36,7 @@ if ($preserv) {
         $pr_list .="<td>{$value['cus_email']}</td>";
         $pr_list .="<td>{$value['cus_address']}</td>";
         $pr_list .="<td>{$value['due_date']}</td>";
-        $pr_list .="<td><a href=\"UpadteProductReserv.php?reserve_id={$value['res_sale_id']}\">Edit</a></td>";
+      //  $pr_list .="<td><a href=\"UpadteProductReserv.php?reserve_id={$value['res_sale_id']}\">Edit</a></td>";
         $pr_list .="<td><a href=\"ViewProductReservation.php?reserve_id={$value['res_sale_id']}\" onclick=\"return confirm('Are you sure?');\" >Delete</a></td>"; 
         $pr_list .="</tr>";
 
@@ -131,13 +131,12 @@ if ($preserv) {
                     <thead>
                     <tr>
                       <th>P.RESERVATION NO</th> <!--table properties-->
-                      <th>CONTACT NUMBER</th>
-                      <th>DELIVERY ADDRESS</th>
-                      <th>PRODUCT ID</th>
-                      <th>PRODUCT NAME</th>
-                      <th>QUANTITY</th>
-                      <th>DELIVERY DATE</th>
                       <th>DELIVERY METHOD</th>
+                      <th>CUSTOMER NAME</th>
+                      <th>CONTACT NUMBER</th>
+                      <th>CUSTOMER EMAIL</th>
+                      <th>DELIVERY ADDRESS</th>
+                      <th>DELIVERY DATE</th>
                       <th colspan="2" style="text-align: center;">CONTROLS</th>
                     </tr>
                     </thead>
