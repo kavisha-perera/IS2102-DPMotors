@@ -91,7 +91,7 @@ if($_SESSION['type'] == "cashier")
           
               <hr>
 
-              <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"><!--open main form to make product reservation-->
+              <form action="./addProducts.php" method="post"><!--open main form to make product reservation-->
 
 
               <input type="hidden" name="cusEmail" value="<?php echo $row['email']; ?>">
@@ -219,36 +219,6 @@ if($_SESSION['type'] == "cashier")
         
       }
         ?>
-
-
-
-<?php 
-
-if(isset($_POST['createPReservationRecord'])){
-
-  $email = $_POST['cusEmail'];
-  $cusName = $_POST['cusName'];
-  $cusContact = $_POST['cusContact'];
-  $delivery_method = $_POST['delivery_method'];
-  $cusAddress = $_POST['cusAddress'];
-  $reservationNo = $_POST['resNo'];
-  $dueDate = $_POST['dueDate'];
-  $remarks = $_POST['remarks'];  
-
-
-  $sql="INSERT INTO  reservedforsale (reservation_no, delivery_method, cus_name, cus_contact, cus_email, cus_address, due_date,remarks) VALUES ($reservationNo, $delivery_method, $cusName , $cusContact, $email, $cusAddress , $dueDate, $remarks)";
-
-  if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-  } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-  }
-
-}
-
-?>
-
-
 
 
         
