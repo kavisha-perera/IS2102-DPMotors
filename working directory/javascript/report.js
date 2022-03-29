@@ -107,7 +107,7 @@ function loadAllschedule(){
 
     xhr.onload = function () {
 
-        console.log(this.response);
+        console.log("test"+this.response);
 
 
         var chart = new CanvasJS.Chart("scheduleChart", {

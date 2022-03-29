@@ -51,14 +51,14 @@ if (isset($_POST["users"])){
 
 if (isset($_POST["schedule"])){
 
-    $sql = "SELECT MONTHNAME(date),COUNT(state) FROM `schedule` WHERE state='booked' GROUP BY month(date);";
+    $sql = "SELECT MONTHNAME(carddate),COUNT(state) FROM dp_schedule WHERE state='closed' GROUP BY month(carddate);";
     $result = mysqli_query($conn, $sql);
 
     $scheduleArray = array();
 
     while($row = $result->fetch_assoc()) {
 
-        $scheduleData = array('y' => $row["COUNT(state)"] , 'label' => $row["MONTHNAME(date)"]);
+        $scheduleData = array('y' => $row["COUNT(state)"] , 'label' => $row["MONTHNAME(carddate)"]);
         array_push($scheduleArray ,$scheduleData );
     }
 
