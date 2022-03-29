@@ -54,7 +54,7 @@ if(isset($_SESSION['id']))
                     <h2 style="text-align:center;">BOOKING SCHEDULE</h2>
                 </div>
                 <div class="col-12 instructions">
-                    <h5>Appointment timeslots are available for the next 14 days in the 24HR format.</h5>
+                    <h5>Appointment timeslots are available in the 24HR format.</h5>
                     <h5> Click BOOK TIMESLOT to book an appointment</h5>
                 </div>
                 <div class="col-12">
