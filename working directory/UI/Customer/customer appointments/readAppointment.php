@@ -106,7 +106,7 @@ if(isset($_SESSION['id']))
                         <label>APPOINTMENT TIME</label>
                     </div>
                     <div class="col-8 BookAppForm">
-                        <input type="text" class="serviceApp" name="timeslot" value = "<?php echo $row["timeslot"]; ?>:00" readonly>
+                        <input type="text" class="serviceApp" name="timeslot" value = "<?php echo $row["timeslot"]; ?>" readonly>
                     </div>
                 </div> 
                 <div class="row">
@@ -139,6 +139,14 @@ if(isset($_SESSION['id']))
                     </div>
                     <div class="col-8 BookAppForm">
                         <input type="text" class="serviceApp" name="vehicleModel" value = "<?php echo $row["vehicleType"]; ?>" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 BookAppLabel">
+                        <label>VEHICLE USED YEARS</label>
+                    </div>
+                    <div class="col-8 BookAppForm">
+                        <input type="text" class="serviceApp" name="vehicleModel" value = "<?php echo $row["yearsInUse"]; ?>" readonly>
                     </div>
                 </div>
                 <div class="row">

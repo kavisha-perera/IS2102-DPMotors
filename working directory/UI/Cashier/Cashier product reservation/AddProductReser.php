@@ -109,17 +109,17 @@ if($_SESSION['type'] == "cashier")
 
               <tr>
               <td><label >Customer Name:</label></td>
-              <td><input type="text" name="cusName" value="<?php echo $row['fname']; ?> <?php echo $row['lname']; ?>" class='form'></td>
+              <td><input type="text" name="cusName" value="<?php echo $row['fname']; ?> <?php echo $row['lname']; ?>" class='form' required></td>
               </tr>
 
               <tr>
               <td><label >Customer Contact:</label></td>
-              <td><input type="text" name="cusContact" value="<?php echo $row['contact']; ?>" class='form'></td>
+              <td><input type="text" name="cusContact" value="<?php echo $row['contact']; ?>" class='form' required></td>
               </tr>
 
               <tr>
               <td><label >Delivery Method:</label></td>
-              <td><select name="delivery_method" class='form'>
+              <td><select name="delivery_method" class='form' required>
                   <option>Courier</option>
                   <option>Pick Up</option>                                
               </select></td> 
@@ -127,22 +127,22 @@ if($_SESSION['type'] == "cashier")
 
               <tr>
               <td><label >Customer Address:</label></td>
-              <td><input type="text" name="cusAddress" value="<?php echo $row['address']; ?>" class='form'></td>
+              <td><input type="text" name="cusAddress" value="<?php echo $row['address']; ?>" class='form' required></td>
               </tr>
 
               <tr>
               <td><label >Product Reservation No:</label></td>
-              <td><input type="text" name="resNo" value=" " class='form'></td>
+              <td><input type="text" name="resNo" value=" " class='form' required></td>
               </tr>
 
               <tr>
               <td><label >Due Date:</label></td>
-              <td><input type="date" name="dueDate" value=" " class='form'></td>
+              <td><input type="date" name="dueDate" value=" " class='form' required></td>
               </tr>
 
               <tr>
               <td><label >Remarks:</label></td>
-              <td><input type="text" name="remarks" value=" " class='form'></td>
+              <td><input type="text" name="remarks" value=" " class='form' required></td>
               </tr>
 
               <tr>
@@ -182,21 +182,21 @@ if($_SESSION['type'] == "cashier")
           <form action="./addProducts.php" method="post"><!--open main form to make product reservation-->
 
 
-          <input type="hidden" name="cusEmail" value="" class='form'>
+          <input type="hidden" name="cusEmail" value="" class='form' required>
 
           <tr>
           <td><label >Customer Name:</label></td>
-          <td><input type="text" name="cusName" value="" class='form'></td>
+          <td><input type="text" name="cusName" value="" class='form' required></td>
           </tr>
 
           <tr>
           <td><label >Customer Contact:</label></td>
-          <td><input type="text" name="cusContact" value="" class='form' ></td>
+          <td><input type="text" name="cusContact" value="" class='form' required></td>
           </tr>
 
           <tr>
           <td><label >Delivery Method:</label></td>
-          <td><select name="delivery_method" class='form'>
+          <td><select name="delivery_method" class='form' required>
               <option>Courier</option>
               <option>Pick Up</option>                                
           </select></td> 
@@ -204,22 +204,22 @@ if($_SESSION['type'] == "cashier")
 
           <tr>
           <td><label >Customer Address:</label></td>
-          <td><input type="text" name="cusAddress" value="" class='form'></td>
+          <td><input type="text" name="cusAddress" value="" class='form' required></td>
           </tr>
 
           <tr>
           <td><label >Product Reservation No:</label></td>
-          <td><input type="text" name="resNo" value=" " class='form'></td>
+          <td><input type="text" name="resNo" value=" " class='form' required></td>
           </tr>
 
           <tr>
           <td><label >Due Date:</label></td>
-          <td><input type="date" name="dueDate" value=" " class='form'></td>
+          <td><input type="date" name="dueDate" value=" " class='form' required></td>
           </tr>
 
           <tr>
           <td><label >Remarks:</label></td>
-          <td><input type="text" name="remarks" value=" " class='form'></td>
+          <td><input type="text" name="remarks" value=" " class='form' required></td>
           </tr>
 
           <tr>

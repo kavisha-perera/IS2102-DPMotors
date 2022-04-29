@@ -141,6 +141,18 @@ if(isset($_SESSION['id']))
                         </select>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-4 BookAppLabel">
+                        <label>NO OF YEARS THE VEHICLE HAS BEEN IN USE</label>
+                    </div>
+                    <div class="col-8 BookAppForm">
+                        <select id ="serviceApp" name="vehicleYears" style="height:41px;">
+                            <option value ="0 - 5 years">0 - 5 years</option>
+                            <option value ="5 - 10 years">5 - 10 years</option>
+                            <option value ="10 or more">10 or more</option>
+                        </select>
+                    </div>
+                </div>
 
                 <?php
 
