@@ -30,7 +30,7 @@ function openUpdateEmployee(element){
     var nic = dataRaw.cells[4].innerHTML;
     var contact = dataRaw.cells[5].innerHTML;
     var designation = dataRaw.cells[6].innerHTML;
-
+    var gender = dataRaw.cells[7].innerHTML;
 
 
 
@@ -44,7 +44,6 @@ function openUpdateEmployee(element){
 
     var selectele = document.getElementById("updatedesignation");
 
-
     for(var i = 0; i < selectele.options.length ; i++ ){
         var ele = selectele.options[i];
 
@@ -53,7 +52,15 @@ function openUpdateEmployee(element){
         }
     }
 
+    var selectele = document.getElementById("updatedegender");
 
+    for(var i = 0; i < selectele.options.length ; i++ ){
+        var ele = selectele.options[i];
+
+        if(ele.value == gender.trim()){
+            ele.selected = true;
+        }
+    }
 
 
    document.getElementById('modal-2').style.display = "block";
