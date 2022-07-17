@@ -119,6 +119,7 @@ session_start();
                         <h4><?php echo $row['p_brand']; ?> <?php echo $row['p_name']; ?></h4>
                         <h5>LKR <?php echo $row['selling_price']; ?>/-</h5>
                         <h6><?php echo $row['p_desc']; ?></h6>
+                        <h6><?php echo $row['stock_code']; ?></h6>
                         
                         <?php $avail_sql = "SELECT COUNT(*) AS stock_count FROM products WHERE stock_code='{$row['stock_code']}'";
                             $availability = mysqli_query($conn, $avail_sql);

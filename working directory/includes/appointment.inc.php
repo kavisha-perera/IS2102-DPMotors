@@ -14,6 +14,7 @@ if (isset($_POST["book"])){
     $lname = $_POST["lname"]; 
     $contact = $_POST["AppContactNo"];
     $email = $_POST["email"];
+    $vehicleYears = $_POST["vehicleYears"];
 
     require_once 'dbh.inc.php';
     require_once 'appointment-func.php';
@@ -22,7 +23,7 @@ if (isset($_POST["book"])){
 
     closeSlot($conn, $slotId);
 
-    createAppointment($conn, $slotId, $appDate, $appTime, $serviceType, $vehicleNo, $vehicleModel, $fname, $lname, $contact, $email, $appointmentState);
+    createAppointment($conn, $slotId, $appDate, $appTime, $serviceType, $vehicleYears, $vehicleNo, $vehicleModel, $fname, $lname, $contact, $email, $appointmentState);
 
     
     header("location: ../UI/Customer/customer appointments/viewAppointments.php?error=BookingSuccess");

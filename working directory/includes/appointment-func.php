@@ -34,9 +34,9 @@ function closeSlot($conn, $slotId){
 }
 
 //function to create appointment record
-function createAppointment($conn, $slotId, $appDate, $appTime, $serviceType, $vehicleNo, $vehicleModel, $fname, $lname, $contact, $email, $appointmentState){
+function createAppointment($conn, $slotId, $appDate, $appTime, $serviceType, $vehicleYears, $vehicleNo, $vehicleModel, $fname, $lname, $contact, $email, $appointmentState){
 
-    $sql = "INSERT INTO appointments (scheduleId, date, timeslot, serviceType, vehicleNo, vehicleType, fname, lname, contact, email, state) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; 
+    $sql = "INSERT INTO appointments (scheduleId, date, timeslot, serviceType, yearsInUse, vehicleNo, vehicleType, fname, lname, contact, email, state) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; 
     
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -44,7 +44,7 @@ function createAppointment($conn, $slotId, $appDate, $appTime, $serviceType, $ve
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "sssssssssss" , $slotId, $appDate, $appTime, $serviceType, $vehicleNo,    $vehicleModel, $fname, $lname, $contact, $email, $appointmentState);
+    mysqli_stmt_bind_param($stmt, "ssssssssssss" , $slotId, $appDate, $appTime, $serviceType, $vehicleYears, $vehicleNo,   $vehicleModel,  $fname, $lname, $contact, $email, $appointmentState);
     mysqli_stmt_execute($stmt);
         
 }

@@ -50,6 +50,7 @@ include_once("../../../includes/employee.inc.php");
                       <th>NIC</th>
                       <th>Contact</th>
                       <th>Designation</th>
+                      <th>Gender</th>
                       <th>Update</th>
                       <th>Delete</th>
                     </tr>
@@ -74,6 +75,8 @@ include_once("../../../includes/employee.inc.php");
                             <td><?php echo $row['nic']  ?> </td>
                             <td><?php echo $row['contact'] ?> </td>                        
                             <td><?php echo $row['designation']  ?> </td>
+                            <td><?php echo $row['gender']  ?> </td>
+
 
                             <td><button class="navButton open-modal" style=" background-color: #6EE327;" data-val="<?php echo $row['id']  ?>" data-target="modal-2" onclick="openUpdateEmployee(this)" >UPDATE</button></td>
                             <td><button class="navButton open-modal" style=" background-color: #EE1E2B;" data-val="<?php echo $row['id']  ?>" data-target="modal-3" onclick="openDeleteEmployee(this)" ></a>DELETE</button></td>
@@ -133,6 +136,16 @@ include_once("../../../includes/employee.inc.php");
                     <option value="Mechanic">Mechanic</option>
                     <option value="Technician">Technician</option>
                     <option value="Electrician">Electrician</option>
+                    </select>
+
+                    </div>
+
+                    <div class="raw">
+
+                    <select name="gender" id="gender" required>
+                    <option value="" disabled selected hidden>Gender</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
                     </select>
 
                     </div>
@@ -204,6 +217,16 @@ include_once("../../../includes/employee.inc.php");
                     <option value="Technician">Technician</option>
                     <option value="Electrician">Electrician</option>
                     </select>
+                    </div>
+
+                    <div class="raw">
+
+                    <select name="gender" id="updategender" required>
+                    <option value="" disabled selected hidden>Gender</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    </select>
+
                     </div>
 
                     <div class="raw">

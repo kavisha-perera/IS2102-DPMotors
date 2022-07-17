@@ -83,6 +83,7 @@ if(isset($_SESSION['id']))
                                 <th>APPOITMENT DATE</th>
                                 <th>TIMESLOT</th>
                                 <th>VEHICLE NO</th>
+                                <th>VEHICLE USED YEARS</th>
                                 <th>SERVICE TYPE</th>
                                 <th colspan="3" style="text-align: center;">MAKE CHANGES</th>
                             </tr>
@@ -96,6 +97,7 @@ if(isset($_SESSION['id']))
                                 <td><?php echo $row['date'];?> </td>
                                 <td><?php echo $row['timeslot'];?></td>
                                 <td><?php echo $row['vehicleNo'];?></td>
+                                <td><?php echo $row['yearsInUse'];?></td>
                                 <td><?php echo $row['serviceType'];?></td>
                                 <td> <!--read the appointment record in detail-->
                                     <form action="./readAppointment.php" method="post">

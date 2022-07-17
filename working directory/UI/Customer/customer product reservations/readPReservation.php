@@ -176,7 +176,7 @@ if(isset($_SESSION['id']))
 
 
                                 <?php  
-                                    $query = "SELECT * FROM stock INNER JOIN reserved_products ON stock.stock_code = reserved_products.p_code WHERE reserved_products.reservation_no = '{$row['reservation_no']}'";
+                                    $query = "SELECT * FROM stock INNER JOIN reserved_products ON  reserved_products.p_code = stock.stock_code WHERE reserved_products.reservation_no = '{$row['reservation_no']}'";
                                     $results = mysqli_query($conn, $query);
                                     if (mysqli_num_rows($results) > 0) {
 
